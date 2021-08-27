@@ -36,7 +36,8 @@ function App(props) {
 						)}
 					/>
 				);
-			})}</div>}
+			})}</div>
+			<button class="btn btn-secondary mx-auto">Load More</button>
 			<PokeInfo></PokeInfo>
 		</div>
 	);
