@@ -1,0 +1,18 @@
+.pokeCard{
+    border-radius: 10px;
+    border: solid 1px lightgray;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin: 10px 0;
+    transition: 0.2s;
+}
+.pokeCard:hover{
+    box-shadow: 0px 0px 7px 0px rgb(150,150,150);
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+.pokeCard .pokeSprite {
+    height: 80px;
+    width: 100px;
+}
