@@ -1,7 +1,7 @@
 import "./pokeInfo.css";
 function PokeInfo(props) {
 	return (
-		<div className="modal" tabindex="-1">
+		<div id="pokeInfo" className="modal" tabindex="-1">
 			<div className="modal-dialog">
 				<div className="modal-content">
 					<div className="modal-header">
