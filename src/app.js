@@ -1,7 +1,6 @@
 import * as pokeFuncs from "./pokeFuncs.js";
 import * as helpers from "./helpers.js";
 import PokeCard from "./pokeCard/pokeCard";
-import PokeInfo from "./pokeInfo/pokeInfo";
 import React, { useState, useEffect } from "react";
 
 function App(props) {
@@ -16,6 +15,7 @@ function App(props) {
 		});
 		P.getPokemonByName([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]).then((info) => {
 			setPokes(info);
+			console.log(info)
 		});
 	}, []);
 
