@@ -1,18 +1,51 @@
-.pokeCard{
-    border-radius: 10px;
-    border: solid 1px lightgray;
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    margin: 10px 0;
-    transition: 0.2s;
+.pokeCard {
+	border-radius: 10px;
+	display: flex;
+	margin: 10px 0;
+	transition: 0.2s;
+    border: none;
 }
-.pokeCard:hover{
-    box-shadow: 0px 0px 7px 0px rgb(150,150,150);
-    margin-top: 5px;
-    margin-bottom: 15px;
+.pokeCard:not(.expanded):hover {
+	box-shadow: 0px 0px 7px 0px rgb(150, 150, 150);
+	margin-top: 5px;
+	margin-bottom: 15px;
 }
 .pokeCard .pokeSprite {
-    height: 80px;
-    width: 100px;
+	height: 80px;
+	width: 100px;
+}
+
+.pokeCard .card-header {
+	display: flex;
+	flex-direction: row;
+    border-radius: 10px;
+	border-bottom: none;
+    border: 1px solid lightgrey;
+}
+.pokeCard.expanded .card-header{
+    background-color: rgba(0,0,0,.1);
+    transition: 0.2s;
+    border-radius: 10px 10px 0 0;
+    border-width: 1px 1px 0 1px;
+	padding-bottom: 15px;
+}
+
+.pokeCard.expanded .card-header:hover{
+    background-color: rgba(0,0,0,.03);
+    box-shadow: 0px 0px 7px 0px rgb(150, 150, 150);
+}
+.pokeCard .card-body {
+	height: 0px;
+	transition: height 0.2s, padding-top 0.2s;
+	padding: 0 1rem;
+    overflow: hidden;
+    border-radius: 0px 0px 10px 10px;
+}
+.pokeCard.expanded .card-body {
+    position: relative;
+	display: block;
+	height: 400px;
+	padding: 1rem 1rem;
+    border: solid 1px lightgray;
+    background-color: white;
 }

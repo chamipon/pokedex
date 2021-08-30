@@ -7,11 +7,6 @@ import React, { useState, useEffect } from "react";
 function App(props) {
 	const [pokes, setPokes] = useState(""); // All the pokemon data that has been fetched
     const [currPoke, setCurrPoke] = useState(""); // The data on the specific pokemon being viewed
-	
-	function showPoke(currPoke){
-		setCurrPoke(currPoke)
-	}
-	
 	useEffect(() => {
 		
 		const Pokedex = require("pokeapi-js-wrapper");
@@ -27,15 +22,15 @@ function App(props) {
 	return (
 		<div>
 			<h1 className="text-center">NOT SHIT POKEDEX</h1>
-			<div className="mx-auto container row">{pokes && pokes.map((poke) => (
+			<div id="PokeGrid" className="mx-auto container row">{pokes && pokes.map((poke,i) => (
 					<PokeCard
-						onClick={(e) => {showPoke(poke)}}
 						key={poke.id}
+						index={i}
 						number={poke.id}
 						name={helpers.capitalize(pokeFuncs.getPokeName(poke))}
 						sprite={pokeFuncs.getPokeSprite(
 							poke,
-							"iii",
+							"iv",
 							false,
 							true,
 							false
@@ -45,7 +40,6 @@ function App(props) {
 				)
 			)}</div>
 			<button className="btn btn-secondary mx-auto">Load More</button>
-			<PokeInfo name={currPoke.name}></PokeInfo>
 		</div>
 	);
 }
