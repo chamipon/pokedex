@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 
 function App(props) {
 	const [pokes, setPokes] = useState(""); // All the pokemon data that has been fetched
-    const [currPoke, setCurrPoke] = useState(""); // The data on the specific pokemon being viewed
 	useEffect(() => {
 		
 		const Pokedex = require("pokeapi-js-wrapper");
@@ -13,9 +12,20 @@ function App(props) {
 			cacheImages: true,
 			timeout: 5000,
 		});
-		P.getPokemonByName([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]).then((info) => {
+		var monarray = []
+		var i = 1;
+		while(i<30) monarray.push(i++)
+		// monarray.push(265);
+		// monarray.push(280);
+		// monarray.push(439);
+		// monarray.push(470);
+		// monarray.push(471);
+		// monarray.push(196);
+		// monarray.push(197);
+		// monarray.push(700);
+		console.log(monarray)
+		P.getPokemonByName(monarray).then((info) => {
 			setPokes(info);
-			console.log(info)
 		});
 	}, []);
 
@@ -28,14 +38,10 @@ function App(props) {
 						index={i}
 						number={poke.id}
 						name={helpers.capitalize(pokeFuncs.getPokeName(poke))}
-						sprite={pokeFuncs.getPokeSprite(
-							poke,
-							"iv",
-							false,
-							true,
-							false
-						)}
+						sprite={poke.sprites.front_default}
 						poke={poke}
+						pokeList={pokes}
+						pokeListUpdater={setPokes}
 					/>
 				)
 			)}</div>

@@ -1,23 +1,30 @@
 import "./pokeCard.css";
-import React, { useState, useEffect } from "react";
+// import EvoChain from "./evoChain/evoChain";
+import React, { useState, useEffect, Suspense  } from "react";
 import $ from "jquery";
+
+const EvoChain = React.lazy(() => import('./evoChain/evoChain'));
+
 function PokeCard(props) {
 	const [evoChain, setEvoChain] = useState(""); //The evolution chain for the pokemon.
 	const [species, setSpecies] = useState(""); //The species for the pokemon.
-	async function expandCard(e){
-		const Pokedex = require("pokeapi-js-wrapper");
-		const P = new Pokedex.Pokedex({
-			cacheImages: true,
-			timeout: 5000,
-		});
-		var button = $(e.currentTarget).parent('.pokeCard'); // The button clicked on
-		if(evoChain == ""){ // Set the species and evolution chain if we havent already
-			var spec = await P.getPokemonSpeciesByName(props.number)
-			setSpecies(spec)
-			var chain = await P.resource(spec.evolution_chain.url)
-			setEvoChain(chain)
-		} 
+	const [expanded, setExpanded] = useState(false); //The species for the pokemon.
+	const Pokedex = require("pokeapi-js-wrapper");
+	const P = new Pokedex.Pokedex({
+		cacheImages: true,
+		timeout: 5000,
+	});
+	useEffect(() => {
+		P.getPokemonSpeciesByName(props.number).then((info) => {
+			setSpecies(info)
+			setEvoChain(info.evolution_chain.url)
+		})
+		
 
+	}, []);
+	function expandCard(e){
+
+		var button = $(e.currentTarget).parent('.pokeCard'); // The button clicked on
 		var cardPerRow = 1; //The number of pokeCards per row, changes based on screen width.
 		if(window.innerWidth >= 992) cardPerRow = 3;
 		else if(window.innerWidth >= 576) cardPerRow = 2;
@@ -31,6 +38,7 @@ function PokeCard(props) {
 			$(button).find(".card-body").css('width', $('#PokeGrid').width() - 24) //Set the width of the card-body.
 			$(button).find(".card-body").css('right', offset * ($(button).width() + 24)) //Shift the card-body based on the card's position in the row. 
 		}
+		if(!expanded) setExpanded(true)
 	}
 
 	return (
@@ -43,7 +51,9 @@ function PokeCard(props) {
 					<span className="pokeName m-auto">#{props.number} {props.name}</span>
 				</div>
 				<div className="card-body">
-
+				<Suspense fallback={<div>Loading...</div>}>
+					<EvoChain render={expanded} key={props.name + "_evoChain"} poke={props.poke} pokeList={props.pokeList} pokeListUpdater={props.pokeListUpdater} chain={evoChain}/>
+				</Suspense>
 				</div>
 			</div>
 		</div>
