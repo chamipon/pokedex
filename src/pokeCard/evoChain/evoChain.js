@@ -26,11 +26,15 @@ function EvoChain(props) {
                     var info = props.pokeList.find((obj) =>{
                         return obj.name === poke.poke.name
                     }) 
+
+                    //TODO: Stop duplicates from being added due to async
                     if(!info){
                         info = await P.getPokemonByName(poke.poke.name);
-                        // props.pokeListUpdater(props.pokeList.push(info))
+                        var temp=props.pokeList;
+                        temp.push(info)
+                        props.pokeListUpdater(temp)
                     }
-                    chainArray[i][j].poke = info
+                    chainArray[i][j].poke = [poke.evoDetails,info]
                 }))
             }))
             setEvoChain(chainArray)
