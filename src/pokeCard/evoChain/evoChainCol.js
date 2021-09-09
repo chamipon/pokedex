@@ -10,7 +10,7 @@ function EvoChainCol(props) {
 			{props.chain && props.chain.map((poke, i) => (
 				<div className="d-flex flex-row">
 					<div className="d-flex m-auto">
-						{poke.poke[0][0] && <EvoChainArrow evoDetails={poke.poke[0][0]}/>}
+						{poke.poke[0][poke.poke[0].length-1] && <EvoChainArrow evoDetails={poke.poke[0][poke.poke[0].length-1]}/>}
 					</div>
 					<div key={"sprite"+i} className="evoColImg">
 						{poke.poke[1].sprites && <img title={helpers.capitalize(poke.poke[1].name)} alt={helpers.capitalize(poke.poke[1].name)} src={poke.poke[1].sprites.front_default} className="d-flex"/>}
