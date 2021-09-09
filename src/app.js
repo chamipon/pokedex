@@ -11,20 +11,24 @@ function App(props) {
 		const Pokedex = require("pokeapi-js-wrapper");
 		const P = new Pokedex.Pokedex({
 			cacheImages: true,
-			timeout: 5000,
+			timeout: 10000,
 		});
 		var monarray = []
 		var i = 1;
 		while(i<30) monarray.push(i++)
-		monarray.push(265);
+		console.log(monarray)
+		monarray.push(143);
+		// monarray.push(265);
 		monarray.push(280);
-		monarray.push(439);
-		monarray.push(470);
-		monarray.push(471);
+		// monarray.push(439);
+		monarray.push(415);
+		// monarray.push(470);
+		// monarray.push(471);
 		// monarray.push(196);			
 		// monarray.push(197);
-		// monarray.push(700);
-		monarray.push(850);
+		monarray.push(705);
+		monarray.push(616);
+		// monarray.push(850);
 		P.getPokemonByName(monarray).then((info) => {
 			setPokes(info);
 			setDisplayPokes(info);
