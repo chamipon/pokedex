@@ -45,7 +45,7 @@
 }
 .pokeCard.expanded .card-body {
 	display: block;
-	height: 400px;
+	height: auto;
 	padding: 1rem 1rem;
 	border: solid 1px lightgray;
 	background-color: white;

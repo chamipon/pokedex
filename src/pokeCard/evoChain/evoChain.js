@@ -1,7 +1,7 @@
 import "./evoChain.css";
 import React, { useState, useEffect } from "react";
 import $ from "jquery";
-import EvoChainCol from "./evoChainCol/evoChainCol";
+import EvoChainCol from "./evoChainCol";
 function EvoChain(props) {
     function filterIt(arr, searchKey) {
         return arr.filter(function(obj) {

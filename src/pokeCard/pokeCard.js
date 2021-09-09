@@ -3,7 +3,7 @@ import "./pokeCard.css";
 import React, { useState, useEffect, Suspense  } from "react";
 import $ from "jquery";
 
-const EvoChain = React.lazy(() => import('./evoChain/evoChain'));
+import EvoChain from "./evoChain/evoChain";
 
 function PokeCard(props) {
 	const [evoChain, setEvoChain] = useState(""); //The evolution chain for the pokemon.
@@ -51,9 +51,7 @@ function PokeCard(props) {
 					<span className="pokeName m-auto">#{props.number} {props.name}</span>
 				</div>
 				<div className="card-body">
-				<Suspense fallback={<div>Loading...</div>}>
 					<EvoChain render={expanded} key={props.name + "_evoChain"} poke={props.poke} pokeList={props.pokeList} pokeListUpdater={props.pokeListUpdater} chain={evoChain}/>
-				</Suspense>
 				</div>
 			</div>
 		</div>
