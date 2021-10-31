@@ -5,14 +5,17 @@ import * as pokeFuncs from "./../../pokeFuncs.js";
 function EvoChain(props) {
 	useEffect(() => {
 		async function fetchData() {
-			if (props.render) {
+			if (props.render) {//Only call when the card body is being rendered
 				const Pokedex = require("pokeapi-js-wrapper");
 				const P = new Pokedex.Pokedex({
 					cacheImages: true,
 					timeout: 5000,
 				});
-				var evoChainObj = await pokeFuncs.getEvoChainObjById(props.evoChainId,props.evoChainList,props.evoChainListUpdater,P); //Get the evo chain object
-                var chainArray = []; //Used to store the evo chain in a more useful way, has the evolution details and pokeObj. ex: [bulb, ivy, vena]
+
+				var spec = await P.resource(props.speciesUrl); //Get the pokemon species object
+				var _evoChainId = spec.evolution_chain.url.split('/')[6] // TODO: There must be a better way to get this....
+				var evoChainObj = await pokeFuncs.getEvoChainObjById(_evoChainId,props.evoChainList,props.evoChainListUpdater,P); //Get the evo chain object
+				var chainArray = []; //Used to store the evo chain in a more useful way, has the evolution details and pokeObj. ex: [bulb, ivy, vena]
 				getEvoChain(chainArray, evoChainObj.chain, 0);
 				await Promise.all(
 					chainArray.map(async (col, i) => {
@@ -24,7 +27,7 @@ function EvoChain(props) {
 						);
 					})
 				);
-				setEvoChain({'id': props.evoChainId,'chain' : chainArray});
+				setEvoChain({'id': _evoChainId,'chain' : chainArray});
 			}
 		}
         fetchData()
@@ -43,8 +46,7 @@ function EvoChain(props) {
 	function getEvoChain(chainArray, chain, depth) {
 		depth++; //Keep track of how deep in the evo tree we are
 		for (var i = 0; i < chain.evolves_to.length; i++) {
-			//For each poke at this depth
-			getEvoChain(chainArray, chain.evolves_to[i], depth);
+			getEvoChain(chainArray, chain.evolves_to[i], depth);//For each poke at this depth
 		}
 
 		if (!chainArray[depth - 1]) chainArray[depth - 1] = []; //If this is the first poke at this depth

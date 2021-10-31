@@ -7,9 +7,6 @@ import EvoChain from "./evoChain/evoChain";
 import LazyLoad from 'react-lazyload';
 
 function PokeCard(props) {
-	const [evoChainUrl, setEvoChainUrl] = useState(""); //The evolution chain url for the pokemon.
-	const [evoChainId, setEvoChainId] = useState(""); //The evolution chain id for the pokemon.
-	const [species, setSpecies] = useState(""); //The species for the pokemon.
 	const [poke, setPoke] = useState(""); //The pokemon object.
 	const [expanded, setExpanded] = useState(false);
 	const Pokedex = require("pokeapi-js-wrapper");
@@ -19,11 +16,7 @@ function PokeCard(props) {
 	});
 	useEffect(() => {
 		async function fetchData() {
-			var spec = await P.resource(props.poke.url);
-			setSpecies(spec);
-			setEvoChainUrl(spec.evolution_chain.url);
-			setEvoChainId(spec.evolution_chain.url.split('/')[6]); // TODO: There must be a better way to get this....
-			var pokeObj = await pokeFuncs.getPokeObjByName(spec.name,props.pokeList,props.pokeListUpdater,P)
+			var pokeObj = await pokeFuncs.getPokeObjByName(props.poke.name,props.pokeList,props.pokeListUpdater,P)
 			setPoke(pokeObj);
 		}
 		fetchData();
@@ -85,13 +78,12 @@ function PokeCard(props) {
 								helpers.capitalize(pokeFuncs.getPokeName(poke)) +
 									"_evoChain"
 							}
+							speciesUrl={props.poke.url}
 							poke={poke}
 							pokeList={props.pokeList}
 							pokeListUpdater={props.pokeListUpdater}
 							evoChainList={props.evoChainList}
 							evoChainListUpdater={props.evoChainListUpdater}
-							evoChainUrl={evoChainUrl}
-							evoChainId={evoChainId}
 						/>
 					</LazyLoad>
 				</div>
