@@ -7,10 +7,11 @@ import EvoChain from "./evoChain/evoChain";
 import LazyLoad from 'react-lazyload';
 
 function PokeCard(props) {
-	const [evoChain, setEvoChain] = useState(""); //The evolution chain for the pokemon.
+	const [evoChainUrl, setEvoChainUrl] = useState(""); //The evolution chain url for the pokemon.
+	const [evoChainId, setEvoChainId] = useState(""); //The evolution chain id for the pokemon.
 	const [species, setSpecies] = useState(""); //The species for the pokemon.
 	const [poke, setPoke] = useState(""); //The pokemon object.
-	const [expanded, setExpanded] = useState(false); //The species for the pokemon.
+	const [expanded, setExpanded] = useState(false);
 	const Pokedex = require("pokeapi-js-wrapper");
 	const P = new Pokedex.Pokedex({
 		cacheImages: true,
@@ -20,8 +21,9 @@ function PokeCard(props) {
 		async function fetchData() {
 			var spec = await P.resource(props.poke.url);
 			setSpecies(spec);
-			setEvoChain(spec.evolution_chain.url);
-			var pokeObj = await P.getPokemonByName(spec.name);
+			setEvoChainUrl(spec.evolution_chain.url);
+			setEvoChainId(spec.evolution_chain.url.split('/')[6]); // TODO: There must be a better way to get this....
+			var pokeObj = await pokeFuncs.getPokeObjByName(spec.name,props.pokeList,props.pokeListUpdater,P)
 			setPoke(pokeObj);
 		}
 		fetchData();
@@ -51,7 +53,6 @@ function PokeCard(props) {
 			$(button).find(".card-body").css('right', offset * ($(button).width() + 24)) //Shift the card-body based on the card's position in the row. 
 		}
 	}
-
 	return (
 			<div data-index={props.index} className={`card pokeCard w-100 ${expanded && "expanded"}`}>
 				{poke && (<div onClick={(e) => expandCard(e)} role="button" className="card-header">
@@ -77,18 +78,21 @@ function PokeCard(props) {
 			{poke && (
 				<div className="card-body">
 					<LazyLoad>
-					<EvoChain
-						render={expanded}
-						key={
-							poke &&
-							helpers.capitalize(pokeFuncs.getPokeName(poke)) +
-								"_evoChain"
-						}
-						poke={poke}
-						pokeList={props.pokeList}
-						pokeListUpdater={props.pokeListUpdater}
-						chain={evoChain}
-					/>
+						<EvoChain
+							render={expanded}
+							key={
+								poke &&
+								helpers.capitalize(pokeFuncs.getPokeName(poke)) +
+									"_evoChain"
+							}
+							poke={poke}
+							pokeList={props.pokeList}
+							pokeListUpdater={props.pokeListUpdater}
+							evoChainList={props.evoChainList}
+							evoChainListUpdater={props.evoChainListUpdater}
+							evoChainUrl={evoChainUrl}
+							evoChainId={evoChainId}
+						/>
 					</LazyLoad>
 				</div>
 			)}

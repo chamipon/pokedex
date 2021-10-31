@@ -5,7 +5,8 @@ import React, { useState, useEffect } from "react";
 import "./app.css";
 function App(props) {
 	const [pokes, setPokes] = useState(""); // Master list of every pokemon. Only contains name and url to species, fully populated at the start
-	const [pokeObjs, setPokeObjs] = useState([]	) // All the pokemon objects that have been fetched. Populated as data is needed
+	const [pokeObjs, setPokeObjs] = useState([]) // All the pokemon objects that have been fetched. Populated as data is needed
+	const [evoChainObjs, setEvoChainObjs] = useState([]) //All the evo chain objects that have been fetched. Populated as data is needed
 	const [isDark, setIsDark] = useState(true); // The current theme of the app.
 	const [selected, setSelected] = useState(""); // The pokemon that is currently selected.
 	useEffect(() => {
@@ -33,6 +34,8 @@ function App(props) {
 								poke={poke}
 								pokeList={pokeObjs}
 								pokeListUpdater={setPokeObjs}
+								evoChainList={evoChainObjs}
+								evoChainListUpdater={setEvoChainObjs}
 								selected={selected}
 								setSelected={setSelected}
 							/>
