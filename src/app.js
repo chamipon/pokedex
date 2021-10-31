@@ -27,7 +27,7 @@ function App(props) {
 		// monarray.push(471);
 		// monarray.push(196);			
 		// monarray.push(197);
-		monarray.push(705);
+		monarray.push(133);
 		monarray.push(616);
 		// monarray.push(850);
 		P.getPokemonByName(monarray).then((info) => {

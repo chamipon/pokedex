@@ -24,7 +24,7 @@ function Navbar(props) {
 				<div className="navbaritem d-flex">
 					<span className="fas fa-bars fa-lg "></span>
 				</div>
-				<button onClick={toggleMode} className="navbaritem d-flex">
+				<button onClick={toggleMode} className="navbaritem d-flex mt-0 mt-md-auto">
 					{mode == "light" && <span className="fas fa-sun fa-lg "></span>}
 					{mode == "dark" && <span className="fas fa-moon fa-lg "></span>}
 				</button>

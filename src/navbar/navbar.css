@@ -12,6 +12,7 @@
     margin: 0 5px;
     color: white;
     transition: 0.2s;
+    padding: 0px;
 }
 .navbaritem:hover{
     background-color: #5a5a5a;
