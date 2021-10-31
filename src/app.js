@@ -7,6 +7,9 @@ import "./app.css";
 function App(props) {
 	const [pokes, setPokes] = useState(""); // All the pokemon data that has been fetched.
 	const [displayPokes, setDisplayPokes] = useState(""); //The pokemon that are currently being displayed.
+	const [isDark, setIsDark] = useState(true); // The current theme of the app.
+	const [selected, setSelected] = useState(""); // The pokemon that is currently selected.
+
 	useEffect(() => {
 		
 		const Pokedex = require("pokeapi-js-wrapper");
@@ -37,7 +40,7 @@ function App(props) {
 	}, []);
 
 	return (
-		<div id="modeContainer" className="dark">
+		<div id="modeContainer" className={isDark && "dark"}>
 			<div className="scrollContainer">
 				<h1 className="text-center">Ultradex</h1>
 				<div id="PokeGrid" className="mx-auto container row">{displayPokes && displayPokes.map((poke,i) => (
@@ -50,12 +53,14 @@ function App(props) {
 							poke={poke}
 							pokeList={pokes}
 							pokeListUpdater={setPokes}
+							selected={selected}
+							setSelected={setSelected}
 						/>
 					)
 				)}</div>
 				<button className="btn btn-secondary mx-auto">Load More</button>
 			</div>
-			<Navbar/>
+			<Navbar isDark={isDark} setIsDark={setIsDark}/>
 		</div>
 	);
 }
