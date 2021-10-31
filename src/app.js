@@ -6,6 +6,8 @@ import "./app.css";
 function App(props) {
 	const [pokes, setPokes] = useState(""); // Master list of every pokemon. Only contains name and url to species, fully populated at the start
 	const [pokeObjs, setPokeObjs] = useState([]	) // All the pokemon objects that have been fetched. Populated as data is needed
+	const [isDark, setIsDark] = useState(true); // The current theme of the app.
+	const [selected, setSelected] = useState(""); // The pokemon that is currently selected.
 	useEffect(() => {
 		
 		const Pokedex = require("pokeapi-js-wrapper");
@@ -19,7 +21,7 @@ function App(props) {
 	}, []);
 
 	return (
-		<div id="modeContainer" className="dark">
+		<div id="modeContainer" className={isDark && "dark"}>
 			<div className="scrollContainer">
 				<h1 className="text-center">Ultradex</h1>
 				<div id="PokeGrid" className="mx-auto container row">{pokes && pokes.map((poke,i) => (
@@ -31,13 +33,16 @@ function App(props) {
 								poke={poke}
 								pokeList={pokeObjs}
 								pokeListUpdater={setPokeObjs}
+								selected={selected}
+								setSelected={setSelected}
 							/>
 						</LazyLoad>
+
 					)
 				)}</div>
 				<button className="btn btn-secondary mx-auto">Load More</button>
 			</div>
-			<Navbar/>
+			<Navbar isDark={isDark} setIsDark={setIsDark}/>
 		</div>
 	);
 }
