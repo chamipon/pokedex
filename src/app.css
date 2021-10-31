@@ -1,0 +1,35 @@
+body{
+    overflow: hidden;
+}
+.scrollContainer{
+    overflow-y: scroll;
+    height: calc(100vh - 60px);
+}
+
+@media (min-width: 767px){
+    .scrollContainer{
+        height: 100vh;
+        margin-left: 60px;
+    }
+}
+
+.dark .scrollContainer{
+    background-color: #343434;
+}
+.dark h1{
+    color: white;
+}
+.dark .pokeCard .card-header{
+    border-color: #222222;
+}
+.dark .pokeCard{
+    background-color: #222222;
+    color: white;
+}
+.dark .pokeCard .card-body{
+    background-color: #343434;
+    border-color: #222222;
+}
+.dark .pokeCard .evoColImg{
+    border-color: #222222;
+}

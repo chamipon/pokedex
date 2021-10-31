@@ -1,6 +1,5 @@
 import "./pokeCard.css";
-// import EvoChain from "./evoChain/evoChain";
-import React, { useState, useEffect, Suspense  } from "react";
+import React, { useState, useEffect} from "react";
 import $ from "jquery";
 
 import EvoChain from "./evoChain/evoChain";

@@ -1,6 +1,5 @@
 import "./evoChain.css";
 import React, { useState, useEffect } from "react";
-import $ from "jquery";
 import EvoChainCol from "./evoChainCol";
 function EvoChain(props) {
     function filterIt(arr, searchKey) {
@@ -45,9 +44,8 @@ function EvoChain(props) {
         return (
             <div className="evoChain">
                 {evoChain && evoChain.map((chain,i) => (
-                        <EvoChainCol key={"col" + i} chain={chain}/>
-                    )
-                )}
+                    <EvoChainCol key={"col" + i} chain={chain}/>
+                ))}
             </div>
         );
     else return null;

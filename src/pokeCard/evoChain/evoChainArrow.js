@@ -69,7 +69,7 @@ function EvoChainArrow(props){
                     case "needs_overworld_rain":
                         deets.needs_overworld_rain = value;
                         break;
-                    case "held_item":
+                    case "held_item":	
                         deets.held_item = helpers.capitalize(value.name.replaceAll("-"," "));
                         break;
                     case "trade_species":
