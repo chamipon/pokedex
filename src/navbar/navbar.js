@@ -18,10 +18,16 @@ function Navbar({isDark, setIsDark, isShiny, setIsShiny, searchParams, setSearch
 					<span className="fas fa-bars fa-lg "></span>
 				</button>
 				<button onClick={() => setIsShiny(!isShiny)} className="navbaritem d-flex mt-0 mt-md-auto">
-					{isShiny ? <span className="fas fa-dollar-sign fa-lg " /> : <span className="fas fa-euro-sign fa-lg "/>}
+					{isShiny ? <span className="fas fa-dollar-sign fa-lg " /> : <span className="fas fa-euro-sign fa-lg "/> } {/* TODO: Give this proper icons, fa-sparkle from fa-pro? */}
 				</button>
 				<button onClick={() => setIsDark(!isDark)} className="navbaritem d-flex">
 					{isDark ? <span className="fas fa-sun fa-lg " /> : <span className="fas fa-moon fa-lg "/>}
+				</button>
+				<button className="navbaritem d-flex">
+					<span className="fas fa-user-circle fa-lg"/>
+				</button>
+				<button className="navbaritem d-flex">
+					<span className="fas fa-mug-hot fa-lg"/>
 				</button>
 			</div>
 		</nav>

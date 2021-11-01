@@ -39,7 +39,7 @@
     border-color: #222222;
     background-color: #343434;
     color: white;
-    transition: width 0.2s, padding-left 0.2s, padding-right 0.2s;
+    transition: width 0.2s, padding-left 0.2s, padding-right 0.2s, margin-left 0.2s, margin-right 0.2s;
 }
 #searchbar:focus{
     box-shadow: 0 0 0 0.25rem rgb(255 255 255 / 25%);
@@ -50,6 +50,7 @@
     padding-right: 0;
     border: 0;
     box-shadow: none;
+    margin: 0;
 }
 @media (min-width: 767px){
     .navbar{
