@@ -36,12 +36,13 @@ function PokeCard(props) {
 		else{
 			setExpanded(true);
 			props.setSelected(props.number)
-			var button = $(e.currentTarget).parent('.pokeCard'); // The button clicked on
+			var button = $(e.currentTarget).parents('.cardlazy')[0]; // The button clicked on
+			var index = Array.from(button.parentNode.children).indexOf(button); // The button's current index in the list TODO: Better way to get this?
 			var cardPerRow = 1; //The number of pokeCards per row, changes based on screen width.
 			if(window.innerWidth >= 992) cardPerRow = 3;
 			else if(window.innerWidth >= 576) cardPerRow = 2;
 			
-			var offset = props.index % cardPerRow; //The number of button widths the card-body needs to be shifted over. 
+			var offset = index % cardPerRow; //The number of button widths the card-body needs to be shifted over. 
 			$(button).find(".card-body").css('width', $('#PokeGrid').width() - 24) //Set the width of the card-body.
 			$(button).find(".card-body").css('right', offset * ($(button).width() + 24)) //Shift the card-body based on the card's position in the row. 
 		}
