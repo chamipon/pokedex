@@ -38,7 +38,7 @@ function EvoChain(props) {
 			<div className="evoChain">
 				{evoChain &&
 					evoChain.chain.map((chain, i) => (
-						<EvoChainCol key={"col" + i} chain={chain} />
+						<EvoChainCol isShiny={props.isShiny} key={"col" + i} chain={chain} />
 					))}
 			</div>
 		);

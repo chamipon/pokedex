@@ -52,7 +52,7 @@ function PokeCard(props) {
 					<div className="pokeSprite">
 						<img
 							className="h-100"
-							src={poke && poke.sprites.front_default}
+							src={poke && props.isShiny ? poke.sprites.front_shiny : poke.sprites.front_default}
 							alt={
 								poke &&
 								helpers.capitalize(
@@ -84,6 +84,7 @@ function PokeCard(props) {
 							pokeListUpdater={props.pokeListUpdater}
 							evoChainList={props.evoChainList}
 							evoChainListUpdater={props.evoChainListUpdater}
+							isShiny={props.isShiny}
 						/>
 					</LazyLoad>
 				</div>

@@ -8,7 +8,9 @@ function App(props) {
 	const [pokeObjs, setPokeObjs] = useState([]) // All the pokemon objects that have been fetched. Populated as data is needed
 	const [evoChainObjs, setEvoChainObjs] = useState([]) //All the evo chain objects that have been fetched. Populated as data is needed
 	const [isDark, setIsDark] = useState(true); // The current theme of the app.
+	const [isShiny, setIsShiny] = useState(false)
 	const [selected, setSelected] = useState(""); // The pokemon that is currently selected.
+	
 	useEffect(() => {
 		
 		const Pokedex = require("pokeapi-js-wrapper");
@@ -38,14 +40,14 @@ function App(props) {
 								evoChainListUpdater={setEvoChainObjs}
 								selected={selected}
 								setSelected={setSelected}
+								isShiny={isShiny}
 							/>
 						</LazyLoad>
 
 					)
 				)}</div>
-				<button className="btn btn-secondary mx-auto">Load More</button>
 			</div>
-			<Navbar isDark={isDark} setIsDark={setIsDark}/>
+			<Navbar isDark={isDark} setIsDark={setIsDark} isShiny={isShiny} setIsShiny={setIsShiny}/>
 		</div>
 	);
 }

@@ -13,7 +13,7 @@ function EvoChainCol(props) {
 						{poke.poke[0][poke.poke[0].length-1] && <EvoChainArrow evoDetails={poke.poke[0][poke.poke[0].length-1]}/>}
 					</div>
 					<div key={"sprite"+i} className="evoColImg">
-						{poke.poke[1].sprites && <img title={helpers.capitalize(poke.poke[1].name)} alt={helpers.capitalize(poke.poke[1].name)} src={poke.poke[1].sprites.front_default} className="d-flex"/>}
+						{poke.poke[1].sprites && <img title={helpers.capitalize(poke.poke[1].name)} alt={helpers.capitalize(poke.poke[1].name)} src={props.isShiny ? poke.poke[1].sprites.front_shiny : poke.poke[1].sprites.front_default} className="d-flex"/>}
 					</div>
 				</div>
 			))}
