@@ -1,6 +1,8 @@
 //Takes in poke json object, returns poke name
+//TODO: Capitalize after -'s
 export function getPokeName(poke){
-    return poke.name.replace("-m"," ♂").replace("-f", " ♀")
+    if(poke.name.includes("nidoran")) return poke.name.replace("-m"," ♂").replace("-f", " ♀")
+    else return poke.name
 }
 //Takes in poke json, returns json of all base stats.
 //If a specific stat is entered, it will return just that stat's value.

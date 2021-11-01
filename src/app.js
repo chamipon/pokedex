@@ -1,6 +1,6 @@
 import PokeCard from "./pokeCard/pokeCard";
 import Navbar from "./navbar/navbar";
-import LazyLoad from 'react-lazyload';
+import LazyLoad, {forceCheck} from 'react-lazyload';
 import React, { useState, useEffect } from "react";
 import "./app.css";
 function App(props) {
@@ -8,7 +8,8 @@ function App(props) {
 	const [pokeObjs, setPokeObjs] = useState([]) // All the pokemon objects that have been fetched. Populated as data is needed
 	const [evoChainObjs, setEvoChainObjs] = useState([]) //All the evo chain objects that have been fetched. Populated as data is needed
 	const [isDark, setIsDark] = useState(true); // The current theme of the app.
-	const [isShiny, setIsShiny] = useState(false)
+	const [isShiny, setIsShiny] = useState(false);
+	const [searchParams, setSearchParams] = useState("");
 	const [selected, setSelected] = useState(""); // The pokemon that is currently selected.
 	
 	useEffect(() => {
@@ -23,12 +24,16 @@ function App(props) {
 		})
 	}, []);
 
+	useEffect(() => { //When searchparams is updated, force the lazy loaders to check if they should load.
+		forceCheck()
+	}, [searchParams]);
+	
 	return (
 		<div id="modeContainer" className={isDark && "dark"}>
 			<div className="scrollContainer">
 				<h1 className="text-center">Ultradex</h1>
 				<div id="PokeGrid" className="mx-auto container row">{pokes && pokes.map((poke,i) => (
-						<LazyLoad className="col-12 col-sm-6 col-lg-4" scrollContainer=".scrollContainer" height={98} once >
+						(poke.name.includes(searchParams) || (i+1).toString().startsWith(searchParams)) && <LazyLoad className="cardlazy col-12 col-sm-6 col-lg-4" scrollContainer=".scrollContainer" height={98} once >
 							<PokeCard
 								key={i}
 								number={i+1}
@@ -42,12 +47,11 @@ function App(props) {
 								setSelected={setSelected}
 								isShiny={isShiny}
 							/>
-						</LazyLoad>
-
-					)
-				)}</div>
+						</LazyLoad>)
+				)}
+				</div>
 			</div>
-			<Navbar isDark={isDark} setIsDark={setIsDark} isShiny={isShiny} setIsShiny={setIsShiny}/>
+			<Navbar isDark={isDark} setIsDark={setIsDark} isShiny={isShiny} setIsShiny={setIsShiny} searchParams={searchParams} setSearchParams={setSearchParams}/>
 		</div>
 	);
 }

@@ -70,23 +70,21 @@ function PokeCard(props) {
 			)}
 			{poke && (
 				<div className="card-body">
-					<LazyLoad>
-						<EvoChain
-							render={expanded}
-							key={
-								poke &&
-								helpers.capitalize(pokeFuncs.getPokeName(poke)) +
-									"_evoChain"
-							}
-							speciesUrl={props.poke.url}
-							poke={poke}
-							pokeList={props.pokeList}
-							pokeListUpdater={props.pokeListUpdater}
-							evoChainList={props.evoChainList}
-							evoChainListUpdater={props.evoChainListUpdater}
-							isShiny={props.isShiny}
-						/>
-					</LazyLoad>
+					<EvoChain
+						render={expanded}
+						key={
+							poke &&
+							helpers.capitalize(pokeFuncs.getPokeName(poke)) +
+								"_evoChain"
+						}
+						speciesUrl={props.poke.url}
+						poke={poke}
+						pokeList={props.pokeList}
+						pokeListUpdater={props.pokeListUpdater}
+						evoChainList={props.evoChainList}
+						evoChainListUpdater={props.evoChainListUpdater}
+						isShiny={props.isShiny}
+					/>
 				</div>
 			)}
 			</div>

@@ -19,17 +19,3 @@ body{
 .dark h1{
     color: white;
 }
-.dark .pokeCard .card-header{
-    border-color: #222222;
-}
-.dark .pokeCard{
-    background-color: #222222;
-    color: white;
-}
-.dark .pokeCard .card-body{
-    background-color: #343434;
-    border-color: #222222;
-}
-.dark .pokeCard .evoColImg{
-    border-color: #222222;
-}

@@ -4,6 +4,7 @@
 	margin: 10px 0;
 	transition: 0.2s;
 	border: none;
+	min-height: 98px;
 }
 .pokeCard:not(.expanded):hover {
 	box-shadow: 0px 0px 7px 0px rgb(150, 150, 150);
@@ -49,4 +50,30 @@
 	padding: 1rem 1rem;
 	border: solid 1px lightgray;
 	background-color: white;
+}
+
+.cardlazy .lazyload-placeholder{
+	border: 1px solid lightgrey;
+	background-color: #f7f7f7;
+	border-radius: 10px;
+	margin: 10px 0;
+}
+.dark .cardlazy .lazyload-placeholder{
+	border-color: #222222;
+	background-color: #222222;
+}
+.dark .pokeCard .card-header{
+    border-color: #222222;
+	background-color: #222222;
+}
+.dark .pokeCard{
+    background-color: #222222;
+    color: white;
+}
+.dark .pokeCard .card-body{
+    background-color: #343434;
+    border-color: #222222;
+}
+.dark .pokeCard .evoColImg{
+    border-color: #222222;
 }
