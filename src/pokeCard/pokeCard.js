@@ -3,8 +3,7 @@ import React, { useState, useEffect } from "react";
 import $ from "jquery";
 import * as pokeFuncs from "./../pokeFuncs.js";
 import * as helpers from "./../helpers.js";
-import EvoChain from "./evoChain/evoChain";
-import LazyLoad from 'react-lazyload';
+import CardBody from "./cardBody";
 
 function PokeCard(props) {
 	const [poke, setPoke] = useState(""); //The pokemon object.
@@ -71,7 +70,7 @@ function PokeCard(props) {
 			)}
 			{poke && (
 				<div className="card-body">
-					<EvoChain
+					<CardBody
 						render={expanded}
 						key={
 							poke &&
