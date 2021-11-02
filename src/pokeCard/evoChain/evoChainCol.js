@@ -8,7 +8,7 @@ function EvoChainCol(props) {
 	return (
 		<div className="evoChainCol">            
 			{props.chain && props.chain.map((poke, i) => (
-				<div className="d-flex flex-row">
+				<div className="d-flex flex-md-row flex-column">
 					<div className="d-flex m-auto">
 						{poke.poke[0][poke.poke[0].length-1] && <EvoChainArrow evoDetails={poke.poke[0][poke.poke[0].length-1]}/>}
 					</div>

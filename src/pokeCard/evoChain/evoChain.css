@@ -1,12 +1,15 @@
 .evoChain{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+    padding: 10px 0;
 }
 .evoChainCol{
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 0px 10px;
-    margin: auto 0px;
+    margin: auto;
 }
 .evoColImg{
     width: 120px;
@@ -14,10 +17,26 @@
     border: 1px lightgrey solid;
     border-radius: 10px;
     padding: 10px;
+    margin: 2px;
 }
 .evoChainCol img{
     height: 100%;
 }
 .EvoChainArrow{
-    padding-right: 20px;
+    margin-top: 5px;
+}
+
+@media (min-width: 767px){
+    .evoChain{
+        flex-direction: row;
+    }
+    .evoChainCol{
+        flex-direction: column;
+        padding: 0px 10px;
+        margin: auto 0px;
+    }
+    .EvoChainArrow{
+        padding-right: 20px;
+        margin-top: 0;
+    }
 }

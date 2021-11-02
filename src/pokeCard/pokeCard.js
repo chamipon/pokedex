@@ -69,9 +69,10 @@ function PokeCard(props) {
 				</div>
 			)}
 			{poke && (
-				<div className="card-body">
+				
 					<CardBody
 						render={expanded}
+						number={props.number}
 						key={
 							poke &&
 							helpers.capitalize(pokeFuncs.getPokeName(poke)) +
@@ -85,7 +86,7 @@ function PokeCard(props) {
 						evoChainListUpdater={props.evoChainListUpdater}
 						isShiny={props.isShiny}
 					/>
-				</div>
+				
 			)}
 			</div>
 	);

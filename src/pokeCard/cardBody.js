@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from "react";
 import EvoChain from "./evoChain/evoChain";
+import * as helpers from "./../helpers.js";
+import * as pokeFuncs from "./../pokeFuncs.js";
 function CardBody(props) {
-	return (
-		<div className="cardBody">            
+	return (           
+        <div className="card-body">
+            <h2>#{props.number}{" "}
+						{props.poke &&
+							helpers.capitalize(pokeFuncs.getPokeName(props.poke))}</h2>
             <EvoChain
-						render={props.render}
-						key={
-							props.key
-						}
-						speciesUrl={props.speciesUrl}
-						poke={props.poke}
-						pokeList={props.pokeList}
-						pokeListUpdater={props.pokeListUpdater}
-						evoChainList={props.evoChainList}
-						evoChainListUpdater={props.evoChainListUpdater}
-						isShiny={props.isShiny}
-					/>
-		</div>
+                render={props.render}
+                key={
+                    props.key
+                }
+                speciesUrl={props.speciesUrl}
+                poke={props.poke}
+                pokeList={props.pokeList}
+                pokeListUpdater={props.pokeListUpdater}
+                evoChainList={props.evoChainList}
+                evoChainListUpdater={props.evoChainListUpdater}
+                isShiny={props.isShiny}
+            />
+        </div>
 	);
 }
 export default CardBody;
