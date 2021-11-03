@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import $ from "jquery";
 import * as pokeFuncs from "./../pokeFuncs.js";
 import * as helpers from "./../helpers.js";
-import CardBody from "./cardBody";
+import CardBody from "./cardBody/cardBody";
 
 function PokeCard(props) {
 	const [poke, setPoke] = useState(""); //The pokemon object.

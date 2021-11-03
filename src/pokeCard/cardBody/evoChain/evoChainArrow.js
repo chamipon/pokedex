@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as pokeFuncs from "./../../pokeFuncs.js";
-import $ from "jquery";
-import * as helpers from "./../../helpers.js";
+import * as helpers from "./../../../helpers.js";
 function EvoChainArrow(props) {
 	const [EvoDetails, setEvoDetails] = useState(); //The evolution chain for the pokemon.
 	useEffect(() => {

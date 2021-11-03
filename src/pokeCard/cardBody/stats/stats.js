@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as pokeFuncs from "../../pokeFuncs.js";
+import * as pokeFuncs from "../../../pokeFuncs.js";
 import "./stats.css";
 function Stats(props) {
     const [stats, setStats] = useState(); //The evolution chain for the pokemon.

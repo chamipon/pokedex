@@ -1,11 +1,12 @@
 import "./evoChain.css";
 import React, { useState, useEffect } from "react";
 import EvoChainCol from "./evoChainCol";
-import * as pokeFuncs from "./../../pokeFuncs.js";
+import * as pokeFuncs from "./../../../pokeFuncs.js";
 function EvoChain(props) {
+	const [evoChain, setEvoChain] = useState(); //The evolution chain for the pokemon.
 	useEffect(() => {
 		async function fetchData() {
-			if (props.render) {//Only call when the card body is being rendered
+
 				const Pokedex = require("pokeapi-js-wrapper");
 				const P = new Pokedex.Pokedex({
 					cacheImages: true,
@@ -28,12 +29,10 @@ function EvoChain(props) {
 					})
 				);
 				setEvoChain({'id': _evoChainId,'chain' : chainArray});
-			}
+			
 		}
         fetchData()
-	}, [props.render]);
-	const [evoChain, setEvoChain] = useState(); //The evolution chain for the pokemon.
-	if (props.render)
+	}, []);
 		return (
 			<div className="evoChain">
 				{evoChain &&
@@ -42,8 +41,7 @@ function EvoChain(props) {
 					))}
 			</div>
 		);
-	else return null;
-	function getEvoChain(chainArray, chain, depth) {
+		function getEvoChain(chainArray, chain, depth) {
 		depth++; //Keep track of how deep in the evo tree we are
 		for (var i = 0; i < chain.evolves_to.length; i++) {
 			getEvoChain(chainArray, chain.evolves_to[i], depth);//For each poke at this depth

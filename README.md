@@ -3,12 +3,12 @@
 ## Features
 ### Stat Calculator
 Select poke, IVs, EVs, Nature, gives stats.\
-Also allow custom base stat entry?\
+Also allow custom base stat entry?
 
-### Different Card Body layout
+### Different Card Body Layouts
 Basic\
 Detailed\
-Competitive (Stats, EVs, moved abilities, etc..)\
+Competitive (Stats, EVs, moves, abilities, etc..)
 
 ## Exception Handling
 
@@ -37,7 +37,7 @@ Toxtricity\
 Indeedee\
 Urshifu\
 Zamazenta\
-Zacian\
+Zacian
 
 ### Stats
 Shedinja -> HP always 1

@@ -14,7 +14,6 @@ export function getPokeBaseStats(poke, stat){
         baseStats[stats[i].stat.name] = stats[i].base_stat
     }   
     baseStats["length"] = ++i;
-    console.log(baseStats)
     if(stat) return baseStats[stat]
     else return baseStats
     
@@ -38,6 +37,21 @@ export function getPokeEVs(poke, ev){
     }
     if(ev) return evs[ev]   
     else return evs
+}
+
+//Takes in a poke species json, returns the rate of it being male/female     
+export function getPokeGenderRates(species){
+    var femchance = 100 * species.gender_rate / 8 //The gender rate is stored as a number of eighths.
+    return {mChance: 100 - femchance, fChance: femchance}
+}
+
+//Takes in a poke json, returns the rate of it being male/female     
+export function getPokeTypes(poke){
+    var types=[];
+    poke.types.forEach (type =>{
+        types[type.slot-1] = type.type.name;
+    })
+    return types;
 }
 
 //Takes in poke json object, generation(1-8) roman numerals, shinyFlag(t/f), frontFlag(t/f) and maleFlag(t/f)

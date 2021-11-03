@@ -1,9 +1,5 @@
-import React, { useState, useEffect } from "react";
-import * as pokeFuncs from "./../../pokeFuncs.js";
-import $ from "jquery";
-import * as helpers from "./../../helpers.js";
+import * as helpers from "./../../../helpers.js";
 import EvoChainArrow from "./evoChainArrow";
-import PokeCard from "../pokeCard";
 function EvoChainCol(props) {
 	return (
 		<div className="evoChainCol">            
