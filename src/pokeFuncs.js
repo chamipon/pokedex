@@ -14,9 +14,18 @@ export function getPokeBaseStats(poke, stat){
         baseStats[stats[i].stat.name] = stats[i].base_stat
     }   
     baseStats["length"] = ++i;
+    console.log(baseStats)
     if(stat) return baseStats[stat]
     else return baseStats
     
+}
+
+//Takes in a base stat, ev value, iv value, pokemon level, nature coeffecient, and a bool to depict if we are calculating hp or not.
+//Returns the stat given the values entered.
+export function calcPokeMaxStat(base, ev, iv, level, natCoeff, hpFlag){
+   ev = Math.floor(ev/4) // Every 4 ev point gives the poke 1 stat point
+   if (hpFlag) return Math.floor((2 * base + iv + ev) * (level / 100) + level + 10);
+   else return Math.floor(Math.floor((2 * base + iv + ev) * level / 100 + 5) * natCoeff)
 }
 
 //Takes in poke json, returns json of EVs rewarded when fainted.
@@ -65,7 +74,7 @@ export function getPokeSprite(poke, gen, shinyFlag, frontFlag, femaleFlag){
 }
 
 //Takes in poke name, list of pokeobjs, pokelistupdater and the pokedex object.
-//Looks uses the poke name to look for the pokeobj in the list, if the obj isnt in the list yet, it gets it from the api and adds it to the list.
+//Uses the poke name to look for the pokeobj in the list, if the obj isnt in the list yet, it gets it from the api and adds it to the list.
 //Returns the poke obj
 export async function getPokeObjByName(name,pokeList,pokeListUpdater,P){
     var info = pokeList.find((obj) => {
@@ -84,7 +93,9 @@ export async function getPokeObjByName(name,pokeList,pokeListUpdater,P){
     }
     return info;
 }
-
+//Takes in evo chain id, list of evochains, evoChainListUpdater and the pokedex object.
+//Uses the evo chain id to look for the evochain object in the list, if the obj isnt in the list yet, it gets it from the api and adds it to the list.
+//Returns the poke obj
 export async function getEvoChainObjById(id,evoChainList,evoChainListUpdater,P){
     var info = evoChainList.find((obj) => {
         return obj.id === id
