@@ -15,6 +15,9 @@ function Navbar({isDark, setIsDark, isShiny, setIsShiny, searchParams, setSearch
 					<input id="searchbar" onChange={() => {setSearchParams($("#searchbar").val())}} className={(searchOpen ? '' : 'closed') + " form-control"} type="search" placeholder="Search" aria-label="Search" />
 				</div>
 				<button className="navbaritem d-flex">
+					<span className="fas fa-filter fa-lg "></span>
+				</button>
+				<button className="navbaritem d-flex">
 					<span className="fas fa-bars fa-lg "></span>
 				</button>
 				<button onClick={() => setIsShiny(!isShiny)} className="navbaritem d-flex mt-0 mt-md-auto">
