@@ -6,6 +6,7 @@ Select poke, IVs, EVs, Nature, gives stats.\
 Also allow custom base stat entry?
 
 ### Different Card Body Layouts
+(Allow for enabling/disabling specific components?)
 Basic\
 Detailed\
 Competitive (Stats, EVs, moves, abilities, etc..)

@@ -12,7 +12,7 @@ function Types(props) {
                 {types && 
                     <div className="types">
                         <span className={"badge " + types[0]}>{helpers.capitalize(types[0])}</span>
-                        {types[1] && <span className={"badge " + types[1]}>{helpers.capitalize(types[1])}</span>}
+                        {types[1] && <span className={"badge ms-1 " + types[1]}>{helpers.capitalize(types[1])}</span>}
                     </div>
                 } 
             </>

@@ -45,6 +45,11 @@ export function getPokeGenderRates(species){
     return {mChance: 100 - femchance, fChance: femchance}
 }
 
+//Takes in a species json, returns the number of steps needed to hatch an egg for the pokemon
+export function getPokeEggSteps(species){
+    return 255 * (species.hatch_counter + 1)
+}
+
 //Takes in a poke json, returns the rate of it being male/female     
 export function getPokeTypes(poke){
     var types=[];
@@ -85,6 +90,17 @@ export function getPokeSprite(poke, gen, shinyFlag, frontFlag, femaleFlag){
         return null;
     }
 
+}
+
+/**
+ * Used to grab the genus of a pokemon.
+ * @param {speciesObj} species - The species object of the pokemon.
+ * @param {string} lang - Optional, the language of genus you want returned. English is default.
+ */
+export function getPokeGenus(species, lang){
+    var genusObj = species.genera.find(el => el.language.name === lang)
+    if (genusObj) return genusObj.genus
+    else return species.genera[7].genus
 }
 
 //Takes in poke name, list of pokeobjs, pokelistupdater and the pokedex object.

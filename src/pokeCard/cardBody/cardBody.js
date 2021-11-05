@@ -3,6 +3,9 @@ import EvoChain from "./evoChain/evoChain";
 import Stats from "./stats/stats";
 import Types from "./types/types";
 import Gender from "./gender/gender";
+import EggSteps from "./eggSteps/eggSteps";
+import Genus from "./genus/genus";
+
 import * as helpers from "../../helpers.js";
 import * as pokeFuncs from "../../pokeFuncs.js";
 function CardBody(props) {
@@ -24,11 +27,13 @@ function CardBody(props) {
 	}, [props.render]);
     return (           
         <div className="card-body">
-            <h2>#{props.number}{" "}{props.poke && helpers.capitalize(pokeFuncs.getPokeName(props.poke))}</h2>
             {props.render && <>
-                <Stats poke={props.poke}/>
+                <h2>#{props.number}{" "}{props.poke && helpers.capitalize(pokeFuncs.getPokeName(props.poke))}</h2>
+                <Genus species={species}/>
                 <Types poke={props.poke}/>
+                <Stats poke={props.poke}/>
                 <Gender species={species}/> 
+                <EggSteps species={species}/>
                 <EvoChain
                     key={props.key }
                     speciesUrl={props.speciesUrl}

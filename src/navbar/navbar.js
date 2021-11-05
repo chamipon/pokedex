@@ -17,9 +17,6 @@ function Navbar({isDark, setIsDark, isShiny, setIsShiny, searchParams, setSearch
 				<button className="navbaritem d-flex">
 					<span className="fas fa-filter fa-lg "></span>
 				</button>
-				<button className="navbaritem d-flex">
-					<span className="fas fa-bars fa-lg "></span>
-				</button>
 				<button onClick={() => setIsShiny(!isShiny)} className="navbaritem d-flex mt-0 mt-md-auto">
 					{isShiny ? <span className="fas fa-dollar-sign fa-lg " /> : <span className="fas fa-euro-sign fa-lg "/> } {/* TODO: Give this proper icons, fa-sparkle from fa-pro? */}
 				</button>
