@@ -9,11 +9,13 @@ function Gender(props) {
 	return ( 
             <>
                 {gender && 
-                    <div className="gender">
+                    (gender !== -1 ? <div className="gender">
                         {"Male: " + gender.mChance + "%"}
                         <br/>
                         {"Female: " + gender.fChance + "%"}    
                     </div>
+                    :
+                    <div>Genderless</div>)
                 } 
             </>
 	);

@@ -40,7 +40,9 @@ export function getPokeEVs(poke, ev){
 }
 
 //Takes in a poke species json, returns the rate of it being male/female     
+//If poke is genderless, returns -1.
 export function getPokeGenderRates(species){
+    if(species.gender_rate === -1) return -1;
     var femchance = 100 * species.gender_rate / 8 //The gender rate is stored as a number of eighths.
     return {mChance: 100 - femchance, fChance: femchance}
 }
