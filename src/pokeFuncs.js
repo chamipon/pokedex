@@ -109,38 +109,44 @@ export function getPokeGenus(species, lang){
 //Uses the poke name to look for the pokeobj in the list, if the obj isnt in the list yet, it gets it from the api and adds it to the list.
 //Returns the poke obj
 export async function getPokeObjByName(name,pokeList,pokeListUpdater,P){
-    var info = pokeList.find((obj) => {
-        return obj.name === name;
-    });
-    if (!info) {
-        info = await P.getPokemonByName(
-            name
-        );
-        var temp = pokeList;
-        temp.push(info);
-        pokeListUpdater(temp);
-    }
-    else{
-        console.log("Reusing data for: " + name)
-    }
+    var info = await P.getPokemonByName(
+        name
+    );
     return info;
 }
-//Takes in evo chain id, list of evochains, evoChainListUpdater and the pokedex object.
-//Uses the evo chain id to look for the evochain object in the list, if the obj isnt in the list yet, it gets it from the api and adds it to the list.
-//Returns the poke obj
-export async function getEvoChainObjById(id,evoChainList,evoChainListUpdater,P){
-    var info = evoChainList.find((obj) => {
-        return obj.id === id
-    });
-    if (!info) {
-        info = await P.getEvolutionChainById(id);
-        var temp = evoChainList;
-        temp.push({'id': id, 'chain': info});
-        evoChainListUpdater(temp);
-    }
-    else{
-        console.log("Reusing data for evo chain: " + id)
-        info = info.chain
-    }
-    return info;
-}
+//PRE PWA VERSION
+// export async function getPokeObjByName(name,pokeList,pokeListUpdater,P){
+//     var info = pokeList.find((obj) => {
+//         return obj.name === name;
+//     });
+//     if (!info) {
+//         info = await P.getPokemonByName(
+//             name
+//         );
+//         var temp = pokeList;
+//         temp.push(info);
+//         pokeListUpdater(temp);
+//     }
+//     else{
+//         console.log("Reusing data for: " + name)
+//     }
+//     return info;
+// }
+
+//PRE PWA VERSION
+// export async function getEvoChainObjById(id,evoChainList,evoChainListUpdater,P){
+//     var info = evoChainList.find((obj) => {
+//         return obj.id === id
+//     });
+//     if (!info) {
+//         info = await P.getEvolutionChainById(id);
+//         var temp = evoChainList;
+//         temp.push({'id': id, 'chain': info});
+//         evoChainListUpdater(temp);
+//     }
+//     else{
+//         console.log("Reusing data for evo chain: " + id)
+//         info = info.chain
+//     }
+//     return info;
+// }

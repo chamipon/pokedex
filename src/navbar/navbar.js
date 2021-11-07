@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./navbar.css";
 import $ from "jquery";
-
-function Navbar({isDark, setIsDark, isShiny, setIsShiny, searchParams, setSearchParams}) {
+import * as installable from "./../installable";
+function Navbar({isDark, setIsDark, isShiny, setIsShiny, setSearchParams, showInstall, setShowInstall}) {
 	const [searchOpen, setSearchOpen] = useState(false)
+	useEffect(() => {
+		installable.installableSetup(setShowInstall)
+	},[setShowInstall])
 	return (
 		<nav className="navbar fixed-bottom">
 			<div className="h-100 w-100 d-flex flex-row flex-md-column">
@@ -23,12 +26,15 @@ function Navbar({isDark, setIsDark, isShiny, setIsShiny, searchParams, setSearch
 				<button onClick={() => setIsDark(!isDark)} className="navbaritem d-flex">
 					{isDark ? <span className="fas fa-sun fa-lg " /> : <span className="fas fa-moon fa-lg "/>}
 				</button>
-				<button className="navbaritem d-flex">
+				{showInstall && <button onClick={() => installable.installButtonClick(setShowInstall)} id="installButton" className="navbaritem d-flex">
+					<span className="fas fa-download fa-lg"/>
+				</button>}
+				{/* <button className="navbaritem d-flex">
 					<span className="fas fa-user-circle fa-lg"/>
 				</button>
 				<button className="navbaritem d-flex">
 					<span className="fas fa-mug-hot fa-lg"/>
-				</button>
+				</button> */}
 			</div>
 		</nav>
 	);

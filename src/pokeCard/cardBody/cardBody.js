@@ -5,11 +5,11 @@ import Types from "./types/types";
 import Gender from "./gender/gender";
 import EggSteps from "./eggSteps/eggSteps";
 import Genus from "./genus/genus";
-
 import * as helpers from "../../helpers.js";
 import * as pokeFuncs from "../../pokeFuncs.js";
 function CardBody(props) {
 	const [species, setSpecies] = useState(); //The evolution chain for the pokemon.
+    const [rendered, setRendered] = useState(false); //Whether this card body has been rendered.
     useEffect(() => {
 		async function fetchData() {
 			if (props.render) {//Only call when the card body is being rendered
@@ -18,22 +18,19 @@ function CardBody(props) {
 					cacheImages: true,
 					timeout: 5000,
 				});
-
 				var spec = await P.resource(props.speciesUrl); //Get the pokemon species object
 				setSpecies(spec);
+                setRendered(true);
 			}
 		}
         fetchData()
 	}, [props.render]);
     return (           
         <div className="card-body">
-            {props.render && <>
-                <h2>#{props.number}{" "}{props.poke && helpers.capitalize(pokeFuncs.getPokeName(props.poke))}</h2>
+            {rendered && <>
+                <h2 className="pokeTitle">#{props.number}{" "}{props.poke && helpers.capitalize(pokeFuncs.getPokeName(props.poke))}</h2>
                 <Genus species={species}/>
                 <Types poke={props.poke}/>
-                <Stats poke={props.poke}/>
-                <Gender species={species}/> 
-                <EggSteps species={species}/>
                 <EvoChain
                     key={props.key }
                     speciesUrl={props.speciesUrl}
@@ -44,6 +41,9 @@ function CardBody(props) {
                     evoChainListUpdater={props.evoChainListUpdater}
                     isShiny={props.isShiny}
                 />
+                <Stats poke={props.poke}/>
+                <Gender species={species}/> 
+                <EggSteps species={species}/>
             </>}
         </div>
 	);

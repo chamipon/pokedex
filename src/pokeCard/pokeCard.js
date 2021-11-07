@@ -15,7 +15,7 @@ function PokeCard(props) {
 	});
 	useEffect(() => {
 		async function fetchData() {
-			var pokeObj = await pokeFuncs.getPokeObjByName(props.poke.name,props.pokeList,props.pokeListUpdater,P)
+			var pokeObj = await P.getPokemonByName(props.poke.name);
 			setPoke(pokeObj);
 		}
 		fetchData();
@@ -40,7 +40,6 @@ function PokeCard(props) {
 			var cardPerRow = 1; //The number of pokeCards per row, changes based on screen width.
 			if(window.innerWidth >= 992) cardPerRow = 3;
 			else if(window.innerWidth >= 576) cardPerRow = 2;
-			
 			var offset = index % cardPerRow; //The number of button widths the card-body needs to be shifted over. 
 			$(button).find(".card-body").css('width', $('#PokeGrid').width() - 24) //Set the width of the card-body.
 			$(button).find(".card-body").css('right', offset * ($(button).width() + 24)) //Shift the card-body based on the card's position in the row. 
