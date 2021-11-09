@@ -18,7 +18,9 @@ function App() {
 	const [searchParams, setSearchParams] = useState("");
 	const [selected, setSelected] = useState(""); // The pokemon that is currently selected.
 	const [showInstall, setShowInstall] = useState(false)
+	
 	const [colCount, setColCount] = useState(1)
+	const [hasMore, setHasMore] = useState(true)
 	useEffect(() => {
 		const Pokedex = require("pokeapi-js-wrapper");
 		const P = new Pokedex.Pokedex({
@@ -51,9 +53,14 @@ function App() {
 							className="row"
 							dataLength={renderedAmount} // The length of the data that is CURRENTLY loaded. Not the length of all of the data available.
 							next={() => { //The function that is called when we reach the bottom of the scroll
-								setRenderedAmount(renderedAmount + 20 * colCount);
+								var temp = renderedAmount + 20 * colCount;
+								if (temp >= 898){
+									temp = 898;
+									setHasMore(false)
+								}
+								setRenderedAmount(temp);
 							}}
-							hasMore={true} //If there is more info to load
+							hasMore={hasMore} //If there is more info to load
 							loader={<h4>Loading...</h4>}
 							scrollableTarget="scrollContainer" //The element that is scrolling
 						>
