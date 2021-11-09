@@ -15,6 +15,7 @@ body{
 
 .dark .scrollContainer{
     background-color: #343434;
+    color: white;
 }
 .dark h1{
     color: white;

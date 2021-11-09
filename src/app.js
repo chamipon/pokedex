@@ -48,7 +48,7 @@ function App() {
 	return (
 		<div id="modeContainer" className={isDark && "dark"}>
 			<div id="scrollContainer" className="scrollContainer">
-				<h1 className="text-center">Ultradex {colCount}</h1>
+				<h1 className="text-center">Ultradex</h1>
 				<div id="PokeGrid" className="mx-auto container row">
 				<InfiniteScroll
 							className="row"
@@ -62,7 +62,7 @@ function App() {
 								setRenderedAmount(temp);
 							}}
 							hasMore={hasMore} //If there is more info to load
-							loader={<h4>Loading...</h4>}
+							loader={""} //Don't display a loader
 							scrollableTarget="scrollContainer" //The element that is scrolling
 						>
 					{renderPokes && renderPokes.map((poke,i) => (
@@ -83,6 +83,7 @@ function App() {
 							/>
 						</LazyLoad>)
 				)}
+				{(renderPokes.length === 0  && pokes) && <span className="text-center">No matches found!</span>}
 				</InfiniteScroll>
 				</div>
 			</div>

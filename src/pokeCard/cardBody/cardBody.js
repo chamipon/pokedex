@@ -10,6 +10,7 @@ import * as pokeFuncs from "../../pokeFuncs.js";
 function CardBody(props) {
 	const [species, setSpecies] = useState(); //The evolution chain for the pokemon.
     const [rendered, setRendered] = useState(false); //Whether this card body has been rendered.
+    
     useEffect(() => {
 		async function fetchData() {
 			if (props.render) {//Only call when the card body is being rendered
@@ -24,7 +25,8 @@ function CardBody(props) {
 			}
 		}
         fetchData()
-	}, [props.render]);
+	}, [props.render, props.speciesUrl]);
+    
     return (           
         <div className="card-body" style={{width: props.width, right: props.offset}}>
             {rendered && <>

@@ -10,8 +10,9 @@ function PokeCard(props) {
 	const [expanded, setExpanded] = useState(false);
 	const [width, setWidth] = useState(0)
 	const [offset, setOffset] = useState(0)
+	const pokeCard = useRef(null); //Reference to pokeCard object, used for the resizing of cardbody
+
 	const Pokedex = require("pokeapi-js-wrapper");
-	const pokeCard = useRef(null);
 	const P = new Pokedex.Pokedex({
 		cacheImages: true,
 		timeout: 5000,
@@ -95,7 +96,6 @@ function PokeCard(props) {
 		var index = Array.from(button.parentNode.children).indexOf(button); // The button's current index in the list TODO: Better way to get this?
 		var cardPerRow = props.colCount //The number of pokeCards per row, changes based on screen width.
 		var offset = index % cardPerRow; //The number of button widths the card-body needs to be shifted over. 
-		console.log(props.colCount)
 		setWidth($('#PokeGrid').width() - 24) //Set the width of the card-body.
 		setOffset(offset * ($(button).width() + 24)) //Shift the card-body based on the card's position in the row. 
 	}
