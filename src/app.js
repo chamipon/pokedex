@@ -27,27 +27,28 @@ function App() {
 			cacheImages: true,
 			timeout: 10000,
 		});
+		var cols = 1;
+		if(window.innerWidth >= 992) cols = 3;
+		else if(window.innerWidth >= 576) cols = 2;
+		setColCount(cols)
 		P.getPokemonSpeciesList().then((info) =>{ //Pulls the name and url to species for every pokemon.
 			setPokes(info.results)
-			var cols = 1;
-			if(window.innerWidth >= 992) cols = 3;
-			else if(window.innerWidth >= 576) cols = 2;
-			setColCount(cols)
 			setRenderPokes(info.results.slice(0, 20 * cols))
+			setRenderedAmount(20 * cols);
 		})
-		window.onresize = () =>{
+		window.addEventListener('resize', () => {
 			setColCount(helpers.getColCount())
-		};
+		}) 
 	}, []);
 
 	useEffect(() => { //When searchparams is updated, force the lazy loaders to check if they should load.
 		forceCheck()
 		if(pokes)setRenderPokes(pokes.filter(el => el.name.includes(searchParams) || (el.url.split('/')[6]).toString().startsWith(searchParams)).slice(0, renderedAmount))
-	}, [searchParams,renderedAmount]);
+	}, [searchParams, renderedAmount, pokes]);
 	return (
 		<div id="modeContainer" className={isDark && "dark"}>
 			<div id="scrollContainer" className="scrollContainer">
-				<h1 className="text-center">Ultradex</h1>
+				<h1 className="text-center">Ultradex {colCount}</h1>
 				<div id="PokeGrid" className="mx-auto container row">
 				<InfiniteScroll
 							className="row"
@@ -78,6 +79,7 @@ function App() {
 								selected={selected}
 								setSelected={setSelected}
 								isShiny={isShiny}
+								colCount={colCount}
 							/>
 						</LazyLoad>)
 				)}

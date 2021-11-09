@@ -26,7 +26,7 @@ function CardBody(props) {
         fetchData()
 	}, [props.render]);
     return (           
-        <div className="card-body">
+        <div className="card-body" style={{width: props.width, right: props.offset}}>
             {rendered && <>
                 <h2 className="pokeTitle">#{props.number}{" "}{props.poke && helpers.capitalize(pokeFuncs.getPokeName(props.poke))}</h2>
                 <Genus species={species}/>

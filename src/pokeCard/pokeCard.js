@@ -1,5 +1,5 @@
 import "./pokeCard.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import $ from "jquery";
 import * as pokeFuncs from "./../pokeFuncs.js";
 import * as helpers from "./../helpers.js";
@@ -8,7 +8,10 @@ import CardBody from "./cardBody/cardBody";
 function PokeCard(props) {
 	const [poke, setPoke] = useState(""); //The pokemon object.
 	const [expanded, setExpanded] = useState(false);
+	const [width, setWidth] = useState(0)
+	const [offset, setOffset] = useState(0)
 	const Pokedex = require("pokeapi-js-wrapper");
+	const pokeCard = useRef(null);
 	const P = new Pokedex.Pokedex({
 		cacheImages: true,
 		timeout: 5000,
@@ -25,28 +28,14 @@ function PokeCard(props) {
 		if(props.selected !== props.number){
 			setExpanded(false);
 		}
-	},[props.selected])
+	},[props.number, props.selected])
 
-	function expandCard(e){
-		if(props.selected === props.number){
-			setExpanded(false);
-			props.setSelected("");
-		}
-		else{
-			setExpanded(true);
-			props.setSelected(props.number)
-			var button = $(e.currentTarget).parents('.cardlazy')[0]; // The button clicked on
-			var index = Array.from(button.parentNode.children).indexOf(button); // The button's current index in the list TODO: Better way to get this?
-			var cardPerRow = 1; //The number of pokeCards per row, changes based on screen width.
-			cardPerRow = helpers.getColCount()
-			var offset = index % cardPerRow; //The number of button widths the card-body needs to be shifted over. 
-			$(button).find(".card-body").css('width', $('#PokeGrid').width() - 24) //Set the width of the card-body.
-			$(button).find(".card-body").css('right', offset * ($(button).width() + 24)) //Shift the card-body based on the card's position in the row. 
-		}
-	}
+	window.window.addEventListener('resize',() =>{
+		if(expanded) setBodyWidth()
+	})
 	return (
-			<div className={`card pokeCard w-100 ${expanded && "expanded"}`}>
-				{poke && (<div onClick={(e) => expandCard(e)} role="button" className="card-header">
+			<div ref={pokeCard} className={`card pokeCard w-100 ${expanded && "expanded"}`}>
+				{poke && (<div onClick={() => expandCard()} role="button" className="card-header">
 					<div className="pokeSprite">
 						<img
 							className="h-100"
@@ -66,28 +55,50 @@ function PokeCard(props) {
 					</span>
 				</div>
 			)}
-			{poke && (
-				
-					<CardBody
-						render={expanded}
-						number={props.number}
-						key={
-							poke &&
-							helpers.capitalize(pokeFuncs.getPokeName(poke)) +
-								"_evoChain"
-						}
-						speciesUrl={props.poke.url}
-						poke={poke}
-						pokeList={props.pokeList}
-						pokeListUpdater={props.pokeListUpdater}
-						evoChainList={props.evoChainList}
-						evoChainListUpdater={props.evoChainListUpdater}
-						isShiny={props.isShiny}
-					/>
-				
-			)}
+			{poke && 
+				<CardBody
+					width={width}
+					offset={offset}
+					render={expanded}
+					number={props.number}
+					key={
+						poke &&
+						helpers.capitalize(pokeFuncs.getPokeName(poke)) +
+							"_evoChain"
+					}
+					speciesUrl={props.poke.url}
+					poke={poke}
+					pokeList={props.pokeList}
+					pokeListUpdater={props.pokeListUpdater}
+					evoChainList={props.evoChainList}
+					evoChainListUpdater={props.evoChainListUpdater}
+					isShiny={props.isShiny}
+				/>
+			}
 			</div>
-	);
+	);	
+	
+	function expandCard(){
+		if(props.selected === props.number){
+			setExpanded(false);
+			props.setSelected("");
+		}
+		else{
+			setExpanded(true);
+			props.setSelected(props.number)
+			setBodyWidth()
+		}
+	}
+
+	function setBodyWidth(){
+		var button = $(pokeCard.current).parents('.cardlazy')[0]; // The button clicked on
+		var index = Array.from(button.parentNode.children).indexOf(button); // The button's current index in the list TODO: Better way to get this?
+		var cardPerRow = props.colCount //The number of pokeCards per row, changes based on screen width.
+		var offset = index % cardPerRow; //The number of button widths the card-body needs to be shifted over. 
+		console.log(props.colCount)
+		setWidth($('#PokeGrid').width() - 24) //Set the width of the card-body.
+		setOffset(offset * ($(button).width() + 24)) //Shift the card-body based on the card's position in the row. 
+	}
 }
 
 export default PokeCard;
