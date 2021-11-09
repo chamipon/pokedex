@@ -7,3 +7,8 @@ export function jsonPropAtIndex(json, i){
     console.log(str)
     return JSON.parse(str)
 }
+export function getColCount(){
+    if(window.innerWidth >= 992) return 3;
+    else if(window.innerWidth >= 576) return 2;
+    else return 1;
+}

@@ -1,5 +1,8 @@
 # To-Do list
 
+## Fix Open/Close Animation
+## Add "Infinite Scrolling" so all components arent rendered out of the gate
+
 ## Features
 ### Stat Calculator
 Select poke, IVs, EVs, Nature, gives stats.\
