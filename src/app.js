@@ -46,7 +46,7 @@ function App() {
 
 	useEffect(() => { //When searchparams is updated, force the lazy loaders to check if they should load.
 		forceCheck()
-		if(pokes)setRenderPokes(pokes.filter(el => el.name.includes(searchParams) || (el.url.split('/')[6]).toString().startsWith(searchParams)).slice(0, renderedAmount))
+		if(pokes)setRenderPokes(pokes.filter(el => el.name.includes(searchParams.toLowerCase()) || (el.url.split('/')[6]).toString().startsWith(searchParams)).slice(0, renderedAmount))
 	}, [searchParams, renderedAmount, pokes]);
 	return (
 		<div id="modeContainer" className={isDark && "dark"}>
@@ -68,8 +68,7 @@ function App() {
 							loader={""} //Don't display a loader
 							scrollableTarget="scrollContainer" //The element that is scrolling
 						>
-					{renderPokes && renderPokes.map((poke,i) => (
-						(poke.name.includes(searchParams.toLowerCase()) || (poke.url.split('/')[6]).toString().startsWith(searchParams)) &&					
+					{renderPokes && renderPokes.map((poke,i) => (				
 						<LazyLoad className="cardlazy col-12 col-sm-6 col-lg-4" scrollContainer=".scrollContainer" offset={150} height={98} once >
 							<PokeCard
 								key={poke.name + i}
@@ -84,8 +83,8 @@ function App() {
 								isShiny={isShiny}
 								colCount={colCount}
 							/>
-						</LazyLoad>)
-				)}
+						</LazyLoad>
+					))}
 				{(renderPokes.length === 0  && pokes) && <span className="text-center">No matches found!</span>}
 				</InfiniteScroll>
 				</div>

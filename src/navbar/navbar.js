@@ -12,10 +12,10 @@ function Navbar({isDark, setIsDark, isShiny, setIsShiny, setSearchParams, showIn
 			<div className="h-100 w-100 d-flex flex-row flex-md-column">
 				<img id="brandLogo" class="me-auto" alt="ultraball" src="./ultraball.png" />
 				<div class="d-flex flex-row">
-					<button onClick={() => {setSearchOpen(!searchOpen); $("#searchbar").focus()}} className="navbaritem d-flex">
+					<button onClick={(e) => {setSearchOpen(!searchOpen); $("#searchbar").focus()}} className="navbaritem d-flex">
 						<span className={(searchOpen ? 'fa-times' : 'fa-search') + " fas fa-lg"}></span>
 					</button>
-					<input id="searchbar" onChange={() => {setSearchParams($("#searchbar").val())}} className={(searchOpen ? '' : 'closed') + " form-control"} type="search" placeholder="Search" aria-label="Search" />
+					<input id="searchbar" onChange={(e) => {setSearchParams(e.target.value)}} className={(searchOpen ? '' : 'closed') + " form-control"} type="search" placeholder="Search" aria-label="Search" />
 				</div>
 				<button className="navbaritem d-flex">
 					<span className="fas fa-filter fa-lg "></span>
