@@ -69,7 +69,7 @@ function App() {
 							scrollableTarget="scrollContainer" //The element that is scrolling
 						>
 					{renderPokes && renderPokes.map((poke,i) => (
-						(poke.name.includes(searchParams) || (poke.url.split('/')[6]).toString().startsWith(searchParams)) &&					
+						(poke.name.includes(searchParams.toLowerCase()) || (poke.url.split('/')[6]).toString().startsWith(searchParams)) &&					
 						<LazyLoad className="cardlazy col-12 col-sm-6 col-lg-4" scrollContainer=".scrollContainer" offset={150} height={98} once >
 							<PokeCard
 								key={poke.name + i}
