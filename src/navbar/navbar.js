@@ -10,7 +10,7 @@ function Navbar({isDark, setIsDark, isShiny, setIsShiny, setSearchParams, showIn
 	return (
 		<nav className="navbar fixed-bottom">
 			<div className="h-100 w-100 d-flex flex-row flex-md-column">
-				<img id="brandLogo" class="me-auto" alt="ultraball" src="./ultraball.png" />
+				<img id="brandLogo" class="me-auto" alt={isDark ? "ultra ball sprite" : "premier ball sprite"} src={isDark ? "./ultraball.png" : "./premier_ball.png"} />
 				<div class="d-flex flex-row">
 					<button onClick={(e) => {setSearchOpen(!searchOpen); $("#searchbar").focus()}} className="navbaritem d-flex">
 						<span className={(searchOpen ? 'fa-times' : 'fa-search') + " fas fa-lg"}></span>
