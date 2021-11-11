@@ -1,0 +1,40 @@
+.bodySection {
+	flex: 1 1 0px;
+	margin: 2px;
+    flex-direction: column;
+}
+.bodyColumn {
+	flex-direction: column;
+}
+
+.sectionHeader {
+	background-color: #e3b505;
+	color: #222222;
+	font-weight: 600;
+	padding: 2px 5px;
+	border-radius: 3px 3px 0 0;
+    text-align: center;
+}
+.sectionInfo {
+	padding: 2px 5px;
+	border-radius: 0 0 3px 3px;
+	border-color: #e3b505;
+	border-width: 1px;
+	border-style: solid;
+	flex: 1 1 0px;
+}
+
+.bodyColumn .bodySection {
+	flex-direction: row;
+	width: 100%;
+	margin: 3px 0px;
+}
+.bodyColumn .sectionHeader {
+	border-radius: 3px 0px 0px 3px;
+}
+.bodyColumn .sectionInfo {
+	border-radius: 0 3px 3px 0;
+}
+@media (min-width: 767px){
+
+}

@@ -25,7 +25,10 @@
 .EvoChainArrow{
     margin-top: 5px;
 }
-
+.dark .evoColImg{
+    /* border-color: #222222; */
+    border-color: #E3B505;
+}
 @media (min-width: 767px){
     .evoChain{
         flex-direction: row;

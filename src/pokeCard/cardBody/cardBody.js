@@ -3,8 +3,8 @@ import EvoChain from "./evoChain/evoChain";
 import Stats from "./stats/stats";
 import Types from "./types/types";
 import Gender from "./gender/gender";
-import EggSteps from "./eggSteps/eggSteps";
 import Genus from "./genus/genus";
+import BodySection from "./bodySection/bodySection";
 import * as helpers from "../../helpers.js";
 import * as pokeFuncs from "../../pokeFuncs.js";
 function CardBody(props) {
@@ -44,8 +44,14 @@ function CardBody(props) {
                     isShiny={props.isShiny}
                 />
                 <Stats poke={props.poke}/>
-                <Gender species={species}/> 
-                <EggSteps species={species}/>
+                <div class="d-flex flex-row flex-wrap">
+                    <BodySection info={species.capture_rate} header={"Catch Rate"}/>
+                    <BodySection info={props.poke.height/10 + "m"} header={"Height"}/>
+                    <BodySection info={props.poke.weight/10 + "kg"} header={"Weight"}/>
+                    <BodySection info={pokeFuncs.getPokeEggSteps(species)} header={"Egg Steps"}/>
+                    <Gender species={species}/> 
+                </div>
+                
             </>}
         </div>
 	);

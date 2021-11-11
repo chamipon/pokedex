@@ -50,7 +50,7 @@ function PokeCard(props) {
 						/>
 					</div>
 					<span className="pokeName m-auto">
-						#{props.number}{" "}
+						#{props.number + " "}
 						{poke &&
 							helpers.capitalize(pokeFuncs.getPokeName(poke))}
 					</span>
