@@ -25,6 +25,9 @@
 .EvoChainArrow{
     margin-top: 5px;
 }
+.EvoChainArrow svg{
+    margin: auto;
+}
 .dark .evoColImg{
     /* border-color: #222222; */
     border-color: #E3B505;

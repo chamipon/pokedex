@@ -35,17 +35,19 @@
     background-color: #5a5a5a;
     border-color: #5a5a5a;  
 }
-.navbaritem span{
+.navbaritem{
     width: 50px;
     height: 50px;
     text-align: center;
-    padding-top: 17px;
-
+}
+.navbaritem svg{
+ margin: auto
 }
 #brandLogo{
     width: 40px;
     height: 40px;
     margin: auto 0;
+    padding: 3px;
 }
 #searchbar{
     width: 200px;

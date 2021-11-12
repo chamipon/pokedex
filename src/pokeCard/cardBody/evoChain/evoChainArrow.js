@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as helpers from "./../../../helpers.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro'
 function EvoChainArrow(props) {
 	const [EvoDetails, setEvoDetails] = useState(); //The evolution chain for the pokemon.
 	useEffect(() => {
@@ -9,14 +11,8 @@ function EvoChainArrow(props) {
 		<span className="text-center EvoChainArrow">
 			{EvoDetails && EvoDetails.trigger && (
 				<span>
-					<i
-						title={"Trigger: " + EvoDetails.trigger}
-						className="d-none d-md-inline-block fas fa-2x fa-long-arrow-alt-right"
-					></i>
-					<i
-						title={"Trigger: " + EvoDetails.trigger}
-						className="d-inline-block d-md-none fas fa-2x fa-long-arrow-alt-down"
-					></i>
+					<FontAwesomeIcon className="d-none d-md-inline-block" title={"Trigger: " + EvoDetails.trigger} icon={solid('right-long')} size="2x" />
+					<FontAwesomeIcon className="d-md-none d-inline-block" title={"Trigger: " + EvoDetails.trigger} icon={solid('down-long')} size="2x" />
 				</span>
 			)}
 			{EvoDetails && EvoDetails.min_level && (
@@ -25,19 +21,14 @@ function EvoChainArrow(props) {
 			{EvoDetails &&
 				EvoDetails.trigger == "Trade" &&
 				!EvoDetails.trade_species && (
-					<i
-						title="Trade"
-						className="fas fa-lg d-block fa-people-arrows"
-					></i>
+					<FontAwesomeIcon className="d-block" title="Trade" icon={solid('people-arrows-left-right')} size="lg" />
 				)}
 			{EvoDetails &&
 				EvoDetails.trigger == "Trade" &&
 				EvoDetails.trade_species && (
 					<div>
-						<i
-							title={"Trade for " + EvoDetails.trade_species}
-							className="fas fa-lg d-block fa-people-arrows"
-						></i>{" "}
+						<FontAwesomeIcon className="d-block" title={"Trade for " + EvoDetails.trade_species} icon={solid('people-arrows-left-right')} size="lg" />
+						{" "}
 						{EvoDetails.trade_species}
 					</div>
 				)}
@@ -47,12 +38,13 @@ function EvoChainArrow(props) {
 			)}
 			{EvoDetails && EvoDetails.location && (
 				<div title={"Location: " + EvoDetails.location}>
-					<i class="fas fa-map-marker-alt"></i> {EvoDetails.location}
+					<FontAwesomeIcon icon={solid('location-dot')} />
+					{EvoDetails.location}
 				</div>
 			)}
 			{EvoDetails && EvoDetails.min_happiness && (
 				<div title={"Minimum Happiness: " + EvoDetails.min_happiness}>
-					<i class="fas fa-heart"></i> {EvoDetails.min_happiness}
+					<FontAwesomeIcon icon={solid('heart')} /> {EvoDetails.min_happiness}
 				</div>
 			)}
 			{EvoDetails && EvoDetails.min_affection && (
@@ -62,39 +54,39 @@ function EvoChainArrow(props) {
 						EvoDetails.min_affection
 					}
 				>
-					<i class="fas fa-heart"></i> Level{" "}
+					<FontAwesomeIcon icon={solid('heart')} /> Level{" "}
 					{EvoDetails.min_affection}
 				</div>
 			)}
 			{EvoDetails && EvoDetails.time_of_day && (
 				<div title={"Time of Day: " + EvoDetails.time_of_day}>
-					<i class="far fa-clock"></i> {EvoDetails.time_of_day}
+					<FontAwesomeIcon icon={regular('clock')} /> {EvoDetails.time_of_day}
 				</div>
 			)}
 			{EvoDetails && EvoDetails.known_move && (
 				<div title={"Known Move: " + EvoDetails.known_move}>
-					<i class="fas fa-compact-disc"></i> {EvoDetails.known_move}
+					<FontAwesomeIcon icon={solid('compact-disc')} /> {EvoDetails.known_move}
 				</div>
 			)}
 			{EvoDetails && EvoDetails.known_move_type && (
 				<div title={"Known Move Type: " + EvoDetails.known_move_type}>
-					<i class="fas fa-compact-disc"></i>{" "}
+					<FontAwesomeIcon icon={solid('compact-disc')} />{" "}
 					{EvoDetails.known_move_type}
 				</div>
 			)}
 			{EvoDetails && EvoDetails.needs_overworld_rain && (
 				<div title="Overworld Rain or Fog">
-					<i class="fas fa-tint"></i>
+					<FontAwesomeIcon icon={solid('cloud-fog')} />
 				</div>
 			)}
 			{EvoDetails && EvoDetails.gender == "Male" && (
 				<div title="Male">
-					<i class="fas fa-lg fa-mars"></i>
+					<FontAwesomeIcon icon={solid('mars')} />
 				</div>
 			)}
 			{EvoDetails && EvoDetails.gender == "Female" && (
 				<div title="Female">
-					<i class="fas fa-lg fa-venus"></i>
+					<FontAwesomeIcon icon={solid('venus')} />
 				</div>
 			)}
 		</span>
@@ -103,6 +95,7 @@ function EvoChainArrow(props) {
 	//Returns the relevant evolution details from the json data.
 	function getEvoDetails(evoDetails) {
 		var deets = {};
+		console.log(evoDetails)
 		for (var key in evoDetails) {
 			var value = evoDetails[key];
 			if (value) {

@@ -16,7 +16,9 @@ function EvoChain(props) {
 			var _evoChainId = spec.evolution_chain.url.split("/")[6]; // TODO: There must be a better way to get this....
 			var evoChainObj = await P.getEvolutionChainById(_evoChainId); //Get the evo chain object
 			var chainArray = []; //Used to store the evo chain in a more useful way, has the evolution details and pokeObj. ex: [bulb, ivy, vena]
+			console.log(_evoChainId)
 			getEvoChain(chainArray, evoChainObj.chain, 0);
+			console.log(chainArray)
 			await Promise.all(
 				chainArray.map(async (col, i) => {
 					await Promise.all(

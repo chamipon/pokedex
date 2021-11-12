@@ -1,7 +1,7 @@
 # To-Do list
 
 ## Fix Open/Close Animation
-## Add "Infinite Scrolling" so all components arent rendered out of the gate
+## Display evolution details from all generations
 
 ## Features
 ### Stat Calculator
