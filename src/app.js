@@ -1,6 +1,6 @@
 import PokeCard from "./pokeCard/pokeCard";
 import Navbar from "./navbar/navbar";
-import LazyLoad, {forceCheck} from 'react-lazyload';
+import {forceCheck} from 'react-lazyload';
 import React, { useState, useEffect } from "react";
 import "./app.css";
 import InfiniteScroll  from "react-infinite-scroll-component";
@@ -29,7 +29,6 @@ function App() {
 	});
 
 	useEffect(() => {
-
 		var cols = helpers.getColCount()
 		setColCount(cols)
 		
@@ -41,6 +40,7 @@ function App() {
 
 		window.addEventListener('resize', () => { //Keep track of how many columns there are
 			setColCount(helpers.getColCount())
+			forceCheck()
 		}) 
 	}, []);
 
@@ -69,21 +69,21 @@ function App() {
 							scrollableTarget="scrollContainer" //The element that is scrolling
 						>
 					{renderPokes && renderPokes.map((poke,i) => (				
-						<LazyLoad className="cardlazy col-12 col-sm-6 col-lg-4" scrollContainer=".scrollContainer" offset={150} height={98} once >
-							<PokeCard
-								key={poke.name + i}
-								number={poke.url.split('/')[6]}
-								poke={poke}
-								pokeList={pokeObjs}
-								pokeListUpdater={setPokeObjs}
-								evoChainList={evoChainObjs}
-								evoChainListUpdater={setEvoChainObjs}
-								selected={selected}
-								setSelected={setSelected}
-								isShiny={isShiny}
-								colCount={colCount}
-							/>
-						</LazyLoad>
+
+					<PokeCard
+						key={poke.name + i}
+						number={poke.url.split('/')[6]}
+						poke={poke}
+						pokeList={pokeObjs}
+						pokeListUpdater={setPokeObjs}
+						evoChainList={evoChainObjs}
+						evoChainListUpdater={setEvoChainObjs}
+						selected={selected}
+						setSelected={setSelected}
+						isShiny={isShiny}
+						colCount={colCount}
+					/>
+
 					))}
 				{(renderPokes.length === 0  && pokes) && <span className="text-center">No matches found!</span>}
 				</InfiniteScroll>

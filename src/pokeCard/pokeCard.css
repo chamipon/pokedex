@@ -4,16 +4,12 @@
 	margin: 10px 0;
 	transition: 0.2s margin-top, 0.2s margin-bottom;
 	border: none;
-	min-height: 98px;
+	min-height: 114px;
 }
 .pokeCard:not(.expanded):hover {
 	box-shadow: 0px 0px 7px 0px rgb(150, 150, 150);
 	margin-top: 5px;
 	margin-bottom: 15px;
-}
-.pokeCard .pokeSprite {
-	height: 80px;
-	width: 100px;
 }
 
 .pokeCard .card-header {
@@ -54,20 +50,25 @@
 	border: solid 1px;
 	border-color: lightgray;
 }
-
-
-
+.pokeSprite{
+	height: 96px;
+	width: 96px;
+}
 .pokeTitle{
 	margin-top: 1rem;
 }
-
-.cardlazy .lazyload-placeholder{
+.cardlazy>.lazyload-placeholder{
 	border: 1px solid lightgrey;
 	background-color: #f7f7f7;
 	border-radius: 10px;
 	margin: 10px 0;
 }
-.dark .cardlazy .lazyload-placeholder{
+.dark .spriteLazy>.lazyload-placeholder{
+	background-color: #1f1f1f;
+	height: 96px;
+	width: 96px;
+}
+.dark .cardlazy>.lazyload-placeholder{
 	border-color: #222222;
 	background-color: #222222;
 }
