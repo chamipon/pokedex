@@ -16,32 +16,5 @@ Competitive (Stats, EVs, moves, abilities, etc..)
 
 ## Exception Handling
 
-### Pokemon Forms
-Basculin\
-Deoxys\
-Meowstic\
-Shaymin\
-Pumpkaboo\
-Wormadam\
-Gourgeist\
-Giratina\
-Darmanitan\
-Meloetta\
-Keldeo\
-Thundurus\
-Tornadus\
-Landorus\
-Aegislash\
-Oricorio\
-Lycanroc\
-Wishiwashi\
-Mubuir\
-Mimikyu\
-Toxtricity\
-Indeedee\
-Urshifu\
-Zamazenta\
-Zacian
-
 ### Stats
 Shedinja -> HP always 1

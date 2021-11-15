@@ -9,7 +9,7 @@ function PokeCard(props) {
 			<div className={`pokeCard card w-100`}>
 				{props.name && (
 					<Link href={"/pokemon/" + props.name} role="button" >
-						<span className={'card-header'}>
+						<a className={'card-header'}>
                             <LazyLoad className={"spriteLazy"} scrollContainer=".scrollContainer" offset={150} height={96} once >
                                 <div class={"pokeSprite"}>
                                     <Image 
@@ -25,7 +25,7 @@ function PokeCard(props) {
                                 #{props.number + " "}
                                 {helpers.capitalize(props.name)}
                             </span>
-                        </span>
+                        </a>
 					</Link>
 				)}
 			</div>

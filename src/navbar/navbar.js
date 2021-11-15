@@ -21,14 +21,17 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
 	return (
 		<nav className={"navbar fixed-bottom " + (isDark && 'dark')}>
 			<div className="h-100 w-100 d-flex flex-row flex-md-column">
-				<Link style={{alignSelf:"center"}} href="/">
-					<Image 
-						width={40} layout="fixed" 
-						height={40} 
-						alt={isDark ? "ultra ball sprite" : "premier ball sprite"} src={isDark ? ultraPic : premierPic} 
-					/>
-				</Link>
-				
+				<div className="mx-auto d-flex">
+                    <Link style={{alignSelf:"center", marginLeft: 'auto'}} href="/">
+                        <a>
+                            <Image 
+                                width={40} layout="fixed" 
+                                height={40} 
+                                alt={isDark ? "ultra ball sprite" : "premier ball sprite"} src={isDark ? ultraPic : premierPic} 
+                            />
+                        </a>
+                    </Link>
+				</div>
 				<div className="d-flex flex-row">
 					<button onClick={(e) => {setSearchOpen(!searchOpen); $("#searchbar").focus()}} className="navbaritem d-flex">
 						{searchOpen ? <FontAwesomeIcon style={{marginLeft: "17px", marginRight:"17px" }} icon={regular('xmark')} size="xl"/> : <FontAwesomeIcon style={{marginLeft: "12px", marginRight:"12px" }} icon={solid('magnifying-glass')} size="xl"/> }

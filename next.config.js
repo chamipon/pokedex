@@ -12,4 +12,9 @@ module.exports = withPWA({
     skipWaiting: true,
     runtimeCaching,
   },
+  exportPathMap: () => ({
+    "/pokemon": {
+      page: "/pokemon/[name]"
+    } // => will still output /blog/1st-post.html, /blog/2nd-post.html
+  })
 })

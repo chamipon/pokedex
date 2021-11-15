@@ -18,15 +18,17 @@ function EvoChainCol(props) {
 						<div key={"sprite" + i} className="evoColImg">
 							{poke && (
 								<Link href={"/pokemon/" + poke.name}>
-                                    <Image
-                                        title={"#" + poke.id + " " + helpers.capitalize(poke.name)}
-                                        width={96}
-                                        height={96}
-                                        layout={'fixed'}
-                                        alt={helpers.capitalize(poke.name)}
-                                        src={props.isShiny ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+poke.id+".png" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+poke.id+".png"}
-                                        className="d-flex"
-                                    />
+                                    <a>
+                                        <Image
+                                            title={"#" + poke.id + " " + helpers.capitalize(poke.name)}
+                                            width={96}
+                                            height={96}
+                                            layout={'fixed'}
+                                            alt={helpers.capitalize(poke.name)}
+                                            src={props.isShiny ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+poke.id+".png" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+poke.id+".png"}
+                                            className="d-flex"
+                                        />
+                                    </a>
                                 </Link>
 
 							)}
