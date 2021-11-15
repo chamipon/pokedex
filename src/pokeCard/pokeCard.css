@@ -6,7 +6,11 @@
 	border: none;
 	min-height: 114px;
 }
-.pokeCard:not(.expanded):hover {
+.pokeCard a{
+    color: #212529;
+    text-decoration: none;
+}
+.pokeCard:hover {
 	box-shadow: 0px 0px 7px 0px rgb(150, 150, 150);
 	margin-top: 5px;
 	margin-bottom: 15px;
@@ -19,18 +23,7 @@
 	border-bottom: none;
 	border: 1px solid lightgrey;
 }
-.pokeCard.expanded .card-header {
-	background-color: rgba(0, 0, 0, 0.1);
-	transition: 0.4s;
-	border-radius: 10px 10px 0 0;
-	border-width: 1px 1px 0 1px;
-	padding-bottom: 15px;
-}
 
-.pokeCard.expanded .card-header:hover {
-	background-color: rgba(0, 0, 0, 0.03);
-	box-shadow: 0px 0px 7px 0px rgb(150, 150, 150);
-}
 
 .pokeCard .card-body {
 	position: relative;
@@ -41,15 +34,7 @@
 	border-radius: 0px 0px 10px 10px;
 	border-color: transparent;
 }
-.pokeCard.expanded .card-body {
-	display: block;
-	height: auto;
-	min-height: 400px;
-	padding: 0 1rem 1rem 1rem; 
-	background-color: white;
-	border: solid 1px;
-	border-color: lightgray;
-}
+
 .pokeSprite{
 	height: 96px;
 	width: 96px;
@@ -69,18 +54,16 @@
 	width: 96px;
 }
 .dark .cardlazy>.lazyload-placeholder{
-	border-color: #222222;
+	border-color: #222222 ;
 	background-color: #222222;
 }
 .dark .pokeCard .card-header{
-    border-color: #222222;
-	background-color: #222222;
+    border-color: #222222 !important; 
+	background-color: #222222 !important;
 }
 .dark .pokeCard{
-    background-color: #222222;
-    color: white;
+    background-color: #222222 !important;
 }
-.dark .pokeCard .card-body{
-    background-color: #393939;
-    border-color: #222222;
+.dark .pokeCard a{
+    color: white;
 }

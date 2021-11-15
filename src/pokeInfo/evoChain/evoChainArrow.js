@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as helpers from "./../../../helpers.js";
+import * as helpers from "./../../helpers.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro'
 function EvoChainArrow(props) {

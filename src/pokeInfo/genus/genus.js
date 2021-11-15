@@ -1,4 +1,4 @@
-import * as pokeFuncs from "../../../pokeFuncs.js";
+import * as pokeFuncs from "../../pokeFuncs.js";
 function Genus(props) {
 	return (
 		<>

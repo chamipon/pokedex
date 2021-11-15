@@ -6,7 +6,6 @@ export function installableSetup(stateUpdater) {
 		e.preventDefault();
 		// Stash the event so it can be triggered later.
 		deferredPrompt = e;
-		console.log(deferredPrompt);
 		// Update UI notify the user they can install the PWA
 		stateUpdater(true)
 		// Optionally, send analytics event that PWA install promo was shown.

@@ -1,5 +1,3 @@
-import "./bodySection.css";
-
 function BodySection(props) {
 	return (
 		<>

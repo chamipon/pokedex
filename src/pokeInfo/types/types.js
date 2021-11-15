@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import * as pokeFuncs from "../../../pokeFuncs.js";
-import * as helpers from "../../../helpers.js";
-import "./types.css";
+import * as pokeFuncs from "../../pokeFuncs.js";
+import * as helpers from "../../helpers.js";
+// import styles from "./types.module.css";
 function Types(props) {
     const [types, setTypes] = useState(); //The evolution chain for the pokemon.
     useEffect(() => {

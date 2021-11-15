@@ -1,8 +1,8 @@
 body{
     overflow: hidden;   
-    font-family: fot-udkakugo-large-pr6n, sans-serif;
+    font-family: fot-udkakugo-large-pr6n, sans-serif !important;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 500 !important;
 }
 .scrollContainer{
     overflow-y: scroll;
@@ -15,7 +15,7 @@ body{
         margin-left: 60px;
     }
 }
-.dark .scrollContainer{
+.dark{
     background-color: #343434;
     color: white;
 }
