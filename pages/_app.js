@@ -8,15 +8,11 @@ import "../src/pokeInfo/types/types.css"
 import "../src/pokeCard/pokeCard.css"
 
 import "../src/navbar/navbar"
-import { useContext } from 'react';
 import {ShinyProvider} from '../contexts/shiny'
 import {DarkProvider} from '../contexts/dark'
-import DarkContext from '../contexts/dark'
 import Head from 'next/head'
 import Navbar from "../src/navbar/navbar"
-import React, { useState, useEffect } from "react";
-
-import * as serviceWorkerRegistration from '../public/serviceWorkerRegistration';
+import React, { useState } from "react";
 import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css' // <-- import styles to be used
 
 function MyApp({ Component, pageProps }) {
@@ -65,5 +61,4 @@ return(
     </>
   ) 
 }
-serviceWorkerRegistration.register();
 export default MyApp
