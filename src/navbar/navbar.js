@@ -10,7 +10,7 @@ import premierPic from '../../public/premier_ball.png'
 import { useContext } from 'react';
 import ShinyContext from '../../contexts/shiny'
 import DarkContext from '../../contexts/dark'
-
+import Link from 'next/link'
 function Navbar({setSearchParams, showInstall, setShowInstall}) {
 	const [searchOpen, setSearchOpen] = useState(false)
     const [isShiny, toggleShiny] = useContext( ShinyContext );
@@ -21,13 +21,13 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
 	return (
 		<nav className={"navbar fixed-bottom " + (isDark && 'dark')}>
 			<div className="h-100 w-100 d-flex flex-row flex-md-column">
-				<a style={{alignSelf:"center"}} href="/">
+				<Link style={{alignSelf:"center"}} href="/">
 					<Image 
 						width={40} layout="fixed" 
 						height={40} 
 						alt={isDark ? "ultra ball sprite" : "premier ball sprite"} src={isDark ? ultraPic : premierPic} 
 					/>
-				</a>
+				</Link>
 				
 				<div className="d-flex flex-row">
 					<button onClick={(e) => {setSearchOpen(!searchOpen); $("#searchbar").focus()}} className="navbaritem d-flex">

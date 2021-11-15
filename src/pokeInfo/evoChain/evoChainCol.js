@@ -1,5 +1,7 @@
 import * as helpers from "./../../helpers.js";
 import EvoChainArrow from "./evoChainArrow";
+import Link from 'next/link'
+import Image from 'next/image'
 function EvoChainCol(props) {
 	return (
 		<div className="evoChainCol">
@@ -15,12 +17,18 @@ function EvoChainCol(props) {
 						</div>
 						<div key={"sprite" + i} className="evoColImg">
 							{poke && (
-								<img
-									title={helpers.capitalize(poke.name)}
-									alt={helpers.capitalize(poke.name)}
-									src={props.isShiny ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+poke.id+".png" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+poke.id+".png"}
-									className="d-flex"
-								/>
+								<Link href={"/pokemon/" + poke.name}>
+                                    <Image
+                                        title={"#" + poke.id + " " + helpers.capitalize(poke.name)}
+                                        width={96}
+                                        height={96}
+                                        layout={'fixed'}
+                                        alt={helpers.capitalize(poke.name)}
+                                        src={props.isShiny ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+poke.id+".png" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+poke.id+".png"}
+                                        className="d-flex"
+                                    />
+                                </Link>
+
 							)}
 						</div>
 					</div>
