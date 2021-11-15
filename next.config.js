@@ -3,6 +3,7 @@ const runtimeCaching = require('next-pwa/cache')
 
 module.exports = withPWA({
   reactStrictMode: true,
+  webpack5: true,
   images: {
     domains: ['raw.githubusercontent.com'],
   },
@@ -11,10 +12,5 @@ module.exports = withPWA({
     register: true,
     skipWaiting: true,
     runtimeCaching,
-  },
-  exportPathMap: () => ({
-    "/pokemon": {
-      page: "/pokemon/[name]"
-    } // => will still output /blog/1st-post.html, /blog/2nd-post.html
-  })
+  }
 })
