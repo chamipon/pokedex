@@ -67,8 +67,10 @@ export default function Pokemon(props) {
 }
 // This function gets called at build time
 export async function getStaticProps({ params }) {
-	const specRes = await fetch("https://pokeapi.co/api/v2/pokemon-species/" + params.name); //Get the pokemon species object
-	var specObj = await specRes.json();
+    const Pokedex = require("pokeapi-js-wrapper")
+    const P = new Pokedex.Pokedex()
+
+    const specObj = await P.getPokemonSpeciesByName(params.name); //Get the pokemon species object
 
 	var pokeObjs = [];
 	for (var form of specObj.varieties) {
@@ -97,10 +99,10 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-	const res = await fetch(
-		`https://pokeapi.co/api/v2/pokemon-species?&limit=898`
-	);
-	var pokeList = await res.json();
+    const Pokedex = require("pokeapi-js-wrapper")
+    const P = new Pokedex.Pokedex()
+    
+    const pokeList = await P.getPokemonSpeciesList();
 	// Get the paths we want to pre-render based on posts
 	const paths = pokeList.results.map((poke) => ({
 		params: { name: poke.name },

@@ -17,8 +17,10 @@ export default function Home({ pokeList, searchParams }){
     )
 }
 export async function getStaticProps(context) {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species?&limit=898`)
-    var pokeList = await res.json()
+    const Pokedex = require("pokeapi-js-wrapper")
+    const P = new Pokedex.Pokedex()
+
+    const pokeList = await P.getPokemonSpeciesList();
 
     if (!pokeList) {
       return {

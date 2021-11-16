@@ -13,12 +13,20 @@ import {DarkProvider} from '../contexts/dark'
 import Head from 'next/head'
 import Navbar from "../src/navbar/navbar"
 import React, { useState } from "react";
-import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css' // <-- import styles to be used
+
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
 
 function MyApp({ Component, pageProps }) {
     const [searchParams, setSearchParams] = useState(""); // The current search parameters
 	const [showInstall, setShowInstall] = useState(false)//Used to control if the install button is being displayed
-  
+    if (process.browser) {
+        const Pokedex = require("pokeapi-js-wrapper")
+        const P = new Pokedex.Pokedex()
+        console.log("HERER1")
+    }
+
 return(
     <>
     <Head>
@@ -41,6 +49,7 @@ return(
             integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
             crossorigin="anonymous"
         ></script>
+        <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
         <link rel="icon" href="/favicon.png"/>
         <meta name="theme-color" content="#222222"/>
         <link rel="apple-touch-icon" href="/app_touch_icon.png"/>

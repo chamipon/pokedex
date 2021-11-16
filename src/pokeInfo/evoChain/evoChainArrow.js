@@ -7,7 +7,6 @@ function EvoChainArrow(props) {
 	const [EvoDetails, setEvoDetails] = useState(); //The evolution chain for the pokemon.
 	useEffect(() => {
 		getEvoDetails(props.evoDetails);
-        console.log(props.evoDetails)
 	}, []);
 	return (
 		<span className="text-center EvoChainArrow">

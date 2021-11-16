@@ -19,11 +19,8 @@ function EvoChainCol(props) {
 							{poke && (
 								<Link href={"/pokemon/" + poke.name}>
                                     <a>
-                                        <Image
+                                        <img
                                             title={"#" + poke.id + " " + helpers.capitalize(poke.name)}
-                                            width={96}
-                                            height={96}
-                                            layout={'fixed'}
                                             alt={helpers.capitalize(poke.name)}
                                             src={props.isShiny ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+poke.id+".png" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+poke.id+".png"}
                                             className="d-flex"

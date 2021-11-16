@@ -12,11 +12,8 @@ function PokeCard(props) {
 						<a className={'card-header'}>
                             <LazyLoad className={"spriteLazy"} scrollContainer=".scrollContainer" offset={150} height={96} once >
                                 <div class={"pokeSprite"}>
-                                    <Image 
-                                        width={96} 
+                                    <img 
                                         src={props.isShiny ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+props.number+".png" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+props.number+".png"}
-                                        layout="fixed" 
-                                        height={96} 
                                         alt={helpers.capitalize(props.name) + "Sprite"}
                                     />
                                 </div>
