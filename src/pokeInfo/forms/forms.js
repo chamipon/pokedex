@@ -18,9 +18,9 @@ function Forms(props) {
                             alt={helpers.capitalize(props.currentForm.name) + " Sprite"}
                         />
                     </div>                        
-                    {props.forms.length > 1 && <div className="d-flex flex-row">
+                    {props.forms.length > 1 && <div className="d-flex flex-wrap flex-row mt-2">
                         {props.forms.map((poke) => 
-                                <button disabled={poke.name == props.currentForm.name ? true : false} onClick={() => props.setCurrentForm(poke)}><img src={pokeFuncs.getPokeIcon(poke)} /></button>
+                            <button className={styles.formButton + " " + (isDark && styles.dark)} disabled={poke.name == props.currentForm.name ? true : false} onClick={() => props.setCurrentForm(poke)}><img src={pokeFuncs.getPokeIcon(poke)} /></button>
                         )}
                     </div>}
 				</div>
