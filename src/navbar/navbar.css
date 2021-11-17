@@ -1,5 +1,5 @@
 .navbar{
-    height: 60px;
+    height: 54px;
     width: 100%;    
     background-color: #f7f7f7;
     color: #222222;
@@ -36,8 +36,8 @@
     border-color: #5a5a5a;  
 }
 .navbaritem{
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     text-align: center;
 }
 .navbaritem svg{
@@ -51,7 +51,7 @@
 }
 #searchbar{
     width: 200px;
-    height: 50px;
+    height: 44px;
     margin: 5px;
     border-color: #222222;
     background-color: #343434;
@@ -72,7 +72,7 @@
 @media (min-width: 767px){
     .navbar{
         height: 100%;
-        width: 60px;  
+        width: 54px;  
         box-shadow: 5px 0px 5px 0px #dddddd;
     }
     .navbaritem{

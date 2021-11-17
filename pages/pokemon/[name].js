@@ -29,7 +29,7 @@ export default function Pokemon(props) {
 	}, [props.pokeObjs]);
 
 	return (
-        <div style={{minHeight:'100vh'}} className={isDark && 'dark'}>
+        <div id="scrollContainer" className={"scrollContainer " + (isDark && 'dark')}>
             {currentForm &&
                 <div className={"mx-auto container row"}>
                     <h2 className="pokeTitle">

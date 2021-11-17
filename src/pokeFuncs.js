@@ -15,7 +15,7 @@ export function getPokeName(poke){
     if(name.includes("hakamo-o")) return "Hakamo-o"
     if(name.includes("porygon-z")) return "Porygon-Z"
 
-    //Replace all -'s with spaces, capitalize each word.
+    //Replace all -'s with spaces, capitalize each word. Replace Gmax with Gigantamax
     else return name.replaceAll("-"," ").replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace("Gmax", "Gigantamax");
 }
 //Takes in poke json, returns json of all base stats.

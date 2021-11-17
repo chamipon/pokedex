@@ -34,7 +34,7 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
 				</div>
 				<div className="d-flex flex-row">
 					<button onClick={(e) => {setSearchOpen(!searchOpen); $("#searchbar").focus()}} className="navbaritem d-flex">
-						{searchOpen ? <FontAwesomeIcon style={{marginLeft: "17px", marginRight:"17px" }} icon={regular('xmark')} size="xl"/> : <FontAwesomeIcon style={{marginLeft: "12px", marginRight:"12px" }} icon={solid('magnifying-glass')} size="xl"/> }
+						{searchOpen ? <FontAwesomeIcon style={{marginLeft: "14px", marginRight:"14px" }} icon={regular('xmark')} size="lg"/> : <FontAwesomeIcon style={{marginLeft: "12px", marginRight:"12px" }} icon={solid('magnifying-glass')} size="lg"/> }
 					</button>
 					<input id="searchbar" onChange={(e) => {setSearchParams(e.target.value)}} className={(searchOpen ? '' : 'closed') + " form-control"} type="search" placeholder="Search" aria-label="Search" size="xl"/>
 				</div>
