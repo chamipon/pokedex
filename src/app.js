@@ -59,7 +59,7 @@ function App(props) {
 						key={poke.name + i}
 						number={poke.url.split('/')[6]}
 						name={poke.name}
-                        displayName={helpers.capitalize(pokeFuncs.getPokeName(poke))}
+                        displayName={pokeFuncs.getPokeName(poke)}
 						isShiny={props.isShiny}
 					/>
 					))}

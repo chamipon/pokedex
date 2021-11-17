@@ -1,8 +1,22 @@
-//Takes in poke json object, returns poke name
-//TODO: Capitalize after -'s
+//Takes in poke json object, returns formatted poke name
 export function getPokeName(poke){
-    if(poke.name.includes("nidoran")) return poke.name.replace("-m"," ♂").replace("-f", " ♀")
-    else return poke.name
+    var name = poke.name;
+    
+    // Handle specific edge cases
+    if(name.includes("nidoran-m")) return "Nidoran ♂"
+    if(name.includes("nidoran-f")) return"Nidoran ♀"
+    if(name.includes("ho-oh")) return "Ho-Oh"
+    if(name.includes("type-null")) return "Type: Null"
+    if(name.includes("mr-mime")) return "Mr. Mime"
+    if(name.includes("mime-jr")) return "Mime Jr."
+    if(name.includes("mr-rime")) return "Mr. Rime"
+    if(name.includes("kommo-o")) return "Kommo-o"
+    if(name.includes("jangmo-o")) return "Jangmo-o"
+    if(name.includes("hakamo-o")) return "Hakamo-o"
+    if(name.includes("porygon-z")) return "Porygon-Z"
+
+    //Replace all -'s with spaces, capitalize each word.
+    else return name.replaceAll("-"," ").replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace("Gmax", "Gigantamax");
 }
 //Takes in poke json, returns json of all base stats.
 //If a specific stat is entered, it will return just that stat's value.

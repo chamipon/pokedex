@@ -10,7 +10,7 @@ function Forms(props) {
 	return (
 		<>
 			{props.currentForm && props.forms && (
-                <div className="Forms d-flex flex-column align-items-center">
+                <div className="Forms d-flex flex-column align-items-center mb-2">
                     <div className={styles.imageContainer + " " + (isDark && styles.dark)}>
                         <img 
                             className={styles.image}

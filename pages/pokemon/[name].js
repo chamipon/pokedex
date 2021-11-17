@@ -35,20 +35,12 @@ export default function Pokemon(props) {
                     <h2 className="pokeTitle">
                         #{props.specObj.id}{" "}
                         {currentForm.pokeObj &&
-                            helpers.capitalize(pokeFuncs.getPokeName(currentForm))}
+                            pokeFuncs.getPokeName(currentForm)}
                     </h2>
                     <Genus species={props.specObj} />
                     <Types poke={currentForm.pokeObj} />
                     <Forms defaultName={props.specObj.name} forms={props.pokeObjs} currentForm={currentForm} setCurrentForm={setCurrentForm}/>
-                    <EvoChain
-                        key={props.key}
-                        specObj={props.specObj}
-                        pokeObj={currentForm.pokeObj}
-                        pokeList={props.pokeList}
-                        pokeListUpdater={props.pokeListUpdater}
-                        evoObj={props.evoObj}
-                        isShiny={isShiny}
-                    />
+
                     <Stats poke={currentForm.pokeObj} />
                     <div className="d-flex flex-row flex-wrap">
                         <BodySection
@@ -69,6 +61,15 @@ export default function Pokemon(props) {
                         />
                         <Gender species={props.specObj} />
                     </div>
+                    <EvoChain
+                        key={props.key}
+                        specObj={props.specObj}
+                        pokeObj={currentForm.pokeObj}
+                        pokeList={props.pokeList}
+                        pokeListUpdater={props.pokeListUpdater}
+                        evoObj={props.evoObj}
+                        isShiny={isShiny}
+                    />
                 </div>
             }
         </div>
