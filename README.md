@@ -18,3 +18,6 @@ Competitive (Stats, EVs, moves, abilities, etc..)
 
 ### Stats
 Shedinja -> HP always 1
+
+### Sprites
+Greninja Battle-Bond

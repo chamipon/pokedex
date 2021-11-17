@@ -5,9 +5,10 @@ import Types from "../../src/pokeInfo/types/types";
 import Gender from "../../src/pokeInfo/gender/gender";
 import Genus from "../../src/pokeInfo/genus/genus";
 import BodySection from "../../src/pokeInfo/bodySection/bodySection";
+import Forms from "../../src/pokeInfo/forms/forms";
 import * as helpers from "../../src/helpers.js";
 import * as pokeFuncs from "../../src/pokeFuncs.js";
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ShinyContext from '../../contexts/shiny'
 import DarkContext from "../../contexts/dark";
 
@@ -17,51 +18,59 @@ export default function Pokemon(props) {
 	const { name } = router.query;
     const [isShiny] = useContext( ShinyContext );
     const [isDark] = useContext( DarkContext );
+
+    const [currentForm, setCurrentForm] = useState();
+    
+    useEffect(() => {
+        if(props.pokeObjs){
+            console.log("here")
+            setCurrentForm(props.pokeObjs.find(form => form.is_default == true))
+        }
+	}, [props.pokeObjs]);
+
 	return (
         <div style={{minHeight:'100vh'}} className={isDark && 'dark'}>
-            <div className={"mx-auto container row"}>
-                {/* TODO: Need to handle the different forms 			
-                {props.pokeObjs.map((pokeObj, i) => ( 
-                            <p>poke : {pokeObj.name}</p>
-                        ))} */}
-
-                <h2 className="pokeTitle">
-                    #{props.specObj.id}{" "}
-                    {props.pokeObjs[0].pokeObj &&
-                        helpers.capitalize(pokeFuncs.getPokeName(props.specObj))}
-                </h2>
-                <Genus species={props.specObj} />
-                <Types poke={props.pokeObjs[0].pokeObj} />
-                <EvoChain
-                    key={props.key}
-                    specObj={props.specObj}
-                    pokeObj={props.pokeObjs[0].pokeObj}
-                    pokeList={props.pokeList}
-                    pokeListUpdater={props.pokeListUpdater}
-                    evoObj={props.evoObj}
-                    isShiny={isShiny}
-                />
-                <Stats poke={props.pokeObjs[0].pokeObj} />
-                <div className="d-flex flex-row flex-wrap">
-                    <BodySection
-                        info={props.specObj.capture_rate}
-                        header={"Catch Rate"}
+            {currentForm &&
+                <div className={"mx-auto container row"}>
+                    <h2 className="pokeTitle">
+                        #{props.specObj.id}{" "}
+                        {currentForm.pokeObj &&
+                            helpers.capitalize(pokeFuncs.getPokeName(currentForm))}
+                    </h2>
+                    <Genus species={props.specObj} />
+                    <Types poke={currentForm.pokeObj} />
+                    <Forms defaultName={props.specObj.name} forms={props.pokeObjs} currentForm={currentForm} setCurrentForm={setCurrentForm}/>
+                    <EvoChain
+                        key={props.key}
+                        specObj={props.specObj}
+                        pokeObj={currentForm.pokeObj}
+                        pokeList={props.pokeList}
+                        pokeListUpdater={props.pokeListUpdater}
+                        evoObj={props.evoObj}
+                        isShiny={isShiny}
                     />
-                    <BodySection
-                        info={props.pokeObjs[0].pokeObj.height / 10 + "m"}
-                        header={"Height"}
-                    />
-                    <BodySection
-                        info={props.pokeObjs[0].pokeObj.weight / 10 + "kg"}
-                        header={"Weight"}
-                    />
-                    <BodySection
-                        info={pokeFuncs.getPokeEggSteps(props.specObj)}
-                        header={"Egg Steps"}
-                    />
-                    <Gender species={props.specObj} />
+                    <Stats poke={currentForm.pokeObj} />
+                    <div className="d-flex flex-row flex-wrap">
+                        <BodySection
+                            info={props.specObj.capture_rate}
+                            header={"Catch Rate"}
+                        />
+                        <BodySection
+                            info={currentForm.pokeObj.height / 10 + "m"}
+                            header={"Height"}
+                        />
+                        <BodySection
+                            info={currentForm.pokeObj.weight / 10 + "kg"}
+                            header={"Weight"}
+                        />
+                        <BodySection
+                            info={pokeFuncs.getPokeEggSteps(props.specObj)}
+                            header={"Egg Steps"}
+                        />
+                        <Gender species={props.specObj} />
+                    </div>
                 </div>
-            </div>
+            }
         </div>
 	);
 }
@@ -101,7 +110,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
     const Pokedex = require("pokeapi-js-wrapper")
     const P = new Pokedex.Pokedex()
-    
+
     const pokeList = await P.getPokemonSpeciesList();
 	// Get the paths we want to pre-render based on posts
 	const paths = pokeList.results.map((poke) => ({

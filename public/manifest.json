@@ -66,6 +66,6 @@
     "background_color": "#343434",
     "display": "standalone",
     "scope": "/",
-    "theme_color": "#222222",
+    "theme_color": "#343434",
     "description": "The best pokedex"
   }

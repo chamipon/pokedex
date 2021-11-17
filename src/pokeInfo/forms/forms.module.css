@@ -1,0 +1,18 @@
+.image{
+    max-width: 200px;
+    width: 100%;
+}
+.imageContainer{
+    border: 1px #EE6F63 solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 2px;
+    width: -moz-fit-content;
+    width: fit-content;
+    flex: 1 1 0px;
+    max-width: 220px
+}
+.imageContainer.dark{
+    border-color: #e3b505
+}
+.dark{}

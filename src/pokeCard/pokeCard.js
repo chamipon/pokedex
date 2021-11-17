@@ -20,7 +20,7 @@ function PokeCard(props) {
                             </LazyLoad>
                             <span className={"pokeTitle m-auto"}>
                                 #{props.number + " "}
-                                {helpers.capitalize(props.name)}
+                                {props.displayName}
                             </span>
                         </a>
 					</Link>

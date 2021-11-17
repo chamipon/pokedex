@@ -94,6 +94,13 @@ export function getPokeSprite(poke, gen, shinyFlag, frontFlag, femaleFlag){
 
 }
 
+//Takes in a pokemon object, returns the gen 7 sprite if available, otherwise returns the gen 8 sprite.
+export function getPokeIcon(poke){
+    if(poke.pokeObj.sprites.versions['generation-vii'].icons.front_default){
+        return poke.pokeObj.sprites.versions['generation-vii'].icons.front_default;
+    }
+    else return poke.pokeObj.sprites.versions['generation-viii'].icons.front_default
+}
 /**
  * Used to grab the genus of a pokemon.
  * @param {speciesObj} species - The species object of the pokemon.
@@ -114,39 +121,3 @@ export async function getPokeObjByName(name,pokeList,pokeListUpdater,P){
     );
     return info;
 }
-//PRE PWA VERSION
-// export async function getPokeObjByName(name,pokeList,pokeListUpdater,P){
-//     var info = pokeList.find((obj) => {
-//         return obj.name === name;
-//     });
-//     if (!info) {
-//         info = await P.getPokemonByName(
-//             name
-//         );
-//         var temp = pokeList;
-//         temp.push(info);
-//         pokeListUpdater(temp);
-//     }
-//     else{
-//         console.log("Reusing data for: " + name)
-//     }
-//     return info;
-// }
-
-//PRE PWA VERSION
-// export async function getEvoChainObjById(id,evoChainList,evoChainListUpdater,P){
-//     var info = evoChainList.find((obj) => {
-//         return obj.id === id
-//     });
-//     if (!info) {
-//         info = await P.getEvolutionChainById(id);
-//         var temp = evoChainList;
-//         temp.push({'id': id, 'chain': info});
-//         evoChainListUpdater(temp);
-//     }
-//     else{
-//         console.log("Reusing data for evo chain: " + id)
-//         info = info.chain
-//     }
-//     return info;
-// }

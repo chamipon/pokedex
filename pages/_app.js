@@ -13,7 +13,6 @@ import {DarkProvider} from '../contexts/dark'
 import Head from 'next/head'
 import Navbar from "../src/navbar/navbar"
 import React, { useState } from "react";
-
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
@@ -21,12 +20,6 @@ config.autoAddCss = false
 function MyApp({ Component, pageProps }) {
     const [searchParams, setSearchParams] = useState(""); // The current search parameters
 	const [showInstall, setShowInstall] = useState(false)//Used to control if the install button is being displayed
-    if (process.browser) {
-        const Pokedex = require("pokeapi-js-wrapper")
-        const P = new Pokedex.Pokedex()
-        console.log("HERER1")
-    }
-
 return(
     <>
     <Head>

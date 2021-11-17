@@ -4,7 +4,7 @@ import {forceCheck} from 'react-lazyload';
 import React, { useState, useEffect } from "react";
 import InfiniteScroll  from "react-infinite-scroll-component";
 import * as helpers from "./helpers.js";
-
+import * as pokeFuncs from "./pokeFuncs.js";
 function App(props) {
 	const [pokes, setPokes] = useState(""); // Master list of every pokemon. Only contains name and url to species, fully populated at the start
 	const [renderPokes, setRenderPokes] = useState(""); //List used to render the pokecard objects. Modified by search, filter, infinite scroll, etc..
@@ -59,6 +59,7 @@ function App(props) {
 						key={poke.name + i}
 						number={poke.url.split('/')[6]}
 						name={poke.name}
+                        displayName={helpers.capitalize(pokeFuncs.getPokeName(poke))}
 						isShiny={props.isShiny}
 					/>
 					))}

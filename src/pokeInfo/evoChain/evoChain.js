@@ -7,14 +7,16 @@ function EvoChain(props) {
 		async function fetchData() {
 			var chainArray = []; //Used to store the evo chain in a more useful way, has the evolution details and pokeObj. ex: [bulb, ivy, vena]
 			getEvoChain(chainArray, props.evoObj.chain, 0);
-			setEvoChain(chainArray);
+            setEvoChain(chainArray);
+
 		}
 		fetchData();
 	}, []);
 	return (
-		<div className="evoChain">
-			{evoChain &&
-				evoChain.map((chain, i) => (
+        <>
+		{(evoChain && evoChain.length>1) && <div className="evoChain">
+			
+				{evoChain.map((chain, i) => (
 					<EvoChainCol
 						isShiny={props.isShiny}
 						key={"col" + i}
@@ -22,6 +24,8 @@ function EvoChain(props) {
 					/>
 				))}
 		</div>
+        }
+        </>
 	);
 	function getEvoChain(chainArray, chain, depth) {
 		depth++; //Keep track of how deep in the evo tree we are
