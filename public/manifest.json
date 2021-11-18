@@ -62,7 +62,7 @@
         "sizes": "192x192"
       }
     ],
-    "start_url": "/",
+    "start_url": "/pokedex",
     "background_color": "#343434",
     "display": "standalone",
     "scope": "/",

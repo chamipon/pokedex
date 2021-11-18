@@ -1,7 +1,6 @@
 import "../styles/app.css"
 import "../src/navbar/navbar.css"
 import 'bootstrap/dist/css/bootstrap.css'
-import "../src/pokeInfo/evoChain/evoChain.css"
 import "../src/pokeInfo/stats/stats.css"
 import "../src/pokeInfo/bodySection/bodySection.css"
 import "../src/pokeInfo/types/types.css"
@@ -10,6 +9,7 @@ import "../src/pokeCard/pokeCard.css"
 import "../src/navbar/navbar"
 import {ShinyProvider} from '../contexts/shiny'
 import {DarkProvider} from '../contexts/dark'
+import {OfficialArtProvider} from '../contexts/officialArt'
 import Head from 'next/head'
 import Navbar from "../src/navbar/navbar"
 import React, { useState } from "react";
@@ -55,8 +55,10 @@ return(
     <DarkProvider>
         <div style={{minHeight:'100vh' }}>
             <ShinyProvider>
-                <Component style={{paddingLeft:'60px', paddingTop:'20px'}} searchParams={searchParams} {...pageProps} />
-                <Navbar showInstall={showInstall} setShowInstall={setShowInstall} setSearchParams={setSearchParams}/>
+                <OfficialArtProvider>
+                    <Component style={{paddingLeft:'60px', paddingTop:'20px'}} searchParams={searchParams} {...pageProps} />
+                    <Navbar showInstall={showInstall} setShowInstall={setShowInstall} setSearchParams={setSearchParams}/>
+                </OfficialArtProvider>
             </ShinyProvider>
         </div>
     </DarkProvider>

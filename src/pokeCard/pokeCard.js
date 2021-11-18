@@ -13,7 +13,12 @@ function PokeCard(props) {
                             <LazyLoad className={"spriteLazy"} scrollContainer=".scrollContainer" offset={150} height={96} once >
                                 <div class={"pokeSprite"}>
                                     <img 
-                                        src={props.isShiny ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+props.number+".png" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+props.number+".png"}
+                                        src = {(props.isOfficialArt 
+                                            ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+props.number+".png"
+                                            : (props.isShiny 
+                                                ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+props.number+".png" 
+                                                : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+props.number+".png")
+                                            )}
                                         alt={helpers.capitalize(props.name) + "Sprite"}
                                     />
                                 </div>

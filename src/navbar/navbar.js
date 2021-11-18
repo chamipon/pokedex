@@ -10,11 +10,13 @@ import premierPic from '../../public/premier_ball.png'
 import { useContext } from 'react';
 import ShinyContext from '../../contexts/shiny'
 import DarkContext from '../../contexts/dark'
+import OfficialArtContext from '../../contexts/officialArt'
 import Link from 'next/link'
 function Navbar({setSearchParams, showInstall, setShowInstall}) {
 	const [searchOpen, setSearchOpen] = useState(false)
     const [isShiny, toggleShiny] = useContext( ShinyContext );
     const [isDark, toggleDark] = useContext( DarkContext );
+    const [isOfficialArt, toggleOfficialArt] = useContext( OfficialArtContext );
 	useEffect(() => {
 		installable.installableSetup(setShowInstall)
 	},[setShowInstall])
@@ -22,7 +24,7 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
 		<nav className={"navbar fixed-bottom " + (isDark && 'dark')}>
 			<div className="h-100 w-100 d-flex flex-row flex-md-column">
 				<div className="mx-auto d-flex">
-                    <Link style={{alignSelf:"center", marginLeft: 'auto'}} href="/">
+                    <Link style={{alignSelf:"center", marginLeft: 'auto'}} href="/pokedex">
                         <a>
                             <Image 
                                 width={40} layout="fixed" 
@@ -48,6 +50,9 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
 				</button>
 				<button onClick={toggleDark} className="navbaritem d-flex">
 					{<FontAwesomeIcon icon={isDark ? solid('moon') : solid('sun')} size="xl" />}
+				</button>
+                <button onClick={toggleOfficialArt} className="navbaritem d-flex">
+					{<FontAwesomeIcon icon={isOfficialArt ? solid('toggle-on') : solid('toggle-off')} size="xl" />}
 				</button>
 				{showInstall && <button onClick={() => installable.installButtonClick(setShowInstall)} id="installButton" className="navbaritem d-flex">
 					<FontAwesomeIcon icon={solid('download')} size="xl"/>

@@ -6,6 +6,7 @@ import * as helpers from "../src/helpers.js";
 import DarkContext from "../contexts/dark";
 import ShinyContext from "../contexts/shiny";
 import * as pokeFuncs from "../src/pokeFuncs.js";
+import OfficialArtContext from "../contexts/officialArt";
 function Pokedex(props) {
 	const [pokes, setPokes] = useState(""); // Master list of every pokemon. Only contains name and url to species, fully populated at the start
 	const [renderPokes, setRenderPokes] = useState(""); //List used to render the pokecard objects. Modified by search, filter, infinite scroll, etc..
@@ -15,6 +16,7 @@ function Pokedex(props) {
 	const [hasMore, setHasMore] = useState(true) // Tells the infinite scroll component whether there is more info to add.
 	const [isDark] = useContext( DarkContext );
     const [isShiny] = useContext( ShinyContext );
+    const [isOfficialArt] = useContext( OfficialArtContext )
 	useEffect(() => {
 		var cols = helpers.getColCount()
 		setColCount(cols)
@@ -63,6 +65,7 @@ function Pokedex(props) {
 						name={poke.name}
                         displayName={pokeFuncs.getPokeName(poke)}
 						isShiny={isShiny}
+                        isOfficialArt={isOfficialArt}
 					/>
 					))}
 				{(renderPokes.length === 0  && pokes) && <span className="text-center">No matches found!</span>}

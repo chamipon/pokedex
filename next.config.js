@@ -7,6 +7,15 @@ module.exports = withPWA({
   images: {
     domains: ['raw.githubusercontent.com'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/pokedex',
+        permanent: true,
+      },
+    ]
+  },
   pwa: {
     dest: "public",
     register: true,

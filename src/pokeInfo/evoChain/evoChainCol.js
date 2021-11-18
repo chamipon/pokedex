@@ -1,8 +1,13 @@
 import * as helpers from "./../../helpers.js";
 import EvoChainArrow from "./evoChainArrow";
 import Link from 'next/link'
-import Image from 'next/image'
+import OfficialArtContext from "../../../contexts/officialArt.js";
+import ShinyContext from "../../../contexts/shiny.js";
+import { useContext } from 'react';
+import styles from "./evoChain.module.css";
 function EvoChainCol(props) {
+    const [isShiny] = useContext( ShinyContext );
+    const [isOfficialArt] = useContext( OfficialArtContext );
 	return (
 		<div className="evoChainCol">
 			{props.stageChain &&
@@ -15,15 +20,20 @@ function EvoChainCol(props) {
 								/>
 							)}
 						</div>
-						<div key={"sprite" + i} className="evoColImg">
+						<div key={"sprite" + i} className={styles.evoColImg}>
 							{poke && (
 								<Link href={"/pokedex/" + poke.name}>
                                     <a>
                                         <img
                                             title={"#" + poke.id + " " + helpers.capitalize(poke.name)}
                                             alt={helpers.capitalize(poke.name)}
-                                            src={props.isShiny ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+poke.id+".png" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+poke.id+".png"}
-                                            className="d-flex"
+                                            src = {(isOfficialArt 
+                                                ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+poke.id+".png"
+                                                : (isShiny 
+                                                    ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+poke.id+".png" 
+                                                    : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+poke.id+".png")
+                                                )}
+                                            className="d-flex w-100"
                                         />
                                     </a>
                                 </Link>

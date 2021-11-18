@@ -2,3 +2,15 @@
     height: 2em;
     font-size: 1rem;
 }
+.fChance{
+    background-color: #EF9AA4;
+    color: #4D0A14;
+}
+.mChance{
+    background-color: #8BB9FD;
+    color: #132A53;
+}
+.genderless{
+    background-color: lightgray;
+    color: #3f3f3f;
+}

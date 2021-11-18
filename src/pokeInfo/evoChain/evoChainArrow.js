@@ -3,15 +3,16 @@ import * as helpers from "./../../helpers.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid, regular } from "@fortawesome/fontawesome-svg-core/import.macro";
 import Image from 'next/image'
+import styles from "./evoChain.module.css";
 function EvoChainArrow(props) {
 	const [EvoDetails, setEvoDetails] = useState(); //The evolution chain for the pokemon.
 	useEffect(() => {
 		getEvoDetails(props.evoDetails);
 	}, []);
 	return (
-		<span className="text-center EvoChainArrow">
+		<span className={"text-center align-items-center d-flex flex-row flex-md-column " + styles.EvoChainArrow}>
 			{EvoDetails && EvoDetails.trigger && (
-				<span>
+				<span className="me-1">
 					<FontAwesomeIcon
 						className="d-none d-md-inline-block"
 						title={"Trigger: " + EvoDetails.trigger}

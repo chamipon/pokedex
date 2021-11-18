@@ -23,18 +23,6 @@
 	border-bottom: none;
 	border: 1px solid lightgrey;
 }
-
-
-.pokeCard .card-body {
-	position: relative;
-	height: 0px;
-	transition: 0.4s height ease-in-out;
-	padding: 0 1rem;
-	overflow: hidden;
-	border-radius: 0px 0px 10px 10px;
-	border-color: transparent;
-}
-
 .pokeSprite{
 	height: 96px;
 	width: 96px;

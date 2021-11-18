@@ -30,12 +30,14 @@ function Gender(props) {
 						(
 							<>
                                 <div className={"progress " + styles.progress}>
-                                    {maleBarPercentage > 0 && <div className={"progress-bar"} style={{width:maleBarPercentage + "%"}} aria-valuenow={gender.mChance} aria-valuemin="0" aria-valuemax="100"> 
-                                        <span><FontAwesomeIcon title="Male Chance" icon={solid('mars')}/> {gender.mChance + "%"}</span>
-                                    </div>}
+                                    {maleBarPercentage > 0 && 
+                                        <div className={"progress-bar " + styles.mChance} style={{width:maleBarPercentage + "%"}}> 
+                                            <span><FontAwesomeIcon title="Male Chance" aria-label="Male Chance" icon={solid('mars')}/> {gender.mChance + "%"}</span>
+                                        </div>
+                                    }
                                     {maleBarPercentage < 100 && 
-                                        <div className={"progress-bar bg-danger"} style={{width:100-maleBarPercentage+"%"}} aria-valuenow={gender.fChance} aria-valuemin="0" aria-valuemax="100">
-                                            <span><FontAwesomeIcon title="Female Chance" icon={solid('venus')} /> {gender.fChance + "%"}</span>
+                                        <div className={"progress-bar " + styles.fChance} style={{width:100-maleBarPercentage+"%"}}>
+                                            <span><FontAwesomeIcon title="Female Chance" aria-label="Female chance" icon={solid('venus')} /> {gender.fChance + "%"}</span>
                                         </div>
                                     }
                                 </div>
@@ -43,7 +45,11 @@ function Gender(props) {
 						)
 						:
 						(
-							"Genderless"
+                        <div className={"progress " + styles.progress}>
+                            <div className={"progress-bar w-100 " + styles.genderless}> 
+                                <span>Genderless</span>
+                            </div>
+                        </div>
 						)
 					)
 				)} header={"Gender Ratio"}/>
