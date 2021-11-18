@@ -39,6 +39,10 @@
 	height: 96px;
 	width: 96px;
 }
+.pokeSprite img{
+    width: 100%;
+    height: 100%;
+}
 .pokeTitle{
 	margin-top: 1rem;
 }

@@ -10,7 +10,9 @@
     width: -moz-fit-content;
     width: fit-content;
     flex: 1 1 0px;
-    max-width: 220px
+    width: 220px;
+    max-width: 100%;
+    
 }
 .imageContainer.dark{
     border-color: #e3b505
@@ -21,7 +23,7 @@
     border-width: 1px;
     border-radius: 6px;
     border-style: solid;
-    margin: 0 2px;
+    margin:2px;
     transition: 0.2s;
     box-shadow: 1px 1px 5px 0px #959595;
 }
