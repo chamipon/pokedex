@@ -1,3 +1,5 @@
+import { deHyphenate } from "./helpers";
+
 //Takes in poke json object, returns formatted poke name
 export function getPokeName(poke){
     var name = poke.name;
@@ -16,7 +18,7 @@ export function getPokeName(poke){
     if(name.includes("porygon-z")) return "Porygon-Z"
 
     //Replace all -'s with spaces, capitalize each word. Replace Gmax with Gigantamax
-    else return name.replaceAll("-"," ").replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace("Gmax", "Gigantamax");
+    else return deHyphenate(name).replace("Gmax", "Gigantamax");
 }
 //Takes in poke json, returns json of all base stats.
 //If a specific stat is entered, it will return just that stat's value.

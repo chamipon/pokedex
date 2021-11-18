@@ -12,4 +12,6 @@ export function getColCount(){
     else if(window.innerWidth >= 576) return 2;
     else return 1;
 }
-
+export function deHyphenate(string){
+    return string.replace(/-/g," ").replace(/(^\w|\s\w)/g, m => m.toUpperCase())
+}

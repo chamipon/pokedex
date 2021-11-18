@@ -38,9 +38,11 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
 					</button>
 					<input id="searchbar" onChange={(e) => {setSearchParams(e.target.value)}} className={(searchOpen ? '' : 'closed') + " form-control"} type="search" placeholder="Search" aria-label="Search" size="xl"/>
 				</div>
-				{/* <button className="navbaritem d-flex">
-					<FontAwesomeIcon icon={solid('filter')} size="xl" />
-				</button> */}
+                <Link href="/itemdex">
+                    <button className="navbaritem d-flex">
+                        <FontAwesomeIcon icon={solid('backpack')} size="xl" />
+                    </button>
+                </Link>
 				<button onClick={toggleShiny} className="navbaritem d-flex mt-0 mt-md-auto">
 					{<FontAwesomeIcon icon={isShiny ? solid('sparkles') : regular('sparkles')} size="xl"/>}
 				</button>

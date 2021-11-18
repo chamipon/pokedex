@@ -15,7 +15,7 @@ import DarkContext from "../../contexts/dark";
 
 export default function Pokemon(props) {
 	const router = useRouter();
-	const { name } = router.query;
+	const { pokeName } = router.query;
     const [isShiny] = useContext( ShinyContext );
     const [isDark] = useContext( DarkContext );
 
@@ -80,7 +80,7 @@ export async function getStaticProps({ params }) {
     const Pokedex = require("pokeapi-js-wrapper")
     const P = new Pokedex.Pokedex()
 
-    const specObj = await P.getPokemonSpeciesByName(params.name); //Get the pokemon species object
+    const specObj = await P.getPokemonSpeciesByName(params.pokeName); //Get the pokemon species object
 
 	var pokeObjs = [];
 	for (var form of specObj.varieties) {
@@ -115,7 +115,7 @@ export async function getStaticPaths() {
     const pokeList = await P.getPokemonSpeciesList();
 	// Get the paths we want to pre-render based on posts
 	const paths = pokeList.results.map((poke) => ({
-		params: { name: poke.name },
+		params: { pokeName: poke.name },
 	}));
 	// We'll pre-render only these paths at build time.
 	// { fallback: blocking } will server-render pages

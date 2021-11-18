@@ -7,12 +7,12 @@ import DarkContext from '../contexts/dark.js';
 
 import reportWebVitals from '../src/reportWebVitals';
 
-export default function Home({ pokeList, searchParams }){
+export default function Home({ pokeList, searchParams, itemList }){
     const [isShiny] = useContext(ShinyContext);
     const [isDark] = useContext(DarkContext);
     return (
         <React.StrictMode>
-            <App searchParams={searchParams} isShiny={isShiny} isDark={isDark} pokeList={pokeList}/>
+            <App searchParams={searchParams} isShiny={isShiny} isDark={isDark} pokeList={pokeList} itemList={itemList}/>
         </React.StrictMode>
     )
 }
