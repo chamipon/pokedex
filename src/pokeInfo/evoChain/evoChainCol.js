@@ -9,10 +9,10 @@ function EvoChainCol(props) {
     const [isShiny] = useContext( ShinyContext );
     const [isOfficialArt] = useContext( OfficialArtContext );
 	return (
-		<div className="evoChainCol">
+		<div className={styles.evoChainCol}>
 			{props.stageChain &&
 				props.stageChain.map((poke, i) => (
-					<div className="d-flex flex-md-row flex-column">
+					<div className="d-flex flex-md-row flex-column m-1">
 						<div className="d-flex m-auto">
 							{poke && (
 								<EvoChainArrow

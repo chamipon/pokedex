@@ -56,7 +56,6 @@ function EvoChainArrow(props) {
 			{EvoDetails && EvoDetails.item && 
                 <>
                     {/* <div>{EvoDetails.item.name}</div> */}
-                    <br/>
                     <Image alt={EvoDetails.item.name} title={EvoDetails.item.name} src={EvoDetails.item.sprite} height={30} width={30} />
                 </>
             }
