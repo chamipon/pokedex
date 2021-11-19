@@ -12,6 +12,7 @@ import {DarkProvider} from '../contexts/dark'
 import {OfficialArtProvider} from '../contexts/officialArt'
 import Head from 'next/head'
 import Navbar from "../src/navbar/navbar"
+import SettingsMenu from "../src/settingsMenu/settingsMenu"
 import React, { useState } from "react";
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css'
@@ -53,11 +54,13 @@ return(
         
       </Head>
     <DarkProvider>
+        <h1 className="sr-only">Ultradex</h1>
         <div style={{minHeight:'100vh' }}>
             <ShinyProvider>
                 <OfficialArtProvider>
                     <Component style={{paddingLeft:'60px', paddingTop:'20px'}} searchParams={searchParams} {...pageProps} />
                     <Navbar showInstall={showInstall} setShowInstall={setShowInstall} setSearchParams={setSearchParams}/>
+                    <SettingsMenu />
                 </OfficialArtProvider>
             </ShinyProvider>
         </div>

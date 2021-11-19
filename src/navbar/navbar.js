@@ -57,6 +57,9 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
 				{showInstall && <button onClick={() => installable.installButtonClick(setShowInstall)} id="installButton" className="navbaritem d-flex">
 					<FontAwesomeIcon icon={solid('download')} size="xl"/>
 				</button>}
+                <button data-bs-toggle="modal" data-bs-target="#settingsMenu" className="navbaritem d-flex">
+					<FontAwesomeIcon icon={solid('gear')} size="xl"/>
+				</button>
 				{/* <button className="navbaritem d-flex">
 					<span className="fas fa-user-circle fa-lg"/>
 				</button>

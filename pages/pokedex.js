@@ -39,7 +39,6 @@ function Pokedex(props) {
 	return (
 
 			<div id="scrollContainer" className={"scrollContainer " + (isDark && " dark")}>	
-				<h1 className="text-center">Ultradex</h1>
 				<div id="PokeGrid" className="mx-auto container row">
 				<InfiniteScroll
 							className="row"
