@@ -25,29 +25,31 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
 	return (
 		<nav className={"navbar fixed-bottom " + (isDark && 'dark')}>
 			<div className="h-100 w-100 d-flex flex-row flex-md-column">
-				<div className="ms-md-auto me-auto d-flex">
-                    <Link style={{alignSelf:"center", marginLeft: 'auto'}} href="/pokedex">
-                        <a>
-                            <Image 
-                                width={40} layout="fixed" 
-                                height={40} 
-                                alt={isDark ? "ultra ball sprite" : "premier ball sprite"} src={isDark ? ultraPic : premierPic} 
-                            />
-                        </a>
+				<div className="mb-md-auto me-auto me-md-0 d-flex flex-row flex-md-column">
+                    <div className="ms-md-auto d-flex me-2 me-md-auto">
+                        <Link style={{alignSelf:"center", margin: 'auto'}} href="/pokedex">
+                            <a>
+                                <Image 
+                                    width={40} layout="fixed" 
+                                    height={40} 
+                                    alt={isDark ? "ultra ball sprite" : "premier ball sprite"} src={isDark ? ultraPic : premierPic} 
+                                />
+                            </a>
+                        </Link>
+                    </div>
+                    <div className="d-flex flex-row">
+                        <button onClick={(e) => {setSearchOpen(!searchOpen); $("#searchbar").focus()}} className="navbaritem d-flex">
+                            {searchOpen ? <FontAwesomeIcon style={{marginLeft: "14px", marginRight:"14px" }} icon={regular('xmark')} size="lg"/> : <FontAwesomeIcon style={{marginLeft: "12px", marginRight:"12px" }} icon={solid('magnifying-glass')} size="lg"/> }
+                        </button>
+                        <input id="searchbar" onChange={(e) => {setSearchParams(e.target.value)}} className={(searchOpen ? '' : 'closed') + " form-control"} type="search" placeholder="Search" aria-label="Search" size="xl"/>
+                    </div>
+                    <Link href="/itemdex">
+                        <button className="navbaritem d-flex">
+                            <FontAwesomeIcon icon={solid('backpack')} size="xl" />
+                        </button>
                     </Link>
-				</div>
-				<div className="d-flex flex-row">
-					<button onClick={(e) => {setSearchOpen(!searchOpen); $("#searchbar").focus()}} className="navbaritem d-flex">
-						{searchOpen ? <FontAwesomeIcon style={{marginLeft: "14px", marginRight:"14px" }} icon={regular('xmark')} size="lg"/> : <FontAwesomeIcon style={{marginLeft: "12px", marginRight:"12px" }} icon={solid('magnifying-glass')} size="lg"/> }
-					</button>
-					<input id="searchbar" onChange={(e) => {setSearchParams(e.target.value)}} className={(searchOpen ? '' : 'closed') + " form-control"} type="search" placeholder="Search" aria-label="Search" size="xl"/>
-				</div>
-                <Link href="/itemdex">
-                    <button className="navbaritem d-flex">
-                        <FontAwesomeIcon icon={solid('backpack')} size="xl" />
-                    </button>
-                </Link>
-				{settings.showShiny && <button onClick={toggleShiny} className="navbaritem d-flex mt-0 mt-md-auto">
+                </div>
+				{settings.showShiny && <button onClick={toggleShiny} className="navbaritem d-flex">
 					{<FontAwesomeIcon icon={isShiny ? solid('sparkles') : regular('sparkles')} size="xl"/>}
 				</button>}
 				{settings.showDark && <button onClick={toggleDark} className="navbaritem d-flex">
