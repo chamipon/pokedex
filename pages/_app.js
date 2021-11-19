@@ -10,6 +10,7 @@ import "../src/navbar/navbar"
 import {ShinyProvider} from '../contexts/shiny'
 import {DarkProvider} from '../contexts/dark'
 import {OfficialArtProvider} from '../contexts/officialArt'
+import { SettingsProvider } from "../contexts/settings"
 import Head from 'next/head'
 import Navbar from "../src/navbar/navbar"
 import SettingsMenu from "../src/settingsMenu/settingsMenu"
@@ -59,8 +60,10 @@ return(
             <ShinyProvider>
                 <OfficialArtProvider>
                     <Component style={{paddingLeft:'60px', paddingTop:'20px'}} searchParams={searchParams} {...pageProps} />
-                    <Navbar showInstall={showInstall} setShowInstall={setShowInstall} setSearchParams={setSearchParams}/>
-                    <SettingsMenu />
+                    <SettingsProvider>
+                        <Navbar showInstall={showInstall} setShowInstall={setShowInstall} setSearchParams={setSearchParams}/>
+                        <SettingsMenu />
+                    </SettingsProvider>
                 </OfficialArtProvider>
             </ShinyProvider>
         </div>
