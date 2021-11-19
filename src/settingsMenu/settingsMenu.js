@@ -15,48 +15,50 @@ function SettingsMenu() {
     const [settings, updateSetting] = useContext( SettingsContext );
     return (
         <>
-        {settings && <div class={"modal fade " + styles.modal} id="settingsMenu" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
-            <div class="modal-lg modal-dialog">
-                <div class={"modal-content " + styles.modalContent + " " + (isDark && " dark")}>
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        {settings && <div className={"modal fade " + styles.modal} id="settingsMenu" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+            <div className="modal-md modal-dialog">
+                <div className={"modal-content " + styles.modalContent + " " + (isDark && " dark")}>
+                    <div className={"modal-header " + styles.modalHeader}>
+                        <h5 className="modal-title" id="settingsModalLabel">Settings</h5>
+                        <button type="button" className={"btn-close "  + styles.closeButton} data-bs-dismiss="modal" aria-label="Close">
+                            <FontAwesomeIcon icon={regular('xmark')} size="xl"/>
+                        </button>
                     </div>
-                    <div class="modal-body">
-                        <div>
-                            <div class="form-check form-switch form-check-inline">
-                                <input class="form-check-input" checked={isOfficialArt} onChange={toggleOfficialArt} type="checkbox" role="switch" id="OfficialArt" />
-                                <label class="form-check-label" for="OfficialArt">Use Official Art</label>
+                    <div className="modal-body">
+                        <div className={styles.settingRow}>
+                            <div className={"form-check form-switch form-check-inline " + styles.setting}>
+                                <input className="form-check-input" checked={isOfficialArt} onChange={toggleOfficialArt} type="checkbox" role="switch" id="OfficialArt" />
+                                <label className="form-check-label" for="OfficialArt">Use Official Art</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" checked={settings.showArt} onChange={() => updateSetting('showArt', !settings.showArt)}  type="checkbox" role="switch" id="showArt" />
-                                <label class="form-check-label" for="showArt">Show on menu bar?</label>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="form-check form-switch form-check-inline">
-                                <input class="form-check-input" checked={isShiny} onChange={toggleShiny} type="checkbox" role="switch" id="ShinySprites" />
-                                <label class="form-check-label" for="ShinySprites">Shiny Sprites</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" checked={settings.showShiny} onChange={() => updateSetting('showShiny', !settings.showShiny)}  type="checkbox" role="switch" id="showShiny" />
-                                <label class="form-check-label" for="showShiny">Show on menu bar?</label>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" checked={settings.showArt} onChange={() => updateSetting('showArt', !settings.showArt)}  type="checkbox" role="switch" id="showArt" />
+                                <label className="form-check-label" for="showArt">Show on menu bar?</label>
                             </div>
                         </div>
-                        <div>
-                            <div class="form-check form-switch form-check-inline">
-                                <input class="form-check-input" checked={isDark} onChange={toggleDark} type="checkbox" role="switch" id="DarkMode" />
-                                <label class="form-check-label" for="DarkMode">Dark Mode</label>
+                        <div className={styles.settingRow}>
+                            <div className={"form-check form-switch form-check-inline " + styles.setting}>
+                                <input className="form-check-input" checked={isShiny} onChange={toggleShiny} type="checkbox" role="switch" id="ShinySprites" />
+                                <label className="form-check-label" for="ShinySprites">Shiny Sprites</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" checked={settings.showDark} onChange={() => updateSetting('showDark', !settings.showDark)}  type="checkbox" role="switch" id="showDark" />
-                                <label class="form-check-label" for="showDark">Show on menu bar?</label>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" checked={settings.showShiny} onChange={() => updateSetting('showShiny', !settings.showShiny)}  type="checkbox" role="switch" id="showShiny" />
+                                <label className="form-check-label" for="showShiny">Show on menu bar?</label>
+                            </div>
+                        </div>
+                        <div className={styles.settingRow}>
+                            <div className={"form-check form-switch form-check-inline " + styles.setting}>
+                                <input className="form-check-input" checked={isDark} onChange={toggleDark} type="checkbox" role="switch" id="DarkMode" />
+                                <label className="form-check-label" for="DarkMode">Dark Mode</label>
+                            </div>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" checked={settings.showDark} onChange={() => updateSetting('showDark', !settings.showDark)}  type="checkbox" role="switch" id="showDark" />
+                                <label className="form-check-label" for="showDark">Show on menu bar?</label>
                             </div>
                         </div>
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div className={"modal-footer " +  styles.modalFooter}>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
