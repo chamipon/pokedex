@@ -17,7 +17,7 @@
 .settingRow{
     display: flex;
     flex-direction: row;
-    padding: 5px;
+    padding: 10px;
     border-top-width: 1px;
     border-bottom-width: 0px;
     border-right-width: 0px;

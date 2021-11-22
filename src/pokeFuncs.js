@@ -26,10 +26,13 @@ export function getPokeBaseStats(poke, stat){
     var stats = poke.stats;
     var baseStats={}
     var i;
+    var maxstat ={name: '', stat: 0};
     for (i = 0; i< stats.length;i++){
         baseStats[stats[i].stat.name] = stats[i].base_stat
+        if(stats[i].base_stat > maxstat.stat) maxstat = {name: stats[i].stat.name, stat: stats[i].base_stat}
     }   
     baseStats["length"] = ++i;
+    baseStats["max"] = maxstat;
     if(stat) return baseStats[stat]
     else return baseStats
     
@@ -37,10 +40,15 @@ export function getPokeBaseStats(poke, stat){
 
 //Takes in a base stat, ev value, iv value, pokemon level, nature coeffecient, and a bool to depict if we are calculating hp or not.
 //Returns the stat given the values entered.
-export function calcPokeMaxStat(base, ev, iv, level, natCoeff, hpFlag){
+export function calcPokeStat(base, ev, iv, level, natCoeff, hpFlag){
    ev = Math.floor(ev/4) // Every 4 ev point gives the poke 1 stat point
    if (hpFlag) return Math.floor((2 * base + iv + ev) * (level / 100) + level + 10);
    else return Math.floor(Math.floor((2 * base + iv + ev) * level / 100 + 5) * natCoeff)
+}
+
+//Takes in base stat and hp flag, returns the maximum stat possible for the stat. 
+export function calcPokeMaxStat(base, hpFlag){
+    return calcPokeStat(base, 255, 31, 100, 1.1, hpFlag)
 }
 
 //Takes in poke json, returns json of EVs rewarded when fainted.

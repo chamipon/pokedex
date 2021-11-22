@@ -32,7 +32,7 @@ function SettingsMenu() {
                             </div>
                             <div className="form-check form-check-inline">
                                 <input className="form-check-input" checked={settings.showArt} onChange={() => updateSetting('showArt', !settings.showArt)}  type="checkbox" role="switch" id="showArt" />
-                                <label className="form-check-label" for="showArt">Show on menu bar?</label>
+                                <label className="form-check-label" for="showArt">Quick Setting</label>
                             </div>
                         </div>
                         <div className={styles.settingRow}>
@@ -42,7 +42,7 @@ function SettingsMenu() {
                             </div>
                             <div className="form-check form-check-inline">
                                 <input className="form-check-input" checked={settings.showShiny} onChange={() => updateSetting('showShiny', !settings.showShiny)}  type="checkbox" role="switch" id="showShiny" />
-                                <label className="form-check-label" for="showShiny">Show on menu bar?</label>
+                                <label className="form-check-label" for="showShiny">Quick Setting</label>
                             </div>
                         </div>
                         <div className={styles.settingRow}>
@@ -52,7 +52,7 @@ function SettingsMenu() {
                             </div>
                             <div className="form-check form-check-inline">
                                 <input className="form-check-input" checked={settings.showDark} onChange={() => updateSetting('showDark', !settings.showDark)}  type="checkbox" role="switch" id="showDark" />
-                                <label className="form-check-label" for="showDark">Show on menu bar?</label>
+                                <label className="form-check-label" for="showDark">Quick Setting</label>
                             </div>
                         </div>
 

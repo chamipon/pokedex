@@ -1,6 +1,5 @@
 # To-Do list
 
-## Fix Open/Close Animation
 ## Display evolution details from all generations
 
 ## Features
@@ -21,3 +20,4 @@ Shedinja -> HP always 1
 
 ### Sprites
 Greninja Battle-Bond
+TM sprites

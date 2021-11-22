@@ -1,45 +1,34 @@
 import React, { useState, useEffect } from "react";
 import * as pokeFuncs from "../../pokeFuncs.js";
-// import styles from "./stats.module.css";
+import styles from "./stats.module.css";
+import StatBar from "./statbar.js";
 function Stats(props) {
     const [stats, setStats] = useState(); //The evolution chain for the pokemon.
+    const [displayMax, setDisplayMax] = useState(false); //The evolution chain for the pokemon.
     useEffect(() => {
 		setStats(pokeFuncs.getPokeBaseStats(props.poke));
 	}, [props.poke]);
 	return ( 
-            <>
+            <div>  
+                <h3 className="mb-0" >Stats</h3>
                 {stats && 
-                <div className="stats d-flex flex-column">    
-                    <div className="row">
-                        <div className="statsCell"></div>
-                        <div className="statsCell">HP</div>
-                        <div className="statsCell">Atk</div>
-                        <div className="statsCell">Def</div>
-                        <div className="statsCell">Sp. Def</div>
-                        <div className="statsCell">Sp. Atk</div>
-                        <div className="statsCell">Spd</div>
-                    </div>
-                    <div className="row">
-                        <div className="statsCell w-100 w-sm-auto">Base</div>
-                        <div className="statsCell">{stats.hp}</div>
-                        <div className="statsCell">{stats.attack}</div>
-                        <div className="statsCell">{stats.defense}</div>
-                        <div className="statsCell">{stats["special-attack"]}</div>
-                        <div className="statsCell">{stats["special-defense"]}</div>
-                        <div className="statsCell">{stats.speed}</div>
-                    </div>
-                    <div className="row">
-                        <div className="statsCell">Max</div>
-                        <div className="statsCell">{pokeFuncs.calcPokeMaxStat(stats.hp, 255, 31, 100, 1.1, true)}</div>
-                        <div className="statsCell">{pokeFuncs.calcPokeMaxStat(stats.attack, 255, 31, 100, 1.1, false)}</div>
-                        <div className="statsCell">{pokeFuncs.calcPokeMaxStat(stats.defense, 255, 31, 100, 1.1, false)}</div>
-                        <div className="statsCell">{pokeFuncs.calcPokeMaxStat(stats["special-attack"], 255, 31, 100, 1.1, false)}</div>
-                        <div className="statsCell">{pokeFuncs.calcPokeMaxStat(stats["special-defense"], 255, 31, 100, 1.1, false)}</div>
-                        <div className="statsCell">{pokeFuncs.calcPokeMaxStat(stats.speed, 255, 31, 100, 1.1, false)}</div>
-                    </div>
-                </div>
+                    <div className="stats d-flex flex-column">    
+                        <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats.hp, true) : stats.hp} statRatio={stats.hp/stats.max.stat} label={"HP"} />
+                        <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats.attack, false) :stats.attack} statRatio={stats.attack/stats.max.stat} label={"Atk"} /> 
+                        <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats.defense, false) :stats.defense} statRatio={stats.defense/stats.max.stat} label={"Def"} /> 
+                        <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats["special-attack"], false) :stats["special-attack"]} statRatio={stats["special-attack"]/stats.max.stat} label={"Sp. Atk"} /> 
+                        <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats["special-defense"], false) :stats["special-defense"]} statRatio={stats["special-defense"]/stats.max.stat} label={"Sp. Def"} /> 
+                        <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats.speed, false) :stats.speed} statRatio={stats.speed/stats.max.stat} label={"Spd"} />  
+                    </div>  
                 } 
-            </>
+                <div class="btn-group" role="group" aria-label="Basic example"> 
+                    <input onClick={() => setDisplayMax(false)} type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked={!displayMax}/>
+                    <label class="btn btn-outline-secondary" for="btnradio1">Base</label>
+
+                    <input onClick={() => setDisplayMax(true)} type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked={displayMax}/>
+                    <label class="btn btn-outline-secondary" for="btnradio2">Max</label>
+                </div>
+            </div>
 	);
 }
 export default Stats;

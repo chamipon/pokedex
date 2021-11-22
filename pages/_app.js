@@ -1,7 +1,6 @@
 import "../styles/app.css"
 import "../src/navbar/navbar.css"
 import 'bootstrap/dist/css/bootstrap.css'
-import "../src/pokeInfo/stats/stats.css"
 import "../src/pokeInfo/bodySection/bodySection.css"
 import "../src/pokeInfo/types/types.css"
 import "../src/pokeCard/pokeCard.css"

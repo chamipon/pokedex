@@ -27,7 +27,7 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
 			<div className="h-100 w-100 d-flex flex-row flex-md-column">
 				<div className="mb-md-auto me-auto me-md-0 d-flex flex-row flex-md-column">
                     <div className="ms-md-auto d-flex me-2 me-md-auto">
-                        <Link style={{alignSelf:"center", margin: 'auto'}} href="/pokedex">
+                        <Link style={{alignSelf:"center", margin: 'auto'}} href="/pokedex" scroll={false}>
                             <a>
                                 <Image 
                                     width={40} layout="fixed" 
