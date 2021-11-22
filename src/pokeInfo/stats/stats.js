@@ -9,8 +9,8 @@ function Stats(props) {
 		setStats(pokeFuncs.getPokeBaseStats(props.poke));
 	}, [props.poke]);
 	return ( 
-            <div>  
-                <h3 className="mb-0" >Stats</h3>
+            <div className={styles.statsContainer}>  
+                <h3>Stats</h3>
                 {stats && 
                     <div className="stats d-flex flex-column">    
                         <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats.hp, true) : stats.hp} statRatio={stats.hp/stats.max.stat} label={"HP"} />
@@ -21,12 +21,12 @@ function Stats(props) {
                         <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats.speed, false) :stats.speed} statRatio={stats.speed/stats.max.stat} label={"Spd"} />  
                     </div>  
                 } 
-                <div class="btn-group" role="group" aria-label="Basic example"> 
-                    <input onClick={() => setDisplayMax(false)} type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked={!displayMax}/>
-                    <label class="btn btn-outline-secondary" for="btnradio1">Base</label>
+                <div className="btn-group mt-2" role="group" aria-label="Basic example"> 
+                    <input onClick={() => setDisplayMax(false)} type="radio" className="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked={!displayMax}/>
+                    <label className="btn btn-outline-secondary" for="btnradio1">Base</label>
 
-                    <input onClick={() => setDisplayMax(true)} type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked={displayMax}/>
-                    <label class="btn btn-outline-secondary" for="btnradio2">Max</label>
+                    <input onClick={() => setDisplayMax(true)} type="radio" className="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked={displayMax}/>
+                    <label className="btn btn-outline-secondary" for="btnradio2">Max</label>
                 </div>
             </div>
 	);

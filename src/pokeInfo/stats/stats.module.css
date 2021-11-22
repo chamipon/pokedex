@@ -15,12 +15,27 @@
     background-color: #e3b505;
 }
 .progressBarLabel{
-    background-color: #dddddd;
+    background-color: #f7f7f7;
     color: black;
-    flex-shrink: 0;
-    flex-basis: 70px;
+    font-size: 0.75rem;
+}
+@media (min-width: 767px){
+    .progressBarLabel{
+        font-size: 1rem;
+    }
 }
 :global(.dark) .progressBarLabel{
-    background-color: #222222;
+    background-color: #343434;
     color: white;
+}
+
+.statsContainer{
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #dddddd;
+    margin: 10px 0;
+}
+
+:global(.dark) .statsContainer{
+    background-color: #222222;
 }
