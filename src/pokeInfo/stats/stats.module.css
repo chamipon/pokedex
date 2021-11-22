@@ -1,14 +1,26 @@
 .progress{
-    height: 1.8rem;
+    height: 1.5rem;
     font-size: 1rem;
     margin: 5px 0;
     background-color: transparent;
 }
 .progressBar{
-    background-color: #e3b505;
+    background-color: #EE6F63;
     color: black;
     border-radius: 0 0.25rem 0.25rem 0;
+    text-align: left;
+    padding: 0 20px;
+}
+:global(.dark) .progressBar{
+    background-color: #e3b505;
 }
 .progressBarLabel{
+    background-color: #dddddd;
+    color: black;
+    flex-shrink: 0;
+    flex-basis: 70px;
+}
+:global(.dark) .progressBarLabel{
     background-color: #222222;
+    color: white;
 }
