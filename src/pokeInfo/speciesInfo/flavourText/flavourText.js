@@ -8,7 +8,7 @@ function FlavourText(props) {
 	    if(props.species){
             setDisplayText(pokeFuncs.getPokeFlavText(props.species, settings.language, settings.version))
         }
-    }, []);
+    }, [settings.language, settings.version, props.species]);
 	return (
         <div class="flavourText">
             {displayText}

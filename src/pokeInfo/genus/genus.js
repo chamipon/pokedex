@@ -8,7 +8,7 @@ function Genus(props) {
 	    if(props.species){
             setGenus(pokeFuncs.getPokeGenus(props.species, settings.language))
         }
-    }, []);
+    }, [props.species, settings.language]);
     return (
         <div className="genus">
             {genus}

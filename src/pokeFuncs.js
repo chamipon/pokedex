@@ -144,8 +144,8 @@ export function getPokeGenus(species, lang){
  */
  export function getPokeFlavText(species, lang, version){
     var flavTextObj = species.flavor_text_entries.find(el => el.language.name == lang && el.version.name == version)
-    if (flavTextObj) return flavTextObj.flavor_text
-    else return species.flavor_text_entries.find(el => el.language.name == "en" && el.version.name == "sword").flavor_text
+    if (flavTextObj) return flavTextObj.flavor_text.replace(/\f/g, "")
+    else return species.flavor_text_entries.find(el => el.language.name == "en" && el.version.name == "sword").flavor_text.replace(/\f/g, "")
 }
 
 //Takes in poke name, list of pokeobjs, pokelistupdater and the pokedex object.

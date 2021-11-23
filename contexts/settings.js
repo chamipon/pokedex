@@ -12,6 +12,7 @@ export const SettingsProvider = ({ children }) => {
         version: "sword"
     }, () => 1); 
     function updateSetting(setting, value){
+        console.log(value)
         var newsettings = JSON.parse(JSON.stringify(settings)) //Need to do this to get settings by value, not by reference
         newsettings[setting] = value;
         setSettings(newsettings)
