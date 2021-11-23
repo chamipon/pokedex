@@ -58,8 +58,8 @@ return(
         <div style={{minHeight:'100vh' }}>
             <ShinyProvider>
                 <OfficialArtProvider>
-                    <Component style={{paddingLeft:'60px', paddingTop:'20px'}} searchParams={searchParams} {...pageProps} />
                     <SettingsProvider>
+                        <Component style={{paddingLeft:'60px', paddingTop:'20px'}} searchParams={searchParams} {...pageProps} />
                         <Navbar showInstall={showInstall} setShowInstall={setShowInstall} setSearchParams={setSearchParams}/>
                         <SettingsMenu />
                     </SettingsProvider>

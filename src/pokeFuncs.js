@@ -133,13 +133,25 @@ export function getPokeIcon(poke){
 export function getPokeGenus(species, lang){
     var genusObj = species.genera.find(el => el.language.name === lang)
     if (genusObj) return genusObj.genus
-    else return species.genera[7].genus
+    else return species.genera.find(el => el.language.name === "en").genus
+}
+
+/**
+ * Used to grab the flavour text of a pokemon.
+ * @param {speciesObj} species - The species object of the pokemon.
+ * @param {string} lang - Optional, the language of flavour text you want returned. English is default.
+ * @param {string} version - Optional, the game version you want the flavour text from. Sword is default.
+ */
+ export function getPokeFlavText(species, lang, version){
+    var flavTextObj = species.flavor_text_entries.find(el => el.language.name == lang && el.version.name == version)
+    if (flavTextObj) return flavTextObj.flavor_text
+    else return species.flavor_text_entries.find(el => el.language.name == "en" && el.version.name == "sword").flavor_text
 }
 
 //Takes in poke name, list of pokeobjs, pokelistupdater and the pokedex object.
 //Uses the poke name to look for the pokeobj in the list, if the obj isnt in the list yet, it gets it from the api and adds it to the list.
 //Returns the poke obj
-export async function getPokeObjByName(name,pokeList,pokeListUpdater,P){
+export async function getPokeObjByName(name,P){
     var info = await P.getPokemonByName(
         name
     );

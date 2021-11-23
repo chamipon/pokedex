@@ -28,14 +28,3 @@
     background-color: #343434;
     color: white;
 }
-
-.statsContainer{
-    border-radius: 20px;
-    padding: 20px;
-    background-color: #dddddd;
-    margin: 10px 0;
-}
-
-:global(.dark) .statsContainer{
-    background-color: #222222;
-}

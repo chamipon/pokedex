@@ -11,6 +11,7 @@ import * as pokeFuncs from "../../src/pokeFuncs.js";
 import { useContext, useEffect, useState } from 'react';
 import ShinyContext from '../../contexts/shiny'
 import DarkContext from "../../contexts/dark";
+import SpeciesInfo from "../../src/pokeInfo/speciesInfo/speciesInfo";
 
 
 export default function Pokemon(props) {
@@ -23,7 +24,6 @@ export default function Pokemon(props) {
     
     useEffect(() => {
         if(props.pokeObjs){
-            console.log("here")
             setCurrentForm(props.pokeObjs.find(form => form.is_default == true))
         }
 	}, [props.pokeObjs]);
@@ -39,8 +39,9 @@ export default function Pokemon(props) {
                     </h2>
                     <Genus species={props.specObj} />
                     <Types poke={currentForm.pokeObj} />
-                    <Forms defaultName={props.specObj.name} forms={props.pokeObjs} currentForm={currentForm} setCurrentForm={setCurrentForm}/>
 
+                    <Forms defaultName={props.specObj.name} forms={props.pokeObjs} currentForm={currentForm} setCurrentForm={setCurrentForm}/>
+                    <SpeciesInfo species={props.specObj} />
                     <Stats poke={currentForm.pokeObj} />
                     <div className="d-flex flex-row flex-wrap">
                         <BodySection

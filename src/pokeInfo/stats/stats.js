@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as pokeFuncs from "../../pokeFuncs.js";
 import styles from "./stats.module.css";
 import StatBar from "./statbar.js";
+import InfoContainer from "../../infoContainer/infoContainer.js";
 function Stats(props) {
     const [stats, setStats] = useState(); //The evolution chain for the pokemon.
     const [displayMax, setDisplayMax] = useState(false); //The evolution chain for the pokemon.
@@ -9,7 +10,7 @@ function Stats(props) {
 		setStats(pokeFuncs.getPokeBaseStats(props.poke));
 	}, [props.poke]);
 	return ( 
-            <div className={styles.statsContainer}>  
+            <InfoContainer> 
                 <h3>Stats</h3>
                 {stats && 
                     <div className="stats d-flex flex-column">    
@@ -28,7 +29,7 @@ function Stats(props) {
                     <input onClick={() => setDisplayMax(true)} type="radio" className="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked={displayMax}/>
                     <label className="btn btn-outline-secondary" for="btnradio2">Max</label>
                 </div>
-            </div>
+            </InfoContainer>
 	);
 }
 export default Stats;

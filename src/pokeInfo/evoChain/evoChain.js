@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import EvoChainCol from "./evoChainCol";
 import styles from "./evoChain.module.css";
+import InfoContainer from "../../infoContainer/infoContainer"
 function EvoChain(props) {
 	const [evoChain, setEvoChain] = useState(); //The evolution chain for the pokemon.
 	useEffect(() => {
@@ -14,19 +15,19 @@ function EvoChain(props) {
 		fetchData();
 	}, []);
 	return (
-        <>
-		{(evoChain && evoChain.length>1) && <div className={styles.evoChain}>
-			
-				{evoChain.map((chain, i) => (
-					<EvoChainCol
-						isShiny={props.isShiny}
-						key={"col" + i}
-						stageChain={chain}
-					/>
-				))}
-		</div>
-        }
-        </>
+        <InfoContainer>
+            <h3>Evolution Chain</h3>
+            {(evoChain && evoChain.length>1) && <div className={styles.evoChain}>
+                    {evoChain.map((chain, i) => (
+                        <EvoChainCol
+                            isShiny={props.isShiny}
+                            key={"col" + i}
+                            stageChain={chain}
+                        />
+                    ))}
+            </div>
+            }
+        </InfoContainer>
 	);
 	function getEvoChain(chainArray, chain, depth) {
 		depth++; //Keep track of how deep in the evo tree we are

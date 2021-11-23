@@ -1,0 +1,10 @@
+.infoContainer{
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #dddddd;
+    margin: 10px 0;
+}
+
+:global(.dark) .infoContainer{
+    background-color: #222222;
+}
