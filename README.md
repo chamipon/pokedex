@@ -1,7 +1,7 @@
 # To-Do list
 
 ## Display evolution details from all generations
-
+## Re - calculate stat ratios between base/max
 ## Features
 ### Stat Calculator
 Select poke, IVs, EVs, Nature, gives stats.\

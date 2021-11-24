@@ -140,12 +140,15 @@ export function getPokeGenus(species, lang){
  * Used to grab the flavour text of a pokemon.
  * @param {speciesObj} species - The species object of the pokemon.
  * @param {string} lang - Optional, the language of flavour text you want returned. English is default.
- * @param {string} version - Optional, the game version you want the flavour text from. Sword is default.
+ * @param {string} version - Optional, the game version you want the flavour text from. The most recent version is the default.
  */
  export function getPokeFlavText(species, lang, version){
     var flavTextObj = species.flavor_text_entries.find(el => el.language.name == lang && el.version.name == version)
     if (flavTextObj) return flavTextObj.flavor_text.replace(/\f/g, "")
-    else return species.flavor_text_entries.find(el => el.language.name == "en" && el.version.name == "sword").flavor_text.replace(/\f/g, "")
+    else{
+        var engObjs = species.flavor_text_entries.filter(el => el.language.name == "en");
+        return engObjs[engObjs.length - 1].flavor_text.replace(/\f/g, "")
+    }
 }
 
 //Takes in poke name, list of pokeobjs, pokelistupdater and the pokedex object.
