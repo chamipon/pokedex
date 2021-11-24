@@ -7,19 +7,22 @@ function Stats(props) {
     const [stats, setStats] = useState(); //The evolution chain for the pokemon.
     const [displayMax, setDisplayMax] = useState(false); //The evolution chain for the pokemon.
     useEffect(() => {
-		setStats(pokeFuncs.getPokeBaseStats(props.poke));
-	}, [props.poke]);
+        var _stats = pokeFuncs.getPokeBaseStats(props.poke)
+        if (!displayMax) setStats(_stats);
+        else{setStats(pokeFuncs.getPokeMaxStats(props.poke))
+        } 
+	}, [props.poke, displayMax]);
 	return ( 
             <InfoContainer> 
                 <h3>Stats</h3>
                 {stats && 
                     <div className="stats d-flex flex-column">    
-                        <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats.hp, true) : stats.hp} statRatio={stats.hp/stats.max.stat} label={"HP"} />
-                        <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats.attack, false) :stats.attack} statRatio={stats.attack/stats.max.stat} label={"Atk"} /> 
-                        <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats.defense, false) :stats.defense} statRatio={stats.defense/stats.max.stat} label={"Def"} /> 
-                        <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats["special-attack"], false) :stats["special-attack"]} statRatio={stats["special-attack"]/stats.max.stat} label={"Sp. Atk"} /> 
-                        <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats["special-defense"], false) :stats["special-defense"]} statRatio={stats["special-defense"]/stats.max.stat} label={"Sp. Def"} /> 
-                        <StatBar stat={displayMax ? pokeFuncs.calcPokeMaxStat(stats.speed, false) :stats.speed} statRatio={stats.speed/stats.max.stat} label={"Spd"} />  
+                        <StatBar stat={stats.hp} statRatio={stats.hp/stats.max.stat} label={"HP"} />
+                        <StatBar stat={stats.attack} statRatio={stats.attack/stats.max.stat} label={"Atk"} /> 
+                        <StatBar stat={stats.defense} statRatio={stats.defense/stats.max.stat} label={"Def"} /> 
+                        <StatBar stat={stats["special-attack"]} statRatio={stats["special-attack"]/stats.max.stat} label={"Sp. Atk"} /> 
+                        <StatBar stat={stats["special-defense"]} statRatio={stats["special-defense"]/stats.max.stat} label={"Sp. Def"} /> 
+                        <StatBar stat={stats.speed} statRatio={stats.speed/stats.max.stat} label={"Spd"} />  
                     </div>  
                 } 
                 <div className="btn-group mt-2" role="group" aria-label="Basic example"> 

@@ -2,7 +2,7 @@
 import styles from "./stats.module.css";
 
 function StatBar(props) {
-	return (
+    return (
 		<>
             <div className={styles.progress + " progress"}>
                 <div className={styles.progressBarLabel + " progress-bar"} style={{width: "20%"}}>{props.label}</div>

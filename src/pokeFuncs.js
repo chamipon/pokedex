@@ -38,6 +38,25 @@ export function getPokeBaseStats(poke, stat){
     
 }
 
+export function getPokeMaxStats(poke, stat){
+    var stats = poke.stats;
+    var maxStats={}
+    var i;
+    var maxstat ={name: '', stat: 0};
+    for (i = 0; i< stats.length;i++){
+        var currStat = calcPokeMaxStat(stats[i].base_stat, stats[i].stat.name == "hp");
+        
+        maxStats[stats[i].stat.name] = currStat
+        
+        if(currStat > maxstat.stat) maxstat = {name: stats[i].stat.name, stat: currStat}
+    }   
+    maxStats["length"] = ++i;
+    maxStats["max"] = maxstat;
+    if(stat) return maxStats[stat]
+    else return maxStats
+    
+}
+
 //Takes in a base stat, ev value, iv value, pokemon level, nature coeffecient, and a bool to depict if we are calculating hp or not.
 //Returns the stat given the values entered.
 export function calcPokeStat(base, ev, iv, level, natCoeff, hpFlag){
