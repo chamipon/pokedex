@@ -69,10 +69,9 @@ function Itemdex(props) {
 export default Itemdex;
 
 export async function getStaticProps(context) {
-    const Pokedex = require("pokeapi-js-wrapper")
-    const P = new Pokedex.Pokedex()
 
-    const itemList = await P.getItemsList();
+    var itemList = await fetch(`https://pokeapi.co/api/v2/item/?limit=1000`)
+	itemList = await itemList.json()
 
     if (!itemList) {
       return {

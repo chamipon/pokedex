@@ -75,11 +75,9 @@ function Pokedex(props) {
 	);
 }
 
-export async function getStaticProps(context) {
-    const Pokedex = require("pokeapi-js-wrapper")
-    const P = new Pokedex.Pokedex()
-
-    const pokeList = await P.getPokemonSpeciesList();
+export async function getStaticProps(context) { 
+    var pokeList = await fetch(`https://pokeapi.co/api/v2/pokemon-species/?limit=898`)
+	pokeList = await pokeList.json()
 
     if (!pokeList) {
       return {

@@ -59,13 +59,12 @@ export default function Pokemon(props) {
 }
 // This function gets called at build time
 export async function getStaticProps({ params }) {
-    const Pokedex = require("pokeapi-js-wrapper")
-    const P = new Pokedex.Pokedex()
-
-    const specObj = await P.getPokemonSpeciesByName(params.pokeName); //Get the pokemon species object
-
-	var pokeObjs = [];
-	for (var form of specObj.varieties) {
+    var specObj = await fetch(`https://pokeapi.co/api/v2/pokemon-species/` + params.pokeName)
+	specObj = await specObj.json()
+    
+    var pokeObjs = [];
+	
+    for (var form of specObj.varieties) {
 		// Get the pokemon object for each form the pokemon species has
 		var temp = await fetch(form.pokemon.url);
 		var formPokeObj = await temp.json();

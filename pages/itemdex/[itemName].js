@@ -22,11 +22,9 @@ export default function Pokemon(props) {
 }
 // This function gets called at build time
 export async function getStaticProps({ params }) {
-    const Pokedex = require("pokeapi-js-wrapper")
-    const P = new Pokedex.Pokedex()
-
-    const itemObj = await P.getItemByName(params.itemName); //Get the Item object
-	
+    var itemObj = await fetch(`https://pokeapi.co/api/v2/item/` + params.itemName)
+	itemObj = await itemObj.json()
+    
     if (!itemObj) {
 		return {
 			notFound: true,
