@@ -13,7 +13,7 @@ function ItemCard(props) {
                             <LazyLoad className={styles.itemSprite} scrollContainer=".scrollContainer" offset={150} height={30} once >
                                 <div class={styles.itemSprite}>
                                     <img 
-                                        src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/"+props.name+".png"}
+                                        src={getItemSprite(props.name)}
                                         alt={helpers.capitalize(props.name) + "Sprite"}
                                     />
                                 </div>
@@ -29,5 +29,9 @@ function ItemCard(props) {
 	);	
 	
 }
-
+function getItemSprite(name){
+    if (name.includes("data-card")) return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/data-card.png"
+    if(name.match(/tm\d\d/) || name.includes("hm08")) return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/tm-normal.png";
+    else return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/"+name+".png"
+}
 export default ItemCard;
