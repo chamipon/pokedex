@@ -21,3 +21,9 @@ body{
 .dark h1{
     color: white;
 }
+
+@media (min-width: 767px){
+    .w-md-50{
+        width: 50% !important
+    }
+}

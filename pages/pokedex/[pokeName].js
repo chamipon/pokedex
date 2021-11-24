@@ -41,27 +41,8 @@ export default function Pokemon(props) {
                     <Types poke={currentForm.pokeObj} />
 
                     <Forms defaultName={props.specObj.name} forms={props.pokeObjs} currentForm={currentForm} setCurrentForm={setCurrentForm}/>
-                    <SpeciesInfo species={props.specObj} />
+                    <SpeciesInfo poke={currentForm.pokeObj} species={props.specObj} />
                     <Stats poke={currentForm.pokeObj} />
-                    <div className="d-flex flex-row flex-wrap">
-                        <BodySection
-                            info={props.specObj.capture_rate}
-                            header={"Catch Rate"}
-                        />
-                        <BodySection
-                            info={currentForm.pokeObj.height / 10 + "m"}
-                            header={"Height"}
-                        />
-                        <BodySection
-                            info={currentForm.pokeObj.weight / 10 + "kg"}
-                            header={"Weight"}
-                        />
-                        <BodySection
-                            info={pokeFuncs.getPokeEggSteps(props.specObj)}
-                            header={"Egg Steps"}
-                        />
-                        <Gender species={props.specObj} />
-                    </div>
                     <EvoChain
                         key={props.key}
                         specObj={props.specObj}

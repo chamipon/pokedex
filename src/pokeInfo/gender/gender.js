@@ -23,39 +23,37 @@ function Gender(props) {
         }
 	}, [props.species]);
 	return (
-		<>
+		<div className="w-md-50">
+            <h3 className="text-center fs-6">Gender Ratio</h3>
 			{gender &&
-				<BodySection info={(
-					(gender !== -1 ? 
-						(
-							<>
-                                <div className={"progress " + styles.progress}>
-                                    {maleBarPercentage > 0 && 
-                                        <div className={"progress-bar " + styles.mChance} style={{width:maleBarPercentage + "%"}}> 
-                                            <span><FontAwesomeIcon title="Male Chance" aria-label="Male Chance" icon={solid('mars')}/> {gender.mChance + "%"}</span>
-                                        </div>
-                                    }
-                                    {maleBarPercentage < 100 && 
-                                        <div className={"progress-bar " + styles.fChance} style={{width:100-maleBarPercentage+"%"}}>
-                                            <span><FontAwesomeIcon title="Female Chance" aria-label="Female chance" icon={solid('venus')} /> {gender.fChance + "%"}</span>
-                                        </div>
-                                    }
-                                </div>
-							</>
-						)
-						:
-						(
-                        <div className={"progress " + styles.progress}>
-                            <div className={"progress-bar w-100 " + styles.genderless}> 
-                                <span>Genderless</span>
+                (gender !== -1 ? 
+                    (
+                        <>
+                            <div className={"progress " + styles.progress}>
+                                {maleBarPercentage > 0 && 
+                                    <div className={"progress-bar " + styles.mChance} style={{width:maleBarPercentage + "%"}}> 
+                                        <span><FontAwesomeIcon title="Male Chance" aria-label="Male Chance" icon={solid('mars')}/> {gender.mChance + "%"}</span>
+                                    </div>
+                                }
+                                {maleBarPercentage < 100 && 
+                                    <div className={"progress-bar " + styles.fChance} style={{width:100-maleBarPercentage+"%"}}>
+                                        <span><FontAwesomeIcon title="Female Chance" aria-label="Female chance" icon={solid('venus')} /> {gender.fChance + "%"}</span>
+                                    </div>
+                                }
                             </div>
+                        </>
+                    )
+                    :
+                    (
+                    <div className={"progress " + styles.progress}>
+                        <div className={"progress-bar w-100 " + styles.genderless}> 
+                            <span>Genderless</span>
                         </div>
-						)
-					)
-				)} header={"Gender Ratio"}/>
-				
+                    </div>
+                    )
+                )
 			}
-		</>
+		</div>
 	);
 }
 export default Gender;

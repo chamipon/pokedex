@@ -10,7 +10,7 @@ function FlavourText(props) {
         }
     }, [settings.language, settings.version, props.species]);
 	return (
-        <div class="flavourText">
+        <div class="flavourText w-md-50">
             {displayText}
         </div>        
 	);

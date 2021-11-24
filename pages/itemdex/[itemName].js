@@ -2,18 +2,19 @@ import { useRouter } from "next/router";
 import * as helpers from "../../src/helpers.js";
 import { useContext, useEffect, useState } from 'react';
 import DarkContext from "../../contexts/dark";
-
+import FlavourText from "../../src/itemInfo/flavourText/flavourText.js";
 
 export default function Pokemon(props) {
     const [isDark] = useContext( DarkContext );
     	return (
         <div id="scrollContainer" className={"scrollContainer " + (isDark && 'dark')}>
             {props.itemObj &&
-                <div className={"mx-auto container row"}>
+                <div className={"mx-auto container"}>
                     <h2 className="pokeTitle">
                         {helpers.deHyphenate(props.itemObj.name)}
                     </h2>
-                    <img src={props.itemObj.sprites.default}/>
+                    <img style={{width:'30px', height:'30px'}} alt={helpers.deHyphenate(props.itemObj.name) + " Sprite"} src={props.itemObj.sprites.default}/>
+                    <FlavourText itemObj={props.itemObj} />
                 </div>
             }
         </div>

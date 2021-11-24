@@ -1,6 +1,7 @@
 .progress{
     height: 2em;
     font-size: 1rem;
+    background-color: transparent;
 }
 .fChance{
     background-color: #EF9AA4;

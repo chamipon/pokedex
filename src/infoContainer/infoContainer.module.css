@@ -8,3 +8,12 @@
 :global(.dark) .infoContainer{
     background-color: #222222;
 }
+
+.infoContainer .infoContainer{
+    border: 1px solid #e3b505;
+    padding: 20px;
+}
+.infoContainer .infoContainer h3{
+    font-size: 1rem;
+    text-align: center;
+}
