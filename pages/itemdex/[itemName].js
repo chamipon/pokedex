@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 import * as helpers from "../../src/helpers.js";
 import { useContext, useEffect, useState } from 'react';
-import DarkContext from "../../contexts/dark";
+import SettingsContext from "../../contexts/settings";
 import FlavourText from "../../src/itemInfo/flavourText/flavourText.js";
 
 export default function Pokemon(props) {
-    const [isDark] = useContext( DarkContext );
+    const [settings] = useContext( SettingsContext );
     	return (
-        <div id="scrollContainer" className={"scrollContainer " + (isDark && 'dark')}>
+        <div id="scrollContainer" className={"scrollContainer " + (settings.isDark && 'dark')}>
             {props.itemObj &&
                 <div className={"mx-auto container"}>
                     <h2 className="pokeTitle">
