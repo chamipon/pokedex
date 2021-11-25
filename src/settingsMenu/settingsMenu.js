@@ -30,7 +30,8 @@ function SettingsMenu() {
                 useArt: useArt,
                 showArt: showArt,
                 language: language,
-                version: version
+                version: version,
+                fetched: true
             })
         }
         fetchSettings()

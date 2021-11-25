@@ -10,7 +10,7 @@ function Forms(props) {
 			{props.currentForm && props.forms && (
                 <div className="Forms d-flex flex-column align-items-center mb-2">
                     <div className={styles.imageContainer + " " + (settings.isDark && styles.dark)}>
-                        <img 
+                        {settings.fetched && <img 
                             className={styles.image}
                             src = {(settings.useArt 
                                 ? props.currentForm.pokeObj.sprites.other["official-artwork"].front_default 
@@ -19,7 +19,7 @@ function Forms(props) {
                                     : props.currentForm.pokeObj.sprites.other.home.front_default)
                                 )}
                             alt={helpers.capitalize(props.currentForm.name) + " Sprite"}
-                        />
+                        />}
                     </div>                        
                     {props.forms.length > 1 && <div className="d-flex flex-wrap flex-row mt-2">
                         {props.forms.map((poke) => 

@@ -43,27 +43,28 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
                         </button>
                     </Link>
                 </div>
-				{settings.showShiny && <button onClick={() => updateSetting('isShiny', !settings.isShiny)} className="navbaritem d-flex">
-					{<FontAwesomeIcon icon={settings.isShiny ? solid('sparkles') : regular('sparkles')} size="xl"/>}
-				</button>}
-				{settings.showDark && <button onClick={() => updateSetting('isDark', !settings.isDark)} className="navbaritem d-flex">
-					{<FontAwesomeIcon icon={settings.isDark ? solid('moon') : solid('sun')} size="xl" />}
-				</button>}
-                {settings.showArt && <button onClick={() => updateSetting('useArt', !settings.useArt)} className="navbaritem d-flex">
-					{<FontAwesomeIcon icon={settings.useArt ? solid('toggle-on') : solid('toggle-off')} size="xl" />}
-				</button>}
-                <button data-bs-toggle="modal" data-bs-target="#settingsMenu" className="navbaritem d-flex">
-					<FontAwesomeIcon icon={solid('gear')} size="xl"/>
-				</button>
-				{showInstall && <button onClick={() => installable.installButtonClick(setShowInstall)} id="installButton" className="navbaritem d-flex">
-					<FontAwesomeIcon icon={solid('download')} size="xl"/>
-				</button>}
-				{/* <button className="navbaritem d-flex">
-					<span className="fas fa-user-circle fa-lg"/>
-				</button>
-				<button className="navbaritem d-flex">
-					<span className="fas fa-mug-hot fa-lg"/>
-				</button> */}
+                {settings.fetched && 
+                <>
+                    {settings.showShiny && <button onClick={() => updateSetting('isShiny', !settings.isShiny)} className="navbaritem d-flex">
+                        {<FontAwesomeIcon icon={settings.isShiny ? solid('sparkles') : regular('sparkles')} size="xl"/>}
+                    </button>}
+                    {settings.showDark && <button onClick={() => updateSetting('isDark', !settings.isDark)} className="navbaritem d-flex">
+                        {<FontAwesomeIcon icon={settings.isDark ? solid('moon') : solid('sun')} size="xl" />}
+                    </button>}
+                    {settings.showArt && <button onClick={() => updateSetting('useArt', !settings.useArt)} className="navbaritem d-flex">
+                        {<FontAwesomeIcon icon={settings.useArt ? solid('toggle-on') : solid('toggle-off')} size="xl" />}
+                    </button>}
+                </>
+                }
+
+            {showInstall && 
+                <button onClick={() => installable.installButtonClick(setShowInstall)} id="installButton" className="navbaritem d-flex">
+                    <FontAwesomeIcon icon={solid('download')} size="xl"/>
+                </button>
+            }
+            <button data-bs-toggle="modal" data-bs-target="#settingsMenu" className="navbaritem d-flex">
+                <FontAwesomeIcon icon={solid('gear')} size="xl"/>
+            </button>
 			</div>
 		</nav>
 	);

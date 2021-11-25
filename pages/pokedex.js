@@ -53,15 +53,12 @@ function Pokedex(props) {
 						>
 						
 					{renderPokes && renderPokes.map((poke,i) => (				
-						
-					<PokeCard
-						key={poke.name + i}
-						number={poke.url.split('/')[6]}
-						name={poke.name}
-                        displayName={pokeFuncs.getPokeName(poke)}
-						isShiny={settings.isShiny}
-                        isOfficialArt={settings.useArt}
-					/>
+                        <PokeCard
+                            key={poke.name + i}
+                            number={poke.url.split('/')[6]}
+                            name={poke.name}
+                            displayName={pokeFuncs.getPokeName(poke)}
+                        />
 					))}
 				{(renderPokes.length === 0  && pokes) && <span className="text-center">No matches found!</span>}
 				</InfiniteScroll>

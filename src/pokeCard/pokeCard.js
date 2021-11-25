@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as helpers from "./../helpers.js";
 import LazyLoad from 'react-lazyload';
-import Image from 'next/image'
+import SettingsContext from "../../contexts/settings.js";
 import Link from 'next/link'
 function PokeCard(props) {
+    const [settings] = useContext(SettingsContext)
 	return (
 		<div className="col-12 col-sm-6 col-lg-4">
 			<div className={`pokeCard card w-100`}>
@@ -12,15 +13,15 @@ function PokeCard(props) {
 						<a className={'card-header'}>
                             <LazyLoad className={"spriteLazy"} scrollContainer=".scrollContainer" offset={150} height={96} once >
                                 <div class={"pokeSprite"}>
-                                    <img 
-                                        src = {(props.isOfficialArt 
+                                    {settings.fetched && <img 
+                                        src = {(settings.useArt 
                                             ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+props.number+".png"
-                                            : (props.isShiny 
+                                            : (settings.isShiny 
                                                 ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+props.number+".png" 
                                                 : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+props.number+".png")
                                             )}
                                         alt={helpers.capitalize(props.name) + "Sprite"}
-                                    />
+                                    />}
                                 </div>
                             </LazyLoad>
                             <span className={"pokeTitle m-auto"}>
