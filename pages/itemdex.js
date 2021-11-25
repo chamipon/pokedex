@@ -3,7 +3,7 @@ import {forceCheck} from 'react-lazyload';
 import React, { useState, useEffect, useContext } from "react";
 import InfiniteScroll  from "react-infinite-scroll-component";
 import * as helpers from "../src/helpers.js";
-import DarkContext from "../contexts/dark";
+import SettingsContext from "../contexts/settings";
 function Itemdex(props) {
 	const [items, setItems] = useState(""); // Master list of every pokemon. Only contains name and url to species, fully populated at the start
 	const [renderItems, setRenderItems] = useState(""); //List used to render the pokecard objects. Modified by search, filter, infinite scroll, etc..
@@ -11,7 +11,7 @@ function Itemdex(props) {
     
 	const [colCount, setColCount] = useState(1) //The number of columns being displayed
 	const [hasMore, setHasMore] = useState(true) // Tells the infinite scroll component whether there is more info to add.
-	const [isDark] = useContext( DarkContext );
+	const [settings] = useContext( SettingsContext );
 	useEffect(() => {
 		var cols = helpers.getColCount()
 		setColCount(cols)
@@ -33,7 +33,7 @@ function Itemdex(props) {
 	}, [props.searchParams, renderedAmount, items]);
 	return (
 
-			<div id="scrollContainer" className={"scrollContainer " + (isDark && " dark")}>	
+			<div id="scrollContainer" className={"scrollContainer " + (settings.isDark && " dark")}>	
 				<div id="PokeGrid" className="mx-auto container row">
 				<InfiniteScroll
 							className="row"
