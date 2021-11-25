@@ -1,13 +1,12 @@
 import * as helpers from "./../../helpers.js";
 import EvoChainArrow from "./evoChainArrow";
 import Link from 'next/link'
-import OfficialArtContext from "../../../contexts/officialArt.js";
-import ShinyContext from "../../../contexts/shiny.js";
 import { useContext } from 'react';
 import styles from "./evoChain.module.css";
+import SettingsContext from "../../../contexts/settings.js";
 function EvoChainCol(props) {
-    const [isShiny] = useContext( ShinyContext );
-    const [isOfficialArt] = useContext( OfficialArtContext );
+    const [settings] = useContext( SettingsContext );
+    
 	return (
 		<div className={styles.evoChainCol}>
 			{props.stageChain &&
@@ -27,9 +26,9 @@ function EvoChainCol(props) {
                                         <img
                                             title={"#" + poke.id + " " + helpers.capitalize(poke.name)}
                                             alt={helpers.capitalize(poke.name)}
-                                            src = {(isOfficialArt 
+                                            src = {(settings.useArt 
                                                 ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+poke.id+".png"
-                                                : (isShiny 
+                                                : (settings.isShiny 
                                                     ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+poke.id+".png" 
                                                     : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+poke.id+".png")
                                                 )}

@@ -2,24 +2,16 @@ import { useRouter } from "next/router";
 import EvoChain from "../../src/pokeInfo/evoChain/evoChain";
 import Stats from "../../src/pokeInfo/stats/stats";
 import Types from "../../src/pokeInfo/types/types";
-import Gender from "../../src/pokeInfo/gender/gender";
 import Genus from "../../src/pokeInfo/genus/genus";
-import BodySection from "../../src/pokeInfo/bodySection/bodySection";
 import Forms from "../../src/pokeInfo/forms/forms";
-import * as helpers from "../../src/helpers.js";
 import * as pokeFuncs from "../../src/pokeFuncs.js";
 import { useContext, useEffect, useState } from 'react';
-import ShinyContext from '../../contexts/shiny'
-import DarkContext from "../../contexts/dark";
 import SpeciesInfo from "../../src/pokeInfo/speciesInfo/speciesInfo";
-
-
+import SettingsContext from "../../contexts/settings";
 export default function Pokemon(props) {
 	const router = useRouter();
 	const { pokeName } = router.query;
-    const [isShiny] = useContext( ShinyContext );
-    const [isDark] = useContext( DarkContext );
-
+    const [settings] = useContext( SettingsContext );
     const [currentForm, setCurrentForm] = useState();
     
     useEffect(() => {
@@ -29,7 +21,7 @@ export default function Pokemon(props) {
 	}, [props.pokeObjs]);
 
 	return (
-        <div id="scrollContainer" className={"scrollContainer " + (isDark && 'dark')}>
+        <div id="scrollContainer" className={"scrollContainer " + (settings.isDark && 'dark')}>
             {currentForm &&
                 <div className={"mx-auto container row"}>
                     <h2 className="pokeTitle">
@@ -50,7 +42,7 @@ export default function Pokemon(props) {
                         pokeList={props.pokeList}
                         pokeListUpdater={props.pokeListUpdater}
                         evoObj={props.evoObj}
-                        isShiny={isShiny}
+                        isShiny={settings.isShiny}
                     />
                 </div>
             }

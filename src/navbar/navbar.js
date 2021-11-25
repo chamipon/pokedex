@@ -8,22 +8,16 @@ import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro' 
 import ultraPic from '../../public/ultraball.png'
 import premierPic from '../../public/premier_ball.png'
 import { useContext } from 'react';
-import ShinyContext from '../../contexts/shiny'
-import DarkContext from '../../contexts/dark'
-import OfficialArtContext from '../../contexts/officialArt'
 import Link from 'next/link'
 import SettingsContext from "../../contexts/settings";
 function Navbar({setSearchParams, showInstall, setShowInstall}) {
 	const [searchOpen, setSearchOpen] = useState(false)
-    const [isShiny, toggleShiny] = useContext( ShinyContext );
-    const [isDark, toggleDark] = useContext( DarkContext );
-    const [isOfficialArt, toggleOfficialArt] = useContext( OfficialArtContext );
-    const [settings] = useContext( SettingsContext );
+    const [settings, updateSetting] = useContext( SettingsContext );
 	useEffect(() => {
 		installable.installableSetup(setShowInstall)
 	},[setShowInstall])
 	return (
-		<nav className={"navbar fixed-bottom " + (isDark && 'dark')}>
+		<nav className={"navbar fixed-bottom " + (settings.isDark && 'dark')}>
 			<div className="h-100 w-100 d-flex flex-row flex-md-column">
 				<div className="mb-md-auto me-auto me-md-0 d-flex flex-row flex-md-column">
                     <div className="ms-md-auto d-flex me-2 me-md-auto">
@@ -32,7 +26,7 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
                                 <Image 
                                     width={40} layout="fixed" 
                                     height={40} 
-                                    alt={isDark ? "ultra ball sprite" : "premier ball sprite"} src={isDark ? ultraPic : premierPic} 
+                                    alt={settings.isDark ? "ultra ball sprite" : "premier ball sprite"} src={settings.isDark ? ultraPic : premierPic} 
                                 />
                             </a>
                         </Link>
@@ -49,14 +43,14 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
                         </button>
                     </Link>
                 </div>
-				{settings.showShiny && <button onClick={toggleShiny} className="navbaritem d-flex">
-					{<FontAwesomeIcon icon={isShiny ? solid('sparkles') : regular('sparkles')} size="xl"/>}
+				{settings.showShiny && <button onClick={() => updateSetting('isShiny', !settings.isShiny)} className="navbaritem d-flex">
+					{<FontAwesomeIcon icon={settings.isShiny ? solid('sparkles') : regular('sparkles')} size="xl"/>}
 				</button>}
-				{settings.showDark && <button onClick={toggleDark} className="navbaritem d-flex">
-					{<FontAwesomeIcon icon={isDark ? solid('moon') : solid('sun')} size="xl" />}
+				{settings.showDark && <button onClick={() => updateSetting('isDark', !settings.isDark)} className="navbaritem d-flex">
+					{<FontAwesomeIcon icon={settings.isDark ? solid('moon') : solid('sun')} size="xl" />}
 				</button>}
-                {settings.showArt && <button onClick={toggleOfficialArt} className="navbaritem d-flex">
-					{<FontAwesomeIcon icon={isOfficialArt ? solid('toggle-on') : solid('toggle-off')} size="xl" />}
+                {settings.showArt && <button onClick={() => updateSetting('useArt', !settings.useArt)} className="navbaritem d-flex">
+					{<FontAwesomeIcon icon={settings.useArt ? solid('toggle-on') : solid('toggle-off')} size="xl" />}
 				</button>}
                 <button data-bs-toggle="modal" data-bs-target="#settingsMenu" className="navbaritem d-flex">
 					<FontAwesomeIcon icon={solid('gear')} size="xl"/>

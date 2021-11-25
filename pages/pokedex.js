@@ -3,10 +3,8 @@ import {forceCheck} from 'react-lazyload';
 import React, { useState, useEffect, useContext } from "react";
 import InfiniteScroll  from "react-infinite-scroll-component";
 import * as helpers from "../src/helpers.js";
-import DarkContext from "../contexts/dark";
-import ShinyContext from "../contexts/shiny";
 import * as pokeFuncs from "../src/pokeFuncs.js";
-import OfficialArtContext from "../contexts/officialArt";
+import SettingsContext from "../contexts/settings";
 function Pokedex(props) {
 	const [pokes, setPokes] = useState(""); // Master list of every pokemon. Only contains name and url to species, fully populated at the start
 	const [renderPokes, setRenderPokes] = useState(""); //List used to render the pokecard objects. Modified by search, filter, infinite scroll, etc..
@@ -14,9 +12,7 @@ function Pokedex(props) {
     
 	const [colCount, setColCount] = useState(1) //The number of columns being displayed
 	const [hasMore, setHasMore] = useState(true) // Tells the infinite scroll component whether there is more info to add.
-	const [isDark] = useContext( DarkContext );
-    const [isShiny] = useContext( ShinyContext );
-    const [isOfficialArt] = useContext( OfficialArtContext )
+    const [settings] = useContext( SettingsContext );
 	useEffect(() => {
 		var cols = helpers.getColCount()
 		setColCount(cols)
@@ -38,7 +34,7 @@ function Pokedex(props) {
 	}, [props.searchParams, renderedAmount, pokes]);
 	return (
 
-			<div id="scrollContainer" className={"scrollContainer " + (isDark && " dark")}>	
+			<div id="scrollContainer" className={"scrollContainer " + (settings.isDark && " dark")}>	
 				<div id="PokeGrid" className="mx-auto container row">
 				<InfiniteScroll
 							className="row"
@@ -63,8 +59,8 @@ function Pokedex(props) {
 						number={poke.url.split('/')[6]}
 						name={poke.name}
                         displayName={pokeFuncs.getPokeName(poke)}
-						isShiny={isShiny}
-                        isOfficialArt={isOfficialArt}
+						isShiny={settings.isShiny}
+                        isOfficialArt={settings.useArt}
 					/>
 					))}
 				{(renderPokes.length === 0  && pokes) && <span className="text-center">No matches found!</span>}

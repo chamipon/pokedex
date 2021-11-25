@@ -5,17 +5,14 @@ import "../src/pokeInfo/bodySection/bodySection.css"
 import "../src/pokeInfo/types/types.css"
 import "../src/pokeCard/pokeCard.css"
 
-import "../src/navbar/navbar"
-import {ShinyProvider} from '../contexts/shiny'
-import {DarkProvider} from '../contexts/dark'
-import {OfficialArtProvider} from '../contexts/officialArt'
-import { SettingsProvider } from "../contexts/settings"
-import Head from 'next/head'
-import Navbar from "../src/navbar/navbar"
-import SettingsMenu from "../src/settingsMenu/settingsMenu"
-import React, { useState } from "react";
-import { config } from '@fortawesome/fontawesome-svg-core'
-import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css'
+import "../src/navbar/navbar";
+import { SettingsProvider } from "../contexts/settings";
+import Head from 'next/head';
+import Navbar from "../src/navbar/navbar";
+import SettingsMenu from "../src/settingsMenu/settingsMenu";
+import React, { useState, useContext } from "react";
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false
 
 function MyApp({ Component, pageProps }) {
@@ -43,6 +40,7 @@ return(
             integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
             crossorigin="anonymous"
         ></script>
+        <script src="https://cdn.jsdelivr.net/npm/idb@7/build/umd.js"></script>
         <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
         <link rel="icon" href="/favicon.png"/>
         <meta name="theme-color" content="#222222"/>
@@ -53,20 +51,14 @@ return(
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
         
       </Head>
-    <DarkProvider>
         <h1 className="sr-only">Ultradex</h1>
         <div style={{minHeight:'100vh' }}>
-            <ShinyProvider>
-                <OfficialArtProvider>
-                    <SettingsProvider>
-                        <Component style={{paddingLeft:'60px', paddingTop:'20px'}} searchParams={searchParams} {...pageProps} />
-                        <Navbar showInstall={showInstall} setShowInstall={setShowInstall} setSearchParams={setSearchParams}/>
-                        <SettingsMenu />
-                    </SettingsProvider>
-                </OfficialArtProvider>
-            </ShinyProvider>
+            <SettingsProvider>
+                <Component style={{paddingLeft:'60px', paddingTop:'20px'}} searchParams={searchParams} {...pageProps} />
+                <Navbar showInstall={showInstall} setShowInstall={setShowInstall} setSearchParams={setSearchParams}/>
+                <SettingsMenu />
+            </SettingsProvider>
         </div>
-    </DarkProvider>
     </>
   ) 
 }
