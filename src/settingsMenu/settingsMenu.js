@@ -7,32 +7,32 @@ import Link from 'next/link'
 import SettingsContext from "../../contexts/settings";
 function SettingsMenu() {
     const [settings, updateSetting, setSettings] = useContext( SettingsContext );
-    useEffect(() => {async function fetchSettings(){ //Fetches the user's settings from indexedd
-        const db = await idb.openDB('ultradex', 1, {
-            upgrade(db) {
-              db.createObjectStore('ultradex-settings');
-            },
-        });
-        var isDark = await fetchSetting("isDark", true, db)
-        var showDark = await fetchSetting("showDark", false, db)
-        var isShiny = await fetchSetting("isShiny", false, db)
-        var showShiny = await fetchSetting("showShiny", true, db)
-        var useArt = await fetchSetting("useArt", true, db)
-        var showArt = await fetchSetting("showArt", true, db)
-        var language = await fetchSetting("language", "en", db)
-        var version = await fetchSetting("version", "sword", db)
-        setSettings({
-            isDark: isDark,
-            showDark: showDark,
-            isShiny: isShiny,
-            showShiny: showShiny,
-            useArt: useArt,
-            showArt: showArt,
-            language: language,
-            version: version
-        })
-
-    }
+    useEffect(() => {
+        async function fetchSettings(){ //Fetches the user's settings from indexedd
+            const db = await idb.openDB('ultradex', 1, {
+                upgrade(db) {
+                db.createObjectStore('ultradex-settings');
+                },
+            });
+            var isDark = await fetchSetting("isDark", true, db)
+            var showDark = await fetchSetting("showDark", false, db)
+            var isShiny = await fetchSetting("isShiny", false, db)
+            var showShiny = await fetchSetting("showShiny", true, db)
+            var useArt = await fetchSetting("useArt", true, db)
+            var showArt = await fetchSetting("showArt", true, db)
+            var language = await fetchSetting("language", "en", db)
+            var version = await fetchSetting("version", "sword", db)
+            setSettings({
+                isDark: isDark,
+                showDark: showDark,
+                isShiny: isShiny,
+                showShiny: showShiny,
+                useArt: useArt,
+                showArt: showArt,
+                language: language,
+                version: version
+            })
+        }
         fetchSettings()
 	},[]) 
     return (
