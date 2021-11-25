@@ -21,7 +21,9 @@ body{
 .dark h1{
     color: white;
 }
-
+.flex-even{
+    flex: 1 1 0px !important;
+}
 @media (min-width: 767px){
     .w-md-50{
         width: 50% !important

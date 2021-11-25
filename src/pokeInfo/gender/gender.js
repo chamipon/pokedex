@@ -23,7 +23,7 @@ function Gender(props) {
         }
 	}, [props.species]);
 	return (
-		<div className="w-md-50">
+		<div className="w-md-50 ps-md-2">
             <h3 className="text-center fs-6">Gender Ratio</h3>
 			{gender &&
                 (gender !== -1 ? 

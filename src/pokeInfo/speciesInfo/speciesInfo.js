@@ -16,7 +16,7 @@ function SpeciesInfo(props) {
                     <Gender species={props.species}/>
                 </div>
                 <div className="d-flex flex-column flex-md-row ">
-                    <div className="d-flex flex-row flex-fill">
+                    <div className="d-flex flex-row flex-even">
                         <BodySection
                             info={props.poke.height / 10 + "m"}
                             header={"Height"}
@@ -26,7 +26,7 @@ function SpeciesInfo(props) {
                             header={"Weight"}
                         />
                     </div>
-                    <div className="d-flex flex-row flex-fill">
+                    <div className="d-flex flex-row flex-even">
 
                         <BodySection
                             info={props.species.capture_rate}
