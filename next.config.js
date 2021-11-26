@@ -22,5 +22,6 @@ module.exports = withPWA({
     skipWaiting: true,
     disable: process.env.NODE_ENV === 'development',
     runtimeCaching,
+    importScripts: ['/pokeapi-js-wrapper-sw.js']
   }
 })

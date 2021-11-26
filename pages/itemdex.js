@@ -4,6 +4,8 @@ import React, { useState, useEffect, useContext } from "react";
 import InfiniteScroll  from "react-infinite-scroll-component";
 import * as helpers from "../src/helpers.js";
 import SettingsContext from "../contexts/settings";
+import { NextSeo } from 'next-seo';
+
 function Itemdex(props) {
 	const [items, setItems] = useState(""); // Master list of every pokemon. Only contains name and url to species, fully populated at the start
 	const [renderItems, setRenderItems] = useState(""); //List used to render the pokecard objects. Modified by search, filter, infinite scroll, etc..
@@ -32,8 +34,14 @@ function Itemdex(props) {
 		if(items)setRenderItems(items.filter(el => el.name.includes(props.searchParams.toLowerCase()) || (el.url.split('/')[6]).toString().startsWith(props.searchParams)).slice(0, renderedAmount))
 	}, [props.searchParams, renderedAmount, items]);
 	return (
+        <>
+            <NextSeo
+                title="Items - Ultradex"
+                description="A list of pokemon items."
+            />
 
 			<div id="scrollContainer" className={"scrollContainer " + (settings.isDark && " dark")}>	
+            <h1 className="sr-only">Items - Ultradex</h1>
 				<div id="PokeGrid" className="mx-auto container row">
 				<InfiniteScroll
 							className="row"
@@ -63,7 +71,7 @@ function Itemdex(props) {
 				</InfiniteScroll>
 				</div>
 			</div>
-
+        </>
 	);
 }
 export default Itemdex;

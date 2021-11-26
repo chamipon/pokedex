@@ -24,7 +24,7 @@ function PokeCard(props) {
                                     />}
                                 </div>
                             </LazyLoad>
-                            <span className={"pokeTitle m-auto"}>
+                            <span className={"m-auto"}>
                                 #{props.number + " "}
                                 {props.displayName}
                             </span>

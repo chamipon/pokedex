@@ -51,7 +51,6 @@ return(
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
         
       </Head>
-        <h1 className="sr-only">Ultradex</h1>
         <div style={{minHeight:'100vh' }}>
             <SettingsProvider>
                 <Component style={{paddingLeft:'60px', paddingTop:'20px'}} searchParams={searchParams} {...pageProps} />

@@ -1,14 +1,14 @@
-import Head from 'next/head'
+
 import { useContext } from 'react';
 import SettingsContext from '../contexts/settings'
-
+import { NextSeo } from 'next-seo';
 function Offline(props) {
     const [settings] = useContext( SettingsContext );
 	return (
         <>
-        <Head>
-          <title>Offline - Ultradex</title>
-        </Head>
+        <NextSeo
+            title="Offline - Ultradex"
+        />
         <div id="scrollContainer" className={"scrollContainer " + (settings.isDark && " dark")}>
             <div className="container">
                 <h1>Looks like you're offline!</h1>

@@ -33,6 +33,7 @@
 }
 .pokeTitle{
 	margin-top: 1rem;
+    font-size: 2rem;
 }
 .cardlazy>.lazyload-placeholder{
 	border: 1px solid lightgrey;

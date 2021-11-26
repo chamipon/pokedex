@@ -1,12 +1,18 @@
-import { useRouter } from "next/router";
 import * as helpers from "../../src/helpers.js";
 import { useContext, useEffect, useState } from 'react';
 import SettingsContext from "../../contexts/settings";
 import FlavourText from "../../src/itemInfo/flavourText/flavourText.js";
-
+import { NextSeo } from 'next-seo';
+import * as pokeFuncs from "../../src/pokeFuncs"
 export default function Pokemon(props) {
     const [settings] = useContext( SettingsContext );
     	return (
+        <>
+        <NextSeo
+            title={ helpers.deHyphenate(props.itemObj.name) + " - Ultradex"}
+            description = {pokeFuncs.getItemFlavText(props.itemObj, settings.language, "all")}
+        />
+
         <div id="scrollContainer" className={"scrollContainer " + (settings.isDark && 'dark')}>
             {props.itemObj &&
                 <div className={"mx-auto container"}>
@@ -18,6 +24,7 @@ export default function Pokemon(props) {
                 </div>
             }
         </div>
+        </>
 	);
 }
 // This function gets called at build time

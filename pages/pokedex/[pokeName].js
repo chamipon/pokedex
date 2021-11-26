@@ -4,13 +4,14 @@ import Stats from "../../src/pokeInfo/stats/stats";
 import Types from "../../src/pokeInfo/types/types";
 import Genus from "../../src/pokeInfo/genus/genus";
 import Forms from "../../src/pokeInfo/forms/forms";
+import Head from 'next/head'
 import * as pokeFuncs from "../../src/pokeFuncs.js";
 import { useContext, useEffect, useState } from 'react';
 import SpeciesInfo from "../../src/pokeInfo/speciesInfo/speciesInfo";
 import SettingsContext from "../../contexts/settings";
+import { NextSeo } from 'next-seo';
 export default function Pokemon(props) {
 	const router = useRouter();
-	const { pokeName } = router.query;
     const [settings] = useContext( SettingsContext );
     const [currentForm, setCurrentForm] = useState();
     
@@ -21,14 +22,19 @@ export default function Pokemon(props) {
 	}, [props.pokeObjs]);
 
 	return (
+        <>
+        <NextSeo
+            title={pokeFuncs.getPokeName(props.pokeObjs.find(form => form.is_default == true)) + ' - Ultradex'}
+            description = {pokeFuncs.getPokeFlavText(props.specObj, settings.language, settings.version)}
+        />
         <div id="scrollContainer" className={"scrollContainer " + (settings.isDark && 'dark')}>
             {currentForm &&
                 <div className={"mx-auto container row"}>
-                    <h2 className="pokeTitle">
+                    <h1 className="pokeTitle">
                         #{props.specObj.id}{" "}
                         {currentForm.pokeObj &&
                             pokeFuncs.getPokeName(currentForm)}
-                    </h2>
+                    </h1>
                     <Genus species={props.specObj} />
                     <Types poke={currentForm.pokeObj} />
 
@@ -47,6 +53,7 @@ export default function Pokemon(props) {
                 </div>
             }
         </div>
+        </>
 	);
 }
 // This function gets called at build time
