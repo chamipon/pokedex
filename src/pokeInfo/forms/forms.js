@@ -8,7 +8,7 @@ function Forms(props) {
 	return (
 		<>
 			{props.currentForm && props.forms && (
-                <div className="Forms d-flex flex-column align-items-center mb-2">
+                <div className="Forms d-flex flex-column align-items-center my-2">
                     <div className={styles.imageContainer + " " + (settings.isDark && styles.dark)}>
                         {settings.fetched && <img 
                             className={styles.image}

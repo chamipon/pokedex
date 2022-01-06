@@ -3,6 +3,7 @@ import * as helpers from "./../../helpers.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid, regular } from "@fortawesome/fontawesome-svg-core/import.macro";
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from "./evoChain.module.css";
 function EvoChainArrow(props) {
 	const [EvoDetails, setEvoDetails] = useState(); //The evolution chain for the pokemon.
@@ -54,10 +55,11 @@ function EvoChainArrow(props) {
 					</div>
 				)}
 			{EvoDetails && EvoDetails.item && 
-                <>
-                    {/* <div>{EvoDetails.item.name}</div> */}
-                    <Image alt={EvoDetails.item.name} title={EvoDetails.item.name} src={EvoDetails.item.sprite} height={30} width={30} />
-                </>
+                    <Link href={"/itemdex/" + EvoDetails.item.uglyName}>
+                        <a>
+                            <Image alt={EvoDetails.item.name} title={EvoDetails.item.name} src={EvoDetails.item.sprite} height={30} width={30} />
+                        </a>
+                    </Link>
             }
 			{EvoDetails && EvoDetails.held_item && (
 				<div>{EvoDetails.held_item}</div>
@@ -139,6 +141,7 @@ function EvoChainArrow(props) {
 					case "item":
 						deets.item = {
                             name: helpers.capitalize(value.name.replaceAll("-", " ")),
+                            uglyName: value.name,
                             url: value.url,
                             sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/" + value.name + ".png"
                         }
