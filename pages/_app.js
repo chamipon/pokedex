@@ -54,8 +54,8 @@ return(
       </Head>
         <div >
             <SettingsProvider>
-                <Component style={{paddingLeft:'60px', paddingTop:'20px'}} searchParams={searchParams} {...pageProps} />
-                <Navbar showInstall={showInstall} setShowInstall={setShowInstall} setSearchParams={setSearchParams}/>
+                <Component style={{paddingLeft:'60px', paddingTop:'20px'}} searchParams={searchParams} setSearchParams={setSearchParams} {...pageProps} />
+                <Navbar showInstall={showInstall} setShowInstall={setShowInstall}/>
                 <SettingsMenu />
                 <MobileMenu />
             </SettingsProvider>

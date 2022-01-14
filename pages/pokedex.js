@@ -1,4 +1,5 @@
 import PokeCard from "../src/pokeCard/pokeCard";
+import SearchButton from "../src/searchButton/searchButton";
 import {forceCheck} from 'react-lazyload';
 import React, { useState, useEffect, useContext } from "react";
 import InfiniteScroll  from "react-infinite-scroll-component";
@@ -64,6 +65,7 @@ function Pokedex(props) {
 				{(renderPokes.length === 0  && pokes) && <span className="text-center">No matches found!</span>}
 				</InfiniteScroll>
 				</div>
+                <SearchButton searchParams={props.searchParams} setSearchParams={props.setSearchParams}></SearchButton>
 			</div>
 
 	);

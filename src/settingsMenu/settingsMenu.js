@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import styles from "./settingsMenu.module.css";
-import { useContext } from "react";
 import Link from 'next/link'
 import SettingsContext from "../../contexts/settings";
 function SettingsMenu() {

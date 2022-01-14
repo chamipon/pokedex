@@ -12,9 +12,9 @@ body{
 @media (min-width: 767px){
     .scrollContainer{
         height: 100vh;
-        margin-left: 54px;
     }
     body{
+        margin-left: 54px !important;
         margin-bottom: 0px !important;
     }
 }

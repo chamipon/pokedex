@@ -10,8 +10,7 @@ import premierPic from '../../public/premier_ball.png'
 import { useContext } from 'react';
 import Link from 'next/link'
 import SettingsContext from "../../contexts/settings";
-function Navbar({setSearchParams, showInstall, setShowInstall}) {
-	const [searchOpen, setSearchOpen] = useState(false)
+function Navbar({showInstall, setShowInstall}) {
     const [settings, updateSetting] = useContext( SettingsContext );
 	useEffect(() => {
 		installable.installableSetup(setShowInstall)
@@ -30,12 +29,6 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
                                 />
                             </a>
                         </Link>
-                    </div>
-                    <div className="d-flex flex-row">
-                        <button onClick={(e) => {setSearchOpen(!searchOpen); $("#searchbar").focus()}} className="navbaritem d-flex">
-                            {searchOpen ? <FontAwesomeIcon style={{marginLeft: "14px", marginRight:"14px" }} icon={regular('xmark')} size="lg"/> : <FontAwesomeIcon style={{marginLeft: "12px", marginRight:"12px" }} icon={solid('magnifying-glass')} size="lg"/> }
-                        </button>
-                        <input id="searchbar" onChange={(e) => {setSearchParams(e.target.value)}} className={(searchOpen ? '' : 'closed') + " form-control"} type="search" placeholder="Search" aria-label="Search" size="xl"/>
                     </div>
                     <Link href="/itemdex">
                         <button className="navbaritem d-md-flex d-none">
