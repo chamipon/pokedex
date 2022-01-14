@@ -2,6 +2,7 @@ body{
     font-family: fot-udkakugo-large-pr6n, sans-serif !important;
     font-style: normal;
     font-weight: 500 !important;
+    margin-bottom:54px !important;
 }
 .scrollContainer{
     overflow-y: scroll;
@@ -12,6 +13,9 @@ body{
     .scrollContainer{
         height: 100vh;
         margin-left: 54px;
+    }
+    body{
+        margin-bottom: 0px !important;
     }
 }
 .dark{

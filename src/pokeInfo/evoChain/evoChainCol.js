@@ -21,7 +21,7 @@ function EvoChainCol(props) {
 						</div>
 						<div key={"sprite" + i} className={styles.evoColImg}>
 							{poke && (
-								<Link href={"/pokedex/" + poke.name}>
+								<Link scroll={true} href={"/pokedex/" + poke.name}>
                                     <a>
                                         <img
                                             title={"#" + poke.id + " " + helpers.capitalize(poke.name)}

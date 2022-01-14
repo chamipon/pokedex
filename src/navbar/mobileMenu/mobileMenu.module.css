@@ -1,0 +1,22 @@
+.mobileMenu{
+    height: calc(100vh - 54px);
+    max-width: 75%;
+}
+.mobileMenuItem{
+    background-color: transparent !important;
+    color: #212529;
+    border-color: #EE6F63;
+}
+.mobileMenuItem a{
+    color: #212529;
+    text-decoration: none;
+}
+
+:global(.dark).mobileMenu{
+    background-color: #222222;
+    color: white;
+}
+:global(.dark) .mobileMenuItem{
+    border-color: #e3b505;
+    color: white;
+}

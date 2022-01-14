@@ -3,7 +3,7 @@ import $ from "jquery";
 import Image from 'next/image'
 import * as installable from "./../installable";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 import ultraPic from '../../public/ultraball.png'
 import premierPic from '../../public/premier_ball.png'
@@ -38,23 +38,27 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
                         <input id="searchbar" onChange={(e) => {setSearchParams(e.target.value)}} className={(searchOpen ? '' : 'closed') + " form-control"} type="search" placeholder="Search" aria-label="Search" size="xl"/>
                     </div>
                     <Link href="/itemdex">
-                        <button className="navbaritem d-flex">
+                        <button className="navbaritem d-md-flex d-none">
                             <FontAwesomeIcon icon={solid('backpack')} size="xl" />
                         </button>
                     </Link>
+                    <button data-bs-toggle="modal" data-bs-target="#settingsMenu" className="navbaritem d-md-flex d-none">
+                        <FontAwesomeIcon icon={solid('gear')} size="xl"/>
+                    </button>
                 </div>
+                {/* Quick Settings */}
                 {settings.fetched && 
-                <>
-                    {settings.showShiny && <button onClick={() => updateSetting('isShiny', !settings.isShiny)} className="navbaritem d-flex">
-                        {<FontAwesomeIcon icon={settings.isShiny ? solid('sparkles') : regular('sparkles')} size="xl"/>}
-                    </button>}
-                    {settings.showDark && <button onClick={() => updateSetting('isDark', !settings.isDark)} className="navbaritem d-flex">
-                        {<FontAwesomeIcon icon={settings.isDark ? solid('moon') : solid('sun')} size="xl" />}
-                    </button>}
-                    {settings.showArt && <button onClick={() => updateSetting('useArt', !settings.useArt)} className="navbaritem d-flex">
-                        {<FontAwesomeIcon icon={settings.useArt ? solid('toggle-on') : solid('toggle-off')} size="xl" />}
-                    </button>}
-                </>
+                    <> 
+                        {settings.showShiny && <button onClick={() => updateSetting('isShiny', !settings.isShiny)} className="navbaritem d-flex">
+                            {<FontAwesomeIcon icon={settings.isShiny ? solid('sparkles') : regular('sparkles')} size="xl"/>}
+                        </button>}
+                        {settings.showDark && <button onClick={() => updateSetting('isDark', !settings.isDark)} className="navbaritem d-flex">
+                            {<FontAwesomeIcon icon={settings.isDark ? solid('moon') : solid('sun')} size="xl" />}
+                        </button>}
+                        {settings.showArt && <button onClick={() => updateSetting('useArt', !settings.useArt)} className="navbaritem d-flex">
+                            {<FontAwesomeIcon icon={settings.useArt ? solid('toggle-on') : solid('toggle-off')} size="xl" />}
+                        </button>}
+                    </>
                 }
 
             {showInstall && 
@@ -62,8 +66,8 @@ function Navbar({setSearchParams, showInstall, setShowInstall}) {
                     <FontAwesomeIcon icon={solid('download')} size="xl"/>
                 </button>
             }
-            <button data-bs-toggle="modal" data-bs-target="#settingsMenu" className="navbaritem d-flex">
-                <FontAwesomeIcon icon={solid('gear')} size="xl"/>
+            <button data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" className="navbaritem d-flex d-md-none">
+                <FontAwesomeIcon icon={solid('bars')} size="xl"/>
             </button>
 			</div>
 		</nav>

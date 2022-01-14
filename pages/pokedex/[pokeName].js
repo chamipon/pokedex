@@ -27,7 +27,7 @@ export default function Pokemon(props) {
             title={pokeFuncs.getPokeName(props.pokeObjs.find(form => form.is_default == true)) + ' - Ultradex'}
             description = {pokeFuncs.getPokeFlavText(props.specObj, settings.language, settings.version)}
         />
-        <div id="scrollContainer" className={"scrollContainer " + (settings.isDark && 'dark')}>
+        <div className={settings.isDark && 'dark'}>
             {currentForm &&
                 <div className={"mx-auto container row"}>
                     <h1 className="pokeTitle">

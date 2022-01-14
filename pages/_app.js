@@ -10,6 +10,7 @@ import { SettingsProvider } from "../contexts/settings";
 import Head from 'next/head';
 import Navbar from "../src/navbar/navbar";
 import SettingsMenu from "../src/settingsMenu/settingsMenu";
+import MobileMenu from "../src/navbar/mobileMenu/mobileMenu"
 import React, { useState, useContext } from "react";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css';
@@ -51,11 +52,12 @@ return(
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
         
       </Head>
-        <div style={{minHeight:'100vh' }}>
+        <div >
             <SettingsProvider>
                 <Component style={{paddingLeft:'60px', paddingTop:'20px'}} searchParams={searchParams} {...pageProps} />
                 <Navbar showInstall={showInstall} setShowInstall={setShowInstall} setSearchParams={setSearchParams}/>
                 <SettingsMenu />
+                <MobileMenu />
             </SettingsProvider>
         </div>
     </>

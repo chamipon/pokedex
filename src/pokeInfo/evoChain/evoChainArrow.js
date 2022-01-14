@@ -55,14 +55,19 @@ function EvoChainArrow(props) {
 					</div>
 				)}
 			{EvoDetails && EvoDetails.item && 
-                    <Link href={"/itemdex/" + EvoDetails.item.uglyName}>
+                    <Link href={"/itemdex/" + EvoDetails.item.ugly}>
                         <a>
-                            <Image alt={EvoDetails.item.name} title={EvoDetails.item.name} src={EvoDetails.item.sprite} height={30} width={30} />
+                            <Image alt={EvoDetails.item.pretty} title={EvoDetails.item.pretty} src={EvoDetails.item.sprite} height={30} width={30} />
                         </a>
                     </Link>
             }
 			{EvoDetails && EvoDetails.held_item && (
-				<div>{EvoDetails.held_item}</div>
+                <Link href={"/itemdex/" + EvoDetails.held_item.ugly}>
+                    <a>
+                        <Image alt={"Held item: " + EvoDetails.held_item.pretty} title={"Held item: " + EvoDetails.held_item.pretty} src={EvoDetails.held_item.sprite} height={30} width={30} />
+                    </a>
+                </Link>
+                
 			)}
 			{EvoDetails && EvoDetails.location && (
 				<div title={"Location: " + EvoDetails.location}>
@@ -140,8 +145,8 @@ function EvoChainArrow(props) {
 						break;
 					case "item":
 						deets.item = {
-                            name: helpers.capitalize(value.name.replaceAll("-", " ")),
-                            uglyName: value.name,
+                            pretty: helpers.capitalize(value.name.replaceAll("-", " ")),
+                            ugly: value.name,
                             url: value.url,
                             sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/" + value.name + ".png"
                         }
@@ -178,9 +183,14 @@ function EvoChainArrow(props) {
 						deets.needs_overworld_rain = value;
 						break;
 					case "held_item":
-						deets.held_item = helpers.capitalize(
-							value.name.replaceAll("-", " ")
-						);
+						deets.held_item = 
+                        {
+                            pretty: helpers.capitalize(
+                                value.name.replaceAll("-", " ")
+                            ),
+                            ugly: value.name,
+                            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/" + value.name + ".png"
+                        };
 						break;
 					case "trade_species":
 						deets.trade_species = helpers.capitalize(
