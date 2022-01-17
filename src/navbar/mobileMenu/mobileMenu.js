@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useContext } from 'react';
 import SettingsContext from "../../../contexts/settings";
-import ultraPic from '../../../public/ultraball.png'
+import pokeballIcon from '../../../public/pokeball_icon.svg'
 import premierPic from '../../../public/premier_ball.png'
 
 function MobileMenu({setSearchParams, showInstall, setShowInstall}) {
@@ -14,18 +14,19 @@ function MobileMenu({setSearchParams, showInstall, setShowInstall}) {
     <div className={ styles.mobileMenu  + " offcanvas offcanvas-end " + (settings.isDark && ' dark ')} tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
         <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="mobileMenuLabel">Ultradex</h5>
-            <button type="button" className="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" className={(settings.isDark && ' btn-close-white ') + " btn-close text-reset"} data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body">
             <ul className={" list-group list-group-flush"}>
                 <Link href="/pokedex">
                     <a className={styles.mobileMenuItem + " list-group-item"}>
                         <div data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
-                        <Image 
-                            width={24} layout="fixed" 
-                            height={24} 
-                            alt={settings.isDark ? "ultra ball sprite" : "premier ball sprite"} src={settings.isDark ? ultraPic : premierPic} 
-                        />
+                            <img 
+                                width={24}
+                                height={24}
+
+                                alt={settings.isDark ? "ultra ball sprite" : "premier ball sprite"} src={settings.isDark ? "/pokeball_icon_white.svg" : "/pokeball_icon.svg"} 
+                            />
                         Pokemon
                         </div>
                     </a>
@@ -38,7 +39,7 @@ function MobileMenu({setSearchParams, showInstall, setShowInstall}) {
                     </a>
                 </Link> 
                 <button className={styles.mobileMenuItem + " list-group-item text-start"} data-bs-toggle="modal" data-bs-target="#settingsMenu">
-                    <FontAwesomeIcon icon={solid('gear')} size="xl"/> Settings
+                    <FontAwesomeIcon icon={solid('gear')} size="xl"/>Settings
                 </button>
             </ul>
         </div>

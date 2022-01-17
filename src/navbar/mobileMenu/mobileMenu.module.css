@@ -10,7 +10,17 @@
     color: #212529;
     text-decoration: none;
 }
-
+.mobileMenuItem svg, .mobileMenuItem img{
+    margin-right: 10px !important;
+}
+.mobileMenuItem:before {
+    content: "";
+    vertical-align: middle;
+    height: 100%;
+  }
+  .mobileMenuItem *{
+      vertical-align: middle;
+  }
 :global(.dark).mobileMenu{
     background-color: #222222;
     color: white;

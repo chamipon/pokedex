@@ -7,7 +7,7 @@ function SearchButton({setSearchParams, searchParams}) {
     const [searchOpen, setSearchOpen] = useState(false)
     const searchBar = useRef(null);
     useEffect(() => {
-		if(searchParams){
+		if(searchParams){//if search params is not null, open the search bar and populate it with the parameters.
             setSearchOpen(true)
             searchBar.current.value=searchParams
         } 
