@@ -5,6 +5,7 @@ import InfiniteScroll  from "react-infinite-scroll-component";
 import * as helpers from "../src/helpers.js";
 import SettingsContext from "../contexts/settings";
 import { NextSeo } from 'next-seo';
+import SearchButton from "../src/searchButton/searchButton";
 
 function Itemdex(props) {
 	const [items, setItems] = useState(""); // Master list of every pokemon. Only contains name and url to species, fully populated at the start
@@ -70,6 +71,7 @@ function Itemdex(props) {
 				{(renderItems.length === 0  && items) && <span className="text-center">No matches found!</span>}
 				</InfiniteScroll>
 				</div>
+                <SearchButton searchParams={props.searchParams} setSearchParams={props.setSearchParams}></SearchButton>
 			</div>
         </>
 	);

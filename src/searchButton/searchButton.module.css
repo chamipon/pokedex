@@ -53,8 +53,8 @@
 :global(.dark) .searchbar:focus {
 	box-shadow: 0 0 5px 0 rgba(255, 255, 255, 75%) !important;
 }
-/* Hide the clear button on the search bar */
-.searchbar::-ms-clear {
+/* Hides the clear button on the search bar */
+/* .searchbar::-ms-clear {
 	display: none;
 }
 .searchbar::-webkit-search-decoration,
@@ -62,7 +62,7 @@
 .searchbar::-webkit-search-results-button,
 .searchbar::-webkit-search-results-decoration {
 	display: none;
-}
+} */
 
 .searchbar.closed {
 	width: 0;
