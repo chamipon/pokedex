@@ -3,7 +3,7 @@ import * as pokeFuncs from "../../pokeFuncs.js";
 import BodySection from "./../bodySection/bodySection";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
-import styles from "./gender.module.css";
+import styles from "./gender.module.scss";
 function Gender(props) {
 	const [gender, setGender] = useState(); //The evolution chain for the pokemon.
     const [maleBarPercentage, setMaleBarPercentage] = useState(50) // A The percentage of the gender bar that will be rendered as male

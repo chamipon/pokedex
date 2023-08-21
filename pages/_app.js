@@ -1,9 +1,9 @@
 import "../styles/app.css"
-import "../src/navbar/navbar.css"
+//import "../src/navbar/navbar.css"
 import 'bootstrap/dist/css/bootstrap.css'
-import "../src/pokeInfo/bodySection/bodySection.css"
+import "../src/pokeInfo/bodySection/bodySection.module.scss"
 import "../src/pokeInfo/types/types.css"
-import "../src/pokeCard/pokeCard.css"
+import "../src/pokeCard/pokeCard.module.scss"
 
 import "../src/navbar/navbar";
 import { SettingsProvider } from "../contexts/settings";

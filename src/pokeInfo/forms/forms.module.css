@@ -1,50 +1,52 @@
-.image{
-    max-width: 200px;
-    width: 100%;
+.image {
+  max-width: 200px;
+  width: 100%;
 }
-.imageContainer{
-    border: 1px #EE6F63 solid;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 2px;
-    width: -moz-fit-content;
-    width: fit-content;
-    flex: 1 1 0px;
-    width: 220px;
-    max-width: 100%;
-    
+
+.imageContainer {
+  border: 1px #EE6F63 solid;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 2px;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  flex: 1 1 0px;
+  width: 220px;
+  max-width: 100%;
 }
-.imageContainer.dark{
-    border-color: #e3b505
+.imageContainer.dark {
+  border-color: #e3b505;
 }
-.formButton{
-    border-color:  #ababab;
-    background-color: white;
-    border-width: 1px;
-    border-radius: 6px;
-    border-style: solid;
-    margin:2px;
-    transition: 0.2s;
-    box-shadow: 1px 1px 5px 0px #959595;
+
+.formButton {
+  border-color: #ababab;
+  background-color: white;
+  border-width: 1px;
+  border-radius: 6px;
+  border-style: solid;
+  margin: 2px;
+  transition: 0.2s;
+  box-shadow: 1px 1px 5px 0px #959595;
 }
-.formButton:disabled{
-    background-color: #cccccc;
-    border-color: #EE6F63;
-    box-shadow: 0px 0px 0px 0px transparent;
+.formButton:disabled {
+  background-color: #cccccc;
+  border-color: #EE6F63;
+  box-shadow: 0px 0px 0px 0px transparent;
 }
-.formButton:not([disabled]):hover{
-    background-color: #cccccc;   
+.formButton:not([disabled]):hover {
+  background-color: #cccccc;
 }
-.formButton.dark{
-    background-color: #343434;
-    border-color: #1a1a1a;
-    box-shadow: 1px 1px 5px 0px #1f1f1f;
+.formButton.dark {
+  background-color: #343434;
+  border-color: #1a1a1a;
+  box-shadow: 1px 1px 5px 0px #1f1f1f;
 }
-.formButton.dark:disabled{
-    background-color: #222222;
-    border-color: #e3b505;
-    box-shadow: transparent;
+.formButton.dark:disabled {
+  background-color: #222222;
+  border-color: #e3b505;
+  box-shadow: transparent;
 }
-.formButton.dark:not([disabled]):hover{
-    background-color: #222222;  
-}
+.formButton.dark:not([disabled]):hover {
+  background-color: #222222;
+}/*# sourceMappingURL=forms.module.css.map */

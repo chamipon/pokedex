@@ -1,0 +1,73 @@
+@import "../../styles/_Variables.scss";
+.pokeCard {
+	border-radius: 10px;
+	display: flex;
+	margin: 10px 0;
+	transition: 0.2s margin-top, 0.2s margin-bottom;
+	border: none;
+	min-height: 114px;
+    a{
+        color: #212529;
+        text-decoration: none;
+        :global(.dark) &{
+            color: white;
+        }
+    }
+    &:hover{
+        box-shadow: 0px 0px 7px 0px rgb(150, 150, 150);
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+    .cardHeader{
+        display: flex;
+        flex-direction: row;
+        border-radius: 10px;
+        border-bottom: none;
+        border: 1px solid lightgrey;
+        :global(.dark) &{
+            border-color: $dark-secondary !important; 
+            background-color: $dark-secondary !important;
+        }
+    }
+    :global(.dark) &{
+        background-color: $dark-secondary !important;
+    }
+}
+
+.pokeSprite{
+	height: 96px;
+	width: 96px;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.pokeTitle{
+	margin-top: 1rem;
+    font-size: 2rem;
+}
+.lazyload-placeholder{
+    .cardlazy>&{
+        border: 1px solid lightgrey;
+        background-color: #f7f7f7;
+        border-radius: 10px;
+        margin: 10px 0;
+    }
+    :global(.dark) &{
+        .cardlazy>&{
+            border-color: $dark-secondary ;
+            background-color: $dark-secondary;
+        }
+        .spriteLazy>&{
+            background-color: #1f1f1f;
+            height: 96px;
+            width: 96px;
+        }
+        .cardlazy>&{
+            border-color: $dark-secondary ;
+            background-color: $dark-secondary;
+        }
+    }
+}
+

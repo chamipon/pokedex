@@ -1,7 +1,7 @@
 // import styles from "./evoChain.module.css";
 import React, { useState, useEffect } from "react";
 import EvoChainCol from "./evoChainCol";
-import styles from "./evoChain.module.css";
+import styles from "./evoChain.module.scss";
 import InfoContainer from "../../infoContainer/infoContainer"
 function EvoChain(props) {
 	const [evoChain, setEvoChain] = useState(); //The evolution chain for the pokemon.

@@ -1,49 +1,52 @@
 .itemCard {
-	border-radius: 10px;
-	display: -webkit-flex;
-	display: flex;
-	margin: 5px 0;
-	-webkit-transition: 0.2s margin-top, 0.2s margin-bottom;
-	transition: 0.2s margin-top, 0.2s margin-bottom;
-	border: none;
-	min-height: 48px;
+  border-radius: 10px;
+  display: flex;
+  margin: 5px 0;
+  transition: 0.2s margin-top, 0.2s margin-bottom;
+  border: none;
+  min-height: 48px;
 }
+:global(.dark) .itemCard {
+  background-color: $dark-secondary !important;
+}
+:global(.dark) .itemCard a {
+  color: white;
+  text-decoration: none;
+}
+.itemCard :hover {
+  box-shadow: 0px 0px 7px 0px rgb(150, 150, 150);
+  margin-top: 2px;
+  margin-bottom: 8px;
+}
+
 .itemSprite {
-    height: 30px;
-    width:30px
+  height: 30px;
+  width: 30px;
 }
-.itemCard:hover {
-	box-shadow: 0px 0px 7px 0px rgb(150, 150, 150);
-	margin-top: 2px;
-	margin-bottom: 8px;
+
+.cardHeader {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px !important;
+  border-bottom: none;
+  border: 1px solid lightgrey;
 }
-.cardHeader{
-    display: flex;
-	flex-direction: row;
-	border-radius: 10px !important;
-	border-bottom: none;
-	border: 1px solid lightgrey;
+:global(.dark) .cardHeader {
+  border-color: $dark-secondary !important;
+  background-color: $dark-secondary !important;
 }
-.cardTitle{
-    margin-top: 1rem;
+
+.cardTitle {
+  margin-top: 1rem;
 }
-:global(.dark) .spriteLazy>.lazyload-placeholder{
-	background-color: #1f1f1f;
-	height: 30px;
-	width: 30px;
+
+:global(.dark) .spriteLazy > .lazyload-placeholder {
+  background-color: #1f1f1f;
+  height: 30px;
+  width: 30px;
 }
-:global(.dark) .cardlazy>.lazyload-placeholder{
-	border-color: #222222 ;
-	background-color: #222222;
-}
-:global(.dark) .cardHeader{
-    border-color: #222222 !important; 
-	background-color: #222222 !important;
-}
-:global(.dark) .itemCard{
-    background-color: #222222 !important;
-}
-:global(.dark) .itemCard a{
-    color: white;
-    text-decoration: none;
-}
+
+:global(.dark) .cardlazy > .lazyload-placeholder {
+  border-color: $dark-secondary;
+  background-color: $dark-secondary;
+}/*# sourceMappingURL=itemCard.module.css.map */

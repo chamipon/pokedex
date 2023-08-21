@@ -1,0 +1,52 @@
+@import "../../styles/Variables.scss";
+.itemCard {
+	border-radius: 10px;
+	display: -webkit-flex;
+	display: flex;
+	margin: 5px 0;
+	-webkit-transition: 0.2s margin-top, 0.2s margin-bottom;
+	transition: 0.2s margin-top, 0.2s margin-bottom;
+	border: none;
+	min-height: 48px;
+    :global(.dark) &{
+        background-color: $dark-secondary !important;
+        a{
+            color: white;
+            text-decoration: none;
+        }
+    }
+
+    :hover{
+        box-shadow: 0px 0px 7px 0px rgb(150, 150, 150);
+        margin-top: 2px;
+        margin-bottom: 8px;
+    }
+}
+.itemSprite {
+    height: 30px;
+    width:30px
+}
+.cardHeader{
+    display: flex;
+	flex-direction: row;
+	border-radius: 10px !important;
+	border-bottom: none;
+	border: 1px solid lightgrey;
+
+    :global(.dark) &{
+        border-color: $dark-secondary !important; 
+        background-color: $dark-secondary !important;
+    }
+}
+.cardTitle{
+    margin-top: 1rem;
+}
+:global(.dark) .spriteLazy>.lazyload-placeholder{
+	background-color: #1f1f1f;
+	height: 30px;
+	width: 30px;
+}
+:global(.dark) .cardlazy>.lazyload-placeholder{
+	border-color: $dark-secondary ;
+	background-color: $dark-secondary;
+}

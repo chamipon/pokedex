@@ -2,7 +2,7 @@ import React from "react";
 import * as helpers from "./../helpers.js";
 import LazyLoad from 'react-lazyload';
 import Link from 'next/link'
-import styles from "./itemCard.module.css";
+import styles from "./itemCard.module.scss";
 function ItemCard(props) {
 	return (
 		<div className="col-12 col-sm-6 col-lg-4">

@@ -1,7 +1,7 @@
 import * as helpers from "../../helpers.js";
 import * as pokeFuncs from "../../pokeFuncs";
 import { useContext } from 'react';
-import styles from "./forms.module.css";
+import styles from "./forms.module.scss";
 import SettingsContext from "../../../contexts/settings.js";
 function Forms(props) {
     const [settings] = useContext( SettingsContext );

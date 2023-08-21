@@ -2,7 +2,7 @@ import * as helpers from "./../../helpers.js";
 import EvoChainArrow from "./evoChainArrow";
 import Link from 'next/link'
 import { useContext } from 'react';
-import styles from "./evoChain.module.css";
+import styles from "./evoChain.module.scss";
 import SettingsContext from "../../../contexts/settings.js";
 function EvoChainCol(props) {
     const [settings] = useContext( SettingsContext );

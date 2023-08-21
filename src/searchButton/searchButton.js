@@ -1,4 +1,4 @@
-import styles from "./searchButton.module.css";
+import styles from "./searchButton.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { useState, useRef, useEffect } from 'react';

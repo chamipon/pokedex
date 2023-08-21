@@ -1,0 +1,19 @@
+@import "../../styles/Variables.scss";
+.infoContainer{
+    border-radius: 20px;
+    padding: 20px;
+    background-color: $light-secondary;
+    margin: 10px 0;
+    & &{
+        border: 1px solid $dark-highlight;
+        padding: 20px;
+        h3{
+            font-size: 1rem;
+            text-align: center;
+        }
+    }
+
+    :global(.dark) &{
+        background-color: $dark-secondary;
+    }
+}

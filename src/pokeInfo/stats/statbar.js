@@ -1,5 +1,5 @@
 
-import styles from "./stats.module.css";
+import styles from "./stats.module.scss";
 
 function StatBar(props) {
     return (

@@ -1,45 +1,49 @@
+.modalHeader {
+  border-bottom-color: #EE6F63;
+}
+:global(.dark) .modalHeader {
+  border-bottom-color: #e3b505;
+}
 
-.modalHeader{
-    border-bottom-color: #EE6F63;
+.modalFooter {
+  border-top-color: #EE6F63;
 }
-.modalFooter{
-    border-top-color: #EE6F63;
+:global(.dark) .modalFooter {
+  border-top-color: #e3b505;
 }
-.closeButton{
-    background: transparent;
-    opacity: 1;
-    padding-top: 0.3rem;
-    padding-left: 0.7 rem;
+
+.modalContent:global(.dark) {
+  background-color: #343434;
 }
-.setting{
-    flex: 1 1 0px;
+
+.closeButton {
+  background: transparent;
+  opacity: 1;
+  padding-top: 0.3rem;
+  padding-left: 0.7 rem;
 }
-.settingRow{
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    border-top-width: 1px;
-    border-bottom-width: 0px;
-    border-right-width: 0px;
-    border-left-width: 0px;
-    border-color: lightgray;
-    border-style: solid;
+:global(.dark) .closeButton {
+  color: white;
 }
-.settingRow:first-child{
-    border-top-width: 0px;
+
+.setting {
+  flex: 1 1 0px;
 }
-:global(.dark) .settingRow{
-    border-color: gray;
+
+.settingRow {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-top-width: 1px;
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+  border-left-width: 0px;
+  border-color: lightgray;
+  border-style: solid;
 }
-:global(.dark).modalContent{
-    background-color: #343434;
+.settingRow:first-child {
+  border-top-width: 0px;
 }
-:global(.dark) .modalHeader{
-    border-bottom-color: #e3b505;
-}
-:global(.dark) .modalFooter{
-    border-top-color: #e3b505;
-}
-:global(.dark) .closeButton{
-    color: white;
-}
+:global(.dark) .settingRow {
+  border-color: gray;
+}/*# sourceMappingURL=settingsMenu.module.css.map */

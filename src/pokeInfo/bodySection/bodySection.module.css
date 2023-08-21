@@ -1,0 +1,23 @@
+.bodySection {
+  flex: 1 1 0px;
+  margin: 2px;
+  flex-direction: column;
+}
+
+.sectionHeader {
+  padding: 2px 5px;
+  text-align: center;
+}
+
+.sectionInfo {
+  padding: 2px 10px;
+  text-align: center;
+  border-radius: 4px;
+  border-color: #EE6F63;
+  border-width: 1px;
+  border-style: solid;
+  flex: 1 1 0px;
+}
+:global(.dark) .sectionInfo {
+  border-color: #e3b505;
+}/*# sourceMappingURL=bodySection.module.css.map */

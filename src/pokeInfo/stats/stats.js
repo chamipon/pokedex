@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as pokeFuncs from "../../pokeFuncs.js";
-import styles from "./stats.module.css";
+import styles from "./stats.module.scss";
 import StatBar from "./statbar.js";
 import InfoContainer from "../../infoContainer/infoContainer.js";
 function Stats(props) {

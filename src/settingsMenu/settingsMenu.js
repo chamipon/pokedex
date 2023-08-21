@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
-import styles from "./settingsMenu.module.css";
+import styles from "./settingsMenu.module.scss";
 import Link from 'next/link'
 import SettingsContext from "../../contexts/settings";
 function SettingsMenu() {
@@ -37,7 +37,7 @@ function SettingsMenu() {
 	},[]) 
     return (
         <>
-        {settings && <div className={"modal fade " + styles.modal} id="settingsMenu" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+        {settings && <div className={"modal fade"} id="settingsMenu" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
             <div className="modal-md modal-dialog">
                 <div className={"modal-content " + styles.modalContent + " " + (settings.isDark && " dark")}>
                     <div className={"modal-header " + styles.modalHeader}>

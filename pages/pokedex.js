@@ -72,7 +72,7 @@ function Pokedex(props) {
 }
 
 export async function getStaticProps(context) { 
-    var pokeList = await fetch(`https://pokeapi.co/api/v2/pokemon-species/?limit=898`)
+    var pokeList = await fetch(`https://pokeapi.co/api/v2/pokemon-species/?limit=2000`)
 	pokeList = await pokeList.json()
 
     if (!pokeList) {

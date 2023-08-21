@@ -76,8 +76,12 @@ export async function getStaticProps({ params }) {
 		});
 	}
 
-    const evoRes = await fetch(specObj.evolution_chain.url)
-    var evoObj = await evoRes.json()
+    var evoObj = null;
+    if(specObj.evolution_chain != null){
+        const evoRes = await fetch(specObj.evolution_chain.url)
+        evoObj = await evoRes.json()
+    }
+
 	if (!pokeObjs) {
 		return {
 			notFound: true,

@@ -1,17 +1,20 @@
-.progress{
-    height: 2em;
-    font-size: 1rem;
-    background-color: transparent;
+.progress {
+  height: 2em;
+  font-size: 1rem;
+  background-color: transparent;
 }
-.fChance{
-    background-color: #EF9AA4;
-    color: #4D0A14;
+
+.fChance {
+  background-color: #EF9AA4;
+  color: #4D0A14;
 }
-.mChance{
-    background-color: #8BB9FD;
-    color: #132A53;
+
+.mChance {
+  background-color: #8BB9FD;
+  color: #132A53;
 }
-.genderless{
-    background-color: lightgray;
-    color: #3f3f3f;
-}
+
+.genderless {
+  background-color: lightgray;
+  color: #3f3f3f;
+}/*# sourceMappingURL=gender.module.css.map */

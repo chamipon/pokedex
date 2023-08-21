@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid, regular } from "@fortawesome/fontawesome-svg-core/import.macro";
 import Image from 'next/image'
 import Link from 'next/link'
-import styles from "./evoChain.module.css";
+import styles from "./evoChain.module.scss";
 function EvoChainArrow(props) {
 	const [EvoDetails, setEvoDetails] = useState(); //The evolution chain for the pokemon.
 	useEffect(() => {

@@ -1,30 +1,32 @@
-.progress{
-    height: 1.5rem;
+.progress {
+  height: 1.5rem;
+  font-size: 1rem;
+  margin: 5px 0;
+  background-color: transparent;
+}
+
+.progressBar {
+  background-color: #EE6F63;
+  color: black;
+  border-radius: 0 0.25rem 0.25rem 0;
+  text-align: left;
+  padding: 0 20px;
+}
+:global(.dark) .progressBar {
+  background-color: #e3b505;
+}
+
+.progressBarLabel {
+  background-color: #f7f7f7;
+  color: black;
+  font-size: 0.75rem;
+}
+@media (min-width: 767px) {
+  .progressBarLabel {
     font-size: 1rem;
-    margin: 5px 0;
-    background-color: transparent;
+  }
 }
-.progressBar{
-    background-color: #EE6F63;
-    color: black;
-    border-radius: 0 0.25rem 0.25rem 0;
-    text-align: left;
-    padding: 0 20px;
-}
-:global(.dark) .progressBar{
-    background-color: #e3b505;
-}
-.progressBarLabel{
-    background-color: #f7f7f7;
-    color: black;
-    font-size: 0.75rem;
-}
-@media (min-width: 767px){
-    .progressBarLabel{
-        font-size: 1rem;
-    }
-}
-:global(.dark) .progressBarLabel{
-    background-color: #343434;
-    color: white;
-}
+:global(.dark) .progressBarLabel {
+  background-color: #343434;
+  color: white;
+}/*# sourceMappingURL=stats.module.css.map */

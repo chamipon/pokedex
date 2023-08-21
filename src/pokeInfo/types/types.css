@@ -1,66 +1,61 @@
-
 .types .badge.normal {
-	background-color: #a8a878;
-	color: #191919;
+  background-color: #a8a878;
+  color: #191919;
 }
 .types .badge.fire {
-	color: #101010;
-	background-color: #f08030;
+  background-color: #f08030;
+  color: #101010;
 }
 .types .badge.fighting {
-	background-color: #b52d25;
+  background-color: #f08030;
 }
 .types .badge.water {
-	background-color: #3354a7;
+  background-color: #3354a7;
 }
 .types .badge.flying {
-	color: #111;
-	background-color: #a890f0;
+  color: #111;
+  background-color: #a890f0;
 }
 .types .badge.grass {
-	color: #282828;
-	background-color: #78c850;
+  color: #282828;
+  background-color: #78c850;
 }
 .types .badge.poison {
-	background-color: #8b368b;
+  background-color: #8b368b;
 }
 .types .badge.electric {
-	color: #3e3e3e;
-	background-color: #f8d030;
-}
-.types .badge.ground {
-	color: #333;
-	background-color: #e0c068;
+  color: #3e3e3e;
+  background-color: #f8d030;
 }
 .types .badge.psychic {
-	background-color: #AA0839;
+  background-color: #AA0839;
 }
 .types .badge.rock {
-	background-color: #b8a038;
-    color: #141414;
+  background-color: #b8a038;
+  color: #141414;
 }
 .types .badge.ice {
-    color: #3a3a3a;
-	background-color: #98d8d8;
+  background-color: #98d8d8;
+  color: #3a3a3a;
 }
 .types .badge.bug {
-    color: #232323;
-	background-color: #a8b820;
+  background-color: #a8b820;
+  color: #232323;
 }
 .types .badge.dragon {
-	background-color: #5B18F7;
+  background-color: #5B18F7;
 }
 .types .badge.ghost {
-	background-color: #644E88;
+  background-color: #644E88;
 }
 .types .badge.dark {
-	background-color: #705048;
+  background-color: #705048;
 }
 .types .badge.steel {
-    color:#2d2d2d;
-	background-color: #b8b8d0;
+  color: #2d2d2d;
+  background-color: #b8b8d0;
 }
 .types .badge.fairy {
-    color: #353535;
-	background-color: #f0b6bc;
-}
+  color: #353535;
+  background-color: #f0b6bc;
+}/*# sourceMappingURL=types.css.map */

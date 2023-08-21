@@ -3,16 +3,17 @@ import * as helpers from "./../helpers.js";
 import LazyLoad from 'react-lazyload';
 import SettingsContext from "../../contexts/settings.js";
 import Link from 'next/link'
+import styles from "./pokeCard.module.scss"
 function PokeCard(props) {
     const [settings] = useContext(SettingsContext)
 	return (
 		<div className="col-12 col-sm-6 col-lg-4">
-			<div className={`pokeCard card w-100`}>
+			<div className={styles.pokeCard + ` card w-100`}>
 				{props.name && (
 					<Link href={"/pokedex/" + props.name} role="button" >
-						<a className={'card-header'}>
-                            <LazyLoad className={"spriteLazy"} scrollContainer=".scrollContainer" offset={150} height={96} once >
-                                <div class={"pokeSprite"}>
+						<a className={styles.cardHeader + ' card-header'}>
+                            <LazyLoad className={styles.spriteLazy} scrollContainer=".scrollContainer" offset={150} height={96} once >
+                                <div class={styles.pokeSprite}>
                                     {settings.fetched && <img 
                                         src = {(settings.useArt 
                                             ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+props.number+".png"

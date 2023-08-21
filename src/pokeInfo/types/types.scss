@@ -1,0 +1,82 @@
+$normal-color: #a8a878;
+$fire-color: #f08030;
+$fighting-color: #b52d25;
+$water-color: #3354a7;
+$flying-color: #a890f0;
+$grass-color: #78c850;
+$poison-color: #8b368b;
+$electric-color: #f8d030;
+$psychic-color: #AA0839;
+$rock-color: #b8a038;
+$ice-color: #98d8d8;
+$bug-color: #a8b820;
+$dragon-color: #5B18F7;
+$ghost-color: #644E88;
+$dark-color: #705048;
+$steel-color: #b8b8d0;
+$fairy-color: #f0b6bc;
+.types{
+    .badge{
+        &.normal{
+            background-color: $normal-color;
+            color: #191919;
+        }
+        &.fire{
+            background-color: $fire-color;
+            color: #101010;
+        }
+        &.fighting{
+            background-color: $fire-color;
+        }
+        &.water{
+            background-color: $water-color;
+        }
+        &.flying{
+            color: #111;
+            background-color: $flying-color;
+        }
+        &.grass{
+            color: #282828;
+            background-color: $grass-color;
+        }
+        &.poison{
+            background-color: $poison-color;
+        }
+        &.electric{
+            color: #3e3e3e;
+            background-color: $electric-color;
+        }
+        &.psychic{
+            background-color: $psychic-color;
+        }
+        &.rock{
+            background-color: $rock-color;
+            color: #141414;
+        }
+        &.ice{
+            background-color: $ice-color;
+            color: #3a3a3a;
+        }
+        &.bug{
+            background-color: $bug-color;
+            color: #232323;
+        }
+        &.dragon{
+            background-color: $dragon-color;
+        }
+        &.ghost{
+            background-color: $ghost-color;
+        }
+        &.dark{
+            background-color: $dark-color;
+        }
+        &.steel{
+            color:#2d2d2d;
+            background-color: $steel-color;
+        }
+        &.fairy{
+            color: #353535;
+            background-color: $fairy-color;
+        }
+    }
+}

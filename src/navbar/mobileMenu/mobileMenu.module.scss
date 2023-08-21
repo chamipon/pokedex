@@ -1,0 +1,36 @@
+@import "../../../styles/_Variables.scss";
+.mobileMenu{
+    max-width: 75%;
+    
+    .mobileMenuItem{
+        background-color: transparent !important;
+        color: #212529;
+        border-color: $light-highlight;
+        a{
+            color: #212529;
+            text-decoration: none;
+        }
+        svg, img{
+            margin-right: 10px !important;
+        }
+
+        &:before{
+            content: "";
+            vertical-align: middle;
+            height: 100%;
+        }
+
+    }
+    *{
+        vertical-align: middle;
+    }
+    &:global(.dark){
+        background-color: $dark-secondary;
+        color: white;
+        .mobileMenuItem{    
+            
+            border-color: $dark-highlight;
+            color: white;
+        }
+    }
+}

@@ -1,19 +1,17 @@
-.infoContainer{
-    border-radius: 20px;
-    padding: 20px;
-    background-color: #dddddd;
-    margin: 10px 0;
+.infoContainer {
+  border-radius: 20px;
+  padding: 20px;
+  background-color: #dddddd;
+  margin: 10px 0;
 }
-
-:global(.dark) .infoContainer{
-    background-color: #222222;
+.infoContainer .infoContainer {
+  border: 1px solid #e3b505;
+  padding: 20px;
 }
-
-.infoContainer .infoContainer{
-    border: 1px solid #e3b505;
-    padding: 20px;
+.infoContainer .infoContainer h3 {
+  font-size: 1rem;
+  text-align: center;
 }
-.infoContainer .infoContainer h3{
-    font-size: 1rem;
-    text-align: center;
-}
+:global(.dark) .infoContainer {
+  background-color: #222222;
+}/*# sourceMappingURL=infoContainer.module.css.map */

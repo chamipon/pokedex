@@ -1,31 +1,31 @@
-.mobileMenu{
-    max-width: 75%;
+.mobileMenu {
+  max-width: 75%;
 }
-.mobileMenuItem{
-    background-color: transparent !important;
-    color: #212529;
-    border-color: #EE6F63;
+.mobileMenu .mobileMenuItem {
+  background-color: transparent !important;
+  color: #212529;
+  border-color: #EE6F63;
 }
-.mobileMenuItem a{
-    color: #212529;
-    text-decoration: none;
+.mobileMenu .mobileMenuItem a {
+  color: #212529;
+  text-decoration: none;
 }
-.mobileMenuItem svg, .mobileMenuItem img{
-    margin-right: 10px !important;
+.mobileMenu .mobileMenuItem svg, .mobileMenu .mobileMenuItem img {
+  margin-right: 10px !important;
 }
-.mobileMenuItem:before {
-    content: "";
-    vertical-align: middle;
-    height: 100%;
-  }
-  .mobileMenuItem *{
-      vertical-align: middle;
-  }
-:global(.dark).mobileMenu{
-    background-color: #222222;
-    color: white;
+.mobileMenu .mobileMenuItem:before {
+  content: "";
+  vertical-align: middle;
+  height: 100%;
 }
-:global(.dark) .mobileMenuItem{
-    border-color: #e3b505;
-    color: white;
+.mobileMenu * {
+  vertical-align: middle;
 }
+.mobileMenu:global(.dark) {
+  background-color: #222222;
+  color: white;
+}
+.mobileMenu:global(.dark) .mobileMenuItem {
+  border-color: #e3b505;
+  color: white;
+}/*# sourceMappingURL=mobileMenu.module.css.map */

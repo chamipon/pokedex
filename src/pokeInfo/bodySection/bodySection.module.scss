@@ -1,3 +1,5 @@
+@import "../../../styles/_Variables.scss";
+
 .bodySection {
 	flex: 1 1 0px;
 	margin: 2px;
@@ -11,12 +13,12 @@
 	padding: 2px 10px;
     text-align: center;
 	border-radius: 4px;
-	border-color: #EE6F63;
+	border-color: $light-highlight;
 	border-width: 1px;
 	border-style: solid;
 	flex: 1 1 0px;
-}
 
-.dark .sectionInfo{
-	border-color: #e3b505;
+    :global(.dark) &{
+        border-color: $dark-highlight;
+    }
 }

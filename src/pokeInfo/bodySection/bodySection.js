@@ -1,12 +1,13 @@
+import styles from "./bodySection.module.scss";
 function BodySection(props) {
 	return (
 		<>
 			{ (
-				<div className="bodySection d-flex">
-                    <div className="sectionHeader">
+				<div className={styles.bodySection + " d-flex"}>
+                    <div className={styles.sectionHeader}>
                         {props.header}                    
                     </div>
-                    <div className="sectionInfo">
+                    <div className={styles.sectionInfo}>
                         {props.info}
                     </div>
 				</div>

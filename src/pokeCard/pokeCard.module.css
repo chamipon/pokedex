@@ -1,0 +1,68 @@
+.pokeCard {
+  border-radius: 10px;
+  display: flex;
+  margin: 10px 0;
+  transition: 0.2s margin-top, 0.2s margin-bottom;
+  border: none;
+  min-height: 114px;
+}
+.pokeCard a {
+  color: #212529;
+  text-decoration: none;
+}
+:global(.dark) .pokeCard a {
+  color: white;
+}
+.pokeCard:hover {
+  box-shadow: 0px 0px 7px 0px rgb(150, 150, 150);
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.pokeCard .cardHeader {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  border-bottom: none;
+  border: 1px solid lightgrey;
+}
+:global(.dark) .pokeCard .cardHeader {
+  border-color: #222222 !important;
+  background-color: #222222 !important;
+}
+:global(.dark) .pokeCard {
+  background-color: #222222 !important;
+}
+
+.pokeSprite {
+  height: 96px;
+  width: 96px;
+}
+.pokeSprite img {
+  width: 100%;
+  height: 100%;
+}
+
+.pokeTitle {
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+.cardlazy > .lazyload-placeholder {
+  border: 1px solid lightgrey;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+.cardlazy > :global(.dark) .lazyload-placeholder {
+  border-color: #222222;
+  background-color: #222222;
+}
+.spriteLazy > :global(.dark) .lazyload-placeholder {
+  background-color: #1f1f1f;
+  height: 96px;
+  width: 96px;
+}
+.cardlazy > :global(.dark) .lazyload-placeholder {
+  border-color: #222222;
+  background-color: #222222;
+}/*# sourceMappingURL=pokeCard.module.css.map */
