@@ -162,11 +162,16 @@ export function getPokeGenus(species, lang){
  * @param {string} version - Optional, the game version you want the flavour text from. The most recent version is the default.
  */
  export function getPokeFlavText(species, lang, version){
-    var flavTextObj = species.flavor_text_entries.find(el => el.language.name == lang && el.version.name == version)
-    if (flavTextObj) return flavTextObj.flavor_text.replace(/\f/g, "")
+    if(species){
+        var flavTextObj = species.flavor_text_entries.find(el => el.language.name == lang && el.version.name == version)
+        if (flavTextObj) return flavTextObj.flavor_text.replace(/\f/g, "")
+        else{
+            var engObjs = species.flavor_text_entries.filter(el => el.language.name == "en");
+            return engObjs[engObjs.length - 1].flavor_text.replace(/\f/g, "")
+        }
+    }
     else{
-        var engObjs = species.flavor_text_entries.filter(el => el.language.name == "en");
-        return engObjs[engObjs.length - 1].flavor_text.replace(/\f/g, "")
+        return "Empty Flavour Text"
     }
 }
 
