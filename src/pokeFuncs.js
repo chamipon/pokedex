@@ -176,17 +176,22 @@ export function getPokeGenus(species, lang){
 }
 
 /**
- * Used to grab the flavour text of a pokemon.
+ * Used to grab the flavour text of an item.
  * @param {itemObj} item - The item object.
  * @param {string} lang - Optional, the language of flavour text you want returned. English is default.
  * @param {string} versiongroup - Optional, the version group you want the flavour text from. The most recent version is the default.
  */
  export function getItemFlavText(item, lang, versiongroup){
-    var flavTextObj = item.flavor_text_entries.find(el => el.language.name == lang && el.version_group.name == versiongroup)
-    if (flavTextObj) return flavTextObj.text.replace(/\f/g, "")
+    if(item != null){
+        var flavTextObj = item.flavor_text_entries.find(el => el.language.name == lang && el.version_group.name == versiongroup)
+        if (flavTextObj) return flavTextObj.text.replace(/\f/g, "")
+        else{
+            var engObjs = item.flavor_text_entries.filter(el => el.language.name == "en");
+            return engObjs[engObjs.length - 1].text.replace(/\f/g, "")
+        }
+    }
     else{
-        var engObjs = item.flavor_text_entries.filter(el => el.language.name == "en");
-        return engObjs[engObjs.length - 1].text.replace(/\f/g, "")
+        return "Empty Flavour Text"
     }
 }
 
