@@ -162,7 +162,7 @@ export function getPokeGenus(species, lang){
  * @param {string} version - Optional, the game version you want the flavour text from. The most recent version is the default.
  */
  export function getPokeFlavText(species, lang, version){
-    if(species != null){
+    try{
         var flavTextObj = species.flavor_text_entries.find(el => el.language.name == lang && el.version.name == version)
         if (flavTextObj) return flavTextObj.flavor_text.replace(/\f/g, "")
         else{
@@ -170,7 +170,7 @@ export function getPokeGenus(species, lang){
             return engObjs[engObjs.length - 1].flavor_text.replace(/\f/g, "")
         }
     }
-    else{
+    catch{
         return "Empty Flavour Text"
     }
 }
@@ -182,7 +182,7 @@ export function getPokeGenus(species, lang){
  * @param {string} versiongroup - Optional, the version group you want the flavour text from. The most recent version is the default.
  */
  export function getItemFlavText(item, lang, versiongroup){
-    if(item != null){
+    try{
         var flavTextObj = item.flavor_text_entries.find(el => el.language.name == lang && el.version_group.name == versiongroup)
         if (flavTextObj) return flavTextObj.text.replace(/\f/g, "")
         else{
@@ -190,7 +190,7 @@ export function getPokeGenus(species, lang){
             return engObjs[engObjs.length - 1].text.replace(/\f/g, "")
         }
     }
-    else{
+    catch{
         return "Empty Flavour Text"
     }
 }
