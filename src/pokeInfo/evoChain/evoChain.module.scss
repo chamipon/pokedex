@@ -1,4 +1,4 @@
-@import "../../../styles/_Variables.scss";
+
 .evoChain{
     display: flex;
     flex-direction: column;
@@ -22,15 +22,15 @@
     }
 }
 .evoColImg{
-    border: 1px $light-highlight solid;
+    border: 1px var(--clr-highlight) solid;
     border-radius: 10px;
     padding: 10px;
     margin: 2px;
     width: 118px;
     margin: auto;
     :global(.dark) &{
-        /* border-color: $dark-secondary; */
-        border-color: $dark-highlight;
+        /* border-color: var(--clr-secondary); */
+        border-color: var(--clr-highlight);
     }
 }
 .EvoChainArrow{

@@ -1,4 +1,4 @@
-@import "../../styles/_Variables.scss";
+
 .pokeCard {
 	border-radius: 10px;
 	display: flex;
@@ -25,12 +25,12 @@
         border-bottom: none;
         border: 1px solid lightgrey;
         :global(.dark) &{
-            border-color: $dark-secondary !important; 
-            background-color: $dark-secondary !important;
+            border-color: var(--clr-secondary) !important; 
+            background-color: var(--clr-secondary) !important;
         }
     }
     :global(.dark) &{
-        background-color: $dark-secondary !important;
+        background-color: var(--clr-secondary) !important;
     }
 }
 
@@ -56,8 +56,8 @@
     }
     :global(.dark) &{
         .cardlazy>&{
-            border-color: $dark-secondary ;
-            background-color: $dark-secondary;
+            border-color: var(--clr-secondary) ;
+            background-color: var(--clr-secondary);
         }
         .spriteLazy>&{
             background-color: #1f1f1f;
@@ -65,8 +65,8 @@
             width: 96px;
         }
         .cardlazy>&{
-            border-color: $dark-secondary ;
-            background-color: $dark-secondary;
+            border-color: var(--clr-secondary) ;
+            background-color: var(--clr-secondary);
         }
     }
 }

@@ -1,11 +1,11 @@
-@import "../../../styles/_Variables.scss";
+
 
 .image{
     max-width: 200px;
     width: 100%;
 }
 .imageContainer{
-    border: 1px $light-highlight solid;
+    border: 1px var(--clr-highlight) solid;
     border-radius: 10px;
     padding: 10px;
     margin: 2px;
@@ -16,7 +16,7 @@
     max-width: 100%;
     
     &.dark{
-        border-color: $dark-highlight
+        border-color: var(--clr-highlight)
     }
 }
 
@@ -31,7 +31,7 @@
     box-shadow: 1px 1px 5px 0px #959595;
     &:disabled{
         background-color: #cccccc;
-        border-color: $light-highlight;
+        border-color: var(--clr-highlight);
         box-shadow: 0px 0px 0px 0px transparent;
     }
     &:not([disabled]):hover{
@@ -39,16 +39,16 @@
     }
     
     &.dark{
-        background-color: $dark-primary;
+        background-color: var(--clr-primary);
         border-color: #1a1a1a;
         box-shadow: 1px 1px 5px 0px #1f1f1f;
         &:disabled{
-            background-color: $dark-secondary;
-            border-color: $dark-highlight;
+            background-color: var(--clr-secondary);
+            border-color: var(--clr-highlight);
             box-shadow: transparent;
         }
         &:not([disabled]):hover{
-            background-color: $dark-secondary; 
+            background-color: var(--clr-secondary); 
         }
     }
 }

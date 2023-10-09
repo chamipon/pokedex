@@ -35,7 +35,7 @@
   margin: auto;
 }
 :global(.dark) .evoColImg {
-  /* border-color: $dark-secondary; */
+  /* border-color: var(--clr-secondary); */
   border-color: #e3b505;
 }
 

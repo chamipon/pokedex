@@ -9,7 +9,7 @@
 	border: none;
 	min-height: 48px;
     :global(.dark) &{
-        background-color: $dark-secondary !important;
+        background-color: var(--clr-secondary) !important;
         a{
             color: white;
             text-decoration: none;
@@ -34,8 +34,8 @@
 	border: 1px solid lightgrey;
 
     :global(.dark) &{
-        border-color: $dark-secondary !important; 
-        background-color: $dark-secondary !important;
+        border-color: var(--clr-secondary) !important; 
+        background-color: var(--clr-secondary) !important;
     }
 }
 .cardTitle{
@@ -47,6 +47,6 @@
 	width: 30px;
 }
 :global(.dark) .cardlazy>.lazyload-placeholder{
-	border-color: $dark-secondary ;
-	background-color: $dark-secondary;
+	border-color: var(--clr-secondary) ;
+	background-color: var(--clr-secondary);
 }

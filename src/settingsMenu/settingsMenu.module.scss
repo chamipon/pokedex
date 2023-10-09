@@ -1,20 +1,20 @@
-@import "../../styles/_Variables.scss";
+
 
 .modalHeader{
-    border-bottom-color: $light-highlight;
+    border-bottom-color: var(--clr-highlight);
     :global(.dark) &{
-        border-bottom-color: $dark-highlight;
+        border-bottom-color: var(--clr-highlight);
     }
 }
 .modalFooter{
-    border-top-color: $light-highlight;
+    border-top-color: var(--clr-highlight);
     :global(.dark) &{
-        border-top-color: $dark-highlight;
+        border-top-color: var(--clr-highlight);
     }
 }
 .modalContent{
     &:global(.dark){
-        background-color: $dark-primary;
+        background-color: var(--clr-primary);
     }
 }
 .closeButton{

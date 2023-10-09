@@ -1,4 +1,4 @@
-@import "../../../styles/_Variables.scss";
+
 
 .bodySection {
 	flex: 1 1 0px;
@@ -13,12 +13,12 @@
 	padding: 2px 10px;
     text-align: center;
 	border-radius: 4px;
-	border-color: $light-highlight;
+	border-color: var(--clr-highlight);
 	border-width: 1px;
 	border-style: solid;
 	flex: 1 1 0px;
 
     :global(.dark) &{
-        border-color: $dark-highlight;
+        border-color: var(--clr-highlight);
     }
 }

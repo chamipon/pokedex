@@ -1,11 +1,10 @@
-@import "../../../styles/_Variables.scss";
 .mobileMenu{
     max-width: 75%;
     
     .mobileMenuItem{
         background-color: transparent !important;
         color: #212529;
-        border-color: $light-highlight;
+        border-color: var(--clr-highlight);
         a{
             color: #212529;
             text-decoration: none;
@@ -25,11 +24,11 @@
         vertical-align: middle;
     }
     &:global(.dark){
-        background-color: $dark-secondary;
+        background-color: var(--clr-secondary);
         color: white;
         .mobileMenuItem{    
             
-            border-color: $dark-highlight;
+            border-color: var(--clr-highlight);
             color: white;
         }
     }

@@ -2,10 +2,10 @@
 .infoContainer{
     border-radius: 20px;
     padding: 20px;
-    background-color: $light-secondary;
+    background-color: var(--clr-secondary);
     margin: 10px 0;
     & &{
-        border: 1px solid $dark-highlight;
+        border: 1px solid var(--clr-highlight);
         padding: 20px;
         h3{
             font-size: 1rem;
@@ -14,6 +14,6 @@
     }
 
     :global(.dark) &{
-        background-color: $dark-secondary;
+        background-color: var(--clr-secondary);
     }
 }

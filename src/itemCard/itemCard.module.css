@@ -7,7 +7,7 @@
   min-height: 48px;
 }
 :global(.dark) .itemCard {
-  background-color: $dark-secondary !important;
+  background-color: var(--clr-secondary) !important;
 }
 :global(.dark) .itemCard a {
   color: white;
@@ -32,8 +32,8 @@
   border: 1px solid lightgrey;
 }
 :global(.dark) .cardHeader {
-  border-color: $dark-secondary !important;
-  background-color: $dark-secondary !important;
+  border-color: var(--clr-secondary) !important;
+  background-color: var(--clr-secondary) !important;
 }
 
 .cardTitle {
@@ -47,6 +47,6 @@
 }
 
 :global(.dark) .cardlazy > .lazyload-placeholder {
-  border-color: $dark-secondary;
-  background-color: $dark-secondary;
+  border-color: var(--clr-secondary);
+  background-color: var(--clr-secondary);
 }/*# sourceMappingURL=itemCard.module.css.map */

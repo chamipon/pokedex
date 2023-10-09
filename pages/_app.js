@@ -14,6 +14,7 @@ import MobileMenu from "../src/navbar/mobileMenu/mobileMenu"
 import React, { useState, useContext } from "react";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css';
+import "../styles/_Variables.scss";
 config.autoAddCss = false
 
 function MyApp({ Component, pageProps }) {

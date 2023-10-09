@@ -1,4 +1,4 @@
-@import "../../../styles/_Variables.scss";
+
 
 .progress{
     height: 1.5rem;
@@ -7,14 +7,14 @@
     background-color: transparent;
 }
 .progressBar{
-    background-color: $light-highlight;
+    background-color: var(--clr-highlight);
     color: black;
     border-radius: 0 0.25rem 0.25rem 0;
     text-align: left;
     padding: 0 20px;
 
     :global(.dark) &{
-        background-color: $dark-highlight;
+        background-color: var(--clr-highlight);
     }
 }
 .progressBarLabel{
@@ -26,7 +26,7 @@
         font-size: 1rem;
     }
     :global(.dark) &{
-        background-color: $dark-primary;
+        background-color: var(--clr-primary);
         color: white;
     }
 }
