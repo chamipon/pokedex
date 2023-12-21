@@ -1,23 +1,21 @@
-html:root{
+.dark{
     --clr-dark-primary: #343434;
     --clr-dark-secondary: #222222;
     --clr-dark-highlight: #e3b505;
     --clr-dark-text: white;
 
-    --clr-light-primary: white;
-    --clr-light-secondary: #dddddd;
-    --clr-light-highlight: #EE6F63;
-    --clr-light-text: #212529;
-
-
-}
-.dark{
     --clr-primary: var(--clr-dark-primary);
     --clr-secondary: var(--clr-dark-secondary);
     --clr-highlight: var(--clr-dark-highlight);
     --clr-text: var(--clr-dark-text);
 }
 .light{
+
+    --clr-light-primary: white;
+    --clr-light-secondary: #dddddd;
+    --clr-light-highlight: #EE6F63;
+    --clr-light-text: #212529;
+
     --clr-primary: var(--clr-light-primary);
     --clr-secondary: var(--clr-light-secondary);
     --clr-highlight: var(--clr-light-highlight);
