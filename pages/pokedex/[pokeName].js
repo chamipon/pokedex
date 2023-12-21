@@ -37,7 +37,10 @@ export default function Pokemon(props) {
                     </h1>
                     <Genus species={props.specObj} />
                     <Types poke={currentForm.pokeObj} />
-
+                    <a href={"https://gamepress.gg/pokemongo/pokemon/" + props.specObj.id}>
+                    <img className={"pokeGoLink mt-2"} width={56} src="/pokemon-go-light.png"/>
+                    </a>        
+                    
                     <Forms defaultName={props.specObj.name} forms={props.pokeObjs} currentForm={currentForm} setCurrentForm={setCurrentForm}/>
                     <SpeciesInfo poke={currentForm.pokeObj} species={props.specObj} />
                     <Stats poke={currentForm.pokeObj} />
