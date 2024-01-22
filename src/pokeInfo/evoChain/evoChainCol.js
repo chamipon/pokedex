@@ -11,7 +11,7 @@ function EvoChainCol(props) {
 		<div className={styles.evoChainCol}>
 			{props.stageChain &&
 				props.stageChain.map((poke, i) => (
-					<div className="d-flex flex-md-row flex-column m-1">
+					<div key={"evochaincol" + i} className="d-flex flex-md-row flex-column m-1">
 						<div className="d-flex m-auto">
 							{poke && (
 								<EvoChainArrow

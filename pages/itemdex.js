@@ -65,6 +65,7 @@ function Itemdex(props) {
                             <ItemCard 
                                 name={item.name}
                                 displayName={helpers.deHyphenate(item.name)}
+                                key={item.name + i}
                             />
                         </>
 					))}

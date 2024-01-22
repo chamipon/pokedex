@@ -11,8 +11,8 @@
     margin: 2px;
     width: -moz-fit-content;
     width: fit-content;
-    flex: 1 1 0px;
     width: 220px;
+    aspect-ratio: 1;
     max-width: 100%;
     
     &.dark{

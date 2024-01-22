@@ -52,37 +52,37 @@ function SettingsMenu() {
                         <div className={styles.settingRow}>
                             <div className={"form-check form-switch form-check-inline " + styles.setting}>
                                 <input className="form-check-input" checked={settings.useArt}  onChange={() => updateSetting('useArt', !settings.useArt)} type="checkbox" role="switch" id="OfficialArt" />
-                                <label className="form-check-label" for="OfficialArt">Use Official Art</label>
+                                <label className="form-check-label" htmlFor="OfficialArt">Use Official Art</label>
                             </div>
                             <div className="form-check form-check-inline">
                                 <input className="form-check-input" checked={settings.showArt} onChange={() => updateSetting('showArt', !settings.showArt)}  type="checkbox" role="switch" id="showArt" />
-                                <label className="form-check-label" for="showArt">Quick Setting</label>
+                                <label className="form-check-label" htmlFor="showArt">Quick Setting</label>
                             </div>
                         </div>
                         <div className={styles.settingRow}>
                             <div className={"form-check form-switch form-check-inline " + styles.setting}>
                                 <input className="form-check-input" checked={settings.isShiny}  onChange={() => updateSetting('isShiny', !settings.isShiny)} type="checkbox" role="switch" id="ShinySprites" />
-                                <label className="form-check-label" for="ShinySprites">Shiny Sprites</label>
+                                <label className="form-check-label" htmlFor="ShinySprites">Shiny Sprites</label>
                             </div>
                             <div className="form-check form-check-inline">
                                 <input className="form-check-input" checked={settings.showShiny} onChange={() => updateSetting('showShiny', !settings.showShiny)}  type="checkbox" role="switch" id="showShiny" />
-                                <label className="form-check-label" for="showShiny">Quick Setting</label>
+                                <label className="form-check-label" htmlFor="showShiny">Quick Setting</label>
                             </div>
                         </div>
                         <div className={styles.settingRow}>
                             <div className={"form-check form-switch form-check-inline " + styles.setting}>
                                 <input className="form-check-input" checked={settings.isDark}  onChange={() => updateSetting('isDark', !settings.isDark)} type="checkbox" role="switch" id="DarkMode" />
-                                <label className="form-check-label" for="DarkMode">Dark Mode</label>
+                                <label className="form-check-label" htmlFor="DarkMode">Dark Mode</label>
                             </div>
                             <div className="form-check form-check-inline">
                                 <input className="form-check-input" checked={settings.showDark} onChange={() => updateSetting('showDark', !settings.showDark)}  type="checkbox" role="switch" id="showDark" />
-                                <label className="form-check-label" for="showDark">Quick Setting</label>
+                                <label className="form-check-label" htmlFor="showDark">Quick Setting</label>
                             </div>
                         </div>
                         <div className={styles.settingRow}>
                             <div className={"form-check form-switch form-check-inline " + styles.setting}>
                                 <input className="form-check-input" checked={settings.goLink}  onChange={() => updateSetting('goLink', !settings.goLink)} type="checkbox" role="switch" id="GoLink" />
-                                <label className="form-check-label" for="GoLink">Pokemon Go Link</label>
+                                <label className="form-check-label" htmlFor="GoLink">Pokemon Go Link</label>
                             </div>
                         </div>
                         <div className={styles.settingRow}>
