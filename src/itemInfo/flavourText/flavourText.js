@@ -10,7 +10,7 @@ function FlavourText(props) {
         }
     }, [settings.language, props.itemObj]);
 	return (
-        <div class="flavourText">
+        <div className="flavourText">
             {displayText}
         </div>        
 	);

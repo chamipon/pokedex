@@ -33,7 +33,7 @@ function Navbar({showInstall, setShowInstall}) {
                     </div>
                     <Link href="/itemdex">
                         <button className={styles.navbaritem + " d-md-flex d-none"}>
-                            <FontAwesomeIcon icon={solid('backpack')} size="xl" />
+                            <FontAwesomeIcon icon={solid('backpack')} size="lg" />
                         </button>
                     </Link>
                     <button data-bs-toggle="modal" data-bs-target="#settingsMenu" className={styles.navbaritem + " d-md-flex d-none"}>
@@ -44,24 +44,24 @@ function Navbar({showInstall, setShowInstall}) {
                 {settings.fetched && 
                     <> 
                         {settings.showShiny && <button onClick={() => updateSetting('isShiny', !settings.isShiny)} className={styles.navbaritem + " d-flex"}>
-                            {<FontAwesomeIcon icon={settings.isShiny ? solid('sparkles') : regular('sparkles')} size="xl"/>}
+                            {<FontAwesomeIcon icon={settings.isShiny ? solid('sparkles') : regular('sparkles')} size="lg"/>}
                         </button>}
                         {settings.showDark && <button onClick={() => updateSetting('isDark', !settings.isDark)} className={styles.navbaritem + " d-flex"}>
-                            {<FontAwesomeIcon icon={settings.isDark ? solid('moon') : solid('sun')} size="xl" />}
+                            {<FontAwesomeIcon icon={settings.isDark ? solid('moon') : solid('sun')} size="lg" />}
                         </button>}
                         {settings.showArt && <button onClick={() => updateSetting('useArt', !settings.useArt)} className={styles.navbaritem + " d-flex"}>
-                            {<FontAwesomeIcon icon={settings.useArt ? solid('toggle-on') : solid('toggle-off')} size="xl" />}
+                            {<FontAwesomeIcon icon={settings.useArt ? solid('toggle-on') : solid('toggle-off')} size="lg" />}
                         </button>}
                     </>
                 }
 
             {showInstall && 
                 <button onClick={() => installable.installButtonClick(setShowInstall)} id="installButton" className={styles.navbaritem + " d-flex"}>
-                    <FontAwesomeIcon icon={solid('download')} size="xl"/>
+                    <FontAwesomeIcon icon={solid('download')} size="lg"/>
                 </button>
             }
             <button data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" className={styles.navbaritem + " d-flex d-md-none"}>
-                <FontAwesomeIcon icon={solid('bars')} size="xl"/>
+                <FontAwesomeIcon icon={solid('bars')} size="lg"/>
             </button>
 			</div>
 		</nav>

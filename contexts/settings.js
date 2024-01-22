@@ -15,6 +15,7 @@ export const SettingsProvider = ({ children }) => {
         showArt: false,
         language: "en",
         version: "sword",
+        goLink: false,
         fetched: false
     }, () => 1); 
     async function updateSetting(setting, value){

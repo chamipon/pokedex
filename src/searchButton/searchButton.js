@@ -14,7 +14,7 @@ function SearchButton({setSearchParams, searchParams}) {
 	},[])
     return (
         <div className={styles.searchContainer + " d-flex flex-row"}>
-            <input ref={searchBar}  onChange={(e) => {setSearchParams(e.target.value)}} className={(searchOpen ? '' : styles.closed) + " " + styles.searchbar +  " form-control"} type="search" placeholder="Search" aria-label="Search" size="xl"/>
+            <input ref={searchBar}  onChange={(e) => {setSearchParams(e.target.value)}} className={(searchOpen ? '' : styles.closed) + " " + styles.searchbar +  " form-control"} type="search" placeholder="Search" aria-label="Search" size="lg"/>
             <button onClick={(e) => {toggleSearchBar()}} className={styles.searchButton + " d-flex"}>
                 {searchOpen ? <FontAwesomeIcon className="m-auto" icon={regular('xmark')} size="lg"/> : <FontAwesomeIcon className="m-auto" icon={solid('magnifying-glass')} size="lg"/> }
             </button>

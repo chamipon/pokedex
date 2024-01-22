@@ -10,7 +10,7 @@ function FlavourText(props) {
         }
     }, [settings.language, settings.version, props.species]);
 	return (
-        <div class="flavourText w-md-50 pe-md-2">
+        <div className="flavourText w-md-50 pe-md-2">
             <h3 className="text-center fs-6">Pokédex Entry</h3>
             {displayText}
         </div>        

@@ -26,10 +26,10 @@ function Stats(props) {
                     </div>  
                 } 
                 <div className="btn-group mt-2" role="group" aria-label="Basic example"> 
-                    <input onClick={() => setDisplayMax(false)} type="radio" className="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked={!displayMax}/>
+                    <input onClick={() => setDisplayMax(false)} type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" defaultChecked={!displayMax}/>
                     <label className="btn btn-outline-secondary" for="btnradio1">Base</label>
 
-                    <input onClick={() => setDisplayMax(true)} type="radio" className="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked={displayMax}/>
+                    <input onClick={() => setDisplayMax(true)} type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off" defaultChecked={displayMax}/>
                     <label className="btn btn-outline-secondary" for="btnradio2">Max</label>
                 </div>
             </InfoContainer>

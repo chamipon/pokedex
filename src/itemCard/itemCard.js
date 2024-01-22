@@ -11,7 +11,7 @@ function ItemCard(props) {
 					<Link href={"/itemdex/" + props.name} role="button" >
 						<a className={"card-header " + styles.cardHeader}>
                             <LazyLoad className={styles.itemSprite} scrollContainer=".scrollContainer" offset={150} height={30} once >
-                                <div class={styles.itemSprite}>
+                                <div className={styles.itemSprite}>
                                     <img 
                                         src={getItemSprite(props.name)}
                                         alt={helpers.capitalize(props.name) + "Sprite"}

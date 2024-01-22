@@ -11,7 +11,7 @@ import premierPic from '../../../public/premier_ball.png'
 function MobileMenu({setSearchParams, showInstall, setShowInstall}) {
     const [settings] = useContext( SettingsContext ); 
     return (
-    <div className={ styles.mobileMenu  + " offcanvas offcanvas-end " + (settings.isDark && ' dark ')} tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+    <div className={ styles.mobileMenu  + " offcanvas offcanvas-end " + (settings.isDark && ' dark ')} tabIndex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
         <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="mobileMenuLabel">Ultradex</h5>
             <button type="button" className={(settings.isDark && ' btn-close-white ') + " btn-close text-reset"} data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -34,12 +34,12 @@ function MobileMenu({setSearchParams, showInstall, setShowInstall}) {
                 <Link href="/itemdex">
                     <a className={styles.mobileMenuItem + " list-group-item"}>
                         <div data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
-                            <FontAwesomeIcon icon={solid('backpack')} size="xl" /> Items
+                            <FontAwesomeIcon icon={solid('backpack')} size="lg" /> Items
                         </div>
                     </a>
                 </Link> 
                 <button className={styles.mobileMenuItem + " list-group-item text-start"} data-bs-toggle="modal" data-bs-target="#settingsMenu">
-                    <FontAwesomeIcon icon={solid('gear')} size="xl"/>Settings
+                    <FontAwesomeIcon icon={solid('gear')} size="lg"/>Settings
                 </button>
             </ul>
         </div>

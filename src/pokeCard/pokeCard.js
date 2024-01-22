@@ -13,7 +13,7 @@ function PokeCard(props) {
 					<Link href={"/pokedex/" + props.name} role="button" >
 						<a className={styles.cardHeader + ' card-header'}>
                             <LazyLoad className={styles.spriteLazy} scrollContainer=".scrollContainer" offset={150} height={96} once >
-                                <div class={styles.pokeSprite}>
+                                <div className={styles.pokeSprite}>
                                     {settings.fetched && <img 
                                         src = {(settings.useArt 
                                             ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+props.number+".png"
