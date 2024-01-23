@@ -1,7 +1,10 @@
 .navbar{
     --background-color: var(--clr-secondary);
     --button-background-color: var(--clr-primary);
+    --button-background-color-hover: hsl(var(--clr-primary-h),var(--clr-primary-s),calc(var(--clr-primary-l) + 10%));
+    --button-shadow-color: rgb(100 100 100);
     --icon-color: var(--clr-text);
+
     height: 54px;
     width: 100%;    
     background-color: var(--background-color);
@@ -31,15 +34,10 @@
     }
 
     &:hover{
-        background-color: var(--clr-secondary);
-        border-color: var(--clr-secondary);
+        background-color: var(--button-background-color-hover);
+        border-color: var(--button-background-color-hover);
         border-radius: 5px;
-        box-shadow: 0px 0px 7px 0px rgb(100 100 100);
-
-        :global(.dark) &{
-            background-color: #5a5a5a;
-            border-color: #5a5a5a;  
-        }
+        box-shadow: 0px 0px 7px 0px var(--button-shadow-color);
     }
     @media (min-width: 767px){
         margin: 5px 0;
