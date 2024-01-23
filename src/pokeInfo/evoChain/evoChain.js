@@ -15,19 +15,22 @@ function EvoChain(props) {
 		fetchData();
 	}, []);
 	return (
-        <InfoContainer>
-            <h3>Evolution Chain</h3>
-            {(evoChain && evoChain.length>1) && <div className={styles.evoChain}>
-                    {evoChain.map((chain, i) => (
-                        <EvoChainCol
-                            isShiny={props.isShiny}
-                            key={"col" + i}
-                            stageChain={chain}
-                        />
-                    ))}
-            </div>
+        <>
+            {(evoChain && evoChain.length>1) &&
+                <InfoContainer>
+                    <h3>Evolution Chain</h3>
+                    <div className={styles.evoChain}>
+                            {evoChain.map((chain, i) => (
+                                <EvoChainCol
+                                    isShiny={props.isShiny}
+                                    key={"col" + i}
+                                    stageChain={chain}
+                                />
+                            ))}
+                    </div>
+                </InfoContainer>
             }
-        </InfoContainer>
+        </>
 	);
 	function getEvoChain(chainArray, chain, depth) {
 		depth++; //Keep track of how deep in the evo tree we are
