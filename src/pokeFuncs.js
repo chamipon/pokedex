@@ -1,5 +1,6 @@
 import { deHyphenate } from "./helpers";
-
+export const MAX_BASE_STAT = 255;
+export const MAX_MAX_STAT = 714;
 //Takes in poke json object, returns formatted poke name
 export function getPokeName(poke){
     var name = poke.name;
@@ -26,10 +27,9 @@ export function getPokeBaseStats(poke, stat){
     var stats = poke.stats;
     var baseStats={}
     var i;
-    var maxstat ={name: '', stat: 0};
+    var maxstat = MAX_BASE_STAT;
     for (i = 0; i< stats.length;i++){
         baseStats[stats[i].stat.name] = stats[i].base_stat
-        if(stats[i].base_stat > maxstat.stat) maxstat = {name: stats[i].stat.name, stat: stats[i].base_stat}
     }   
     baseStats["length"] = ++i;
     baseStats["max"] = maxstat;
@@ -42,13 +42,10 @@ export function getPokeMaxStats(poke, stat){
     var stats = poke.stats;
     var maxStats={}
     var i;
-    var maxstat ={name: '', stat: 0};
+    var maxstat = MAX_MAX_STAT;
     for (i = 0; i< stats.length;i++){
         var currStat = calcPokeMaxStat(stats[i].base_stat, stats[i].stat.name == "hp");
-        
         maxStats[stats[i].stat.name] = currStat
-        
-        if(currStat > maxstat.stat) maxstat = {name: stats[i].stat.name, stat: currStat}
     }   
     maxStats["length"] = ++i;
     maxStats["max"] = maxstat;

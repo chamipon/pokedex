@@ -17,12 +17,13 @@ function Stats(props) {
                 <h3>Stats</h3>
                 {stats && 
                     <div className="stats d-flex flex-column">    
-                        <StatBar stat={stats.hp} statRatio={stats.hp/stats.max.stat} label={"HP"} />
-                        <StatBar stat={stats.attack} statRatio={stats.attack/stats.max.stat} label={"Atk"} /> 
-                        <StatBar stat={stats.defense} statRatio={stats.defense/stats.max.stat} label={"Def"} /> 
-                        <StatBar stat={stats["special-attack"]} statRatio={stats["special-attack"]/stats.max.stat} label={"Sp. Atk"} /> 
-                        <StatBar stat={stats["special-defense"]} statRatio={stats["special-defense"]/stats.max.stat} label={"Sp. Def"} /> 
-                        <StatBar stat={stats.speed} statRatio={stats.speed/stats.max.stat} label={"Spd"} />  
+                        <StatBar stat={stats.hp} statRatio={stats.hp/stats.max} label={"HP"} />
+                        <StatBar stat={stats.attack} statRatio={stats.attack/stats.max} label={"Atk"} /> 
+                        <StatBar stat={stats.defense} statRatio={stats.defense/stats.max} label={"Def"} /> 
+                        <StatBar stat={stats["special-attack"]} statRatio={stats["special-attack"]/stats.max} label={"Sp. Atk"} /> 
+                        <StatBar stat={stats["special-defense"]} statRatio={stats["special-defense"]/stats.max} label={"Sp. Def"} /> 
+                        <StatBar stat={stats.speed} statRatio={stats.speed/stats.max} label={"Spd"} />  
+                        max stat: {stats.max}
                     </div>  
                 } 
                 <div className="btn-group mt-2" role="group" aria-label="Basic example"> 
