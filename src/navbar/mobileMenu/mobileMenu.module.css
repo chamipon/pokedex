@@ -4,7 +4,7 @@
 .mobileMenu .mobileMenuItem {
   background-color: transparent !important;
   color: #212529;
-  border-color: #EE6F63;
+  border-color: var(--clr-highlight);
 }
 .mobileMenu .mobileMenuItem a {
   color: #212529;
@@ -22,10 +22,10 @@
   vertical-align: middle;
 }
 .mobileMenu:global(.dark) {
-  background-color: #222222;
+  background-color: var(--clr-secondary);
   color: white;
 }
 .mobileMenu:global(.dark) .mobileMenuItem {
-  border-color: #e3b505;
+  border-color: var(--clr-highlight);
   color: white;
 }/*# sourceMappingURL=mobileMenu.module.css.map */

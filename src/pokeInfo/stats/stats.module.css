@@ -6,14 +6,14 @@
 }
 
 .progressBar {
-  background-color: #EE6F63;
+  background-color: var(--clr-highlight);
   color: black;
   border-radius: 0 0.25rem 0.25rem 0;
   text-align: left;
   padding: 0 20px;
 }
 :global(.dark) .progressBar {
-  background-color: #e3b505;
+  background-color: var(--clr-highlight);
 }
 
 .progressBarLabel {
@@ -27,6 +27,6 @@
   }
 }
 :global(.dark) .progressBarLabel {
-  background-color: #343434;
+  background-color: var(--clr-primary);
   color: white;
 }/*# sourceMappingURL=stats.module.css.map */

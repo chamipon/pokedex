@@ -41,7 +41,7 @@ function Itemdex(props) {
                 description="A list of pokemon items."
             />
 
-			<div id="scrollContainer" className={"scrollContainer " + (settings.isDark && " dark")}>	
+			<div id="scrollContainer" className={"scrollContainer "}>	
             <h1 className="sr-only">Items - Ultradex</h1>
 				<div id="PokeGrid" className="mx-auto container row">
 				<InfiniteScroll

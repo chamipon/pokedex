@@ -17,7 +17,7 @@ function Navbar({showInstall, setShowInstall}) {
 		installable.installableSetup(setShowInstall)
 	},[setShowInstall])
 	return (
-		<nav className={styles.navbar + " navbar fixed-bottom " + (settings.isDark && 'dark')}>
+		<nav className={styles.navbar + " navbar fixed-bottom "}>
 			<div className="h-100 w-100 d-flex flex-row flex-md-column">
 				<div className="mb-md-auto me-auto me-md-0 d-flex flex-row flex-md-column">
                     <div className="ms-md-auto d-flex me-2 me-md-auto">

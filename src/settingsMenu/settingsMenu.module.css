@@ -1,19 +1,19 @@
 .modalHeader {
-  border-bottom-color: #EE6F63;
+  border-bottom-color: var(--clr-highlight);
 }
 :global(.dark) .modalHeader {
-  border-bottom-color: #e3b505;
+  border-bottom-color: var(--clr-highlight);
 }
 
 .modalFooter {
-  border-top-color: #EE6F63;
+  border-top-color: var(--clr-highlight);
 }
 :global(.dark) .modalFooter {
-  border-top-color: #e3b505;
+  border-top-color: var(--clr-highlight);
 }
 
 .modalContent:global(.dark) {
-  background-color: #343434;
+  background-color: var(--clr-primary);
 }
 
 .closeButton {

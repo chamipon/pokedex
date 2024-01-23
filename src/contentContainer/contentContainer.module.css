@@ -23,20 +23,8 @@
   --clr-text: var(--clr-light-text);
 }
 
-.infoContainer {
-  border-radius: 20px;
-  padding: 20px;
-  background-color: var(--clr-secondary);
-  margin: 10px 0;
-}
-.infoContainer .infoContainer {
-  border: 1px solid var(--clr-highlight);
-  padding: 20px;
-}
-.infoContainer .infoContainer h3 {
-  font-size: 1rem;
-  text-align: center;
-}
-:global(.dark) .infoContainer {
-  background-color: var(--clr-secondary);
-}/*# sourceMappingURL=infoContainer.module.css.map */
+.contentContainer {
+  min-height: 100vh;
+  background-color: var(--clr-primary);
+  color: var(--clr-text);
+}/*# sourceMappingURL=contentContainer.module.css.map */

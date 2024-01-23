@@ -13,11 +13,11 @@
   padding: 2px 10px;
   text-align: center;
   border-radius: 4px;
-  border-color: #EE6F63;
+  border-color: var(--clr-highlight);
   border-width: 1px;
   border-style: solid;
   flex: 1 1 0px;
 }
 :global(.dark) .sectionInfo {
-  border-color: #e3b505;
+  border-color: var(--clr-highlight);
 }/*# sourceMappingURL=bodySection.module.css.map */

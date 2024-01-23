@@ -27,7 +27,7 @@
 }
 
 .evoColImg {
-  border: 1px #EE6F63 solid;
+  border: 1px var(--clr-highlight) solid;
   border-radius: 10px;
   padding: 10px;
   margin: 2px;
@@ -36,7 +36,7 @@
 }
 :global(.dark) .evoColImg {
   /* border-color: var(--clr-secondary); */
-  border-color: #e3b505;
+  border-color: var(--clr-highlight);
 }
 
 .EvoChainArrow {

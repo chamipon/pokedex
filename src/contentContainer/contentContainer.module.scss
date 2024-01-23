@@ -1,0 +1,6 @@
+@import "../../styles/Variables.scss";
+.contentContainer{
+    min-height: 100vh;
+    background-color: var(--clr-primary);
+    color: var(--clr-text);
+}

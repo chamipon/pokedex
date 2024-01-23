@@ -34,7 +34,7 @@ function App(props) {
 	}, [props.searchParams, renderedAmount, pokes]);
 	return (
 
-			<div id="scrollContainer" className={"scrollContainer " + (props.isDark && " dark")}>	
+			<div id="scrollContainer" className={"scrollContainer "}>	
 				<h1 className="text-center">Ultradex</h1>
 				<div id="PokeGrid" className="mx-auto container row">
 				<InfiniteScroll

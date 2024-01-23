@@ -11,6 +11,7 @@ import Head from 'next/head';
 import Navbar from "../src/navbar/navbar";
 import SettingsMenu from "../src/settingsMenu/settingsMenu";
 import MobileMenu from "../src/navbar/mobileMenu/mobileMenu"
+import ContentContainer from "../src/contentContainer/contentContainer"
 import React, { useState, useContext } from "react";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css';
@@ -55,10 +56,12 @@ return(
       </Head>
         <div >
             <SettingsProvider>
-                <Component style={{paddingLeft:'60px', paddingTop:'20px'}} searchParams={searchParams} setSearchParams={setSearchParams} {...pageProps} />
-                <Navbar showInstall={showInstall} setShowInstall={setShowInstall}/>
-                <SettingsMenu />
-                <MobileMenu />
+                <ContentContainer>
+                    <Component searchParams={searchParams} setSearchParams={setSearchParams} {...pageProps} />
+                    <Navbar showInstall={showInstall} setShowInstall={setShowInstall}/>
+                    <SettingsMenu />
+                    <MobileMenu />
+                </ContentContainer>
             </SettingsProvider>
         </div>
     </>

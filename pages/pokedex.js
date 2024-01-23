@@ -35,7 +35,7 @@ function Pokedex(props) {
 		if(pokes)setRenderPokes(pokes.filter(el => el.name.includes(props.searchParams.toLowerCase()) || (el.url.split('/')[6]).toString().startsWith(props.searchParams)).slice(0, renderedAmount))
 	}, [props.searchParams, renderedAmount, pokes]);
 	return (
-			<div id="scrollContainer" className={"scrollContainer " + (settings.isDark && " dark")}>	
+			<div id="scrollContainer" className={"scrollContainer "}>	
                 <h1 className="sr-only">Ultradex</h1>
 				<div id="PokeGrid" className="mx-auto container row">
 				<InfiniteScroll

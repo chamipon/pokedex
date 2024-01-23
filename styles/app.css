@@ -18,13 +18,7 @@ body{
         margin-bottom: 0px !important;
     }
 }
-.dark{
-    background-color: #343434;
-    color: white;
-}
-.dark h1{
-    color: white;
-}
+
 .flex-even{
     flex: 1 1 0px !important;
 }
