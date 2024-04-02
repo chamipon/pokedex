@@ -23,7 +23,6 @@ function Stats(props) {
                         <StatBar stat={stats["special-attack"]} statRatio={stats["special-attack"]/stats.max} label={"Sp. Atk"} /> 
                         <StatBar stat={stats["special-defense"]} statRatio={stats["special-defense"]/stats.max} label={"Sp. Def"} /> 
                         <StatBar stat={stats.speed} statRatio={stats.speed/stats.max} label={"Spd"} />  
-                        max stat: {stats.max}
                     </div>  
                 } 
                 <div className="btn-group mt-2" role="group" aria-label="Basic example"> 
