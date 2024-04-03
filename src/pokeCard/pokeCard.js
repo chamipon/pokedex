@@ -7,8 +7,8 @@ import styles from "./pokeCard.module.scss"
 function PokeCard(props) {
     const [settings] = useContext(SettingsContext)
 	return (
-		<div className="col-12 col-sm-6 col-lg-4">
-			<div className={styles.pokeCard + ` card w-100`}>
+		
+			<div style={props.style} className={styles.pokeCard + ` card`}>
 				{props.name && (
 					<Link href={"/pokedex/" + props.name} role="button" >
 						<a className={styles.cardHeader + ' card-header'}>
@@ -33,7 +33,7 @@ function PokeCard(props) {
 					</Link>
 				)}
 			</div>
-		</div>
+		
 	);	
 	
 }

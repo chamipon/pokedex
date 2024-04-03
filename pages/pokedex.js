@@ -3,6 +3,8 @@ import SearchButton from "../src/searchButton/searchButton";
 import {forceCheck} from 'react-lazyload';
 import React, { useState, useEffect, useContext } from "react";
 import InfiniteScroll  from "react-infinite-scroll-component";
+import { FixedSizeGrid as Grid } from "react-window";
+import AutoSizer from "react-virtualized-auto-sizer";
 import * as helpers from "../src/helpers.js";
 import * as pokeFuncs from "../src/pokeFuncs.js";
 import SettingsContext from "../contexts/settings";
@@ -34,37 +36,37 @@ function Pokedex(props) {
 		forceCheck()
 		if(pokes)setRenderPokes(pokes.filter(el => el.name.includes(props.searchParams.toLowerCase()) || (el.url.split('/')[6]).toString().startsWith(props.searchParams)).slice(0, renderedAmount))
 	}, [props.searchParams, renderedAmount, pokes]);
+
+    const Cell = ({ columnIndex, rowIndex, style }) =>{
+        return <PokeCard
+            key={pokes[columnIndex + 3 * rowIndex].name}
+            number={pokes[columnIndex + 3 * rowIndex].url.split('/')[6]}
+            name={pokes[columnIndex + 3 * rowIndex].name}
+            displayName={pokeFuncs.getPokeName(pokes[columnIndex + 3 * rowIndex])}
+            style={style}
+        />
+    }
 	return (
 			<div id="scrollContainer" className={"scrollContainer "}>	
                 <h1 className="sr-only">Ultradex</h1>
-				<div id="PokeGrid" className="mx-auto container row">
-                    {/* React Window */}
-				<InfiniteScroll
-							className="row"
-							dataLength={renderedAmount} // The length of the data that is CURRENTLY loaded. Not the length of all of the data available.
-							next={() => { //The function that is called when we reach the bottom of the scroll
-								var temp = renderedAmount + 20 * colCount; //Add 20 more rows of pokemon
-								if (temp >= pokes.length){ // Once we've reached all of the pokemon, stop loading more
-									temp = pokes.length;
-									setHasMore(false)
-								}
-								setRenderedAmount(temp);
-							}}
-							hasMore={hasMore} //If there is more info to load
-							loader={""} //Don't display a loader
-							scrollableTarget="scrollContainer" //The element that is scrolling
-						>
-						
-					{renderPokes && renderPokes.map((poke,i) => (				
-                        <PokeCard
-                            key={poke.name + i}
-                            number={poke.url.split('/')[6]}
-                            name={poke.name}
-                            displayName={pokeFuncs.getPokeName(poke)}
-                        />
-					))}
-				{(renderPokes.length === 0  && pokes) && <span className="text-center">No matches found!</span>}
-				</InfiniteScroll>
+				<div id="PokeGrid" className="mx-auto container h-100 row">
+                    <AutoSizer>
+                    {({height,width}) =>(
+                    		
+                        <Grid
+                        height={height}
+                        width={width}
+                        columnCount={colCount}
+                        rowCount={pokes.length/colCount}
+                        rowHeight={133}
+                        columnWidth={width/colCount}
+                    >
+                        {Cell} 
+                    </Grid>
+
+                    )}
+                </AutoSizer>
+                
 				</div>
                 <SearchButton searchParams={props.searchParams} setSearchParams={props.setSearchParams}></SearchButton>
 			</div>
