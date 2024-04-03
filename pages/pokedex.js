@@ -38,6 +38,7 @@ function Pokedex(props) {
 			<div id="scrollContainer" className={"scrollContainer "}>	
                 <h1 className="sr-only">Ultradex</h1>
 				<div id="PokeGrid" className="mx-auto container row">
+                    {/* React Window */}
 				<InfiniteScroll
 							className="row"
 							dataLength={renderedAmount} // The length of the data that is CURRENTLY loaded. Not the length of all of the data available.
