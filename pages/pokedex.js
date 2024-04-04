@@ -1,13 +1,12 @@
 import PokeCard from "../src/pokeCard/pokeCard";
 import SearchButton from "../src/searchButton/searchButton";
-import { forceCheck } from "react-lazyload";
 import React, { useState, useEffect, useContext } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { FixedSizeGrid as Grid } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import * as helpers from "../src/helpers.js";
 import * as pokeFuncs from "../src/pokeFuncs.js";
 import SettingsContext from "../contexts/settings";
+
 
 function Pokedex(props) {
 	const [pokes, setPokes] = useState(""); // Master list of every pokemon. Only contains name and url to species, fully populated at the start
@@ -76,21 +75,22 @@ function Pokedex(props) {
 
 	};
 	return (
-		<div id="scrollContainer" className={"scrollContainer "}>
+        <>
 			<h1 className="sr-only">Ultradex</h1>
-			<div id="PokeGrid" className="mx-auto container h-100 row">
-				<AutoSizer>
+			<div id="PokeGrid" className="vh-100">
+				<AutoSizer className="autosizer">
 					{({ height, width }) => (
-						<Grid
-							height={height}
-							width={width}
-							columnCount={colCount}
-							rowCount={renderPokes.length / colCount}
-							rowHeight={133}
-							columnWidth={width / colCount}
-						>
-							{Cell}
-						</Grid>
+                            <Grid
+                                className="grid"
+                                height={height}
+                                width={width}
+                                columnCount={colCount}
+                                rowCount={renderPokes.length / colCount}
+                                rowHeight={133}
+                                columnWidth={(width - 2* GUTTER_SIZE ) / colCount}
+                            >
+                                {Cell}
+                            </Grid>
 					)}
 				</AutoSizer>
 			</div>
@@ -98,7 +98,7 @@ function Pokedex(props) {
 				searchParams={props.searchParams}
 				setSearchParams={props.setSearchParams}
 			></SearchButton>
-		</div>
+        </>
 	);
 }
 
