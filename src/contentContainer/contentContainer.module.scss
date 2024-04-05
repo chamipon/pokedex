@@ -1,6 +1,16 @@
-@import "../../styles/Variables.scss";
 .contentContainer{
-    min-height: 100vh;
+    font-family: fot-udkakugo-large-pr6n, sans-serif !important;
+    font-style: normal;
+    font-weight: 500 !important;
+    margin-bottom:var(--navbar-size) !important;
     background-color: var(--clr-primary);
     color: var(--clr-text);
+    min-height: calc(100vh - var(--navbar-size));
+}
+@media (min-width: 767px){
+    .contentContainer{
+        margin-left: var(--navbar-size) !important;
+        margin-bottom: 0px !important;
+        min-height: 100vh;
+    }
 }

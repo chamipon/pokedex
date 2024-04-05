@@ -20,7 +20,6 @@
     "next-seo": "^4.28.1",
     "next-sitemap": "^1.9.9",
     "node": "^20.5.0",
-    "pokeapi-js-wrapper": "^1.2.0",
     "postcss": "^8.3.11",
     "react": "^17.0.2",
     "react-custom-scroll": "^7.0.0",

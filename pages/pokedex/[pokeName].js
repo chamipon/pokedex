@@ -10,6 +10,7 @@ import { useContext, useEffect, useState } from "react";
 import SpeciesInfo from "../../src/pokeInfo/speciesInfo/speciesInfo";
 import SettingsContext from "../../contexts/settings";
 import { NextSeo } from "next-seo";
+
 export default function Pokemon(props) {
 	const router = useRouter();
 	const [settings] = useContext(SettingsContext);
@@ -106,14 +107,12 @@ export default function Pokemon(props) {
 }
 // This function gets called at build time
 export async function getStaticProps({ params }) {
-	const Pokedex = require("pokeapi-js-wrapper");
-	const P = new Pokedex.Pokedex();
-
-	var specObj = await P.getPokemonSpeciesByName(params.pokeName);
-
-	var pokeObjs = [];
-
-	for (var form of specObj.varieties) {
+    var specObj = await fetch(`https://pokeapi.co/api/v2/pokemon-species/` + params.pokeName)
+	specObj = await specObj.json()
+    
+    var pokeObjs = [];
+	
+    for (var form of specObj.varieties) {
 		// Get the pokemon object for each form the pokemon species has
 		var temp = await fetch(form.pokemon.url);
 		var formPokeObj = await temp.json();
@@ -126,11 +125,11 @@ export async function getStaticProps({ params }) {
 		});
 	}
 
-	var evoObj = null;
-	if (specObj.evolution_chain != null) {
-		const evoRes = await fetch(specObj.evolution_chain.url);
-		evoObj = await evoRes.json();
-	}
+    var evoObj = null;
+    if(specObj.evolution_chain != null){
+        const evoRes = await fetch(specObj.evolution_chain.url)
+        evoObj = await evoRes.json()
+    }
 
 	if (!pokeObjs) {
 		return {
@@ -144,11 +143,10 @@ export async function getStaticProps({ params }) {
 
 //This is called at build time
 export async function getStaticPaths() {
-	const Pokedex = require("pokeapi-js-wrapper");
-	const P = new Pokedex.Pokedex();
 
 	//Get the list of poke species
-	const pokeList = await P.getPokemonSpeciesList();
+	let pokeList = await fetch(`https://pokeapi.co/api/v2/pokemon-species/`)
+	pokeList = await pokeList.json()
 	// Get the paths we want to pre-render
 	const paths = pokeList.results.map((poke) => ({
 		params: { pokeName: poke.name },

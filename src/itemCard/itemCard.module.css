@@ -1,3 +1,7 @@
+.variableContainer {
+  --navbar-size: 54px;
+}
+
 .dark {
   --clr-one-dark: hsl(0, 0%, 20%);
   --clr-one-dark-h: 0;

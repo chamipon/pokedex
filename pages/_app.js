@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
 return(
     <>
     <Head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <meta
@@ -37,21 +37,20 @@ return(
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
         />
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
         ></script>
         <script src="https://cdn.jsdelivr.net/npm/idb@7/build/umd.js"></script>
-        <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
         <link rel="icon" href="/favicon.png"/>
         <meta name="theme-color" content="#222222"/>
         <link rel="apple-touch-icon" href="/app_touch_icon.png"/>
         <link rel="manifest" href="/manifest.json"/>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
         
       </Head>
