@@ -31,7 +31,7 @@ export default function Pokemon(props) {
 		if (defaultForm) {
 			//When we visit a pokemon's page, set the target poke state so we can scroll back to where we were
             //Use default form becuase the list page only lists default forms
-			props.setTargetPoke(pokeFuncs.getPokeName(defaultForm));
+			props.setTargetPoke(defaultForm.name);
 		}
 	}, [defaultForm]);
 	return (
