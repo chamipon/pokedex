@@ -15,7 +15,7 @@ function PokeCard(props) {
                             
                                 <div className={styles.pokeSprite}>
                                     {settings.fetched && 
-                                        <Image 
+                                        <img 
                                             src = {(settings.useArt 
                                                 ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+props.number+".png"
                                                 : (settings.isShiny 

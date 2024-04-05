@@ -1,5 +1,6 @@
 
 .pokeCard {
+    --imagesize:96px;
 	border-radius: 10px;
 	display: flex;
 	margin: 10px 0;
@@ -32,42 +33,43 @@
     :global(.dark) &{
         background-color: var(--clr-secondary) !important;
     }
+    .pokeSprite{
+        height: var(--imagesize);
+        width: var(--imagesize);
+        img{
+            width: var(--imagesize);
+            height: var(--imagesize);
+        }
+    }
+    
+    .pokeTitle{
+        margin-top: 1rem;
+        font-size: 2rem;
+    }
+    .lazyload-placeholder{
+        .cardlazy>&{
+            border: 1px solid lightgrey;
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        :global(.dark) &{
+            .cardlazy>&{
+                border-color: var(--clr-secondary) ;
+                background-color: var(--clr-secondary);
+            }
+            .spriteLazy>&{
+                background-color: #1f1f1f;
+                height: 96px;
+                width: 96px;
+            }
+            .cardlazy>&{
+                border-color: var(--clr-secondary) ;
+                background-color: var(--clr-secondary);
+            }
+        }
+    }
 }
 
-.pokeSprite{
-	height: 96px;
-	width: 96px;
-    img{
-        width: 100%;
-        height: 100%;
-    }
-}
 
-.pokeTitle{
-	margin-top: 1rem;
-    font-size: 2rem;
-}
-.lazyload-placeholder{
-    .cardlazy>&{
-        border: 1px solid lightgrey;
-        background-color: #f7f7f7;
-        border-radius: 10px;
-        margin: 10px 0;
-    }
-    :global(.dark) &{
-        .cardlazy>&{
-            border-color: var(--clr-secondary) ;
-            background-color: var(--clr-secondary);
-        }
-        .spriteLazy>&{
-            background-color: #1f1f1f;
-            height: 96px;
-            width: 96px;
-        }
-        .cardlazy>&{
-            border-color: var(--clr-secondary) ;
-            background-color: var(--clr-secondary);
-        }
-    }
-}
 
