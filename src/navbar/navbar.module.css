@@ -4,7 +4,7 @@
   --button-background-color-hover: hsl(var(--clr-primary-h),var(--clr-primary-s),calc(var(--clr-primary-l) + 10%));
   --button-shadow-color: rgb(100 100 100);
   --icon-color: var(--clr-text);
-  height: 54px;
+  height: var(--navbar-size);
   width: 100%;
   background-color: var(--background-color);
   padding: 5px !important;
@@ -13,7 +13,7 @@
 @media (min-width: 767px) {
   .navbar {
     height: 100%;
-    width: 54px;
+    width: var(--navbar-size);
     box-shadow: 5px 0px 5px 0px var(--background-color);
   }
 }

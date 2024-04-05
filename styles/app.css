@@ -2,19 +2,18 @@ body{
     font-family: fot-udkakugo-large-pr6n, sans-serif !important;
     font-style: normal;
     font-weight: 500 !important;
-    margin-bottom:54px !important;
+    margin-bottom:var(--navbar-size) !important;
 }
-.scrollContainer{
-    overflow-y: scroll;
-    height: calc(100vh - 54px);
+#PokeGrid{
+    height: calc(100vh - var(--navbar-size));
 }
 
 @media (min-width: 767px){
-    .scrollContainer{
+    #PokeGrid{
         height: 100vh;
     }
     body{
-        margin-left: 54px !important;
+        margin-left: var(--navbar-size) !important;
         margin-bottom: 0px !important;
     }
 }
