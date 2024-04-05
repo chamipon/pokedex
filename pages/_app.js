@@ -21,6 +21,7 @@ config.autoAddCss = false
 function MyApp({ Component, pageProps }) {
     const [searchParams, setSearchParams] = useState(""); // The current search parameters
 	const [showInstall, setShowInstall] = useState(false)//Used to control if the install button is being displayed
+    const [targetPoke, setTargetPoke] = useState(""); // Pokedex number of the poke we want to scroll to
 return(
     <>
     <Head>
@@ -57,7 +58,7 @@ return(
         <div >
             <SettingsProvider>
                 <ContentContainer>
-                    <Component searchParams={searchParams} setSearchParams={setSearchParams} {...pageProps} />
+                    <Component targetPoke={targetPoke} setTargetPoke={setTargetPoke} searchParams={searchParams} setSearchParams={setSearchParams} {...pageProps} />
                     <Navbar showInstall={showInstall} setShowInstall={setShowInstall}/>
                     <SettingsMenu />
                     <MobileMenu />

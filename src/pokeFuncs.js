@@ -37,7 +37,11 @@ export function getPokeBaseStats(poke, stat){
     else return baseStats
     
 }
-
+//Uses a poke's species url, splits the string to grab the species' number.
+//Not a fan of this at all.
+export function getPokeNumberBySpeciesUrl(url){
+    return url.split("/")[6].toString()
+}
 export function getPokeMaxStats(poke, stat){
     var stats = poke.stats;
     var maxStats={}
