@@ -43,10 +43,9 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const Pokedex = require("pokeapi-js-wrapper")
-    const P = new Pokedex.Pokedex()
+    var itemList = await fetch(`https://pokeapi.co/api/v2/item/`)
+	itemList = await itemList.json()
 
-    const itemList = await P.getItemsList();
 	// Get the paths we want to pre-render based on posts
 	const paths = itemList.results.map((item) => ({
 		params: { itemName: item.name },
