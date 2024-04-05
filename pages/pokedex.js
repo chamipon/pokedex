@@ -85,7 +85,7 @@ function Pokedex(props) {
                                 height={height}
                                 width={width}
                                 columnCount={colCount}
-                                rowCount={renderPokes.length / colCount}
+                                rowCount={renderPokes.length / colCount + 1} // +1 rounds the number up 
                                 rowHeight={133}
                                 columnWidth={(width - 2* GUTTER_SIZE ) / colCount}
                             >
