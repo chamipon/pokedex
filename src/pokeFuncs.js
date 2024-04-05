@@ -151,9 +151,12 @@ export function getPokeIcon(poke){
  * @param {string} lang - Optional, the language of genus you want returned. English is default.
  */
 export function getPokeGenus(species, lang){
-    var genusObj = species.genera.find(el => el.language.name === lang)
-    if (genusObj) return genusObj.genus
-    else return species.genera.find(el => el.language.name === "en").genus
+    if(species.genera.length > 0){
+        var genusObj = species.genera.find(el => el.language.name === lang)
+        if (genusObj) return genusObj.genus
+        else return species.genera.find(el => el.language.name === "en").genus
+    }
+    else return "";
 }
 
 /**
@@ -172,7 +175,7 @@ export function getPokeGenus(species, lang){
         }
     }
     catch{
-        return "Empty Flavour Text"
+        return ""
     }
 }
 
