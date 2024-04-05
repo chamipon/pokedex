@@ -55,7 +55,7 @@ return(
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
         
       </Head>
-        <div >
+        <div className="variableContainer">
             <SettingsProvider>
                 <ContentContainer>
                     <Component targetPoke={targetPoke} setTargetPoke={setTargetPoke} searchParams={searchParams} setSearchParams={setSearchParams} {...pageProps} />
