@@ -74,10 +74,11 @@ export default function Pokemon(props) {
 							forms={props.specObj.varieties}
 							currentForm={props.pokeObj}
 						/>
+                        {settings.showSpeciesInfo && 
 						<SpeciesInfo
 							poke={props.pokeObj}
 							species={props.specObj}
-						/>
+						/>}
 						<Stats poke={props.pokeObj} />
 						<EvoChain
 							key={props.key}

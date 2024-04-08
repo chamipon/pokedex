@@ -22,6 +22,7 @@ function SettingsMenu() {
             var language = await fetchSetting("language", "en", db)
             var version = await fetchSetting("version", "sword", db)
             var goLink = await fetchSetting("goLink", false, db)
+            var showSpeciesInfo = await fetchSetting("showSpeciesInfo", true, db)
             setSettings({
                 isDark: isDark,
                 showDark: showDark,
@@ -32,6 +33,7 @@ function SettingsMenu() {
                 language: language,
                 version: version,
                 goLink: goLink,
+                showSpeciesInfo: showSpeciesInfo,
                 fetched: true
             })
         }
@@ -83,6 +85,12 @@ function SettingsMenu() {
                             <div className={"form-check form-switch form-check-inline " + styles.setting}>
                                 <input className="form-check-input" checked={settings.goLink}  onChange={() => updateSetting('goLink', !settings.goLink)} type="checkbox" role="switch" id="GoLink" />
                                 <label className="form-check-label" htmlFor="GoLink">Pokemon Go Link</label>
+                            </div>
+                        </div>
+                        <div className={styles.settingRow}>
+                            <div className={"form-check form-switch form-check-inline " + styles.setting}>
+                                <input className="form-check-input" checked={settings.showSpeciesInfo}  onChange={() => updateSetting('showSpeciesInfo', !settings.showSpeciesInfo)} type="checkbox" role="switch" id="GoLink" />
+                                <label className="form-check-label" htmlFor="showSpeciesInfo">Show Species Info</label>
                             </div>
                         </div>
                         <div className={styles.settingRow}>
