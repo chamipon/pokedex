@@ -17,9 +17,10 @@ export function getPokeName(poke){
     if(name.includes("jangmo-o")) return "Jangmo-o"
     if(name.includes("hakamo-o")) return "Hakamo-o"
     if(name.includes("porygon-z")) return "Porygon-Z"
+    if(name.includes("standard")) name.replace("standard", ""); //This one is for darmanitan
 
     //Replace all -'s with spaces, capitalize each word. Replace Gmax with Gigantamax
-    else return deHyphenate(name).replace("Gmax", "Gigantamax");
+    return deHyphenate(name).replace("Gmax", "Gigantamax");
 }
 //Takes in poke json, returns json of all base stats.
 //If a specific stat is entered, it will return just that stat's value.
@@ -140,10 +141,29 @@ export function getPokeSprite(poke, gen, shinyFlag, frontFlag, femaleFlag){
 
 //Takes in a pokemon object, returns the gen 7 sprite if available, otherwise returns the gen 8 sprite.
 export function getPokeIcon(poke){
-    if(poke.pokeObj.sprites.versions['generation-vii'].icons.front_default){
-        return poke.pokeObj.sprites.versions['generation-vii'].icons.front_default;
+    if(poke.sprites.versions['generation-vii'].icons.front_default){
+        return poke.sprites.versions['generation-vii'].icons.front_default;
     }
-    else return poke.pokeObj.sprites.versions['generation-viii'].icons.front_default
+    else return poke.sprites.versions['generation-viii'].icons.front_default
+}
+//Example iconUrl : https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/6-mega-y.png
+export function getVariantPokeIcon(iconUrl, variant, defaultForm){
+    let split = iconUrl.split("icons/")
+    let iconFile = split[1]; //6-mega-y.png
+    let iconNumber = iconFile.split(".")[0].split("-")[0]; //Pulls "6" out of 6-mega-y.png
+    let baseurl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/"
+
+    let defaultname = defaultForm.name;//charizard
+    let variantname = variant.name.replace(defaultname,""); //charizard-gmax -> -gmax
+
+    if(variantname.includes("mega")) //Mega evolution sprites are gen 7, all others gen 8   
+        baseurl += "generation-vii/icons/"
+    else
+        baseurl += "generation-viii/icons/"
+    //6 + -gmax + .png
+    let newIconFile = iconNumber + variantname + iconFile.slice(-4);
+
+    return baseurl + newIconFile
 }
 /**
  * Used to grab the genus of a pokemon.

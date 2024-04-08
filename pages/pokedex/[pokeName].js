@@ -14,32 +14,29 @@ import { NextSeo } from "next-seo";
 export default function Pokemon(props) {
 	const router = useRouter();
 	const [settings] = useContext(SettingsContext);
-	const [currentForm, setCurrentForm] = useState();
-	const [defaultForm, setDefaultForm] = useState();
-	useEffect(() => {
-		//On page load, set the currently rendered form to the default form.
-		if (props.pokeObjs) {
-			let defaultform = props.pokeObjs.find(
-				(form) => form.is_default == true
-			);
-			setDefaultForm(defaultform);
-			setCurrentForm(defaultform);
-		}
-	}, [props.pokeObjs]);
 
+    const [pokeObj, setPokeObj] = useState();
+    const [specObj, setSpecObj] = useState();
+    const [defaultForm, setDefaultForm] = useState();
 	useEffect(() => {
-		if (defaultForm) {
-			//When we visit a pokemon's page, set the target poke state so we can scroll back to where we were
-            //Use default form becuase the list page only lists default forms
-			props.setTargetPoke(defaultForm.name);
-		}
-	}, [defaultForm]);
+        //Store poke and species objects. set target poke to default form.
+		props.pokeObj && setPokeObj(props.pokeObj)
+        if(props.specObj){
+            console.log(props.specObj)
+            console.log(props.pokeObj)
+            setSpecObj(props.specObj);
+            let _defaultform = props.specObj.varieties.find(x => x.is_default).pokemon;
+            setDefaultForm(_defaultform);
+            props.setTargetPoke(_defaultform.name);
+        } 
+	}, [props.pokeObj, props.specObj]);
+
 	return (
 		<>
 			<NextSeo
 				title={
-					pokeFuncs.getPokeName(
-						props.pokeObjs.find((form) => form.is_default == true)
+					pokeObj && pokeFuncs.getPokeName(
+					    pokeObj
 					) + " - Ultradex"
 				}
 				description={pokeFuncs.getPokeFlavText(
@@ -49,20 +46,20 @@ export default function Pokemon(props) {
 				)}
 			/>
 			<div>
-				{currentForm && (
+				{pokeObj && (
 					<div className={"mx-auto container row"}>
 						<h1 className="pokeTitle">
 							#{props.specObj.id}{" "}
-							{currentForm.pokeObj &&
-								pokeFuncs.getPokeName(currentForm)}
+							{pokeObj &&
+								pokeFuncs.getPokeName(pokeObj)}
 						</h1>
 						<Genus species={props.specObj} />
-						<Types poke={currentForm.pokeObj} />
+						<Types poke={pokeObj.pokeObj} />
 						{settings.goLink && (
 							<a
 								title={
-									(currentForm.pokeObj &&
-										pokeFuncs.getPokeName(currentForm)) +
+									(pokeObj.pokeObj &&
+										pokeFuncs.getPokeName(pokeObj)) +
 									" - Pokemon Go"
 								}
 								href={
@@ -81,19 +78,20 @@ export default function Pokemon(props) {
 
 						<Forms
 							defaultName={props.specObj.name}
-							forms={props.pokeObjs}
-							currentForm={currentForm}
-							setCurrentForm={setCurrentForm}
+							forms={props.specObj.varieties}
+                            defaultForm={defaultForm}
+							currentForm={pokeObj}
+							setPokeObj={setPokeObj}
 						/>
 						<SpeciesInfo
-							poke={currentForm.pokeObj}
+							poke={pokeObj}
 							species={props.specObj}
 						/>
-						<Stats poke={currentForm.pokeObj} />
+						<Stats poke={pokeObj} />
 						<EvoChain
 							key={props.key}
 							specObj={props.specObj}
-							pokeObj={currentForm.pokeObj}
+							pokeObj={pokeObj}
 							pokeList={props.pokeList}
 							pokeListUpdater={props.pokeListUpdater}
 							evoObj={props.evoObj}
@@ -107,37 +105,42 @@ export default function Pokemon(props) {
 }
 // This function gets called at build time
 export async function getStaticProps({ params }) {
-    var specObj = await fetch(`https://pokeapi.co/api/v2/pokemon-species/` + params.pokeName)
-	specObj = await specObj.json()
+
+    //Pokemon object using url param
+    var pokeObj = await fetch(`https://pokeapi.co/api/v2/pokemon/` + params.pokeName)
+	pokeObj = await pokeObj.json()
     
-    var pokeObjs = [];
+    //Fetch the pokemon's species object
+    var specObj = await fetch(pokeObj.species.url);
+    specObj = await specObj.json()
 	
-    for (var form of specObj.varieties) {
-		// Get the pokemon object for each form the pokemon species has
-		var temp = await fetch(form.pokemon.url);
-		var formPokeObj = await temp.json();
+    // for (var form of specObj.varieties) {
+	// 	// Get the pokemon object for each form the pokemon species has
+	// 	var temp = await fetch(form.pokemon.url);
+	// 	var formPokeObj = await temp.json();
 
-		pokeObjs.push({
-			// Push each pokeObj to the array, with name and the default flag
-			pokeObj: formPokeObj,
-			name: form.pokemon.name,
-			is_default: form.is_default,
-		});
-	}
+	// 	pokeObjs.push({
+	// 		// Push each pokeObj to the array, with name and the default flag
+	// 		pokeObj: formPokeObj,
+	// 		name: form.pokemon.name,
+	// 		is_default: form.is_default,
+	// 	});
+	// }
 
+    //If the species has an evolution chain, pull that info as well.
     var evoObj = null;
     if(specObj.evolution_chain != null){
-        const evoRes = await fetch(specObj.evolution_chain.url)
-        evoObj = await evoRes.json()
+        var evoObj = await fetch(specObj.evolution_chain.url)
+        evoObj = await evoObj.json()
     }
 
-	if (!pokeObjs) {
+	if (!pokeObj) {
 		return {
 			notFound: true,
 		};
 	}
 	return {
-		props: { pokeObjs, specObj, evoObj }, // will be passed to the page component as props
+		props: { pokeObj, specObj, evoObj }, // will be passed to the page component as props
 	};
 }
 
@@ -145,7 +148,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
 
 	//Get the list of poke species
-	let pokeList = await fetch(`https://pokeapi.co/api/v2/pokemon-species/`)
+	let pokeList = await fetch(`https://pokeapi.co/api/v2/pokemon/`)
 	pokeList = await pokeList.json()
 	// Get the paths we want to pre-render
 	const paths = pokeList.results.map((poke) => ({
