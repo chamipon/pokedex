@@ -15,28 +15,21 @@ export default function Pokemon(props) {
 	const router = useRouter();
 	const [settings] = useContext(SettingsContext);
 
-    const [pokeObj, setPokeObj] = useState();
     const [specObj, setSpecObj] = useState();
-    const [defaultForm, setDefaultForm] = useState();
 	useEffect(() => {
-        //Store poke and species objects. set target poke to default form.
-		props.pokeObj && setPokeObj(props.pokeObj)
+        //Store pspecies objects. set target poke.
         if(props.specObj){
-            console.log(props.specObj)
-            console.log(props.pokeObj)
             setSpecObj(props.specObj);
-            let _defaultform = props.specObj.varieties.find(x => x.is_default).pokemon;
-            setDefaultForm(_defaultform);
-            props.setTargetPoke(_defaultform.name);
+            props.setTargetPoke(props.specObj.name);
         } 
-	}, [props.pokeObj, props.specObj]);
+	}, [props.specObj]);
 
 	return (
 		<>
 			<NextSeo
 				title={
-					pokeObj && pokeFuncs.getPokeName(
-					    pokeObj
+					props.pokeObj && pokeFuncs.getPokeName(
+					    props.pokeObj
 					) + " - Ultradex"
 				}
 				description={pokeFuncs.getPokeFlavText(
@@ -46,20 +39,20 @@ export default function Pokemon(props) {
 				)}
 			/>
 			<div>
-				{pokeObj && (
+				{props.pokeObj && (
 					<div className={"mx-auto container row"}>
 						<h1 className="pokeTitle">
 							#{props.specObj.id}{" "}
-							{pokeObj &&
-								pokeFuncs.getPokeName(pokeObj)}
+							{props.pokeObj &&
+								pokeFuncs.getPokeName(props.pokeObj)}
 						</h1>
 						<Genus species={props.specObj} />
-						<Types poke={pokeObj.pokeObj} />
+						<Types poke={props.pokeObj} />
 						{settings.goLink && (
 							<a
 								title={
-									(pokeObj.pokeObj &&
-										pokeFuncs.getPokeName(pokeObj)) +
+									(props.pokeObj &&
+										pokeFuncs.getPokeName(props.pokeObj)) +
 									" - Pokemon Go"
 								}
 								href={
@@ -79,19 +72,17 @@ export default function Pokemon(props) {
 						<Forms
 							defaultName={props.specObj.name}
 							forms={props.specObj.varieties}
-                            defaultForm={defaultForm}
-							currentForm={pokeObj}
-							setPokeObj={setPokeObj}
+							currentForm={props.pokeObj}
 						/>
 						<SpeciesInfo
-							poke={pokeObj}
+							poke={props.pokeObj}
 							species={props.specObj}
 						/>
-						<Stats poke={pokeObj} />
+						<Stats poke={props.pokeObj} />
 						<EvoChain
 							key={props.key}
 							specObj={props.specObj}
-							pokeObj={pokeObj}
+							pokeObj={props.pokeO}
 							pokeList={props.pokeList}
 							pokeListUpdater={props.pokeListUpdater}
 							evoObj={props.evoObj}

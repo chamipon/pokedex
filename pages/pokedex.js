@@ -25,9 +25,8 @@ function Pokedex(props) {
 	}, []);
 
 	useEffect(() => {
-        //Once we have our list of pokes, assign it to our states
+        //Once we have our list of pokes, assign it to our state
 		setPokes(props.pokeList.results);
-		setRenderPokes(props.pokeList.results); 
 	}, [props.pokeList]);
 
 	useEffect(() => {
@@ -64,7 +63,7 @@ function Pokedex(props) {
 				<PokeCard
 					key={renderPokes[i].name}
 					number={renderPokes[i].url.split("/")[6]}
-					name={renderPokes[i].name}
+					name={pokeFuncs.defaultFormUrlExceptions(renderPokes[i].name)}
 					displayName={pokeFuncs.getPokeName(renderPokes[i])}
 					style={{
 						...style,

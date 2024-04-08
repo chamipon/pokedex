@@ -17,10 +17,52 @@ export function getPokeName(poke){
     if(name.includes("jangmo-o")) return "Jangmo-o"
     if(name.includes("hakamo-o")) return "Hakamo-o"
     if(name.includes("porygon-z")) return "Porygon-Z"
-    if(name.includes("standard")) name.replace("standard", ""); //This one is for darmanitan
-
-    //Replace all -'s with spaces, capitalize each word. Replace Gmax with Gigantamax
-    return deHyphenate(name).replace("Gmax", "Gigantamax");
+    if(name.includes("morpeko-full-belly")) return "Morpeko"
+    if(name.includes("meloetta-aria")) return "Meloetta"
+    if(name.includes("eiscue-ice")) return "Eiscue"
+    if(name.includes("mimikyu-disguised")) return "Mimikyu"
+    if(name.includes("wishiwashi-solo")) return "Wishiwashi"
+    if(name.includes("standard")) name = name.replace("standard", ""); //This one is for darmanitan
+    if(name.includes("ordinary")) name = name.replace("ordinary", ""); //This one is for keldeo
+    //Move variant words to the start of the name instead of the end
+    if(name.includes("galar")) name = "Galarian " + name.replace("galar", "")
+    if(name.includes("alola")) name = "Alolan " + name.replace("alola", "")
+    if(name.includes("hisui")) name = "Hisuian " + name.replace("hisui", "")
+    if(name.includes("mega")) name = "Mega " + name.replace("mega", "")
+    if(name.includes("gmax")) name = "Gigantamax " + name.replace("gmax", "")
+    if(name.includes("eternamax")) name = "Eternamax " + name.replace("eternamax", "")
+    //Replace all -'s with spaces, capitalize each word
+    return deHyphenate(name);
+}
+export function defaultFormUrlExceptions(name){
+    if(name == "darmanitan") return "darmanitan-standard"
+    if(name == "basculin") return "basculin-red-striped"
+    if(name == "tornadus") return "tornadus-incarnate"
+    if(name == "thundurus") return "thundurus-incarnate"
+    if(name == "landorus") return "landorus-incarnate"
+    if(name == "keldeo") return "keldeo-ordinary"
+    if(name == "meloetta") return "meloetta-aria"
+    if(name == "meowstic") return "meowstic-male"
+    if(name == "urshifu") return "urshifu-single-strike"
+    if(name == "morpeko") return "morpeko-full-belly"
+    if(name == "indeedee") return "indeedee-male"
+    if(name == "eiscue") return "eiscue-ice"
+    if(name == "toxtricity") return "toxtricity-amped"
+    if(name == "mimikyu") return "mimikyu-disguised"
+    if(name == "minior") return "minior-red-meteor"
+    if(name == "wishiwashi") return "wishiwashi-solo"
+    if(name == "lycanroc") return "lycanroc-midday"
+    if(name == "oricorio") return "oricorio-baile"
+    if(name == "zygarde") return "zygarde-50"
+    if(name == "gourgeist") return "gourgeist-average"
+    if(name == "pumpkaboo") return "pumpkaboo-average"
+    if(name == "aegislash") return "aegislash-shield"
+    if(name == "shaymin") return "shaymin-land"
+    if(name == "giratina") return "giratina-altered"
+    if(name == "wormadam") return "wormadam-plant"
+    if(name == "deoxys") return "deoxys-normal"
+    
+    return name;
 }
 //Takes in poke json, returns json of all base stats.
 //If a specific stat is entered, it will return just that stat's value.

@@ -40,29 +40,26 @@ function Forms(props) {
 					{props.forms.length > 1 && (
 						<div className="d-flex flex-wrap flex-row mt-2">
 							{props.forms.map((form) => (
-								<a
-									key={form.pokemon.name}
-									className={
-										styles.formButton +
-										" " +
-										(settings.isDark && styles.dark)
-									}
-									disabled={
-										form.pokemon.name == props.currentForm.name
-											? true
-											: false
-									}
-									href={
-                                        "/pokedex/" + form.pokemon.name
-                                    }
-                                    //onClick={() => props.setCurrentForm(poke)}
-								>
-									{<img src={pokeFuncs.getVariantPokeIcon(
-                                        pokeFuncs.getPokeIcon(props.currentForm),
-                                        form.pokemon,
-                                        props.defaultForm
-                                    )} /> }
-								</a>
+                                form.pokemon.name != props.currentForm.name &&
+                                    <a
+                                        key={form.pokemon.name}
+                                        className={
+                                            styles.formButton +
+                                            " " +
+                                            (settings.isDark && styles.dark)
+                                        }
+                                        disabled={
+                                            form.pokemon.name == props.currentForm.name
+                                                ? true
+                                                : false
+                                        }
+                                        href={
+                                            "/pokedex/" + form.pokemon.name
+                                        }
+                                        //onClick={() => props.setCurrentForm(poke)}
+                                    >
+                                        
+                                    </a>
 							))}
 						</div>
 					)}
