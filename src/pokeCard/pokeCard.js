@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import * as helpers from "./../helpers.js";
+import * as pokeFuncs from "./../pokeFuncs.js";
 import SettingsContext from "../../contexts/settings.js";
 import Link from 'next/link'
 import Image from 'next/image';
@@ -17,7 +18,7 @@ function PokeCard(props) {
                                     {settings.fetched && 
                                         <img 
                                             src = {(settings.useArt 
-                                                ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+props.number+".png"
+                                                ? pokeFuncs.OFFICIAL_ART_BASE_URL +props.number+".png"
                                                 : (settings.isShiny 
                                                     ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+props.number+".png" 
                                                     : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+props.number+".png")

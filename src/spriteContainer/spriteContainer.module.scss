@@ -1,0 +1,12 @@
+.spriteContainer{
+    border: 1px var(--clr-highlight) solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 2px;
+    width: 118px;
+    margin: auto;
+    :global(.dark) &{
+        /* border-color: var(--clr-secondary); */
+        border-color: var(--clr-highlight);
+    }
+}

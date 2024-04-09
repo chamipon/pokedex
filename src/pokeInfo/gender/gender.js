@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import * as pokeFuncs from "../../pokeFuncs.js";
-import BodySection from "./../bodySection/bodySection";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import styles from "./gender.module.scss";

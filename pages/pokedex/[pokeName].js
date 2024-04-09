@@ -3,9 +3,11 @@ import EvoChain from "../../src/pokeInfo/evoChain/evoChain";
 import Stats from "../../src/pokeInfo/stats/stats";
 import Types from "../../src/pokeInfo/types/types";
 import Forms from "../../src/pokeInfo/forms/forms";
+import Spotlight from "../../src/pokeInfo/spotlight/spotlight";
 import * as pokeFuncs from "../../src/pokeFuncs.js";
 import { useContext, useEffect, useState } from "react";
 import SpeciesInfo from "../../src/pokeInfo/speciesInfo/speciesInfo";
+import SpriteContainer from "../../src/spriteContainer/spriteContainer";
 import SettingsContext from "../../contexts/settings";
 import { NextSeo } from "next-seo";
 
@@ -15,6 +17,7 @@ export default function Pokemon(props) {
 	useEffect(() => {
         //Store pspecies objects. set target poke.
         if(props.specObj){
+            console.log(props.specObj)
             props.setTargetPoke(props.specObj.name);
         } 
 	}, [props.specObj]);
@@ -66,9 +69,7 @@ export default function Pokemon(props) {
 							</a>
 						)}
 
-						<Forms
-							defaultName={props.specObj.name}
-							forms={props.specObj.varieties}
+						<Spotlight
 							currentForm={props.pokeObj}
 						/>
                         {settings.showSpeciesInfo && 
@@ -83,13 +84,18 @@ export default function Pokemon(props) {
                         <EvoChain
 							key={props.key}
 							specObj={props.specObj}
-							pokeObj={props.pokeO}
+							pokeObj={props.pokeObj}
 							pokeList={props.pokeList}
 							pokeListUpdater={props.pokeListUpdater}
 							evoObj={props.evoObj}
 							isShiny={settings.isShiny}
 						/>}
-
+                        <Forms
+                            forms={props.specObj.varieties}
+                        />
+                        <SpriteContainer
+                            poke={props.pokeObj}
+                        />
 					</div>
 				)}
 			</div>

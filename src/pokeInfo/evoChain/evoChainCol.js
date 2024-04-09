@@ -1,4 +1,5 @@
 import * as helpers from "./../../helpers.js";
+import * as pokeFuncs from "./../../pokeFuncs.js";
 import EvoChainArrow from "./evoChainArrow";
 import Link from 'next/link'
 import { useContext } from 'react';
@@ -27,7 +28,7 @@ function EvoChainCol(props) {
                                             title={"#" + poke.id + " " + helpers.capitalize(poke.name)}
                                             alt={helpers.capitalize(poke.name)}
                                             src = {(settings.useArt 
-                                                ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+poke.id+".png"
+                                                ? pokeFuncs.OFFICIAL_ART_BASE_URL +poke.id+".png"
                                                 : (settings.isShiny 
                                                     ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+poke.id+".png" 
                                                     : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+poke.id+".png")

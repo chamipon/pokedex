@@ -1,6 +1,7 @@
 import { deHyphenate } from "./helpers";
 export const MAX_BASE_STAT = 255;
 export const MAX_MAX_STAT = 714;
+export const OFFICIAL_ART_BASE_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
 //Takes in poke json object, returns formatted poke name
 export function getPokeName(poke){
     var name = poke.name;

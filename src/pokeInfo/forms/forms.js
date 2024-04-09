@@ -1,44 +1,25 @@
-import * as helpers from "../../helpers.js";
-import * as pokeFuncs from "../../pokeFuncs";
 import { useContext } from "react";
 import styles from "./forms.module.scss";
+import * as pokeFuncs from "../../../src/pokeFuncs.js";
 import SettingsContext from "../../../contexts/settings.js";
+import InfoContainer from "../../infoContainer/infoContainer"
+import SpriteContainer from "/src/spriteContainer/spriteContainer"
 function Forms(props) {
 	const [settings] = useContext(SettingsContext);
 	return (
 		<>  
-			{props.currentForm && props.forms && (
-				<div className="Forms d-flex flex-column align-items-center my-2">
-					<div
-						className={
-							styles.imageContainer +
-							" " +
-							(settings.isDark && styles.dark)
-						}
-					>
-						{settings.fetched && (
-							<img
-								className={styles.image}
-								src={
-									settings.useArt
-										? props.currentForm.sprites.other[
-												"official-artwork"
-										  ].front_default
-										: settings.isShiny
-										? props.currentForm.sprites.other.home
-												.front_shiny
-										: props.currentForm.sprites.other.home
-												.front_default
-								}
-								alt={
-									helpers.capitalize(props.currentForm.name) +
-									" Sprite"
-								}
-							/>
-						)}
-					</div>
-				</div>
-			)}
+        
+            <InfoContainer>
+                <h3>Forms</h3>
+                <div className="d-flex flex-row">
+                    {props.forms.map((form,i)=>(
+                        <SpriteContainer    
+                            pokeId={pokeFuncs.getPokeNumberBySpeciesUrl(form.pokemon.url)}
+                            pokeName={form.pokemon.name}
+                        />
+                    ))} 
+                </div>
+            </InfoContainer>
 		</>
 	);
 }
