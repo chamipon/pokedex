@@ -4,6 +4,7 @@ import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro' 
 import styles from "./settingsMenu.module.scss";
 import Link from 'next/link'
 import SettingsContext from "../../contexts/settings";
+import SettingsRow from "./settingsRow/settingsRow";
 function SettingsMenu() {
     const [settings, updateSetting, setSettings] = useContext( SettingsContext );
     useEffect(() => {
@@ -14,7 +15,6 @@ function SettingsMenu() {
                 },
             });
             var isDark = await fetchSetting("isDark", true, db)
-            var showDark = await fetchSetting("showDark", false, db)
             var isShiny = await fetchSetting("isShiny", false, db)
             var showShiny = await fetchSetting("showShiny", true, db)
             var useArt = await fetchSetting("useArt", true, db)
@@ -23,9 +23,9 @@ function SettingsMenu() {
             var version = await fetchSetting("version", "sword", db)
             var goLink = await fetchSetting("goLink", false, db)
             var showSpeciesInfo = await fetchSetting("showSpeciesInfo", true, db)
+            var showStats = await fetchSetting("showStats", true, db)
             setSettings({
                 isDark: isDark,
-                showDark: showDark,
                 isShiny: isShiny,
                 showShiny: showShiny,
                 useArt: useArt,
@@ -34,6 +34,7 @@ function SettingsMenu() {
                 version: version,
                 goLink: goLink,
                 showSpeciesInfo: showSpeciesInfo,
+                showStats: showStats,
                 fetched: true
             })
         }
@@ -50,49 +51,50 @@ function SettingsMenu() {
                             <FontAwesomeIcon icon={regular('xmark')} size="lg"/>
                         </button>
                     </div>
+
                     <div className="modal-body">
-                        <div className={styles.settingRow}>
-                            <div className={"form-check form-switch form-check-inline " + styles.setting}>
-                                <input className="form-check-input" checked={settings.useArt}  onChange={() => updateSetting('useArt', !settings.useArt)} type="checkbox" role="switch" id="OfficialArt" />
-                                <label className="form-check-label" htmlFor="OfficialArt">Use Official Art</label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" checked={settings.showArt} onChange={() => updateSetting('showArt', !settings.showArt)}  type="checkbox" role="switch" id="showArt" />
-                                <label className="form-check-label" htmlFor="showArt">Quick Setting</label>
-                            </div>
-                        </div>
-                        <div className={styles.settingRow}>
-                            <div className={"form-check form-switch form-check-inline " + styles.setting}>
-                                <input className="form-check-input" checked={settings.isShiny}  onChange={() => updateSetting('isShiny', !settings.isShiny)} type="checkbox" role="switch" id="ShinySprites" />
-                                <label className="form-check-label" htmlFor="ShinySprites">Shiny Sprites</label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" checked={settings.showShiny} onChange={() => updateSetting('showShiny', !settings.showShiny)}  type="checkbox" role="switch" id="showShiny" />
-                                <label className="form-check-label" htmlFor="showShiny">Quick Setting</label>
-                            </div>
-                        </div>
-                        <div className={styles.settingRow}>
-                            <div className={"form-check form-switch form-check-inline " + styles.setting}>
-                                <input className="form-check-input" checked={settings.isDark}  onChange={() => updateSetting('isDark', !settings.isDark)} type="checkbox" role="switch" id="DarkMode" />
-                                <label className="form-check-label" htmlFor="DarkMode">Dark Mode</label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" checked={settings.showDark} onChange={() => updateSetting('showDark', !settings.showDark)}  type="checkbox" role="switch" id="showDark" />
-                                <label className="form-check-label" htmlFor="showDark">Quick Setting</label>
-                            </div>
-                        </div>
-                        <div className={styles.settingRow}>
-                            <div className={"form-check form-switch form-check-inline " + styles.setting}>
-                                <input className="form-check-input" checked={settings.goLink}  onChange={() => updateSetting('goLink', !settings.goLink)} type="checkbox" role="switch" id="GoLink" />
-                                <label className="form-check-label" htmlFor="GoLink">Pokemon Go Link</label>
-                            </div>
-                        </div>
-                        <div className={styles.settingRow}>
-                            <div className={"form-check form-switch form-check-inline " + styles.setting}>
-                                <input className="form-check-input" checked={settings.showSpeciesInfo}  onChange={() => updateSetting('showSpeciesInfo', !settings.showSpeciesInfo)} type="checkbox" role="switch" id="GoLink" />
-                                <label className="form-check-label" htmlFor="showSpeciesInfo">Show Species Info</label>
-                            </div>
-                        </div>
+                        <SettingsRow
+                            settingVal = {settings.isShiny}
+                            settingName = "Shiny Sprites"
+                            settingKey = "isShiny"
+                            quickSettingKey = "showShiny"
+                            quickSetting = {true}
+                            quickSettingVal = {settings.showShiny}
+                            updateSetting = {updateSetting}
+                        ></SettingsRow>
+                        <SettingsRow
+                            settingVal = {settings.useArt}
+                            settingName = "Use Official Art"
+                            settingKey = "useArt"
+                            quickSettingKey = "showArt"
+                            quickSetting = {true}
+                            quickSettingVal = {settings.showArt}
+                            updateSetting = {updateSetting}
+                        ></SettingsRow>
+                        <SettingsRow
+                            settingVal = {settings.isDark}
+                            settingName = "Dark Mode"
+                            settingKey = "isDark"
+                            updateSetting = {updateSetting}
+                        ></SettingsRow>
+                        <SettingsRow
+                            settingVal = {settings.goLink}
+                            settingName = "Pokemon Go Link"
+                            settingKey = "goLink"
+                            updateSetting = {updateSetting}
+                        ></SettingsRow>
+                        <SettingsRow
+                            settingVal = {settings.showSpeciesInfo}
+                            settingName = "Show Species Info"
+                            settingKey = "showSpeciesInfo"
+                            updateSetting = {updateSetting}
+                        ></SettingsRow>
+                        <SettingsRow
+                            settingVal = {settings.showStats}
+                            settingName = "Show Pokemon Stats"
+                            settingKey = "showStats"
+                            updateSetting = {updateSetting}
+                        ></SettingsRow>
                         <div className={styles.settingRow}>
                             <select onChange={(e) => updateSetting('language', e.target.value)} value={settings.language} className={"form-select me-1 " + styles.setting} aria-label="Language">
                                 <option value="en" >English</option>

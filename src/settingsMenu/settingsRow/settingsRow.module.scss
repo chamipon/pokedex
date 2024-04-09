@@ -1,0 +1,49 @@
+
+
+.modalHeader{
+    border-bottom-color: var(--clr-highlight);
+    :global(.dark) &{
+        border-bottom-color: var(--clr-highlight);
+    }
+}
+.modalFooter{
+    border-top-color: var(--clr-highlight);
+    :global(.dark) &{
+        border-top-color: var(--clr-highlight);
+    }
+}
+.modalContent{
+    &:global(.dark){
+        background-color: var(--clr-primary);
+    }
+}
+.closeButton{
+    background: transparent;
+    opacity: 1;
+    padding-top: 0.3rem;
+    padding-left: 0.7 rem;
+    :global(.dark) &{
+       color: white; 
+    }
+}
+.setting{
+    flex: 1 1 0px;
+}
+.settingRow{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    border-top-width: 1px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-color: lightgray;
+    border-style: solid;
+
+    &:first-child{
+        border-top-width: 0px;
+    }
+    :global(.dark) &{
+        border-color: gray; 
+    }
+}

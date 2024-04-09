@@ -29,6 +29,7 @@
   box-shadow: 1px 1px 5px 0px #959595;
   width: 60px;
   height: 60px;
+  align-content: center;
 }
 .formButton img {
   width: 100%;
