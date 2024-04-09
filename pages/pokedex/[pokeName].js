@@ -2,9 +2,7 @@ import { useRouter } from "next/router";
 import EvoChain from "../../src/pokeInfo/evoChain/evoChain";
 import Stats from "../../src/pokeInfo/stats/stats";
 import Types from "../../src/pokeInfo/types/types";
-import Genus from "../../src/pokeInfo/genus/genus";
 import Forms from "../../src/pokeInfo/forms/forms";
-import Head from "next/head";
 import * as pokeFuncs from "../../src/pokeFuncs.js";
 import { useContext, useEffect, useState } from "react";
 import SpeciesInfo from "../../src/pokeInfo/speciesInfo/speciesInfo";
@@ -14,12 +12,9 @@ import { NextSeo } from "next-seo";
 export default function Pokemon(props) {
 	const router = useRouter();
 	const [settings] = useContext(SettingsContext);
-
-    const [specObj, setSpecObj] = useState();
 	useEffect(() => {
         //Store pspecies objects. set target poke.
         if(props.specObj){
-            setSpecObj(props.specObj);
             props.setTargetPoke(props.specObj.name);
         } 
 	}, [props.specObj]);
