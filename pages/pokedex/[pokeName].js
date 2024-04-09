@@ -82,8 +82,8 @@ export default function Pokemon(props) {
                         {settings.showStats &&
                             <Stats poke={props.pokeObj} />
                         }
-						
-						<EvoChain
+						{settings.showEvoChain && 						
+                        <EvoChain
 							key={props.key}
 							specObj={props.specObj}
 							pokeObj={props.pokeO}
@@ -91,7 +91,8 @@ export default function Pokemon(props) {
 							pokeListUpdater={props.pokeListUpdater}
 							evoObj={props.evoObj}
 							isShiny={settings.isShiny}
-						/>
+						/>}
+
 					</div>
 				)}
 			</div>

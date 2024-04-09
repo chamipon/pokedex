@@ -24,6 +24,7 @@ function SettingsMenu() {
             var goLink = await fetchSetting("goLink", false, db)
             var showSpeciesInfo = await fetchSetting("showSpeciesInfo", true, db)
             var showStats = await fetchSetting("showStats", true, db)
+            var showEvoChain = await fetchSetting("showEvoChain", true, db)
             setSettings({
                 isDark: isDark,
                 isShiny: isShiny,
@@ -35,6 +36,7 @@ function SettingsMenu() {
                 goLink: goLink,
                 showSpeciesInfo: showSpeciesInfo,
                 showStats: showStats,
+                showEvoChain: showEvoChain,
                 fetched: true
             })
         }
@@ -93,6 +95,12 @@ function SettingsMenu() {
                             settingVal = {settings.showStats}
                             settingName = "Show Pokemon Stats"
                             settingKey = "showStats"
+                            updateSetting = {updateSetting}
+                        ></SettingsRow>
+                        <SettingsRow
+                            settingVal = {settings.showEvoChain}
+                            settingName = "Show Evolution Chain"
+                            settingKey = "showEvoChain"
                             updateSetting = {updateSetting}
                         ></SettingsRow>
                         <div className={styles.settingRow}>
