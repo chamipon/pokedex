@@ -46,7 +46,9 @@ export default function Pokemon(props) {
 							{props.pokeObj &&
 								pokeFuncs.getPokeName(props.pokeObj)}
 						</h1>
-						<Genus species={props.specObj} />
+                        <div className="genus">
+                            {pokeFuncs.getPokeGenus(props.specObj, settings.language)}
+                        </div>
 						<Types poke={props.pokeObj} />
 						{settings.goLink && (
 							<a
