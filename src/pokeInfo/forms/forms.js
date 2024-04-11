@@ -8,18 +8,19 @@ function Forms(props) {
 	const [settings] = useContext(SettingsContext);
 	return (
 		<>  
-        
-            <InfoContainer>
-                <h3>Forms</h3>
-                <div className="d-flex flex-row">
-                    {props.forms.map((form,i)=>(
-                        <SpriteContainer    
-                            pokeId={pokeFuncs.getPokeNumberBySpeciesUrl(form.pokemon.url)}
-                            pokeName={form.pokemon.name}
-                        />
-                    ))} 
-                </div>
-            </InfoContainer>
+            {props.forms.length > 1 &&
+                <InfoContainer>
+                    <h3>Forms</h3>
+                    <div className="d-flex flex-row">
+                        {props.forms.map((form,i)=>(
+                            <SpriteContainer    
+                                pokeId={pokeFuncs.getPokeNumberBySpeciesUrl(form.pokemon.url)}
+                                pokeName={form.pokemon.name}
+                            />
+                        ))} 
+                    </div>
+                </InfoContainer>
+            }
 		</>
 	);
 }
