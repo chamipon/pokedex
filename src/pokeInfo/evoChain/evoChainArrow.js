@@ -13,7 +13,7 @@ function EvoChainArrow(props) {
 	return (
 		<span className={"text-center align-items-center d-flex flex-row flex-md-column " + styles.EvoChainArrow}>
 			{EvoDetails && EvoDetails.trigger && (
-				<span className="me-1">
+				<span>
 					<FontAwesomeIcon
 						className="d-none d-md-inline-block"
 						title={"Trigger: " + EvoDetails.trigger}

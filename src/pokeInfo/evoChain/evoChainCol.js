@@ -13,14 +13,14 @@ function EvoChainCol(props) {
 		<div className={styles.evoChainCol}>
 			{props.stageChain &&
 				props.stageChain.map((poke, i) => (
-					<div key={"evochaincol" + i} className="d-flex flex-md-row flex-column m-1">
-						<div className="d-flex m-auto">
-							{poke && (
-								<EvoChainArrow
-									evoDetails={poke.evoDetails[0]} //TODO: Handle all of the evo details, not just the first.
-								/>
-							)}
-						</div>
+					<div key={"evochaincol" + i} className="d-flex flex-md-row flex-column gap">
+						{poke.evoDetails[0] && 
+                            <div className="d-flex m-auto">
+                                <EvoChainArrow
+                                    evoDetails={poke.evoDetails[0]} //TODO: Handle all of the evo details, not just the first.
+                                />
+                            </div>
+                        }
                         <SpriteContainer
                             pokeId={poke.id}
                             pokeName={poke.name}

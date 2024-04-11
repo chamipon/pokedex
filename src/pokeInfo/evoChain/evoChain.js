@@ -19,7 +19,7 @@ function EvoChain(props) {
             {(evoChain && evoChain.length>1) &&
                 <InfoContainer>
                     <h3>Evolution Chain</h3>
-                    <div className={styles.evoChain}>
+                    <div className={styles.evoChain + " gap"}>
                             {evoChain.map((chain, i) => (
                                 <EvoChainCol
                                     isShiny={props.isShiny}

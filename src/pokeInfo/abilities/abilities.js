@@ -10,7 +10,7 @@ function Abilities(props) {
 		<>  
                 <InfoContainer>
                     <h3>Abilities</h3>
-                    <div className="gap flex-row flex-lg-column flex-wrap">
+                    <div className="gap flex-row flex-wrap">
                     {props.abilities.map((ability,i)=>(
                         <>
                             <BodySection

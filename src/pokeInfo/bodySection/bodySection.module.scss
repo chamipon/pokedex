@@ -5,6 +5,7 @@
     flex-direction: column;
     border-radius:10px;
     background-color: var(--clr-primary);
+    min-width:250px;
     &__header {
         text-align: center;
         text-decoration: underline var(--clr-highlight);
