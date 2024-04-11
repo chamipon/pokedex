@@ -15,7 +15,7 @@ function SpeciesInfo(props) {
                     <FlavourText species={props.species}/>
                     <Gender species={props.species}/>
                 </div>
-                <div className="d-gap flex-wrap">
+                <div className="gap flex-row flex-wrap">
                     
                         <BodySection
                             info={props.poke.height / 10 + "m"}

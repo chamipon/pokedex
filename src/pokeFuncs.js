@@ -228,7 +228,7 @@ export function getPokeGenus(species, lang){
  * @param {string} lang - Optional, the language of flavour text you want returned. English is default.
  * @param {string} version - Optional, the game version you want the flavour text from. The most recent version is the default.
  */
- export function getPokeFlavText(species, lang, version){
+ export function getPokeFlavText(species, lang = "en", version){
     try{
         var flavTextObj = species.flavor_text_entries.find(el => el.language.name == lang && el.version.name == version)
         if (flavTextObj) return flavTextObj.flavor_text.replace(/\f/g, "")
@@ -248,7 +248,7 @@ export function getPokeGenus(species, lang){
  * @param {string} lang - Optional, the language of flavour text you want returned. English is default.
  * @param {string} versiongroup - Optional, the version group you want the flavour text from. The most recent version is the default.
  */
- export function getItemFlavText(item, lang, versiongroup){
+ export function getItemFlavText(item, lang = "en", versiongroup){
     try{
         var flavTextObj = item.flavor_text_entries.find(el => el.language.name == lang && el.version_group.name == versiongroup)
         if (flavTextObj) return flavTextObj.text.replace(/\f/g, "")
@@ -268,13 +268,41 @@ export function getPokeGenus(species, lang){
  * @param {string} lang - Optional, the language of flavour text you want returned. English is default.
  * @param {string} versiongroup - Optional, the version group you want the flavour text from. The most recent version is the default.
  */
-export function getAbilityFlavText(ability, lang, versiongroup){
+export function getAbilityFlavText(ability, lang = "en", versiongroup){
     try{
         var flavTextObj = ability.flavor_text_entries.find(el => el.language.name == lang && el.version_group.name == versiongroup)
         if (flavTextObj) return flavTextObj.flavor_text.replace(/\f/g, "")
         else{
             var engObjs = ability.flavor_text_entries.filter(el => el.language.name == "en");
             return engObjs[engObjs.length - 1].flavor_text.replace(/\f/g, "")
+        }
+    }
+    catch{
+        return ""
+    }
+}
+/**
+ * Used to grab the flavour text of an ability.
+ * @param {abilityObj} ability - The ability object.
+ * @param {string} lang - Optional, the language of flavour text you want returned. English is default.
+ * @param {bool} long - Optional, if true return full effect, if false return short effect.
+ */
+export function getAbilityEffect(ability, lang = "en", long = true){
+    try{
+        var effectObj = ability.effect_entries.find(el => el.language.name == lang)
+        if (effectObj){
+            if(long)
+                return effectObj.effect.replace(/\f/g, "")
+            else
+                return effectObj.short_effect.replace(/\f/g, "")
+        } 
+        else{
+            var effectObjs = ability.effect_entries.filter(el => el.language.name == "en");
+            let effectObj = effectObjs[effectObjs.length-1]
+            if(long)
+                return effectObj.effect.replace(/\f/g, "")
+            else
+                return effectObj.short_effect.replace(/\f/g, "")
         }
     }
     catch{
