@@ -14,7 +14,7 @@ function Stats(props) {
 	}, [props.poke, displayMax]);
 	return ( 
             <InfoContainer> 
-                <h3>Stats</h3>
+                <h2 className="h3">Stats</h2>
                 {stats && 
                     <div className="stats d-flex flex-column">    
                         <StatBar stat={stats.hp} statRatio={stats.hp/stats.max} label={"HP"} />

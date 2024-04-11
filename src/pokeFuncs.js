@@ -287,7 +287,7 @@ export function getAbilityFlavText(ability, lang = "en", versiongroup){
  * @param {string} lang - Optional, the language of flavour text you want returned. English is default.
  * @param {bool} long - Optional, if true return full effect, if false return short effect.
  */
-export function getAbilityEffect(ability, lang = "en", long = true){
+export function getAbilityEffect(ability, lang = "en", long = false){
     try{
         var effectObj = ability.effect_entries.find(el => el.language.name == lang)
         if (effectObj){

@@ -9,7 +9,7 @@ function Forms(props) {
 		<>  
             {props.forms.length > 1 &&
                 <InfoContainer>
-                    <h3>Forms</h3>
+                    <h2 className="h3">Forms</h2>
                     <div className="d-flex flex-row flex-wrap gap justify-content-center">
                         {props.forms.map((form,i)=>(
                             <SpriteContainer  
