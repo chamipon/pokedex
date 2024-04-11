@@ -18,6 +18,8 @@ export const SettingsProvider = ({ children }) => {
         showSpeciesInfo: true,
         showStats: true,
         showEvoChain: true,
+        showAbilities: true,
+        showForms: true,
     }, () => 1); 
     async function updateSetting(setting, value){
         var newsettings = JSON.parse(JSON.stringify(settings)) //Need to do this to get settings by value, not by reference

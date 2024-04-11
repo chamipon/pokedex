@@ -89,12 +89,14 @@ export default function Pokemon(props) {
 							evoObj={props.evoObj}
 							isShiny={settings.isShiny}
 						/>}
+                        {settings.showForms && 
                         <Forms
                             forms={props.specObj.varieties}
-                        />
+                        />}
+                        {settings.showAbilities && 
                         <Abilities
                             abilities={props.abilitiesObj}
-                        />
+                        />}
 					</div>
 				)}
 			</div>

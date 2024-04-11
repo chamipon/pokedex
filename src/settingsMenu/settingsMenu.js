@@ -26,6 +26,8 @@ function SettingsMenu() {
             var showSpeciesInfo = await fetchSetting("showSpeciesInfo", true, db)
             var showStats = await fetchSetting("showStats", true, db)
             var showEvoChain = await fetchSetting("showEvoChain", true, db)
+            var showAbilities = await fetchSetting("showAbilities", true, db)
+            var showForms = await fetchSetting("showForms", true, db)
             setSettings({
                 isDark: isDark,
                 isShiny: isShiny,
@@ -39,6 +41,8 @@ function SettingsMenu() {
                 showSpeciesInfo: showSpeciesInfo,
                 showStats: showStats,
                 showEvoChain: showEvoChain,
+                showAbilities: showAbilities,
+                showForms: showForms,
                 fetched: true
             })
         }
@@ -103,6 +107,18 @@ function SettingsMenu() {
                             settingVal = {settings.showEvoChain}
                             settingName = "Show Evolution Chain"
                             settingKey = "showEvoChain"
+                            updateSetting = {updateSetting}
+                        ></SettingsRow>                        
+                        <SettingsRow
+                            settingVal = {settings.showAbilities}
+                            settingName = "Show Abilities"
+                            settingKey = "showAbilities"
+                            updateSetting = {updateSetting}
+                        ></SettingsRow>
+                        <SettingsRow
+                            settingVal = {settings.showForms}
+                            settingName = "Show Forms"
+                            settingKey = "showForms"
                             updateSetting = {updateSetting}
                         ></SettingsRow>
                         <div className={styles.settingRow}>
