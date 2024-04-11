@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useContext } from 'react';
 import styles from "./evoChain.module.scss";
 import SettingsContext from "../../../contexts/settings.js";
+import SpriteContainer from "../../spriteContainer/spriteContainer.js";
 function EvoChainCol(props) {
     const [settings] = useContext( SettingsContext );
     
@@ -20,26 +21,10 @@ function EvoChainCol(props) {
 								/>
 							)}
 						</div>
-						<div key={"sprite" + i} className={styles.evoColImg}>
-							{poke && (
-								<Link scroll={true} href={"/pokedex/" + poke.name}>
-                                    <a>
-                                        <img
-                                            title={"#" + poke.id + " " + helpers.capitalize(poke.name)}
-                                            alt={helpers.capitalize(poke.name)}
-                                            src = {(settings.useArt 
-                                                ? pokeFuncs.OFFICIAL_ART_BASE_URL +poke.id+".png"
-                                                : (settings.isShiny 
-                                                    ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+poke.id+".png" 
-                                                    : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+poke.id+".png")
-                                                )}
-                                            className="d-flex w-100"
-                                        />
-                                    </a>
-                                </Link>
-
-							)}
-						</div>
+                        <SpriteContainer
+                            pokeId={poke.id}
+                            pokeName={poke.name}
+                        />
 					</div>
 				))}
 		</div>

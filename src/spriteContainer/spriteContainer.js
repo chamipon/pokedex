@@ -5,13 +5,12 @@ import * as helpers from "/src/helpers.js";
 import * as pokeFuncs from "/src/pokeFuncs.js";
 import SettingsContext from "/contexts/settings.js";
 
-function spriteContainer(props) {
+function SpriteContainer(props) {
     const [settings] = useContext( SettingsContext );
 	return (
 		<>
         {props.pokeName && props.pokeId && (
 			<div key={"sprite" + props.pokeId} className={styles.spriteContainer}>
-				
 					<Link scroll={true} href={"/pokedex/" + props.pokeName}>
 						<a>
 							<img
@@ -45,4 +44,4 @@ function spriteContainer(props) {
 		</>
 	);
 }
-export default spriteContainer;
+export default SpriteContainer;
