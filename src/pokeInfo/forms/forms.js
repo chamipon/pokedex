@@ -13,7 +13,8 @@ function Forms(props) {
                     <h3>Forms</h3>
                     <div className="d-flex flex-row flex-wrap gap justify-content-center">
                         {props.forms.map((form,i)=>(
-                            <SpriteContainer    
+                            <SpriteContainer  
+                                key={"sprite " + form.pokemon.name}  
                                 pokeId={pokeFuncs.getPokeNumberBySpeciesUrl(form.pokemon.url)}
                                 pokeName={form.pokemon.name}
                             />
