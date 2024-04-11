@@ -3,11 +3,11 @@ function BodySection(props) {
 	return (
 		<>
 			{ (
-				<div className={styles.bodySection + " d-flex"}>
-                    <div className={styles.sectionHeader}>
+				<div style={{ "--flex-basis": props.flexbasis }}  className={styles.bodySection + " gap"}>
+                    <div className={styles.bodySection__header}>
                         {props.header}                    
                     </div>
-                    <div className={styles.sectionInfo}>
+                    <div className={styles.bodySection__info}>
                         {props.info}
                     </div>
 				</div>

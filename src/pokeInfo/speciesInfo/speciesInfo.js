@@ -10,35 +10,37 @@ function SpeciesInfo(props) {
 	}, []);
 	return (
         <InfoContainer>
-            <div className="speciesInfo">
-                <div className="d-flex flex-column flex-md-row">
+            <>
+                <div className="gap flex-md-row">
                     <FlavourText species={props.species}/>
                     <Gender species={props.species}/>
                 </div>
-                <div className="d-flex flex-column flex-md-row ">
-                    <div className="d-flex flex-row flex-even">
+                <div className="d-gap flex-wrap">
+                    
                         <BodySection
                             info={props.poke.height / 10 + "m"}
                             header={"Height"}
+                            flexbasis={"45%"}
                         />
                         <BodySection
                             info={props.poke.weight / 10 + "kg"}
                             header={"Weight"}
+                            flexbasis={"45%"}
                         />
-                    </div>
-                    <div className="d-flex flex-row flex-even">
 
                         <BodySection
                             info={props.species.capture_rate}
                             header={"Catch Rate"}
+                            flexbasis={"45%"}
                         />
                         <BodySection
                             info={pokeFuncs.getPokeEggSteps(props.species)}
                             header={"Egg Steps"}
+                            flexbasis={"45%"}
                         />
-                    </div>
+                   
                 </div>
-            </div>
+            </>
         </InfoContainer>
 	);
 }
