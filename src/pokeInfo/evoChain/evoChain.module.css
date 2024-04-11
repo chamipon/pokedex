@@ -15,28 +15,13 @@
 .evoChainCol {
   display: flex;
   flex-direction: row;
-  padding: 0px 10px;
   margin: auto;
 }
 @media (min-width: 767px) {
   .evoChainCol {
     flex-direction: column;
-    padding: 0px 10px;
     margin: auto 0px;
   }
-}
-
-.evoColImg {
-  border: 1px var(--clr-highlight) solid;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 2px;
-  width: 118px;
-  margin: auto;
-}
-:global(.dark) .evoColImg {
-  /* border-color: var(--clr-secondary); */
-  border-color: var(--clr-highlight);
 }
 
 .EvoChainArrow {
@@ -48,11 +33,4 @@
 .evoChainCol:first-child .EvoChainArrow {
   width: 0;
   padding: 0;
-}
-@media (min-width: 767px) {
-  .EvoChainArrow {
-    padding: 0px 20px 0px 0px;
-    margin-top: 0;
-    width: 115px;
-  }
 }/*# sourceMappingURL=evoChain.module.css.map */

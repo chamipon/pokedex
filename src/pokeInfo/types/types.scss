@@ -7,6 +7,7 @@ $grass-color: #78c850;
 $poison-color: #8b368b;
 $electric-color: #f8d030;
 $psychic-color: #AA0839;
+$ground-color: #915121;
 $rock-color: #b8a038;
 $ice-color: #98d8d8;
 $bug-color: #a8b820;
@@ -52,6 +53,10 @@ $fairy-color: #f0b6bc;
         &.rock{
             background-color: $rock-color;
             color: #141414;
+        }
+        &.ground{
+            background-color: $ground-color;
+            color: #FFFFFF;
         }
         &.ice{
             background-color: $ice-color;

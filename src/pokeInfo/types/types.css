@@ -34,6 +34,10 @@
   background-color: #b8a038;
   color: #141414;
 }
+.types .badge.ground {
+  background-color: #915121;
+  color: #FFFFFF;
+}
 .types .badge.ice {
   background-color: #98d8d8;
   color: #3a3a3a;

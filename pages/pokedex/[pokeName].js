@@ -15,7 +15,6 @@ export default function Pokemon(props) {
 	const router = useRouter();
 	const [settings] = useContext(SettingsContext);
 	useEffect(() => {
-        console.log(props.abilitiesObj)
         //Store pspecies objects. set target poke.
         if(props.specObj){
             props.setTargetPoke(props.specObj.name);
