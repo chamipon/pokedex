@@ -8,6 +8,16 @@ const SettingsContext = createContext(false, () => 1);
 export const SettingsProvider = ({ children }) => {
     const [settings, setSettings] = useState({
         isDark: true,
+        isShiny: false,
+        showShiny: false,
+        useArt: true,
+        showArt: false,
+        language: "en",
+        version: "shield",
+        goLink: false,
+        showSpeciesInfo: true,
+        showStats: true,
+        showEvoChain: true,
     }, () => 1); 
     async function updateSetting(setting, value){
         var newsettings = JSON.parse(JSON.stringify(settings)) //Need to do this to get settings by value, not by reference
