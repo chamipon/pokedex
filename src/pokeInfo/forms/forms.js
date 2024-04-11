@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import styles from "./forms.module.scss";
 import * as pokeFuncs from "../../../src/pokeFuncs.js";
 import SettingsContext from "../../../contexts/settings.js";
 import InfoContainer from "../../infoContainer/infoContainer"

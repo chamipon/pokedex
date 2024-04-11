@@ -21,6 +21,7 @@ function SettingsMenu() {
             var showArt = await fetchSetting("showArt", true, db)
             var language = await fetchSetting("language", "en", db)
             var version = await fetchSetting("version", "sword", db)
+            var versionGroup = await fetchSetting("versionGroup", "sword-shield", db)
             var goLink = await fetchSetting("goLink", false, db)
             var showSpeciesInfo = await fetchSetting("showSpeciesInfo", true, db)
             var showStats = await fetchSetting("showStats", true, db)
@@ -33,6 +34,7 @@ function SettingsMenu() {
                 showArt: showArt,
                 language: language,
                 version: version,
+                versionGroup:versionGroup,
                 goLink: goLink,
                 showSpeciesInfo: showSpeciesInfo,
                 showStats: showStats,

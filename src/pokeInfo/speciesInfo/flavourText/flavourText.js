@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import SettingsContext from "../../../../contexts/settings.js";
-import * as pokeFuncs from "../../../pokeFuncs.js";
+import SettingsContext from "/contexts/settings.js";
+import * as pokeFuncs from "/src/pokeFuncs.js";
 function FlavourText(props) {
 	const [displayText, setDisplayText] = useState("")
     const [settings] = useContext( SettingsContext );

@@ -258,7 +258,27 @@ export function getPokeGenus(species, lang){
         }
     }
     catch{
-        return "Empty Flavour Text"
+        return ""
+    }
+}
+
+/**
+ * Used to grab the flavour text of an ability.
+ * @param {abilityObj} ability - The ability object.
+ * @param {string} lang - Optional, the language of flavour text you want returned. English is default.
+ * @param {string} versiongroup - Optional, the version group you want the flavour text from. The most recent version is the default.
+ */
+export function getAbilityFlavText(ability, lang, versiongroup){
+    try{
+        var flavTextObj = ability.flavor_text_entries.find(el => el.language.name == lang && el.version_group.name == versiongroup)
+        if (flavTextObj) return flavTextObj.flavor_text.replace(/\f/g, "")
+        else{
+            var engObjs = ability.flavor_text_entries.filter(el => el.language.name == "en");
+            return engObjs[engObjs.length - 1].flavor_text.replace(/\f/g, "")
+        }
+    }
+    catch{
+        return ""
     }
 }
 
