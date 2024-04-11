@@ -11,6 +11,10 @@
 .flex-even{
     flex: 1 1 0px !important;
 }
+.gap{
+    --gap:10px;
+    gap: var(--gap);
+}
 @media (min-width: 767px){
     .w-md-50{
         width: 50% !important

@@ -11,7 +11,7 @@ function Forms(props) {
             {props.forms.length > 1 &&
                 <InfoContainer>
                     <h3>Forms</h3>
-                    <div className="d-flex flex-row">
+                    <div className="d-flex flex-row flex-wrap gap justify-content-center">
                         {props.forms.map((form,i)=>(
                             <SpriteContainer    
                                 pokeId={pokeFuncs.getPokeNumberBySpeciesUrl(form.pokemon.url)}
