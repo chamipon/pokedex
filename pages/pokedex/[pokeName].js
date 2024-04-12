@@ -15,21 +15,33 @@ import InfoModal from "/src/infoModal/infoModal";
 export default function Pokemon(props) {
 	const router = useRouter();
 	const [settings] = useContext(SettingsContext);
-	const [modalInfo, setModalInfo] = useState("");
+	const [modalInfo, setModalInfo] = useState();
 	useEffect(() => {
-        //Store pspecies objects. set target poke.
-        if(props.specObj){
-            props.setTargetPoke(props.specObj.name);
-        } 
+		//Store pspecies objects. set target poke.
+		if (props.specObj) {
+			props.setTargetPoke(props.specObj.name);
+		}
 	}, [props.specObj]);
 
+	useEffect(() => {
+		//GIve the info modal some initial info
+		if (props.abilitiesObj) {
+			setModalInfo({ info: props.abilitiesObj[0], type: "ability" });
+		}
+	}, [props.abilitiesObj]);
+	function AbilityClick(ability) {
+		console.log(ability);
+		setModalInfo({
+			info: ability,
+			type: "ability",
+		});
+	}
 	return (
 		<>
 			<NextSeo
 				title={
-					props.pokeObj && pokeFuncs.getPokeName(
-					    props.pokeObj
-					) + " - Ultradex"
+					props.pokeObj &&
+					pokeFuncs.getPokeName(props.pokeObj) + " - Ultradex"
 				}
 				description={pokeFuncs.getPokeFlavText(
 					props.specObj,
@@ -42,12 +54,14 @@ export default function Pokemon(props) {
 					<div className={"mx-auto container row"}>
 						<h1 className="pokeTitle">
 							#{props.specObj.id}{" "}
-							{props.pokeObj &&
-								pokeFuncs.getPokeName(props.pokeObj)}
+							{props.pokeObj && pokeFuncs.getPokeName(props.pokeObj)}
 						</h1>
-                        <div className="genus">
-                            {pokeFuncs.getPokeGenus(props.specObj, settings.language)}
-                        </div>
+						<div className="genus">
+							{pokeFuncs.getPokeGenus(
+								props.specObj,
+								settings.language
+							)}
+						</div>
 						<Types poke={props.pokeObj} />
 						{settings.goLink && (
 							<a
@@ -70,80 +84,79 @@ export default function Pokemon(props) {
 							</a>
 						)}
 
-						<Spotlight
-							currentForm={props.pokeObj}
-						/>
-                        {settings.showSpeciesInfo && 
-						<SpeciesInfo
-							poke={props.pokeObj}
-							species={props.specObj}
-						/>}
-                        {settings.showStats &&
-                            <Stats poke={props.pokeObj} />
-                        }
-						{settings.showEvoChain && 						
-                        <EvoChain
-							key={props.key}
-							specObj={props.specObj}
-							pokeObj={props.pokeObj}
-							pokeList={props.pokeList}
-							pokeListUpdater={props.pokeListUpdater}
-							evoObj={props.evoObj}
-							isShiny={settings.isShiny}
-						/>}
-                        {settings.showForms && 
-                        <Forms
-                            forms={props.specObj.varieties}
-                        />}
-                        {settings.showAbilities && 
-                        <Abilities
-                            abilities={props.abilitiesObj}
-                            setModalInfo={setModalInfo}
-                        />}
+						<Spotlight currentForm={props.pokeObj} />
+						{settings.showSpeciesInfo && (
+							<SpeciesInfo
+								poke={props.pokeObj}
+								species={props.specObj}
+							/>
+						)}
+						{settings.showStats && <Stats poke={props.pokeObj} />}
+						{settings.showEvoChain && (
+							<EvoChain
+								key={props.key}
+								specObj={props.specObj}
+								pokeObj={props.pokeObj}
+								pokeList={props.pokeList}
+								pokeListUpdater={props.pokeListUpdater}
+								evoObj={props.evoObj}
+								isShiny={settings.isShiny}
+							/>
+						)}
+						{settings.showForms && (
+							<Forms forms={props.specObj.varieties} />
+						)}
+						{settings.showAbilities && (
+							<Abilities
+								abilities={props.abilitiesObj}
+								AbilityClick={AbilityClick}
+							/>
+						)}
 					</div>
 				)}
 			</div>
-            <InfoModal 
-                info = {modalInfo}
-            />
-            {modalInfo.ability.name}
+			{modalInfo && (
+				<InfoModal
+					info={modalInfo.info} // The info.
+					type={modalInfo.type} // What kind of info we're displaying (ability, move, etc)
+				/>
+			)}
 		</>
 	);
 }
 // This function gets called at build time
 export async function getStaticProps({ params }) {
+	//Pokemon object using url param
+	var pokeObj = await fetch(
+		`https://pokeapi.co/api/v2/pokemon/` + params.pokeName
+	);
+	pokeObj = await pokeObj.json();
 
-    //Pokemon object using url param
-    var pokeObj = await fetch(`https://pokeapi.co/api/v2/pokemon/` + params.pokeName)
-	pokeObj = await pokeObj.json()
-    
-    if (!pokeObj) {
+	if (!pokeObj) {
 		return {
 			notFound: true,
 		};
 	}
 
-    //Fetch the pokemon's species object
-    var specObj = await fetch(pokeObj.species.url);
-    specObj = await specObj.json()
+	//Fetch the pokemon's species object
+	var specObj = await fetch(pokeObj.species.url);
+	specObj = await specObj.json();
 
-    //If the species has an evolution chain, pull that info as well.
-    var evoObj = null;
-    if(specObj.evolution_chain != null){
-        var evoObj = await fetch(specObj.evolution_chain.url)
-        evoObj = await evoObj.json()
-    }
-    
-    //Get ability info
-    var abilitiesObj = [];
-        for (var ability of pokeObj.abilities) {
+	//If the species has an evolution chain, pull that info as well.
+	var evoObj = null;
+	if (specObj.evolution_chain != null) {
+		var evoObj = await fetch(specObj.evolution_chain.url);
+		evoObj = await evoObj.json();
+	}
+
+	//Get ability info
+	var abilitiesObj = [];
+	for (var ability of pokeObj.abilities) {
 		let temp = await fetch(ability.ability.url);
 		temp = await temp.json();
-        ability.ability = temp;
-		abilitiesObj.push(
-			ability
-		);
-	}    
+		ability.ability = temp;
+		abilitiesObj.push(ability);
+	}
 
 	return {
 		props: { pokeObj, specObj, evoObj, abilitiesObj }, // will be passed to the page component as props
@@ -152,10 +165,9 @@ export async function getStaticProps({ params }) {
 
 //This is called at build time
 export async function getStaticPaths() {
-
 	//Get the list of pokemon
-	let pokeList = await fetch(`https://pokeapi.co/api/v2/pokemon/`)
-	pokeList = await pokeList.json()
+	let pokeList = await fetch(`https://pokeapi.co/api/v2/pokemon/`);
+	pokeList = await pokeList.json();
 	// Get the paths we want to pre-render
 	const paths = pokeList.results.map((poke) => ({
 		params: { pokeName: poke.name },
