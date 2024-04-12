@@ -2,22 +2,25 @@ import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import styles from "./infoModal.module.css";
+import AbilityModalBody from "./abilityModalBody/abilityModalBody";
 
 function InfoModal(props) {
     return (
         <>
-        <div className={"modal fade"} id="infoModal" tabIndex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-            <div className="modal-md modal-dialog">
+        {props.info && <div className={"modal fade"} id="infoModal" tabIndex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+            <div className="modal-dialog modal-lg">
                 <div className={"modal-content " + styles.modalContent}>
                     <div className={"modal-header " + styles.modalHeader}>
-                        <h5 className="modal-title" id="infoModalLabel">{props.title}</h5>
+                        <h5 className="modal-title" id="infoModalLabel">{props.info.ability.name}</h5>
                         <button type="button" className={"btn-close "  + styles.closeButton} data-bs-dismiss="modal" aria-label="Close">
                             <FontAwesomeIcon icon={regular('xmark')} size="lg"/>
                         </button>
                     </div>
 
                     <div className="modal-body">
-                        
+                        <AbilityModalBody 
+                            ability={props.info}
+                        />
 
                     </div>
                     <div className={"modal-footer " +  styles.modalFooter}>
@@ -25,7 +28,7 @@ function InfoModal(props) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>}
     </>
 	);
 }

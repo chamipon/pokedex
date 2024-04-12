@@ -5,7 +5,7 @@ import Types from "/src/pokeInfo/types/types";
 import Forms from "/src/pokeInfo/forms/forms";
 import Spotlight from "/src/pokeInfo/spotlight/spotlight";
 import * as pokeFuncs from "/src/pokeFuncs.js";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import SpeciesInfo from "/src/pokeInfo/speciesInfo/speciesInfo";
 import Abilities from "/src/pokeInfo/abilities/abilities";
 import SettingsContext from "../../contexts/settings";
@@ -15,6 +15,7 @@ import InfoModal from "/src/infoModal/infoModal";
 export default function Pokemon(props) {
 	const router = useRouter();
 	const [settings] = useContext(SettingsContext);
+	const [modalInfo, setModalInfo] = useState("");
 	useEffect(() => {
         //Store pspecies objects. set target poke.
         if(props.specObj){
@@ -97,13 +98,15 @@ export default function Pokemon(props) {
                         {settings.showAbilities && 
                         <Abilities
                             abilities={props.abilitiesObj}
+                            setModalInfo={setModalInfo}
                         />}
 					</div>
 				)}
 			</div>
             <InfoModal 
-                title = {props.specObj.name}
+                info = {modalInfo}
             />
+            {modalInfo.ability.name}
 		</>
 	);
 }

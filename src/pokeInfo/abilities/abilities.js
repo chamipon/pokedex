@@ -10,28 +10,33 @@ function Abilities(props) {
 		<>
 			<InfoContainer>
 				<h2 className="h3">Abilities</h2>
-				<div className="gap flex-row flex-wrap">
-					{props.abilities.map((ability, i) => (
+				<div class="list-group list-group-flush">
+					{props.setModalInfo && props.abilities.map((ability, i) => (
 						<>
-							<BodySection
-								info={
-									<>
-										<p>
-											{pokeFuncs.getAbilityFlavText(ability.ability,settings.language)}
-										</p>
-										<p className="mb-0">
-                                        {pokeFuncs.getAbilityEffect(
-												ability.ability,
-												settings.language
-											)}
-                                        </p>
-									</>
-								}
-								header={
-                                    helpers.deHyphenate(ability.ability.name) + (ability.is_hidden ? " - Hidden" : "")
-                                }
-								flexbasis={"45%"}
-							/>
+							<button
+								class="list-group-item list-group-item-action "
+								aria-current="true"
+                                data-bs-toggle="modal" 
+                                data-bs-target="#infoModal"
+                                onClick={() => props.setModalInfo(ability)}
+							>
+								<div class="d-flex w-100 justify-content-between">
+									<h5 class="mb-1">
+										{helpers.deHyphenate(
+											ability.ability.name
+										)}
+									</h5>
+								</div>
+								<p>
+									{pokeFuncs.getAbilityFlavText(
+										ability.ability,
+										settings.language
+									)}
+								</p>
+								{ability.is_hidden && (
+									<small>Hidden Ability</small>
+								)}
+							</button>
 						</>
 					))}
 				</div>
