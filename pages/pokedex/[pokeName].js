@@ -10,6 +10,7 @@ import SpeciesInfo from "/src/pokeInfo/speciesInfo/speciesInfo";
 import Abilities from "/src/pokeInfo/abilities/abilities";
 import SettingsContext from "../../contexts/settings";
 import { NextSeo } from "next-seo";
+import InfoModal from "/src/infoModal/infoModal";
 
 export default function Pokemon(props) {
 	const router = useRouter();
@@ -100,6 +101,9 @@ export default function Pokemon(props) {
 					</div>
 				)}
 			</div>
+            <InfoModal 
+                title = {props.specObj.name}
+            />
 		</>
 	);
 }

@@ -52,7 +52,7 @@ function SettingsMenu() {
         <>
         {settings && <div className={"modal fade"} id="settingsMenu" tabIndex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
             <div className="modal-md modal-dialog">
-                <div className={"modal-content " + styles.modalContent + " " + (settings.isDark && " dark")}>
+                <div className={"modal-content " + styles.modalContent}>
                     <div className={"modal-header " + styles.modalHeader}>
                         <h5 className="modal-title" id="settingsModalLabel">Settings</h5>
                         <button type="button" className={"btn-close "  + styles.closeButton} data-bs-dismiss="modal" aria-label="Close">

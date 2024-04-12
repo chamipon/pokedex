@@ -39,6 +39,9 @@ function Navbar({showInstall, setShowInstall}) {
                     <button data-bs-toggle="modal" data-bs-target="#settingsMenu" className={styles.navbaritem + " d-md-flex d-none"}>
                         <FontAwesomeIcon icon={solid('gear')} size="lg"/>
                     </button>
+                    <button data-bs-toggle="modal" data-bs-target="#infoModal" className={styles.navbaritem + " d-md-flex d-none"}>
+                        <FontAwesomeIcon icon={solid('question')} size="lg"/>
+                    </button>
                 </div>
                 {/* Quick Settings */}
                 {settings.fetched && 

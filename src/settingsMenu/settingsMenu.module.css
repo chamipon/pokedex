@@ -1,18 +1,12 @@
 .modalHeader {
   border-bottom-color: var(--clr-highlight);
 }
-:global(.dark) .modalHeader {
-  border-bottom-color: var(--clr-highlight);
-}
 
 .modalFooter {
   border-top-color: var(--clr-highlight);
 }
-:global(.dark) .modalFooter {
-  border-top-color: var(--clr-highlight);
-}
 
-.modalContent:global(.dark) {
+.modalContent {
   background-color: var(--clr-primary);
 }
 

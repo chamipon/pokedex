@@ -1,0 +1,21 @@
+.modalHeader {
+  border-bottom-color: var(--clr-highlight);
+}
+
+.modalFooter {
+  border-top-color: var(--clr-highlight);
+}
+
+.modalContent {
+  background-color: var(--clr-primary);
+}
+
+.closeButton {
+  background: transparent;
+  opacity: 1;
+  padding-top: 0.3rem;
+  padding-left: 0.7 rem;
+}
+:global(.dark) .closeButton {
+  color: white;
+}/*# sourceMappingURL=infoModal.module.css.map */
