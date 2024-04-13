@@ -4,7 +4,7 @@ import ItemListButtonItem from "./itemListButtonItem";
 function ItemList(props) {
 	return (
 		<>
-			<div className="list-group list-group-flush">
+			<div className={styles.itemList + " list-group list-group-flush gap"}>
 				{props.onclick &&
 					props.items.map((item) => (
 						<>

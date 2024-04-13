@@ -42,10 +42,38 @@
   --clr-text: var(--clr-light-text);
 }
 
-.dark, .light {
-  --clr-primary: hsl(var(--clr-primary-h),var(--clr-primary-s),var(--clr-primary-l));
-  --clr-secondary: hsl(var(--clr-secondary-h),var(--clr-secondary-s),var(--clr-secondary-l));
-  --clr-highlight: hsl(var(--clr-highlight-h),var(--clr-highlight-s),var(--clr-highlight-l));
+.dark,
+.light {
+  --clr-primary: hsl(
+  	var(--clr-primary-h),
+  	var(--clr-primary-s),
+  	var(--clr-primary-l)
+  );
+  --clr-primary-900: hsl(
+  	var(--clr-primary-h),
+  	var(--clr-primary-s),
+  	calc(var(--clr-primary-l) / 0.9)
+  );
+  --clr-primary-800: hsl(
+  	var(--clr-primary-h),
+  	var(--clr-primary-s),
+  	calc(var(--clr-primary-l) / 0.8)
+  );
+  --clr-secondary: hsl(
+  	var(--clr-secondary-h),
+  	var(--clr-secondary-s),
+  	var(--clr-secondary-l)
+  );
+  --clr-secondary-900: hsl(
+  	var(--clr-secondary-h),
+  	var(--clr-secondary-s),
+  	calc(var(--clr-secondary-l) / 0.9)
+  );
+  --clr-highlight: hsl(
+  	var(--clr-highlight-h),
+  	var(--clr-highlight-s),
+  	var(--clr-highlight-l)
+  );
 }
 
 .itemCard {

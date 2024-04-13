@@ -1,21 +1,24 @@
-.bodySection {
-    --flex-basis:0px;
-	flex: 1 1 var(--flex-basis);
-    padding: 10px;
-    flex-direction: column;
-    border-radius:10px;
-    background-color: var(--clr-primary);
-    min-width:250px;
-    &__header {
-        text-align: center;
-        text-decoration: underline var(--clr-highlight);
-        text-underline-offset: 2px;
-        text-underline-position: under;
-    }
-    &__info {
-        text-align: center;
-        flex: 1 1 0px;
-    
-    }
+.itemList {
+	&__listItem {
+		background-color: var(--clr-primary);
+		color: var(--clr-text);
+		padding: 1rem;
+		border-radius: 1rem;
+		&:first-child,
+		&:last-child {
+			border-radius: 1rem;
+		}
+		&:hover,
+		&:focus {
+			color: var(--clr-text);
+			background-color: var(--clr-primary-900);
+		}
+		&:active {
+			background-color: var(--clr-primary-800);
+		}
+		&__header {
+			text-decoration: underline var(--clr-highlight);
+			text-underline-position: under;
+		}
+	}
 }
-

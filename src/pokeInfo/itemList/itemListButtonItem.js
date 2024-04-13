@@ -3,17 +3,22 @@ function ItemListButtonItem(props) {
 	return (
 		<>
 			<button
-				className="list-group-item list-group-item-action "
+				className={
+					styles.itemList__listItem +
+					" list-group-item list-group-item-action"
+				}
 				data-bs-toggle="modal"
 				data-bs-target="#infoModal"
 				onClick={() => props.onclick(props.item)}
 			>
-				<div class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1">{props.title}</h5>
+				<div className="d-flex w-100 justify-content-between">
+					<h5 className={styles.itemList__listItem__header}>
+						{props.title}
+					</h5>
+					{props.aside && <small>{props.aside}</small>}
 				</div>
-				{props.body}
 
-				{props.aside && <small>{props.aside}</small>}
+				<p className="mb-0">{props.body}</p>
 			</button>
 		</>
 	);

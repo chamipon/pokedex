@@ -1,24 +1,24 @@
-#PokeGrid{
-    height: calc(100vh - var(--navbar-size));
+#PokeGrid {
+	height: calc(100vh - var(--navbar-size));
 }
 
-@media (min-width: 767px){
-    #PokeGrid{
-        height: 100vh;
-    }
+@media (min-width: 767px) {
+	#PokeGrid {
+		height: 100vh;
+	}
 }
 
-.flex-even{
-    flex: 1 1 0px !important;
+.flex-even {
+	flex: 1 1 0px !important;
 }
-.gap{
-    --gap:10px;
-    display:flex;
-    flex-direction: column;
-    gap: var(--gap);
+.gap {
+	--gap: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
 }
-@media (min-width: 767px){
-    .w-md-50{
-        width: 50% !important
-    }
+@media (min-width: 767px) {
+	.w-md-50 {
+		width: 50% !important;
+	}
 }
