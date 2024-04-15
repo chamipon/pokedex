@@ -49,7 +49,7 @@ export default function Pokemon(props) {
 					images: [
 						{
 							url: pokeFuncs.buildPokeSpriteUrl(
-								props.specObj.id,
+								props.pokeObj.id,
 								true,
 								false
 							),
