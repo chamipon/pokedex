@@ -3,6 +3,8 @@ export const MAX_BASE_STAT = 255;
 export const MAX_MAX_STAT = 714;
 export const OFFICIAL_ART_BASE_URL =
 	"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
+export const SPRITE_BASE_URL =
+	"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 //Takes in poke json object, returns formatted poke name
 export function getPokeName(poke) {
 	var name = poke.name;
@@ -188,32 +190,19 @@ export function getPokeSprite(poke, gen, shinyFlag, frontFlag, femaleFlag) {
 		return null;
 	}
 }
-
+export function buildPokeSpriteUrl(pokeId, useArt, isShiny) {
+	if (useArt) return OFFICIAL_ART_BASE_URL + pokeId + ".png";
+	else {
+		let spriteUrl = SPRITE_BASE_URL;
+		if (isShiny) spriteUrl += "shiny/";
+		return spriteUrl + pokeId + ".png";
+	}
+}
 //Takes in a pokemon object, returns the gen 7 sprite if available, otherwise returns the gen 8 sprite.
 export function getPokeIcon(poke) {
 	if (poke.sprites.versions["generation-vii"].icons.front_default) {
 		return poke.sprites.versions["generation-vii"].icons.front_default;
 	} else return poke.sprites.versions["generation-viii"].icons.front_default;
-}
-//Example iconUrl : https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/6-mega-y.png
-export function getVariantPokeIcon(iconUrl, variant, defaultForm) {
-	let split = iconUrl.split("icons/");
-	let iconFile = split[1]; //6-mega-y.png
-	let iconNumber = iconFile.split(".")[0].split("-")[0]; //Pulls "6" out of 6-mega-y.png
-	let baseurl =
-		"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/";
-
-	let defaultname = defaultForm.name; //charizard
-	let variantname = variant.name.replace(defaultname, ""); //charizard-gmax -> -gmax
-
-	if (variantname.includes("mega"))
-		//Mega evolution sprites are gen 7, all others gen 8
-		baseurl += "generation-vii/icons/";
-	else baseurl += "generation-viii/icons/";
-	//6 + -gmax + .png
-	let newIconFile = iconNumber + variantname + iconFile.slice(-4);
-
-	return baseurl + newIconFile;
 }
 /**
  * Used to grab the genus of a pokemon.
