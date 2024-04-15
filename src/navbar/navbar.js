@@ -41,11 +41,11 @@ function Navbar({ showInstall, setShowInstall }) {
 							</a>
 						</Link>
 					</div>
-					<Link href="/itemdex">
+					{/* <Link href="/itemdex">
 						<button className={styles.navbaritem + " d-md-flex d-none"}>
 							<FontAwesomeIcon icon={solid("backpack")} size="lg" />
 						</button>
-					</Link>
+					</Link> */}
 					<button
 						data-bs-toggle="modal"
 						data-bs-target="#settingsMenu"
