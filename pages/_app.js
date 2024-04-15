@@ -68,7 +68,14 @@ function MyApp({ Component, pageProps }) {
 								locale: "en_US",
 								url: "https://www.ultradex.ca",
 								siteName: "Ultradex",
-								images: ["/ultraball_1024.png"],
+								images: [
+									{
+										url: "https://www.ultradex.ca/ultraball_1024.png",
+										width: 1024,
+										height: 1024,
+										alt: "Ultraball",
+									},
+								],
 							}}
 						/>
 						<Component

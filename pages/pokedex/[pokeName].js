@@ -45,6 +45,20 @@ export default function Pokemon(props) {
 					settings.language,
 					settings.version
 				)}
+				openGraph={{
+					images: [
+						{
+							url: pokeFuncs.buildPokeSpriteUrl(
+								props.pokeId,
+								true,
+								false
+							),
+							alt: pokeFuncs.getPokeName(props.pokeObj),
+							height: 199,
+							width: 199,
+						},
+					],
+				}}
 			/>
 			{props.pokeObj && (
 				<div className={"mx-auto container row pt-3"}>
