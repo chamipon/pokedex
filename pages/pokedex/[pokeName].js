@@ -132,13 +132,12 @@ export async function getStaticProps({ params }) {
 	var pokeObj = await fetch(
 		`https://pokeapi.co/api/v2/pokemon/` + params.pokeName
 	);
-	pokeObj = await pokeObj.json();
-
-	if (!pokeObj) {
+	if (pokeObj != "Not Found") {
 		return {
 			notFound: true,
 		};
 	}
+	pokeObj = await pokeObj.json();
 
 	//Fetch the pokemon's species object
 	var specObj = await fetch(pokeObj.species.url);
