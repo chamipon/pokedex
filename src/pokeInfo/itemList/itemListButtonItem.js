@@ -1,12 +1,11 @@
 import styles from "./itemList.module.scss";
+import ListGroup from "react-bootstrap/ListGroup";
 function ItemListButtonItem(props) {
 	return (
 		<>
-			<button
-				className={
-					styles.itemList__listItem +
-					" list-group-item list-group-item-action"
-				}
+			<ListGroup.Item
+				action
+				className={styles.itemList__listItem}
 				data-bs-toggle="modal"
 				data-bs-target="#infoModal"
 				onClick={() => props.onclick(props.item)}
@@ -19,7 +18,7 @@ function ItemListButtonItem(props) {
 				</div>
 
 				<p className="mb-0">{props.body}</p>
-			</button>
+			</ListGroup.Item>
 		</>
 	);
 }
