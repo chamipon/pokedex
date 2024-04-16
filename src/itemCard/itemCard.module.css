@@ -1,49 +1,5 @@
-.variableContainer {
+body {
   --navbar-size: 54px;
-}
-
-.dark {
-  --clr-one-dark: hsl(0, 0%, 20%);
-  --clr-one-dark-h: 0;
-  --clr-one-dark-s: 0%;
-  --clr-two-dark: hsl(48, 96%, 45%);
-  --clr-two-dark-h: 48;
-  --clr-two-dark-s: 96%;
-  --clr-primary-h: var(--clr-one-dark-h);
-  --clr-primary-s: var(--clr-one-dark-s);
-  --clr-primary-l: 20%;
-  --clr-secondary-h: var(--clr-one-dark-h);
-  --clr-secondary-s: var(--clr-one-dark-s);
-  --clr-secondary-l: 15%;
-  --clr-highlight-h: var(--clr-two-dark-h);
-  --clr-highlight-s: var(--clr-two-dark-s);
-  --clr-highlight-l: 45%;
-  --clr-dark-text: #ffffff;
-  --clr-text: var(--clr-dark-text);
-}
-
-.light {
-  --clr-one-light: hsl(0, 0%, 100%);
-  --clr-one-light-h: 0;
-  --clr-one-light-s: 0%;
-  --clr-two-light: hsl(5, 80%, 66%);
-  --clr-two-light-h: 5;
-  --clr-two-light-s: 80%;
-  --clr-primary-h: var(--clr-one-light-h);
-  --clr-primary-s: var(--clr-one-light-s);
-  --clr-primary-l: 100%;
-  --clr-secondary-h: var(--clr-one-light-h);
-  --clr-secondary-s: var(--clr-one-light-s);
-  --clr-secondary-l: 90%;
-  --clr-highlight-h: var(--clr-two-light-h);
-  --clr-highlight-s: var(--clr-two-light-s);
-  --clr-highlight-l: 66%;
-  --clr-light-text: #212529;
-  --clr-text: var(--clr-light-text);
-}
-
-.dark,
-.light {
   --clr-primary: hsl(
   	var(--clr-primary-h),
   	var(--clr-primary-s),
@@ -74,6 +30,44 @@
   	var(--clr-highlight-s),
   	var(--clr-highlight-l)
   );
+}
+body.dark {
+  --clr-one-dark: hsl(0, 0%, 20%);
+  --clr-one-dark-h: 0;
+  --clr-one-dark-s: 0%;
+  --clr-two-dark: hsl(48, 96%, 45%);
+  --clr-two-dark-h: 48;
+  --clr-two-dark-s: 96%;
+  --clr-primary-h: var(--clr-one-dark-h);
+  --clr-primary-s: var(--clr-one-dark-s);
+  --clr-primary-l: 20%;
+  --clr-secondary-h: var(--clr-one-dark-h);
+  --clr-secondary-s: var(--clr-one-dark-s);
+  --clr-secondary-l: 15%;
+  --clr-highlight-h: var(--clr-two-dark-h);
+  --clr-highlight-s: var(--clr-two-dark-s);
+  --clr-highlight-l: 45%;
+  --clr-dark-text: #ffffff;
+  --clr-text: var(--clr-dark-text);
+}
+body.light {
+  --clr-one-light: hsl(0, 0%, 100%);
+  --clr-one-light-h: 0;
+  --clr-one-light-s: 0%;
+  --clr-two-light: hsl(5, 80%, 66%);
+  --clr-two-light-h: 5;
+  --clr-two-light-s: 80%;
+  --clr-primary-h: var(--clr-one-light-h);
+  --clr-primary-s: var(--clr-one-light-s);
+  --clr-primary-l: 100%;
+  --clr-secondary-h: var(--clr-one-light-h);
+  --clr-secondary-s: var(--clr-one-light-s);
+  --clr-secondary-l: 90%;
+  --clr-highlight-h: var(--clr-two-light-h);
+  --clr-highlight-s: var(--clr-two-light-s);
+  --clr-highlight-l: 66%;
+  --clr-light-text: #212529;
+  --clr-text: var(--clr-light-text);
 }
 
 .itemCard {

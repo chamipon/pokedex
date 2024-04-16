@@ -5,56 +5,47 @@ import styles from "./infoModal.module.css";
 import AbilityModalBody from "./abilityModalBody/abilityModalBody";
 import MoveModalBody from "./moveModalBody/moveModalBody";
 import * as helpers from "/src/helpers";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+
 function InfoModal(props) {
+	const handleClose = () => props.setShow(false);
+	const handleShow = () => props.setShow(true);
 	return (
 		<>
 			{props.info && (
-				<div
-					className={"modal fade"}
+				<Modal
+					show={props.show}
+					onHide={handleClose}
 					id="infoModal"
 					tabIndex="-1"
-					aria-labelledby="infoModalLabel"
 					aria-hidden="true"
 				>
-					<div className="modal-dialog modal-lg">
-						<div className={"modal-content " + styles.modalContent}>
-							<div className={"modal-header " + styles.modalHeader}>
-								<h5 className="modal-title" id="infoModalLabel">
-									{helpers.deHyphenate(props.info.name)}
-								</h5>
-								<button
-									type="button"
-									className={"btn-close " + styles.closeButton}
-									data-bs-dismiss="modal"
-									aria-label="Close"
-								>
-									<FontAwesomeIcon
-										icon={regular("xmark")}
-										size="lg"
-									/>
-								</button>
-							</div>
-
-							<div className="modal-body">
-								{props.type == "ability" && (
-									<AbilityModalBody ability={props.info} />
-								)}
-								{props.type == "move" && (
-									<MoveModalBody move={props.info} />
-								)}
-							</div>
-							<div className={"modal-footer " + styles.modalFooter}>
-								<button
-									type="button"
-									className="btn btn-secondary"
-									data-bs-dismiss="modal"
-								>
-									Close
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
+					<Modal.Header className={styles.modalHeader}>
+						<h5 className="modal-title" id="settingsModalLabel">
+							{helpers.deHyphenate(props.info.name)}
+						</h5>
+						<Button
+							variant="close"
+							aria-label="Close"
+							onClick={handleClose}
+							className={styles.closeButton}
+						>
+							<FontAwesomeIcon icon={regular("xmark")} size="lg" />
+						</Button>
+					</Modal.Header>
+					<Modal.Body className={styles.modalBody}>
+						{props.type == "ability" && (
+							<AbilityModalBody ability={props.info} />
+						)}
+						{props.type == "move" && <MoveModalBody move={props.info} />}
+					</Modal.Body>
+					<Modal.Footer className={styles.modalFooter}>
+						<Button variant="secondary" onClick={handleClose}>
+							Close
+						</Button>
+					</Modal.Footer>
+				</Modal>
 			)}
 		</>
 	);

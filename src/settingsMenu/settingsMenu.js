@@ -12,6 +12,16 @@ function SettingsMenu(props) {
 	const handleClose = () => props.setShowSettingsMenu(false);
 	const handleShow = () => props.setShowSettingsMenu(true);
 	useEffect(() => {
+		// Add class to the body element to keep track of the theme
+		if (settings.isDark) {
+			document.body.classList.add("dark");
+			document.body.classList.remove("light");
+		} else {
+			document.body.classList.add("light");
+			document.body.classList.remove("dark");
+		}
+	}, [settings.isDark]);
+	useEffect(() => {
 		async function fetchSettings() {
 			//Fetches the user's settings from indexedd
 			const db = await idb.openDB("ultradex", 1, {
@@ -67,20 +77,19 @@ function SettingsMenu(props) {
 					id="settingsMenu"
 					tabIndex="-1"
 					aria-hidden="true"
-					className={settings.isDark ? "dark" : "light    "}
 				>
 					<Modal.Header className={styles.modalHeader}>
 						<h5 className="modal-title" id="settingsModalLabel">
 							Settings {props.showSettingsMenu}
 						</h5>
-						<button
-							type="button"
-							className={"btn-close " + styles.closeButton}
-							data-bs-dismiss="modal"
+						<Button
+							variant="close"
 							aria-label="Close"
+							onClick={handleClose}
+							className={styles.closeButton}
 						>
 							<FontAwesomeIcon icon={regular("xmark")} size="lg" />
-						</button>
+						</Button>
 					</Modal.Header>
 
 					<Modal.Body className={styles.modalBody}>

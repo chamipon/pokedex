@@ -1,20 +1,21 @@
-
-
-.modalHeader{
-    border-bottom-color: var(--clr-highlight);
+.modalHeader {
+	border-bottom-color: var(--clr-highlight);
 }
-.modalFooter{
-    border-top-color: var(--clr-highlight);
+.modalFooter {
+	border-top-color: var(--clr-highlight);
 }
-.modalContent{
-    background-color: var(--clr-primary);
+.modalBody,
+.modalHeader,
+.modalFooter {
+	background-color: var(--clr-primary);
+	color: var(--clr-text);
 }
-.closeButton{
-    background: transparent;
-    opacity: 1;
-    padding-top: 0.3rem;
-    padding-left: 0.7 rem;
-    :global(.dark) &{
-       color: white; 
-    }
+.closeButton {
+	background: transparent;
+	opacity: 1;
+	padding-top: 0.3rem;
+	padding-left: 0.7 rem;
+	:global(.dark) & {
+		color: white;
+	}
 }

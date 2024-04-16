@@ -17,6 +17,7 @@ export default function Pokemon(props) {
 	const router = useRouter();
 	const [settings] = useContext(SettingsContext);
 	const [modalInfo, setModalInfo] = useState();
+	const [showInfoModal, setShowInfoModal] = useState(false); // Pokedex number of the poke we want to scroll to
 	useEffect(() => {
 		//Store pspecies objects. set target poke.
 		if (props.specObj) {
@@ -32,11 +33,11 @@ export default function Pokemon(props) {
 	}, [props.abilitiesObjs]);
 	//Called when an ability is clicked, updates the ModalInfo state so we can display the ability's info
 	function AbilityClick(ability) {
-		console.log(ability);
 		setModalInfo({
 			info: ability.ability,
 			type: "ability",
 		});
+		setShowInfoModal(true);
 	}
 	//Called when an ability is clicked, updates the ModalInfo state so we can display the ability's info
 	async function MoveClick(move) {
@@ -48,6 +49,7 @@ export default function Pokemon(props) {
 			info: json,
 			type: "move",
 		});
+		setShowInfoModal(true);
 	}
 	return (
 		<>
@@ -135,6 +137,8 @@ export default function Pokemon(props) {
 				<InfoModal
 					info={modalInfo.info} // The info.
 					type={modalInfo.type} // What kind of info we're displaying (ability, move, etc)
+					show={showInfoModal}
+					setShow={setShowInfoModal}
 				/>
 			)}
 		</>

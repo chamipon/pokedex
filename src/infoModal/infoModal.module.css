@@ -6,8 +6,11 @@
   border-top-color: var(--clr-highlight);
 }
 
-.modalContent {
+.modalBody,
+.modalHeader,
+.modalFooter {
   background-color: var(--clr-primary);
+  color: var(--clr-text);
 }
 
 .closeButton {
