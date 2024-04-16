@@ -15,6 +15,7 @@ function ItemList(props) {
 								aside={item.aside}
 								onclick={props.onclick}
 								item={item.item}
+								key={item.title}
 							/>
 						</>
 					))}
