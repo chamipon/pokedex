@@ -132,7 +132,7 @@ export async function getStaticProps({ params }) {
 	var pokeObj = await fetch(
 		`https://pokeapi.co/api/v2/pokemon/` + params.pokeName
 	);
-	if (pokeObj != "Not Found") {
+	if (pokeObj.status != 200) {
 		return {
 			notFound: true,
 		};
