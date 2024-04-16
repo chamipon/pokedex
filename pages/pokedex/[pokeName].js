@@ -8,6 +8,7 @@ import * as pokeFuncs from "/src/pokeFuncs.js";
 import { useContext, useEffect, useState } from "react";
 import SpeciesInfo from "/src/pokeInfo/speciesInfo/speciesInfo";
 import Abilities from "/src/pokeInfo/abilities/abilities";
+import Moves from "/src/pokeInfo/moves/moves";
 import SettingsContext from "../../contexts/settings";
 import { NextSeo } from "next-seo";
 import InfoModal from "/src/infoModal/infoModal";
@@ -25,15 +26,22 @@ export default function Pokemon(props) {
 
 	useEffect(() => {
 		//GIve the info modal some initial info
-		if (props.abilitiesObj) {
-			setModalInfo({ info: props.abilitiesObj[0], type: "ability" });
+		if (props.abilitiesObjs) {
+			setModalInfo({ info: props.abilitiesObjs[0], type: "ability" });
 		}
-	}, [props.abilitiesObj]);
+	}, [props.abilitiesObjs]);
+	//Called when an ability is clicked, updates the ModalInfo state so we can display the ability's info
 	function AbilityClick(ability) {
-		console.log(ability);
 		setModalInfo({
 			info: ability,
 			type: "ability",
+		});
+	}
+	//Called when an ability is clicked, updates the ModalInfo state so we can display the ability's info
+	function MoveClick(move) {
+		setModalInfo({
+			info: move,
+			type: "move",
 		});
 	}
 	return (
@@ -110,10 +118,11 @@ export default function Pokemon(props) {
 					{settings.showForms && <Forms forms={props.specObj.varieties} />}
 					{settings.showAbilities && (
 						<Abilities
-							abilities={props.abilitiesObj}
+							abilities={props.abilitiesObjs}
 							AbilityClick={AbilityClick}
 						/>
 					)}
+					<Moves moves={props.movesObjs} MoveClick={MoveClick} />
 				</div>
 			)}
 
@@ -151,16 +160,23 @@ export async function getStaticProps({ params }) {
 	}
 
 	//Get ability info
-	var abilitiesObj = [];
+	var abilitiesObjs = [];
 	for (var ability of pokeObj.abilities) {
 		let temp = await fetch(ability.ability.url);
 		temp = await temp.json();
 		ability.ability = temp;
-		abilitiesObj.push(ability);
+		abilitiesObjs.push(ability);
 	}
-
+	//Get ability info
+	var movesObjs = [];
+	for (var move of pokeObj.moves) {
+		let temp = await fetch(move.move.url);
+		temp = await temp.json();
+		move.move = temp;
+		movesObjs.push(move);
+	}
 	return {
-		props: { pokeObj, specObj, evoObj, abilitiesObj }, // will be passed to the page component as props
+		props: { pokeObj, specObj, evoObj, abilitiesObjs, movesObjs }, // will be passed to the page component as props
 	};
 }
 
