@@ -4,6 +4,7 @@ import { solid, regular } from "@fortawesome/fontawesome-svg-core/import.macro";
 import styles from "./settingsMenu.module.scss";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 import SettingsContext from "../../contexts/settings";
 import SettingsRow from "./settingsRow/settingsRow";
 function SettingsMenu(props) {
@@ -66,7 +67,7 @@ function SettingsMenu(props) {
 					id="settingsMenu"
 					tabIndex="-1"
 					aria-hidden="true"
-					className={settings.isDark ? "dark" : "light"}
+					className={settings.isDark ? "dark" : "light    "}
 				>
 					<Modal.Header className={styles.modalHeader}>
 						<h5 className="modal-title" id="settingsModalLabel">
@@ -144,12 +145,12 @@ function SettingsMenu(props) {
 							updateSetting={updateSetting}
 						></SettingsRow>
 						<div className={styles.settingRow}>
-							<select
+							<Form.Select
 								onChange={(e) =>
 									updateSetting("language", e.target.value)
 								}
 								value={settings.language}
-								className={"form-select me-1 " + styles.setting}
+								className={"me-1 " + styles.setting}
 								aria-label="Language"
 							>
 								<option value="en">English</option>
@@ -161,13 +162,13 @@ function SettingsMenu(props) {
 								<option value="es">Español</option>
 								<option value="it">Italian</option>
 								<option value="ja">Japanese</option>
-							</select>
-							<select
+							</Form.Select>
+							<Form.Select
 								onChange={(e) =>
 									updateSetting("version", e.target.value)
 								}
 								value={settings.version}
-								className={"form-select ms-1 " + styles.setting}
+								className={"ms-1 " + styles.setting}
 								aria-label="Game version"
 							>
 								<option value="red">Red</option>
@@ -206,7 +207,7 @@ function SettingsMenu(props) {
 								</option>
 								<option value="sword">Sword</option>
 								<option value="shield">Shield</option>
-							</select>
+							</Form.Select>
 						</div>
 					</Modal.Body>
 					<Modal.Footer className={styles.modalFooter}>
