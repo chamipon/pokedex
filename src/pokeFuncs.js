@@ -333,7 +333,31 @@ export function getAbilityEffect(ability, lang = "en", long = false) {
 		return "";
 	}
 }
-
+/**
+ * Used to grab the flavour text of an ability.
+ * @param {abilityObj} ability - The ability object.
+ * @param {string} lang - Optional, the language of flavour text you want returned. English is default.
+ * @param {bool} long - Optional, if true return full effect, if false return short effect.
+ */
+export function getMoveEffect(move, lang = "en", long = false) {
+	return getEffectEntry(move.effect_entries, lang, long);
+}
+export function getEffectEntry(entries, lang, long) {
+	try {
+		var effectObj = entries.find((el) => el.language.name == lang);
+		if (effectObj) {
+			if (long) return effectObj.effect.replace(/\f/g, "");
+			else return effectObj.short_effect.replace(/\f/g, "");
+		} else {
+			var effectObjs = entries.filter((el) => el.language.name == "en");
+			let effectObj = effectObjs[effectObjs.length - 1];
+			if (long) return effectObj.effect.replace(/\f/g, "");
+			else return effectObj.short_effect.replace(/\f/g, "");
+		}
+	} catch {
+		return "";
+	}
+}
 //Takes in poke name, list of pokeobjs, pokelistupdater and the pokedex object.
 //Uses the poke name to look for the pokeobj in the list, if the obj isnt in the list yet, it gets it from the api and adds it to the list.
 //Returns the poke obj

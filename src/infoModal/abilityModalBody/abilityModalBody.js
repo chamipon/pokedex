@@ -6,11 +6,11 @@ function AbilityModalBody(props) {
 		<>
 			<p>
 				Short Effect:
-				{pokeFuncs.getAbilityEffect(props.ability.ability, "en")}
+				{pokeFuncs.getAbilityEffect(props.ability, "en")}
 			</p>
 			<p>
 				Effect:
-				{pokeFuncs.getAbilityEffect(props.ability.ability, "en", true)}
+				{pokeFuncs.getAbilityEffect(props.ability, "en", true)}
 			</p>
 		</>
 	);

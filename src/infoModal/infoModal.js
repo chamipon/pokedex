@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid, regular } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
 import styles from "./infoModal.module.css";
 import AbilityModalBody from "./abilityModalBody/abilityModalBody";
+import MoveModalBody from "./moveModalBody/moveModalBody";
 import * as helpers from "/src/helpers";
 function InfoModal(props) {
 	return (
@@ -19,8 +20,7 @@ function InfoModal(props) {
 						<div className={"modal-content " + styles.modalContent}>
 							<div className={"modal-header " + styles.modalHeader}>
 								<h5 className="modal-title" id="infoModalLabel">
-									{props.type == "ability" &&
-										helpers.deHyphenate(props.info.ability.name)}
+									{helpers.deHyphenate(props.info.name)}
 								</h5>
 								<button
 									type="button"
@@ -38,6 +38,9 @@ function InfoModal(props) {
 							<div className="modal-body">
 								{props.type == "ability" && (
 									<AbilityModalBody ability={props.info} />
+								)}
+								{props.type == "move" && (
+									<MoveModalBody move={props.info} />
 								)}
 							</div>
 							<div className={"modal-footer " + styles.modalFooter}>

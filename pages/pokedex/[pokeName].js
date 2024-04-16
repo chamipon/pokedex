@@ -27,20 +27,25 @@ export default function Pokemon(props) {
 	useEffect(() => {
 		//GIve the info modal some initial info
 		if (props.abilitiesObjs) {
-			setModalInfo({ info: props.abilitiesObjs[0], type: "ability" });
+			setModalInfo({ info: props.abilitiesObjs[0].ability, type: "ability" });
 		}
 	}, [props.abilitiesObjs]);
 	//Called when an ability is clicked, updates the ModalInfo state so we can display the ability's info
 	function AbilityClick(ability) {
+		console.log(ability);
 		setModalInfo({
-			info: ability,
+			info: ability.ability,
 			type: "ability",
 		});
 	}
 	//Called when an ability is clicked, updates the ModalInfo state so we can display the ability's info
-	function MoveClick(move) {
+	async function MoveClick(move) {
+		//Get move info
+
+		let res = await fetch(move.move.url);
+		let json = await res.json();
 		setModalInfo({
-			info: move,
+			info: json,
 			type: "move",
 		});
 	}
@@ -122,7 +127,7 @@ export default function Pokemon(props) {
 							AbilityClick={AbilityClick}
 						/>
 					)}
-					<Moves moves={props.movesObjs} MoveClick={MoveClick} />
+					<Moves moves={props.pokeObj.moves} MoveClick={MoveClick} />
 				</div>
 			)}
 
@@ -148,6 +153,8 @@ export async function getStaticProps({ params }) {
 	}
 	pokeObj = await pokeObj.json();
 
+	//We won't use this move data on this page, and its MASSIVE. So we get rid of it
+	pokeObj.moves.forEach((move) => delete move["version_group_details"]);
 	//Fetch the pokemon's species object
 	var specObj = await fetch(pokeObj.species.url);
 	specObj = await specObj.json();
@@ -167,16 +174,8 @@ export async function getStaticProps({ params }) {
 		ability.ability = temp;
 		abilitiesObjs.push(ability);
 	}
-	//Get ability info
-	var movesObjs = [];
-	for (var move of pokeObj.moves) {
-		let temp = await fetch(move.move.url);
-		temp = await temp.json();
-		move.move = temp;
-		movesObjs.push(move);
-	}
 	return {
-		props: { pokeObj, specObj, evoObj, abilitiesObjs, movesObjs }, // will be passed to the page component as props
+		props: { pokeObj, specObj, evoObj, abilitiesObjs }, // will be passed to the page component as props
 	};
 }
 

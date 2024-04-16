@@ -15,10 +15,6 @@ function Moves(props) {
 					items={props.moves.map((move) => {
 						return {
 							title: helpers.deHyphenate(move.move.name),
-							body: pokeFuncs.getMoveFlavText(
-								move.move,
-								settings.language
-							),
 							item: move,
 						};
 					})}
