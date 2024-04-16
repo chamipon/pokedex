@@ -11,7 +11,12 @@ import { useContext } from "react";
 import Link from "next/link";
 import SettingsContext from "../../contexts/settings";
 import styles from "./navbar.module.scss";
-function Navbar({ showInstall, setShowInstall }) {
+function Navbar({
+	showInstall,
+	setShowInstall,
+	showSettingsMenu,
+	setShowSettingsMenu,
+}) {
 	const [settings, updateSetting] = useContext(SettingsContext);
 	useEffect(() => {
 		installable.installableSetup(setShowInstall);
@@ -47,8 +52,9 @@ function Navbar({ showInstall, setShowInstall }) {
 						</button>
 					</Link> */}
 					<button
-						data-bs-toggle="modal"
-						data-bs-target="#settingsMenu"
+						onClick={() => {
+							setShowSettingsMenu(!showSettingsMenu);
+						}}
 						className={styles.navbaritem + " d-md-flex d-none"}
 					>
 						<FontAwesomeIcon icon={solid("gear")} size="lg" />

@@ -1,5 +1,6 @@
 import "../styles/app.css";
 //import "../src/navbar/navbar.css"
+import "../styles/_Variables.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "../src/pokeInfo/types/types.css";
 import "../src/pokeCard/pokeCard.module.scss";
@@ -14,13 +15,14 @@ import ContentContainer from "../src/contentContainer/contentContainer";
 import React, { useState, useContext } from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "../node_modules/@fortawesome/fontawesome-svg-core/styles.css";
-import "../styles/_Variables.scss";
+
 config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }) {
 	const [searchParams, setSearchParams] = useState(""); // The current search parameters
 	const [showInstall, setShowInstall] = useState(false); //Used to control if the install button is being displayed
 	const [targetPoke, setTargetPoke] = useState(""); // Pokedex number of the poke we want to scroll to
+	const [showSettingsMenu, setShowSettingsMenu] = useState(false); // Pokedex number of the poke we want to scroll to
 	return (
 		<>
 			<Head>
@@ -29,17 +31,6 @@ function MyApp({ Component, pageProps }) {
 					name="viewport"
 					content="width=device-width, initial-scale=1"
 				/>
-				<link
-					href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
-					rel="stylesheet"
-					integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
-					crossOrigin="anonymous"
-				/>
-				<script
-					src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-					integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-					crossOrigin="anonymous"
-				></script>
 				<script src="https://cdn.jsdelivr.net/npm/idb@7/build/umd.js"></script>
 				<link rel="icon" href="/favicon.png" />
 				<link rel="apple-touch-icon" href="/app_touch_icon.png" />
@@ -85,11 +76,18 @@ function MyApp({ Component, pageProps }) {
 							setSearchParams={setSearchParams}
 							{...pageProps}
 						/>
+						<p>{showSettingsMenu.toString()} TEST</p>
 						<Navbar
 							showInstall={showInstall}
 							setShowInstall={setShowInstall}
+							showSettingsMenu={showSettingsMenu}
+							setShowSettingsMenu={setShowSettingsMenu}
 						/>
-						<SettingsMenu />
+
+						<SettingsMenu
+							showSettingsMenu={showSettingsMenu}
+							setShowSettingsMenu={setShowSettingsMenu}
+						/>
 						<MobileMenu />
 					</ContentContainer>
 				</SettingsProvider>
