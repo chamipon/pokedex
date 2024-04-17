@@ -4,7 +4,8 @@ import Image from "next/image";
 import * as installable from "./../installable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid, regular } from "@fortawesome/fontawesome-svg-core/import.macro";
-
+import ReactNavbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 import ultraPic from "../../public/ultraball.png";
 import premierPic from "../../public/premier_ball.png";
 import { useContext } from "react";
@@ -16,93 +17,69 @@ function Navbar({
 	setShowInstall,
 	showSettingsMenu,
 	setShowSettingsMenu,
+	showMobileMenu,
+	setShowMobileMenu,
 }) {
 	const [settings, updateSetting] = useContext(SettingsContext);
 	useEffect(() => {
 		installable.installableSetup(setShowInstall);
 	}, [setShowInstall]);
 	return (
-		<nav className={styles.navbar + " navbar fixed-bottom "}>
+		<ReactNavbar className={styles.navbar + " fixed-bottom "}>
 			<div className="h-100 w-100 d-flex flex-row flex-md-column">
 				<div className="mb-md-auto me-auto me-md-0 d-flex flex-row flex-md-column">
-					<div className="ms-md-auto d-flex me-2 me-md-auto">
-						<Link
-							style={{ alignSelf: "center", margin: "auto" }}
-							href="/pokedex"
-							scroll={false}
-						>
-							<a>
-								<Image
-									width={40}
-									layout="fixed"
-									height={40}
-									alt={
-										settings.isDark
-											? "ultra ball sprite"
-											: "premier ball sprite"
-									}
-									src={settings.isDark ? ultraPic : premierPic}
-								/>
-							</a>
-						</Link>
-					</div>
+					<ReactNavbar.Brand
+						href="/pokedex"
+						className="ms-md-auto d-flex me-2 me-md-auto"
+					>
+						<Image
+							width={40}
+							layout="fixed"
+							height={40}
+							alt={
+								settings.isDark
+									? "ultra ball sprite"
+									: "premier ball sprite"
+							}
+							src={settings.isDark ? ultraPic : premierPic}
+						/>
+					</ReactNavbar.Brand>
 					{/* <Link href="/itemdex">
 						<button className={styles.navbaritem + " d-md-flex d-none"}>
 							<FontAwesomeIcon icon={solid("backpack")} size="lg" />
 						</button>
 					</Link> */}
-					<button
+					<Nav.Link
 						onClick={() => {
 							setShowSettingsMenu(!showSettingsMenu);
 						}}
 						className={styles.navbaritem + " d-md-flex d-none"}
 					>
 						<FontAwesomeIcon icon={solid("gear")} size="lg" />
-					</button>
+					</Nav.Link>
 				</div>
 				{/* Quick Settings */}
 				{settings.fetched && (
 					<>
 						{settings.showShiny && (
-							<button
+							<Nav.Link
 								onClick={() =>
 									updateSetting("isShiny", !settings.isShiny)
 								}
 								className={styles.navbaritem + " d-flex"}
 							>
-								{
-									<FontAwesomeIcon
-										icon={
-											settings.isShiny
-												? solid("sparkles")
-												: regular("sparkles")
-										}
-										size="lg"
-									/>
-								}
-							</button>
-						)}
-						{settings.showDark && (
-							<button
-								onClick={() =>
-									updateSetting("isDark", !settings.isDark)
-								}
-								className={styles.navbaritem + " d-flex"}
-							>
-								{
-									<FontAwesomeIcon
-										icon={
-											settings.isDark
-												? solid("moon")
-												: solid("sun")
-										}
-										size="lg"
-									/>
-								}
-							</button>
+								<FontAwesomeIcon
+									icon={
+										settings.isShiny
+											? solid("sparkles")
+											: regular("sparkles")
+									}
+									size="lg"
+								/>
+							</Nav.Link>
 						)}
 						{settings.showArt && (
-							<button
+							<Nav.Link
 								onClick={() =>
 									updateSetting("useArt", !settings.useArt)
 								}
@@ -118,13 +95,13 @@ function Navbar({
 										size="lg"
 									/>
 								}
-							</button>
+							</Nav.Link>
 						)}
 					</>
 				)}
 
 				{showInstall && (
-					<button
+					<Nav.Link
 						onClick={() =>
 							installable.installButtonClick(setShowInstall)
 						}
@@ -132,18 +109,18 @@ function Navbar({
 						className={styles.navbaritem + " d-flex"}
 					>
 						<FontAwesomeIcon icon={solid("download")} size="lg" />
-					</button>
+					</Nav.Link>
 				)}
-				<button
-					data-bs-toggle="offcanvas"
-					data-bs-target="#mobileMenu"
-					aria-controls="mobileMenu"
+				<Nav.Link
+					onClick={() => {
+						setShowMobileMenu(!showMobileMenu);
+					}}
 					className={styles.navbaritem + " d-flex d-md-none"}
 				>
 					<FontAwesomeIcon icon={solid("bars")} size="lg" />
-				</button>
+				</Nav.Link>
 			</div>
-		</nav>
+		</ReactNavbar>
 	);
 }
 

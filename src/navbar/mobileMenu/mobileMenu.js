@@ -1,50 +1,82 @@
 import styles from "./mobileMenu.module.scss";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro'
-import Link from 'next/link'
-import Image from 'next/image'
-import { useContext } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid, regular } from "@fortawesome/fontawesome-svg-core/import.macro";
+import Link from "next/link";
+import { useContext } from "react";
 import SettingsContext from "../../../contexts/settings";
-import pokeballIcon from '../../../public/pokeball_icon.svg'
-import premierPic from '../../../public/premier_ball.png'
+import Offcanvas from "react-bootstrap/Offcanvas";
+import ListGroup from "react-bootstrap/ListGroup";
 
-function MobileMenu({setSearchParams, showInstall, setShowInstall}) {
-    const [settings] = useContext( SettingsContext ); 
-    return (
-    <div className={ styles.mobileMenu  + " offcanvas offcanvas-end " + (settings.isDark && ' dark ')} tabIndex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
-        <div className="offcanvas-header">
-            <h5 className="offcanvas-title" id="mobileMenuLabel">Ultradex</h5>
-            <button type="button" className={(settings.isDark && ' btn-close-white ') + " btn-close text-reset"} data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div className="offcanvas-body">
-            <ul className={" list-group list-group-flush"}>
-                <Link href="/pokedex">
-                    <a className={styles.mobileMenuItem + " list-group-item"}>
-                        <div data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
-                            <img 
-                                width={24}
-                                height={24}
+function MobileMenu(props) {
+	const handleClose = () => props.setShow(false);
+	const handleShow = () => props.setShow(true);
 
-                                alt={settings.isDark ? "ultra ball sprite" : "premier ball sprite"} src={settings.isDark ? "/pokeball_icon_white.svg" : "/pokeball_icon.svg"} 
-                            />
-                        Pokemon
-                        </div>
-                    </a>
-                </Link> 
-                <Link href="/itemdex">
-                    <a className={styles.mobileMenuItem + " list-group-item"}>
-                        <div data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
-                            <FontAwesomeIcon icon={solid('backpack')} size="lg" /> Items
-                        </div>
-                    </a>
-                </Link> 
-                <button className={styles.mobileMenuItem + " list-group-item text-start"} data-bs-toggle="modal" data-bs-target="#settingsMenu">
-                    <FontAwesomeIcon icon={solid('gear')} size="lg"/>Settings
-                </button>
-            </ul>
-        </div>
-    </div>
+	const [settings] = useContext(SettingsContext);
+	return (
+		<>
+			<Offcanvas
+				tabIndex="-1"
+				className={styles.mobileMenu}
+				show={props.show}
+				placement="end"
+				onHide={handleClose}
+			>
+				<Offcanvas.Header>
+					<Offcanvas.Title>Ultradex</Offcanvas.Title>
+				</Offcanvas.Header>
+				<Offcanvas.Body>
+					<ListGroup className={" list-group list-group-flush"}>
+						<ListGroup.Item
+							action
+							className={styles.mobileMenuItem}
+							href="/pokedex"
+						>
+							<div>
+								<img
+									width={24}
+									height={24}
+									alt={
+										settings.isDark
+											? "ultra ball sprite"
+											: "premier ball sprite"
+									}
+									src={
+										settings.isDark
+											? "/pokeball_icon_white.svg"
+											: "/pokeball_icon.svg"
+									}
+								/>
+								Pokemon
+							</div>
+						</ListGroup.Item>
+						<ListGroup.Item
+							className={styles.mobileMenuItem}
+							action
+							href="/itemdex"
+						>
+							<div>
+								<FontAwesomeIcon
+									icon={solid("backpack")}
+									size="lg"
+								/>{" "}
+								Items
+							</div>
+						</ListGroup.Item>
+						<ListGroup.Item
+							action
+							className={styles.mobileMenuItem}
+							onClick={() => {
+								props.setShowSettingsMenu(!props.showSettingsMenu);
+							}}
+						>
+							<FontAwesomeIcon icon={solid("gear")} size="lg" />
+							Settings
+						</ListGroup.Item>
+					</ListGroup>
+				</Offcanvas.Body>
+			</Offcanvas>
+		</>
 	);
 }
 
-export default MobileMenu;  
+export default MobileMenu;

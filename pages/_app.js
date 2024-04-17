@@ -22,7 +22,8 @@ function MyApp({ Component, pageProps }) {
 	const [searchParams, setSearchParams] = useState(""); // The current search parameters
 	const [showInstall, setShowInstall] = useState(false); //Used to control if the install button is being displayed
 	const [targetPoke, setTargetPoke] = useState(""); // Pokedex number of the poke we want to scroll to
-	const [showSettingsMenu, setShowSettingsMenu] = useState(false); // Pokedex number of the poke we want to scroll to
+	const [showSettingsMenu, setShowSettingsMenu] = useState(false);
+	const [showMobileMenu, setShowMobileMenu] = useState(false);
 	return (
 		<>
 			<Head>
@@ -76,19 +77,25 @@ function MyApp({ Component, pageProps }) {
 							setSearchParams={setSearchParams}
 							{...pageProps}
 						/>
-						<p>{showSettingsMenu.toString()} TEST</p>
 						<Navbar
 							showInstall={showInstall}
 							setShowInstall={setShowInstall}
 							showSettingsMenu={showSettingsMenu}
 							setShowSettingsMenu={setShowSettingsMenu}
+							showMobileMenu={showMobileMenu}
+							setShowMobileMenu={setShowMobileMenu}
 						/>
 
 						<SettingsMenu
 							showSettingsMenu={showSettingsMenu}
 							setShowSettingsMenu={setShowSettingsMenu}
 						/>
-						<MobileMenu />
+						<MobileMenu
+							show={showMobileMenu}
+							setShow={setShowMobileMenu}
+							showSettingsMenu={showSettingsMenu}
+							setShowSettingsMenu={setShowSettingsMenu}
+						/>
 					</ContentContainer>
 				</SettingsProvider>
 			</div>
