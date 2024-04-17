@@ -15,7 +15,7 @@ function ItemList(props) {
 		<>
 			<ListGroup
 				variant="flush"
-				className={styles.itemList + " " + props.className}
+				className={props.className}
 				style={props.style}
 			>
 				{subComponents.map((component) => component)}
