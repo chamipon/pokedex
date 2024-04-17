@@ -1,25 +1,29 @@
 .itemList {
-	&__listItem {
-		background-color: var(--clr-primary);
+}
+.listItem {
+	background-color: var(--clr-primary);
+	color: var(--clr-text);
+	padding: 1rem;
+	border-bottom: 0px;
+	&:hover,
+	&:focus {
 		color: var(--clr-text);
-		padding: 1rem;
+		background-color: var(--clr-primary-900);
+	}
+	&:active {
+		background-color: var(--clr-primary-800);
+	}
+	&__header {
+		text-decoration: underline var(--clr-highlight);
+		text-underline-position: under;
+	}
+}
+
+.complex {
+	border-radius: 1rem;
+
+	&:first-child,
+	&:last-child {
 		border-radius: 1rem;
-		border-bottom: 0px;
-		&:first-child,
-		&:last-child {
-			border-radius: 1rem;
-		}
-		&:hover,
-		&:focus {
-			color: var(--clr-text);
-			background-color: var(--clr-primary-900);
-		}
-		&:active {
-			background-color: var(--clr-primary-800);
-		}
-		&__header {
-			text-decoration: underline var(--clr-highlight);
-			text-underline-position: under;
-		}
 	}
 }

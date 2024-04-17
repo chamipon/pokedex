@@ -1,7 +1,6 @@
 import styles from "./mobileMenu.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid, regular } from "@fortawesome/fontawesome-svg-core/import.macro";
-import Link from "next/link";
 import { useContext } from "react";
 import SettingsContext from "../../../contexts/settings";
 import Offcanvas from "react-bootstrap/Offcanvas";

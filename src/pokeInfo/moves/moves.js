@@ -11,15 +11,17 @@ function Moves(props) {
 		<>
 			<InfoContainer>
 				<h2 className="h3">Moves</h2>
-				<ItemList
-					items={props.moves.map((move) => {
-						return {
-							title: helpers.deHyphenate(move.move.name),
-							item: move,
-						};
+				<ItemList style={{ "--gap": "2px" }} className="gap">
+					{props.moves.map((move) => {
+						return (
+							<ItemList.SimpleItem
+								title={helpers.deHyphenate(move.move.name)}
+								item={move}
+								onclick={props.MoveClick}
+							/>
+						);
 					})}
-					onclick={props.MoveClick}
-				/>
+				</ItemList>
 			</InfoContainer>
 		</>
 	);

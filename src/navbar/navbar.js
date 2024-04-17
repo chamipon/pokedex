@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import $ from "jquery";
+import React, { useContext, useEffect } from "react";
 import Image from "next/image";
 import * as installable from "./../installable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,8 +7,6 @@ import ReactNavbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import ultraPic from "../../public/ultraball.png";
 import premierPic from "../../public/premier_ball.png";
-import { useContext } from "react";
-import Link from "next/link";
 import SettingsContext from "../../contexts/settings";
 import styles from "./navbar.module.scss";
 function Navbar({

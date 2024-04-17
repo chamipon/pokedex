@@ -11,20 +11,23 @@ function Abilities(props) {
 		<>
 			<InfoContainer>
 				<h2 className="h3">Abilities</h2>
-				<ItemList
-					items={props.abilities.map((ability) => {
-						return {
-							title: helpers.deHyphenate(ability.ability.name),
-							body: pokeFuncs.getAbilityFlavText(
-								ability.ability,
-								settings.language
-							),
-							aside: ability.is_hidden ? "Hidden Ability" : "",
-							item: ability,
-						};
+				{"Abilities length: " + props.abilities.length}
+				<ItemList className="gap">
+					{props.abilities.map((ability) => {
+						return (
+							<ItemList.ButtonItem
+								title={helpers.deHyphenate(ability.ability.name)}
+								body={pokeFuncs.getAbilityFlavText(
+									ability.ability,
+									settings.language
+								)}
+								aside={ability.is_hidden ? "Hidden Ability" : ""}
+								item={ability}
+								onclick={props.AbilityClick}
+							/>
+						);
 					})}
-					onclick={props.AbilityClick}
-				/>
+				</ItemList>
 			</InfoContainer>
 		</>
 	);
