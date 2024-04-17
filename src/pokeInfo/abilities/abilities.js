@@ -11,7 +11,6 @@ function Abilities(props) {
 		<>
 			<InfoContainer>
 				<h2 className="h3">Abilities</h2>
-				{"Abilities length: " + props.abilities.length}
 				<ItemList className="gap">
 					{props.abilities.map((ability) => {
 						return (
