@@ -21,7 +21,15 @@ function Moves(props) {
 							/>
 						);
 					})}
+					<ItemList.SimpleItem
+						title={"test - " + props.moves[0].move.name}
+						item={props.moves[0]}
+						onclick={props.MoveClick}
+					/>
 				</ItemList>
+				{props.moves.map((move) => {
+					return <p>{move.move.name}</p>;
+				})}
 			</InfoContainer>
 		</>
 	);
