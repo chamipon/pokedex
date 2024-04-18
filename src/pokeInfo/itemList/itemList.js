@@ -10,7 +10,7 @@ function ItemList(props) {
 		console.log("Children:");
 		console.log(props.children);
 		let subComponentList = Object.keys(ItemList);
-
+		console.log(subComponentList);
 		let _subComponents = subComponentList.map((key) => {
 			return React.Children.map(props.children, (child) =>
 				child.type.name === key ? child : null
