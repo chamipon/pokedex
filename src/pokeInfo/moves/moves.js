@@ -18,6 +18,7 @@ function Moves(props) {
 								title={helpers.deHyphenate(move.move.name)}
 								item={move}
 								onclick={props.MoveClick}
+								key={move.move.name}
 							/>
 						);
 					})}

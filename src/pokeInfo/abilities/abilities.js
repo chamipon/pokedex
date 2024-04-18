@@ -23,6 +23,7 @@ function Abilities(props) {
 								aside={ability.is_hidden ? "Hidden Ability" : ""}
 								item={ability}
 								onclick={props.AbilityClick}
+								key={ability.ability.name}
 							/>
 						);
 					})}
