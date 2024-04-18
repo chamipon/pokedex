@@ -1,16 +1,22 @@
 import styles from "./itemList.module.scss";
 import React from "react";
+import { useContext, useEffect, useState } from "react";
 import * as helpers from "/src/helpers";
 import ItemListButtonItem from "./itemListButtonItem";
 import ListGroup from "react-bootstrap/ListGroup";
 function ItemList(props) {
-	let subComponentList = Object.keys(ItemList);
+	const [subComponents, setSubComponents] = useState(false); // Pokedex number of the poke we want to scroll to
+	useEffect(() => {
+		let subComponentList = Object.keys(ItemList);
 
-	let subComponents = subComponentList.map((key) => {
-		return React.Children.map(props.children, (child) =>
-			child.type.name === key ? child : null
-		);
-	});
+		let _subComponents = subComponentList.map((key) => {
+			return React.Children.map(props.children, (child) =>
+				child.type.name === key ? child : null
+			);
+		});
+		setSubComponents(_subComponents);
+	}, [props.children]);
+
 	return (
 		<>
 			<ListGroup
@@ -18,7 +24,7 @@ function ItemList(props) {
 				className={props.className}
 				style={props.style}
 			>
-				{subComponents.map((component) => component)}
+				{subComponents && subComponents.map((component) => component)}
 			</ListGroup>
 		</>
 	);
