@@ -8,7 +8,7 @@ function ItemList(props) {
 
 	let subComponents = subComponentList.map((key) => {
 		return React.Children.map(props.children, (child) =>
-			child.type.name === key ? child : null
+			child.type.displayName === key ? child : null
 		);
 	});
 	return (
@@ -33,6 +33,7 @@ const SimpleItem = (props) => (
 		<p className="mb-0">{props.title}</p>
 	</ListGroup.Item>
 );
+SimpleItem.displayName = "SimpleItem";
 ItemList.SimpleItem = SimpleItem;
 const ButtonItem = (props) => (
 	<ItemListButtonItem
@@ -44,6 +45,7 @@ const ButtonItem = (props) => (
 		key={props.title}
 	/>
 );
+ButtonItem.displayName = "ButtonItem";
 ItemList.ButtonItem = ButtonItem;
 
 export default ItemList;
