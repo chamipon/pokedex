@@ -7,6 +7,8 @@ import ListGroup from "react-bootstrap/ListGroup";
 function ItemList(props) {
 	const [subComponents, setSubComponents] = useState(false); // Pokedex number of the poke we want to scroll to
 	useEffect(() => {
+		console.log("Children:");
+		console.log(props.children);
 		let subComponentList = Object.keys(ItemList);
 
 		let _subComponents = subComponentList.map((key) => {
@@ -14,11 +16,14 @@ function ItemList(props) {
 				child.type.name === key ? child : null
 			);
 		});
+		console.log("sub components set:");
+		console.log(_subComponents);
 		setSubComponents(_subComponents);
 	}, [props.children]);
 
 	return (
 		<>
+			{subComponents && <p>{subComponents.length}</p>}
 			<ListGroup
 				variant="flush"
 				className={props.className}
