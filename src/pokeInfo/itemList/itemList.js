@@ -55,6 +55,7 @@ const ButtonItem = (props) => (
 		key={props.title}
 	/>
 );
+ButtonItem.displayName = "ButtonItem";
 ItemList.ButtonItem = ButtonItem;
 
 export default ItemList;
