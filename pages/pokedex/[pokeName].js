@@ -129,7 +129,9 @@ export default function Pokemon(props) {
 							AbilityClick={AbilityClick}
 						/>
 					)}
-					<Moves moves={props.pokeObj.moves} MoveClick={MoveClick} />
+					{settings.showMoves && (
+						<Moves moves={props.pokeObj.moves} MoveClick={MoveClick} />
+					)}
 				</div>
 			)}
 

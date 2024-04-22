@@ -46,6 +46,7 @@ function SettingsMenu(props) {
 			var showStats = await fetchSetting("showStats", true, db);
 			var showEvoChain = await fetchSetting("showEvoChain", true, db);
 			var showAbilities = await fetchSetting("showAbilities", true, db);
+			var showMoves = await fetchSetting("showMoves", true, db);
 			var showForms = await fetchSetting("showForms", true, db);
 			setSettings({
 				isDark: isDark,
@@ -61,6 +62,7 @@ function SettingsMenu(props) {
 				showStats: showStats,
 				showEvoChain: showEvoChain,
 				showAbilities: showAbilities,
+				showMoves: showMoves,
 				showForms: showForms,
 				fetched: true,
 			});
@@ -142,17 +144,24 @@ function SettingsMenu(props) {
 							updateSetting={updateSetting}
 						></SettingsRow>
 						<SettingsRow
+							settingVal={settings.showForms}
+							settingName="Show Forms"
+							settingKey="showForms"
+							updateSetting={updateSetting}
+						></SettingsRow>
+						<SettingsRow
 							settingVal={settings.showAbilities}
 							settingName="Show Abilities"
 							settingKey="showAbilities"
 							updateSetting={updateSetting}
 						></SettingsRow>
 						<SettingsRow
-							settingVal={settings.showForms}
-							settingName="Show Forms"
-							settingKey="showForms"
+							settingVal={settings.showMoves}
+							settingName="Show Moves"
+							settingKey="showMoves"
 							updateSetting={updateSetting}
 						></SettingsRow>
+
 						<div className={styles.settingRow}>
 							<Form.Select
 								onChange={(e) =>

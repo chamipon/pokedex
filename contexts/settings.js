@@ -17,6 +17,7 @@ export const SettingsProvider = ({ children }) => {
 			showStats: true,
 			showEvoChain: true,
 			showAbilities: true,
+			showMoves: true,
 			showForms: true,
 		},
 		() => 1
