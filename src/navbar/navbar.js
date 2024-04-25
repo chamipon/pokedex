@@ -28,6 +28,7 @@ function Navbar({
 					<ReactNavbar.Brand
 						href="/pokedex"
 						className="ms-md-auto d-flex me-2 me-md-auto"
+						aria-label="Ultradex Home"
 					>
 						<Image
 							width={40}
@@ -51,6 +52,7 @@ function Navbar({
 							setShowSettingsMenu(!showSettingsMenu);
 						}}
 						className={styles.navbaritem + " d-md-flex d-none"}
+						aria-label="Open Settings Menu"
 					>
 						<FontAwesomeIcon icon={solid("gear")} size="lg" />
 					</Nav.Link>
@@ -64,6 +66,7 @@ function Navbar({
 									updateSetting("isShiny", !settings.isShiny)
 								}
 								className={styles.navbaritem + " d-flex"}
+								aria-label="Use Shiny Sprites"
 							>
 								<FontAwesomeIcon
 									icon={
@@ -81,6 +84,7 @@ function Navbar({
 									updateSetting("useArt", !settings.useArt)
 								}
 								className={styles.navbaritem + " d-flex"}
+								aria-label="Use Offical Art"
 							>
 								{
 									<FontAwesomeIcon
@@ -104,6 +108,7 @@ function Navbar({
 						}
 						id="installButton"
 						className={styles.navbaritem + " d-flex"}
+						aria-label="Install Ultradex"
 					>
 						<FontAwesomeIcon icon={solid("download")} size="lg" />
 					</Nav.Link>
@@ -113,6 +118,7 @@ function Navbar({
 						setShowMobileMenu(!showMobileMenu);
 					}}
 					className={styles.navbaritem + " d-flex d-md-none"}
+					aria-label="Open Mobile Menu"
 				>
 					<FontAwesomeIcon icon={solid("bars")} size="lg" />
 				</Nav.Link>

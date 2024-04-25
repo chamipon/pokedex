@@ -20,7 +20,7 @@ function MobileMenu(props) {
 				placement="end"
 				onHide={handleClose}
 			>
-				<Offcanvas.Header>
+				<Offcanvas.Header closeButton>
 					<Offcanvas.Title>Ultradex</Offcanvas.Title>
 				</Offcanvas.Header>
 				<Offcanvas.Body>

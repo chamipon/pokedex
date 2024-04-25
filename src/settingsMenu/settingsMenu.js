@@ -79,6 +79,7 @@ function SettingsMenu(props) {
 					id="settingsMenu"
 					tabIndex="-1"
 					aria-hidden="true"
+					closeButton="true"
 				>
 					<Modal.Header className={styles.modalHeader}>
 						<h5 className="modal-title" id="settingsModalLabel">
