@@ -6,16 +6,13 @@ import SettingsContext from "../../../contexts/settings.js";
 function Spotlight(props) {
 	const [settings] = useContext(SettingsContext);
 	return (
-		<>  
+		<>
 			{props.currentForm && (
 				<div className="spotlight d-flex flex-column align-items-center my-2">
-					<div
-						className={
-							styles.imageContainer
-						}
-					>
+					<div className={styles.imageContainer}>
 						{settings.fetched && (
 							<img
+								fetchPriority="high"
 								className={styles.image}
 								src={
 									settings.useArt
