@@ -9,6 +9,7 @@ import ultraPic from "../../public/ultraball.png";
 import premierPic from "../../public/premier_ball.png";
 import SettingsContext from "../../contexts/settings";
 import styles from "./navbar.module.scss";
+import { useSession, signIn, signOut } from "next-auth/react";
 function Navbar({
 	showInstall,
 	setShowInstall,
@@ -18,6 +19,7 @@ function Navbar({
 	setShowMobileMenu,
 }) {
 	const [settings, updateSetting] = useContext(SettingsContext);
+	const { data: session } = useSession();
 	useEffect(() => {
 		installable.installableSetup(setShowInstall);
 	}, [setShowInstall]);
@@ -113,6 +115,21 @@ function Navbar({
 						<FontAwesomeIcon icon={solid("download")} size="lg" />
 					</Nav.Link>
 				)}
+				<Nav.Link
+					className={styles.navbaritem + " d-flex"}
+					onClick={() => {
+						session ? signOut() : signIn();
+					}}
+					style={
+						session && {
+							backgroundImage: `url(${session.user.image})`,
+							backgroundSize: "cover",
+						}
+					}
+				>
+					{!session && <FontAwesomeIcon icon={solid("user")} size="lg" />}
+				</Nav.Link>
+
 				<Nav.Link
 					onClick={() => {
 						setShowMobileMenu(!showMobileMenu);

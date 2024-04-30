@@ -6,12 +6,12 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import * as helpers from "../src/helpers.js";
 import * as pokeFuncs from "../src/pokeFuncs.js";
 import SettingsContext from "../contexts/settings";
-
+import Login from "/src/Login.js";
 function Pokedex(props) {
 	const [pokes, setPokes] = useState(""); // Master list of every pokemon. Only contains name and url to species, fully populated at the start
 	const [renderPokes, setRenderPokes] = useState(""); //List used to render the pokecard objects. Modified by search, filter, etc..
 	const [colCount, setColCount] = useState(1); //The number of columns being displayed
-    const [settings] = useContext(SettingsContext);
+	const [settings] = useContext(SettingsContext);
 	const gridRef = useRef();
 	const GUTTER_SIZE = 24;
 
@@ -25,7 +25,7 @@ function Pokedex(props) {
 	}, []);
 
 	useEffect(() => {
-        //Once we have our list of pokes, assign it to our state
+		//Once we have our list of pokes, assign it to our state
 		setPokes(props.pokeList.results);
 	}, [props.pokeList]);
 
@@ -36,27 +36,31 @@ function Pokedex(props) {
 				pokes.filter(
 					(el) =>
 						el.name.includes(props.searchParams.toLowerCase()) ||
-						pokeFuncs.getPokeNumberBySpeciesUrl(el.url).includes(props.searchParams)		
+						pokeFuncs
+							.getPokeNumberBySpeciesUrl(el.url)
+							.includes(props.searchParams)
 				)
 			);
 		}
 	}, [props.searchParams, pokes]);
 
-	useEffect(() => { //Use the targetPoke state to scroll to where we were in the list of pokes
-		if(gridRef.current && renderPokes){
-            //Use the poke's name to find its position in the render pokes list.
-            //This allows us to still accurately scroll even when searched/filtered
-            let listposition = renderPokes.findIndex(x => x.name == props.targetPoke.toLowerCase());
-            gridRef.current.scrollToItem({
+	useEffect(() => {
+		//Use the targetPoke state to scroll to where we were in the list of pokes
+		if (gridRef.current && renderPokes) {
+			//Use the poke's name to find its position in the render pokes list.
+			//This allows us to still accurately scroll even when searched/filtered
+			let listposition = renderPokes.findIndex(
+				(x) => x.name == props.targetPoke.toLowerCase()
+			);
+			gridRef.current.scrollToItem({
 				align: "center",
 				columnIndex: 0,
-				rowIndex: listposition/colCount,
+				rowIndex: listposition / colCount,
 			});
-        }
-			
+		}
 	}, [gridRef.current, props.targetPoke, renderPokes]);
-    
-    const Cell = ({ columnIndex, rowIndex, style }) => {
+
+	const Cell = ({ columnIndex, rowIndex, style }) => {
 		let i = columnIndex + colCount * rowIndex; //Calculate the index based on columns and rows
 		if (renderPokes[i]) {
 			return (
@@ -78,7 +82,7 @@ function Pokedex(props) {
 			return <></>;
 		}
 	};
-	
+
 	return (
 		<>
 			<h1 className="sr-only">Ultradex</h1>
@@ -93,7 +97,7 @@ function Pokedex(props) {
 							columnCount={colCount}
 							rowCount={renderPokes.length / colCount + 1} // +1 rounds the number up
 							rowHeight={133}
-							columnWidth={(width - GUTTER_SIZE) / colCount }
+							columnWidth={(width - GUTTER_SIZE) / colCount}
 						>
 							{Cell}
 						</Grid>

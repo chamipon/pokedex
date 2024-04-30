@@ -15,10 +15,11 @@ import ContentContainer from "../src/contentContainer/contentContainer";
 import React, { useState, useContext } from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "../node_modules/@fortawesome/fontawesome-svg-core/styles.css";
+import { SessionProvider } from "next-auth/react";
 
 config.autoAddCss = false;
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 	const [searchParams, setSearchParams] = useState(""); // The current search parameters
 	const [showInstall, setShowInstall] = useState(false); //Used to control if the install button is being displayed
 	const [targetPoke, setTargetPoke] = useState(""); // Pokedex number of the poke we want to scroll to
@@ -48,56 +49,58 @@ function MyApp({ Component, pageProps }) {
 				/>
 			</Head>
 			<div className="variableContainer">
-				<SettingsProvider>
-					<ContentContainer>
-						<DefaultSeo
-							themeColor="#222222"
-							description="A Modern Pokedex App"
-							defaultTitle="Ultradex"
-							titleTemplate="%s | Ultradex"
-							openGraph={{
-								type: "website",
-								locale: "en_US",
-								url: "https://www.ultradex.ca",
-								siteName: "Ultradex",
-								images: [
-									{
-										url: "https://www.ultradex.ca/ultraball_1024.png",
-										width: 1024,
-										height: 1024,
-										alt: "Ultraball",
-									},
-								],
-							}}
-						/>
-						<Component
-							targetPoke={targetPoke}
-							setTargetPoke={setTargetPoke}
-							searchParams={searchParams}
-							setSearchParams={setSearchParams}
-							{...pageProps}
-						/>
-						<Navbar
-							showInstall={showInstall}
-							setShowInstall={setShowInstall}
-							showSettingsMenu={showSettingsMenu}
-							setShowSettingsMenu={setShowSettingsMenu}
-							showMobileMenu={showMobileMenu}
-							setShowMobileMenu={setShowMobileMenu}
-						/>
+				<SessionProvider session={session}>
+					<SettingsProvider>
+						<ContentContainer>
+							<DefaultSeo
+								themeColor="#222222"
+								description="A Modern Pokedex App"
+								defaultTitle="Ultradex"
+								titleTemplate="%s | Ultradex"
+								openGraph={{
+									type: "website",
+									locale: "en_US",
+									url: "https://www.ultradex.ca",
+									siteName: "Ultradex",
+									images: [
+										{
+											url: "https://www.ultradex.ca/ultraball_1024.png",
+											width: 1024,
+											height: 1024,
+											alt: "Ultraball",
+										},
+									],
+								}}
+							/>
+							<Component
+								targetPoke={targetPoke}
+								setTargetPoke={setTargetPoke}
+								searchParams={searchParams}
+								setSearchParams={setSearchParams}
+								{...pageProps}
+							/>
+							<Navbar
+								showInstall={showInstall}
+								setShowInstall={setShowInstall}
+								showSettingsMenu={showSettingsMenu}
+								setShowSettingsMenu={setShowSettingsMenu}
+								showMobileMenu={showMobileMenu}
+								setShowMobileMenu={setShowMobileMenu}
+							/>
 
-						<SettingsMenu
-							showSettingsMenu={showSettingsMenu}
-							setShowSettingsMenu={setShowSettingsMenu}
-						/>
-						<MobileMenu
-							show={showMobileMenu}
-							setShow={setShowMobileMenu}
-							showSettingsMenu={showSettingsMenu}
-							setShowSettingsMenu={setShowSettingsMenu}
-						/>
-					</ContentContainer>
-				</SettingsProvider>
+							<SettingsMenu
+								showSettingsMenu={showSettingsMenu}
+								setShowSettingsMenu={setShowSettingsMenu}
+							/>
+							<MobileMenu
+								show={showMobileMenu}
+								setShow={setShowMobileMenu}
+								showSettingsMenu={showSettingsMenu}
+								setShowSettingsMenu={setShowSettingsMenu}
+							/>
+						</ContentContainer>
+					</SettingsProvider>
+				</SessionProvider>
 			</div>
 		</>
 	);
