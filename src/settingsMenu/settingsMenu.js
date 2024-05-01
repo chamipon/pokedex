@@ -7,12 +7,10 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import SettingsContext from "../../contexts/settings";
 import SettingsRow from "./settingsRow/settingsRow";
-import handler from "/src/KV.js";
-
+import { useSession } from "next-auth/react";
 function SettingsMenu(props) {
-	const [settings, updateSetting, setSettings] = useContext(SettingsContext);
+	const [settings, updateSetting] = useContext(SettingsContext);
 	const handleClose = () => props.setShowSettingsMenu(false);
-	const handleShow = () => props.setShowSettingsMenu(true);
 	useEffect(() => {
 		// Add class to the body element to keep track of the theme
 		if (settings.isDark) {
@@ -23,59 +21,7 @@ function SettingsMenu(props) {
 			document.body.classList.remove("dark");
 		}
 	}, [settings.isDark]);
-	useEffect(() => {
-		async function fetchSettingsIndexDB() {
-			//Fetches the user's settings from indexedd
-			const db = await idb.openDB("ultradex", 1, {
-				upgrade(db) {
-					db.createObjectStore("ultradex-settings");
-				},
-			});
-			var isDark = await fetchSetting("isDark", true, db);
-			var isShiny = await fetchSetting("isShiny", false, db);
-			var showShiny = await fetchSetting("showShiny", true, db);
-			var useArt = await fetchSetting("useArt", true, db);
-			var showArt = await fetchSetting("showArt", true, db);
-			var language = await fetchSetting("language", "en", db);
-			var version = await fetchSetting("version", "sword", db);
-			var versionGroup = await fetchSetting(
-				"versionGroup",
-				"sword-shield",
-				db
-			);
-			var goLink = await fetchSetting("goLink", false, db);
-			var showSpeciesInfo = await fetchSetting("showSpeciesInfo", true, db);
-			var showStats = await fetchSetting("showStats", true, db);
-			var showEvoChain = await fetchSetting("showEvoChain", true, db);
-			var showAbilities = await fetchSetting("showAbilities", true, db);
-			var showMoves = await fetchSetting("showMoves", true, db);
-			var showForms = await fetchSetting("showForms", true, db);
-			setSettings({
-				isDark: isDark,
-				isShiny: isShiny,
-				showShiny: showShiny,
-				useArt: useArt,
-				showArt: showArt,
-				language: language,
-				version: version,
-				versionGroup: versionGroup,
-				goLink: goLink,
-				showSpeciesInfo: showSpeciesInfo,
-				showStats: showStats,
-				showEvoChain: showEvoChain,
-				showAbilities: showAbilities,
-				showMoves: showMoves,
-				showForms: showForms,
-				fetched: true,
-			});
-		}
-		async function fetchSettingsKV() {
-			//Fetches the user's settings from Vercel KV
-			console.log(handler());
-		}
-		fetchSettingsKV();
-		fetchSettingsIndexDB();
-	}, []);
+
 	return (
 		<>
 			{settings && (
@@ -245,17 +191,6 @@ function SettingsMenu(props) {
 			)}
 		</>
 	);
-	async function fetchSetting(setting, defaultValue, db) {
-		var _setting = await db.get("ultradex-settings", setting); //Pull the setting info from the db
-
-		if (_setting == undefined) {
-			//If this setting hasnt been initialized yet, initialize it with the default value
-			await db.put("ultradex-settings", defaultValue, setting);
-			_setting = defaultValue;
-		}
-
-		return _setting;
-	}
 }
 
 export default SettingsMenu;

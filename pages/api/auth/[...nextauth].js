@@ -12,6 +12,17 @@ export const authOptions = {
 		}),
 		// ...add more providers here
 	],
+	callbacks: {
+		async session({ session, token, user }) {
+			if (token) {
+				//Pretty scuffed, but this gets the discord user id
+				if (token?.picture?.includes("discord")) {
+					session.user.id = token.sub;
+				}
+			}
+			return session;
+		},
+	},
 };
 
 export default NextAuth(authOptions);
