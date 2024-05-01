@@ -4,38 +4,29 @@ const SettingsContext = createContext(false, () => 1);
 
 export const SettingsProvider = ({ children }) => {
 	const { data: session } = useSession();
-	const [settings, setSettings] = useState(
-		{
-			isDark: true,
-			isShiny: false,
-			showShiny: false,
-			useArt: true,
-			showArt: false,
-			language: "en",
-			version: "shield",
-			goLink: false,
-			showSpeciesInfo: true,
-			showStats: true,
-			showEvoChain: true,
-			showAbilities: true,
-			showMoves: true,
-			showForms: true,
-		},
-		() => 1
-	);
+	const [settings, setSettings] = useState({}, () => 1);
 	useEffect(() => {
 		//Whenever the session changes, update the settings
 		if (session) {
 			//User is now logged in
 			fetchSettingsKV().then((res) => {
-				res.user && setSettings(res.user.settings);
+				res && setSettings(res.user.settings);
 			});
-		} else {
+		} else if (session !== undefined) {
 			//User is now logged out
 			fetchSettingsIndexDB();
 		}
-	}, [session]);
-
+	}, [session, setSettings]);
+	useEffect(() => {
+		// Add class to the body element to keep track of the theme
+		if (settings.isDark === true) {
+			document.body.classList.add("dark");
+			document.body.classList.remove("light");
+		} else if (settings.isDark === false) {
+			document.body.classList.add("light");
+			document.body.classList.remove("dark");
+		}
+	}, [settings.isDark]);
 	return (
 		<SettingsContext.Provider value={[settings, updateSetting, setSettings]}>
 			{children}

@@ -11,16 +11,6 @@ import { useSession } from "next-auth/react";
 function SettingsMenu(props) {
 	const [settings, updateSetting] = useContext(SettingsContext);
 	const handleClose = () => props.setShowSettingsMenu(false);
-	useEffect(() => {
-		// Add class to the body element to keep track of the theme
-		if (settings.isDark) {
-			document.body.classList.add("dark");
-			document.body.classList.remove("light");
-		} else {
-			document.body.classList.add("light");
-			document.body.classList.remove("dark");
-		}
-	}, [settings.isDark]);
 
 	return (
 		<>

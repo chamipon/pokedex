@@ -19,7 +19,7 @@ export async function GET(request, res) {
 
 export async function POST(request, res) {
 	try {
-		const user = await kv.hset("userSession" + id, {
+		const user = await kv.hset("userSession" + request.body.id, {
 			userId: request.body.id,
 			settings: request.body.settings,
 		});
