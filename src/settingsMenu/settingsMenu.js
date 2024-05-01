@@ -7,6 +7,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import SettingsContext from "../../contexts/settings";
 import SettingsRow from "./settingsRow/settingsRow";
+import handler from "/src/KV.js";
+
 function SettingsMenu(props) {
 	const [settings, updateSetting, setSettings] = useContext(SettingsContext);
 	const handleClose = () => props.setShowSettingsMenu(false);
@@ -22,7 +24,7 @@ function SettingsMenu(props) {
 		}
 	}, [settings.isDark]);
 	useEffect(() => {
-		async function fetchSettings() {
+		async function fetchSettingsIndexDB() {
 			//Fetches the user's settings from indexedd
 			const db = await idb.openDB("ultradex", 1, {
 				upgrade(db) {
@@ -67,7 +69,12 @@ function SettingsMenu(props) {
 				fetched: true,
 			});
 		}
-		fetchSettings();
+		async function fetchSettingsKV() {
+			//Fetches the user's settings from Vercel KV
+			console.log(handler());
+		}
+		fetchSettingsKV();
+		fetchSettingsIndexDB();
 	}, []);
 	return (
 		<>
