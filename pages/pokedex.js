@@ -6,7 +6,6 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import * as helpers from "../src/helpers.js";
 import * as pokeFuncs from "../src/pokeFuncs.js";
 import SettingsContext from "../contexts/settings";
-import Login from "/src/Login.js";
 function Pokedex(props) {
 	const [pokes, setPokes] = useState(""); // Master list of every pokemon. Only contains name and url to species, fully populated at the start
 	const [renderPokes, setRenderPokes] = useState(""); //List used to render the pokecard objects. Modified by search, filter, etc..
