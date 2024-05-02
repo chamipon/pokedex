@@ -1,75 +1,42 @@
-
 .pokeCard {
-    --imagesize:96px;
+	--imagesize: 96px;
 	border-radius: 10px;
 	display: flex;
 	margin: 10px 0;
 	transition: 0.2s margin-top, 0.2s margin-bottom;
 	border: none;
 	min-height: 114px;
-    a{
-        color: #212529;
-        text-decoration: none;
-        :global(.dark) &{
-            color: white;
-        }
-    }
-    &:hover{
-        box-shadow: 0px 0px 7px 0px rgb(150, 150, 150);
-        margin-top: 5px;
-        margin-bottom: 15px;
-    }
-    .cardHeader{
-        display: flex;
-        flex-direction: row;
-        border-radius: 10px;
-        border-bottom: none;
-        border: 1px solid lightgrey;
-        :global(.dark) &{
-            border-color: var(--clr-secondary) !important; 
-            background-color: var(--clr-secondary) !important;
-        }
-    }
-    :global(.dark) &{
-        background-color: var(--clr-secondary) !important;
-    }
-    .pokeSprite{
-        height: var(--imagesize);
-        width: var(--imagesize);
-        img{
-            width: var(--imagesize);
-            height: var(--imagesize);
-        }
-    }
-    
-    .pokeTitle{
-        margin-top: 1rem;
-        font-size: 2rem;
-    }
-    .lazyload-placeholder{
-        .cardlazy>&{
-            border: 1px solid lightgrey;
-            background-color: #f7f7f7;
-            border-radius: 10px;
-            margin: 10px 0;
-        }
-        :global(.dark) &{
-            .cardlazy>&{
-                border-color: var(--clr-secondary) ;
-                background-color: var(--clr-secondary);
-            }
-            .spriteLazy>&{
-                background-color: #1f1f1f;
-                height: 96px;
-                width: 96px;
-            }
-            .cardlazy>&{
-                border-color: var(--clr-secondary) ;
-                background-color: var(--clr-secondary);
-            }
-        }
-    }
+	background-color: var(--clr-secondary) !important;
+	a {
+		color: var(--clr-text);
+		text-decoration: none;
+	}
+	&:hover {
+		box-shadow: 0px 0px 7px 0px rgb(150, 150, 150);
+		margin-top: 5px;
+		margin-bottom: 15px;
+	}
+	.cardHeader {
+		display: flex;
+		flex-direction: row;
+		border-radius: 10px;
+		border-bottom: none;
+		border: 1px solid lightgrey;
+
+		border-color: var(--clr-secondary) !important;
+		background-color: var(--clr-secondary) !important;
+	}
+	.pokeSprite {
+		height: var(--imagesize);
+		width: var(--imagesize);
+		img {
+			width: var(--imagesize);
+			height: var(--imagesize);
+		}
+	}
+
+	.pokeTitle {
+		margin-top: 1rem;
+		font-size: 2rem;
+	}
 }
-
-
-

@@ -11,7 +11,4 @@
 .infoContainer .infoContainer h3 {
   font-size: 1rem;
   text-align: center;
-}
-:global(.dark) .infoContainer {
-  background-color: var(--clr-secondary);
 }/*# sourceMappingURL=infoContainer.module.css.map */

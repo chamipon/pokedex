@@ -13,21 +13,9 @@
   padding: 0 20px;
   min-width: 60px;
 }
-:global(.dark) .progressBar {
-  background-color: var(--clr-highlight);
-}
 
 .progressBarLabel {
-  background-color: #f7f7f7;
-  color: black;
-  font-size: 0.75rem;
-}
-@media (min-width: 767px) {
-  .progressBarLabel {
-    font-size: 1rem;
-  }
-}
-:global(.dark) .progressBarLabel {
   background-color: var(--clr-primary);
-  color: white;
+  color: var(--clr-text);
+  font-size: 0.75rem;
 }/*# sourceMappingURL=stats.module.css.map */

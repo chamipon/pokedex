@@ -1,16 +1,17 @@
 .mobileMenu {
-  max-width: 75%;
+  background-color: var(--clr-secondary);
+  color: var(--clr-text);
 }
 .mobileMenu .mobileMenuItem {
   background-color: transparent !important;
-  color: #212529;
   border-color: var(--clr-highlight);
+  color: var(--clr-text);
 }
 .mobileMenu .mobileMenuItem a {
-  color: #212529;
   text-decoration: none;
 }
-.mobileMenu .mobileMenuItem svg, .mobileMenu .mobileMenuItem img {
+.mobileMenu .mobileMenuItem svg,
+.mobileMenu .mobileMenuItem img {
   margin-right: 10px !important;
 }
 .mobileMenu .mobileMenuItem:before {
@@ -20,12 +21,4 @@
 }
 .mobileMenu * {
   vertical-align: middle;
-}
-.mobileMenu:global(.dark) {
-  background-color: var(--clr-secondary);
-  color: white;
-}
-.mobileMenu:global(.dark) .mobileMenuItem {
-  border-color: var(--clr-highlight);
-  color: white;
 }/*# sourceMappingURL=mobileMenu.module.css.map */

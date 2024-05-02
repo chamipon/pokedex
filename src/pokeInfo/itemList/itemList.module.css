@@ -1,22 +1,25 @@
-.itemList__listItem {
+.listItem {
   background-color: var(--clr-primary);
   color: var(--clr-text);
   padding: 1rem;
-  border-radius: 1rem;
   border-bottom: 0px;
 }
-.itemList__listItem:first-child, .itemList__listItem:last-child {
-  border-radius: 1rem;
-}
-.itemList__listItem:hover, .itemList__listItem:focus {
+.listItem:hover, .listItem:focus {
   color: var(--clr-text);
   background-color: var(--clr-primary-900);
 }
-.itemList__listItem:active {
+.listItem:active {
   background-color: var(--clr-primary-800);
 }
-.itemList__listItem__header {
+.listItem__header {
   -webkit-text-decoration: underline var(--clr-highlight);
           text-decoration: underline var(--clr-highlight);
   text-underline-position: under;
+}
+
+.complex {
+  border-radius: 1rem;
+}
+.complex:first-child, .complex:last-child {
+  border-radius: 1rem;
 }/*# sourceMappingURL=itemList.module.css.map */

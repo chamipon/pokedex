@@ -1,18 +1,12 @@
 .modalHeader {
   border-bottom-color: var(--clr-highlight);
 }
-:global(.dark) .modalHeader {
-  border-bottom-color: var(--clr-highlight);
-}
 
 .modalFooter {
   border-top-color: var(--clr-highlight);
 }
-:global(.dark) .modalFooter {
-  border-top-color: var(--clr-highlight);
-}
 
-.modalContent:global(.dark) {
+.modalContent {
   background-color: var(--clr-primary);
 }
 
@@ -21,9 +15,7 @@
   opacity: 1;
   padding-top: 0.3rem;
   padding-left: 0.7 rem;
-}
-:global(.dark) .closeButton {
-  color: white;
+  color: var(--clr-text);
 }
 
 .setting {
@@ -38,12 +30,9 @@
   border-bottom-width: 0px;
   border-right-width: 0px;
   border-left-width: 0px;
-  border-color: lightgray;
+  border-color: gray;
   border-style: solid;
 }
 .settingRow:first-child {
   border-top-width: 0px;
-}
-:global(.dark) .settingRow {
-  border-color: gray;
 }/*# sourceMappingURL=settingsRow.module.css.map */

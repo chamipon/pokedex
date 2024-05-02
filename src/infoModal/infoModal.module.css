@@ -18,7 +18,5 @@
   opacity: 1;
   padding-top: 0.3rem;
   padding-left: 0.7 rem;
-}
-:global(.dark) .closeButton {
-  color: white;
+  color: var(--clr-text);
 }/*# sourceMappingURL=infoModal.module.css.map */

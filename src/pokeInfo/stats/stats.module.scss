@@ -1,32 +1,19 @@
-
-
-.progress{
-    height: 1.5rem;
-    font-size: 1rem;
-    margin: 5px 0;
-    background-color: transparent;
+.progress {
+	height: 1.5rem;
+	font-size: 1rem;
+	margin: 5px 0;
+	background-color: transparent;
 }
-.progressBar{
-    background-color: var(--clr-highlight);
-    color: black;
-    border-radius: 0 0.25rem 0.25rem 0;
-    text-align: left;
-    padding: 0 20px;
-    min-width: 60px;
-    :global(.dark) &{
-        background-color: var(--clr-highlight);
-    }
+.progressBar {
+	background-color: var(--clr-highlight);
+	color: black;
+	border-radius: 0 0.25rem 0.25rem 0;
+	text-align: left;
+	padding: 0 20px;
+	min-width: 60px;
 }
-.progressBarLabel{
-    background-color: #f7f7f7;
-    color: black;
-    font-size: 0.75rem;
-
-    @media (min-width: 767px){
-        font-size: 1rem;
-    }
-    :global(.dark) &{
-        background-color: var(--clr-primary);
-        color: white;
-    }
+.progressBarLabel {
+	background-color: var(--clr-primary);
+	color: var(--clr-text);
+	font-size: 0.75rem;
 }

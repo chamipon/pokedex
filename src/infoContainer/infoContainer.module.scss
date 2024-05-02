@@ -11,8 +11,4 @@
 			text-align: center;
 		}
 	}
-
-	:global(.dark) & {
-		background-color: var(--clr-secondary);
-	}
 }
