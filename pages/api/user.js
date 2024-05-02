@@ -10,7 +10,9 @@ export default async function handler(req, res) {
 
 export async function GET(request, res) {
 	try {
-		const user = await kv.hgetall("userSession" + request.headers.authorization);
+		const user = await kv.hgetall(
+			"userSession:" + request.headers.authorization
+		);
 		return res.status(200).json({ user });
 	} catch {
 		return res.status(500).json({ error: "failed to load data" });
@@ -19,7 +21,7 @@ export async function GET(request, res) {
 
 export async function POST(request, res) {
 	try {
-		const user = await kv.hset("userSession" + request.body.id, {
+		const user = await kv.hset("userSession:" + request.body.id, {
 			userId: request.body.id,
 			settings: request.body.settings,
 		});

@@ -7,12 +7,30 @@ export const SettingsProvider = ({ children }) => {
 	const { data: session } = useSession();
 	const [settings, setSettings] = useState({}, () => 1);
 	const { theme, setTheme } = useTheme();
+	const settingArray = [
+		// Array of all of the settings and their default values
+		{ key: "theme", defaulVal: "system" },
+		{ key: "isShiny", defaulVal: false },
+		{ key: "showShiny", defaulVal: true },
+		{ key: "useArt", defaulVal: true },
+		{ key: "showArt", defaulVal: true },
+		{ key: "language", defaulVal: "en" },
+		{ key: "version", defaulVal: "sword" },
+		{ key: "versionGroup", defaulVal: "sword-shield" },
+		{ key: "goLink", defaulVal: false },
+		{ key: "showSpeciesInfo", defaulVal: true },
+		{ key: "showStats", defaulVal: true },
+		{ key: "showEvoChain", defaulVal: true },
+		{ key: "showAbilities", defaulVal: true },
+		{ key: "showMoves", defaulVal: true },
+		{ key: "showForms", defaulVal: true },
+	];
 	useEffect(() => {
 		//Whenever the session changes, update the settings
 		if (session) {
 			//User is now logged in
 			fetchSettingsKV().then((res) => {
-				res && setSettings(res.user.settings);
+				res && setSettings(applySettingsKV(res.user));
 			});
 		} else if (session !== undefined) {
 			//User is now logged out
@@ -21,8 +39,7 @@ export const SettingsProvider = ({ children }) => {
 	}, [session, setSettings]);
 	useEffect(() => {
 		// Add class to the body element to keep track of the theme
-		console.log("setting theme:" + settings.theme);
-		settings.theme && setTheme(settings.theme);
+		settings && setTheme(settings.theme);
 	}, [settings.theme]);
 	return (
 		<SettingsContext.Provider value={[settings, updateSetting, setSettings]}>
@@ -49,49 +66,22 @@ export const SettingsProvider = ({ children }) => {
 		}
 	}
 	async function fetchSettingsIndexDB() {
-		//Fetches the user's settings from indexedd
+		//Fetches the user's settings from indexedb
 		const db = await idb.openDB("ultradex", 1, {
 			upgrade(db) {
 				db.createObjectStore("ultradex-settings");
 			},
 		});
-		var theme = await fetchSettingIndexDB("theme", "dark", db);
-		var isShiny = await fetchSettingIndexDB("isShiny", false, db);
-		var showShiny = await fetchSettingIndexDB("showShiny", true, db);
-		var useArt = await fetchSettingIndexDB("useArt", true, db);
-		var showArt = await fetchSettingIndexDB("showArt", true, db);
-		var language = await fetchSettingIndexDB("language", "en", db);
-		var version = await fetchSettingIndexDB("version", "sword", db);
-		var versionGroup = await fetchSettingIndexDB(
-			"versionGroup",
-			"sword-shield",
-			db
-		);
-		var goLink = await fetchSettingIndexDB("goLink", false, db);
-		var showSpeciesInfo = await fetchSettingIndexDB("showSpeciesInfo", true, db);
-		var showStats = await fetchSettingIndexDB("showStats", true, db);
-		var showEvoChain = await fetchSettingIndexDB("showEvoChain", true, db);
-		var showAbilities = await fetchSettingIndexDB("showAbilities", true, db);
-		var showMoves = await fetchSettingIndexDB("showMoves", true, db);
-		var showForms = await fetchSettingIndexDB("showForms", true, db);
-		setSettings({
-			theme: theme,
-			isShiny: isShiny,
-			showShiny: showShiny,
-			useArt: useArt,
-			showArt: showArt,
-			language: language,
-			version: version,
-			versionGroup: versionGroup,
-			goLink: goLink,
-			showSpeciesInfo: showSpeciesInfo,
-			showStats: showStats,
-			showEvoChain: showEvoChain,
-			showAbilities: showAbilities,
-			showMoves: showMoves,
-			showForms: showForms,
-			fetched: true,
+		let fetchedSettings = {};
+		settingArray.forEach(async (setting) => {
+			fetchedSettings[setting.key] = await fetchSettingIndexDB(
+				setting.key,
+				setting.defaulVal,
+				db
+			);
 		});
+		fetchedSettings.fetched = true;
+		setSettings(fetchedSettings);
 	}
 
 	async function fetchSettingIndexDB(setting, defaultValue, db) {
@@ -125,6 +115,19 @@ export const SettingsProvider = ({ children }) => {
 
 		const res = await response.json();
 		return res;
+	}
+	function applySettingsKV(user) {
+		let fetchedSettings = {};
+		settingArray.forEach((setting) => {
+			//Look for the setting in the user object
+			let fetchedSetting = user ? user.settings[setting.key] : null;
+			//If the setting isn't in the user object (not in the database) use the default value
+			fetchedSettings[setting.key] =
+				fetchedSetting !== null ? fetchedSetting : setting.defaulVal;
+		});
+		fetchedSettings.fetched = true;
+		if (!user) setSettingsKV(fetchedSettings);
+		return fetchedSettings;
 	}
 };
 
