@@ -34,16 +34,8 @@ function MobileMenu(props) {
 								<img
 									width={24}
 									height={24}
-									alt={
-										settings.isDark
-											? "ultra ball sprite"
-											: "premier ball sprite"
-									}
-									src={
-										settings.isDark
-											? "/pokeball_icon_white.svg"
-											: "/pokeball_icon.svg"
-									}
+									alt={"ultra ball sprite"}
+									src={"/pokeball_icon.svg"}
 								/>
 								Pokemon
 							</div>

@@ -1,10 +1,12 @@
 import { createContext, useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { useTheme } from "next-themes";
 const SettingsContext = createContext(false, () => 1);
 
 export const SettingsProvider = ({ children }) => {
 	const { data: session } = useSession();
 	const [settings, setSettings] = useState({}, () => 1);
+	const { theme, setTheme } = useTheme();
 	useEffect(() => {
 		//Whenever the session changes, update the settings
 		if (session) {
@@ -19,14 +21,9 @@ export const SettingsProvider = ({ children }) => {
 	}, [session, setSettings]);
 	useEffect(() => {
 		// Add class to the body element to keep track of the theme
-		if (settings.isDark === true) {
-			document.body.classList.add("dark");
-			document.body.classList.remove("light");
-		} else if (settings.isDark === false) {
-			document.body.classList.add("light");
-			document.body.classList.remove("dark");
-		}
-	}, [settings.isDark]);
+		console.log("setting theme:" + settings.theme);
+		settings.theme && setTheme(settings.theme);
+	}, [settings.theme]);
 	return (
 		<SettingsContext.Provider value={[settings, updateSetting, setSettings]}>
 			{children}
@@ -58,7 +55,7 @@ export const SettingsProvider = ({ children }) => {
 				db.createObjectStore("ultradex-settings");
 			},
 		});
-		var isDark = await fetchSettingIndexDB("isDark", true, db);
+		var theme = await fetchSettingIndexDB("theme", "dark", db);
 		var isShiny = await fetchSettingIndexDB("isShiny", false, db);
 		var showShiny = await fetchSettingIndexDB("showShiny", true, db);
 		var useArt = await fetchSettingIndexDB("useArt", true, db);
@@ -78,7 +75,7 @@ export const SettingsProvider = ({ children }) => {
 		var showMoves = await fetchSettingIndexDB("showMoves", true, db);
 		var showForms = await fetchSettingIndexDB("showForms", true, db);
 		setSettings({
-			isDark: isDark,
+			theme: theme,
 			isShiny: isShiny,
 			showShiny: showShiny,
 			useArt: useArt,

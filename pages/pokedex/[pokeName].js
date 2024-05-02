@@ -12,7 +12,6 @@ import Moves from "/src/pokeInfo/moves/moves";
 import SettingsContext from "../../contexts/settings";
 import { NextSeo } from "next-seo";
 import InfoModal from "/src/infoModal/infoModal";
-
 export default function Pokemon(props) {
 	const router = useRouter();
 	const [settings] = useContext(SettingsContext);

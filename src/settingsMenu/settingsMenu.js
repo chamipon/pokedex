@@ -7,11 +7,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import SettingsContext from "../../contexts/settings";
 import SettingsRow from "./settingsRow/settingsRow";
-import { useSession } from "next-auth/react";
 function SettingsMenu(props) {
 	const [settings, updateSetting] = useContext(SettingsContext);
 	const handleClose = () => props.setShowSettingsMenu(false);
-
 	return (
 		<>
 			{settings && (
@@ -58,12 +56,6 @@ function SettingsMenu(props) {
 							updateSetting={updateSetting}
 						></SettingsRow>
 						<SettingsRow
-							settingVal={settings.isDark}
-							settingName="Dark Mode"
-							settingKey="isDark"
-							updateSetting={updateSetting}
-						></SettingsRow>
-						<SettingsRow
 							settingVal={settings.goLink}
 							settingName="Pokemon Go Link"
 							settingKey="goLink"
@@ -105,7 +97,6 @@ function SettingsMenu(props) {
 							settingKey="showMoves"
 							updateSetting={updateSetting}
 						></SettingsRow>
-
 						<div className={styles.settingRow}>
 							<Form.Select
 								onChange={(e) =>
@@ -169,6 +160,20 @@ function SettingsMenu(props) {
 								</option>
 								<option value="sword">Sword</option>
 								<option value="shield">Shield</option>
+							</Form.Select>
+						</div>
+						<div className={styles.settingRow}>
+							<Form.Select
+								onChange={(e) => {
+									updateSetting("theme", e.target.value);
+								}}
+								value={settings.theme}
+								className={"me-1 " + styles.setting}
+								aria-label="Theme"
+							>
+								<option value="system">System</option>
+								<option value="dark">Dark</option>
+								<option value="light">Light</option>
 							</Form.Select>
 						</div>
 					</Modal.Body>

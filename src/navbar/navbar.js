@@ -36,12 +36,8 @@ function Navbar({
 							width={40}
 							layout="fixed"
 							height={40}
-							alt={
-								settings.isDark
-									? "ultra ball sprite"
-									: "premier ball sprite"
-							}
-							src={settings.isDark ? ultraPic : premierPic}
+							alt={"ultra ball sprite"}
+							src={ultraPic}
 						/>
 					</ReactNavbar.Brand>
 					{/* <Link href="/itemdex">

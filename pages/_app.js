@@ -1,6 +1,7 @@
 import "../styles/app.css";
 //import "../src/navbar/navbar.css"
 import "../styles/_Variables.scss";
+import "../styles/themes.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "../src/pokeInfo/types/types.css";
 import "../src/pokeCard/pokeCard.module.scss";
@@ -16,7 +17,7 @@ import React, { useState, useContext } from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "../node_modules/@fortawesome/fontawesome-svg-core/styles.css";
 import { SessionProvider } from "next-auth/react";
-
+import { ThemeProvider } from "next-themes";
 config.autoAddCss = false;
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
@@ -50,56 +51,60 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 			</Head>
 			<div className="variableContainer">
 				<SessionProvider session={session}>
-					<SettingsProvider>
-						<ContentContainer>
-							<DefaultSeo
-								themeColor="#222222"
-								description="A Modern Pokedex App"
-								defaultTitle="Ultradex"
-								titleTemplate="%s | Ultradex"
-								openGraph={{
-									type: "website",
-									locale: "en_US",
-									url: "https://www.ultradex.ca",
-									siteName: "Ultradex",
-									images: [
-										{
-											url: "https://www.ultradex.ca/ultraball_1024.png",
-											width: 1024,
-											height: 1024,
-											alt: "Ultraball",
-										},
-									],
-								}}
-							/>
-							<Component
-								targetPoke={targetPoke}
-								setTargetPoke={setTargetPoke}
-								searchParams={searchParams}
-								setSearchParams={setSearchParams}
-								{...pageProps}
-							/>
-							<Navbar
-								showInstall={showInstall}
-								setShowInstall={setShowInstall}
-								showSettingsMenu={showSettingsMenu}
-								setShowSettingsMenu={setShowSettingsMenu}
-								showMobileMenu={showMobileMenu}
-								setShowMobileMenu={setShowMobileMenu}
-							/>
+					<ThemeProvider>
+						<SettingsProvider>
+							<ContentContainer>
+								<DefaultSeo
+									themeColor="#222222"
+									description="A Modern Pokedex App"
+									defaultTitle="Ultradex"
+									titleTemplate="%s | Ultradex"
+									openGraph={{
+										type: "website",
+										locale: "en_US",
+										url: "https://www.ultradex.ca",
+										siteName: "Ultradex",
+										images: [
+											{
+												url: "https://www.ultradex.ca/ultraball_1024.png",
+												width: 1024,
+												height: 1024,
+												alt: "Ultraball",
+											},
+										],
+									}}
+								/>
 
-							<SettingsMenu
-								showSettingsMenu={showSettingsMenu}
-								setShowSettingsMenu={setShowSettingsMenu}
-							/>
-							<MobileMenu
-								show={showMobileMenu}
-								setShow={setShowMobileMenu}
-								showSettingsMenu={showSettingsMenu}
-								setShowSettingsMenu={setShowSettingsMenu}
-							/>
-						</ContentContainer>
-					</SettingsProvider>
+								<Component
+									targetPoke={targetPoke}
+									setTargetPoke={setTargetPoke}
+									searchParams={searchParams}
+									setSearchParams={setSearchParams}
+									{...pageProps}
+								/>
+
+								<Navbar
+									showInstall={showInstall}
+									setShowInstall={setShowInstall}
+									showSettingsMenu={showSettingsMenu}
+									setShowSettingsMenu={setShowSettingsMenu}
+									showMobileMenu={showMobileMenu}
+									setShowMobileMenu={setShowMobileMenu}
+								/>
+
+								<SettingsMenu
+									showSettingsMenu={showSettingsMenu}
+									setShowSettingsMenu={setShowSettingsMenu}
+								/>
+								<MobileMenu
+									show={showMobileMenu}
+									setShow={setShowMobileMenu}
+									showSettingsMenu={showSettingsMenu}
+									setShowSettingsMenu={setShowSettingsMenu}
+								/>
+							</ContentContainer>
+						</SettingsProvider>
+					</ThemeProvider>
 				</SessionProvider>
 			</div>
 		</>
