@@ -6,7 +6,7 @@ const SettingsContext = createContext(false, () => 1);
 export const SettingsProvider = ({ children }) => {
 	const { data: session } = useSession();
 	const [settings, setSettings] = useState({}, () => 1);
-	const { theme, setTheme } = useTheme();
+	const { theme, setTheme } = useTheme("system");
 	const settingArray = [
 		// Array of all of the settings and their default values
 		{ key: "theme", defaulVal: "system" },
@@ -34,13 +34,15 @@ export const SettingsProvider = ({ children }) => {
 			});
 		} else if (session !== undefined) {
 			//User is now logged out
-			fetchSettingsIndexDB();
+			fetchSettingsIndexDB().then((res) => {
+				setSettings(res);
+			});
 		}
 	}, [session, setSettings]);
 	useEffect(() => {
 		// Add class to the body element to keep track of the theme
 		settings && setTheme(settings.theme);
-	}, [settings.theme]);
+	}, [settings, settings.theme]);
 	return (
 		<SettingsContext.Provider value={[settings, updateSetting, setSettings]}>
 			{children}
@@ -73,15 +75,17 @@ export const SettingsProvider = ({ children }) => {
 			},
 		});
 		let fetchedSettings = {};
-		settingArray.forEach(async (setting) => {
-			fetchedSettings[setting.key] = await fetchSettingIndexDB(
-				setting.key,
-				setting.defaulVal,
-				db
-			);
-		});
+		await Promise.all(
+			settingArray.map(async (setting) => {
+				fetchedSettings[setting.key] = await fetchSettingIndexDB(
+					setting.key,
+					setting.defaulVal,
+					db
+				);
+			})
+		);
 		fetchedSettings.fetched = true;
-		setSettings(fetchedSettings);
+		return fetchedSettings;
 	}
 
 	async function fetchSettingIndexDB(setting, defaultValue, db) {
