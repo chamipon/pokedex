@@ -114,7 +114,13 @@ function Navbar({
 				<Nav.Link
 					className={styles.navbaritem + " d-flex"}
 					onClick={() => {
-						session ? signOut() : signIn();
+						session
+							? signOut()
+							: signIn(
+									"discord",
+									{ callbackUrl: "", redirect: true },
+									{ prompt: "none" }
+							  );
 					}}
 					style={
 						session && {
