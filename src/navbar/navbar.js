@@ -23,9 +23,6 @@ function Navbar({
 	useEffect(() => {
 		installable.installableSetup(setShowInstall);
 	}, [setShowInstall]);
-	useEffect(() => {
-		console.log(session);
-	}, [session]);
 	return (
 		<ReactNavbar className={styles.navbar + " fixed-bottom "}>
 			<div className="h-100 w-100 d-flex flex-row flex-md-column">
