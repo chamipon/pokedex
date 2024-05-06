@@ -14,7 +14,7 @@ function PokeCard(props) {
 					<a className={styles.cardHeader + " card-header"}>
 						<div className={styles.pokeSprite}>
 							{settings.fetched && (
-								<img
+								<Image
 									src={pokeFuncs.buildPokeSpriteUrl(
 										props.number,
 										settings.useArt,
@@ -27,7 +27,10 @@ function PokeCard(props) {
 										currentTarget.onerror = null; // prevents looping
 										currentTarget.src = "/missingno.png";
 									}}
-								/>
+									unoptimized
+									placeholder="blur"
+									blurDataURL={helpers.placeholderDataImage}
+								></Image>
 							)}
 						</div>
 
